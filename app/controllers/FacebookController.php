@@ -51,30 +51,29 @@ class FacebookController extends \BaseController {
 		$uid = $this->repo->getFacebookId();
 
 		$profile = Profile::whereUid($uid)->first();
+		$user = new User();
 		if (empty($profile)) {
 			$random_password = str_random(8);
-			$user = new User;
-			$user->type_id = UserType::where('slug','customer')->first()->id;
-			$user->email = isset($me['email']) ? $me['email'] : '';
-			$user->photo = 'https://graph.facebook.com/'.$uid.'/picture?type=large';
-			$user->username = $me['first_name'].'_'.$me['last_name'];
-			$user->password = $random_password;
-			$user->password_confirmation = $random_password;
-			$user->confirmation_code = md5(uniqid(mt_rand(), true));
-			$user->confirmed = 1;
+			$input = array(
+				'email' => isset($me['email']) ? $me['email'] : '',
+				'photo' => 'https://graph.facebook.com/'.$uid.'/picture?type=large',
+				'username' => $me['first_name'].'_'.$me['last_name'],
+				'password' => $random_password,
+				'password_confirmation' => $random_password,
+				'uid' => $uid,
+				'first_name' => $me['first_name'],
+				'last_name' => $me['last_name'],
+				'access_token' => $this->repo->getAccessToken(),
+			);
 
-			$user->save();
+			$repo = App::make('UserRepository');
 
-			$profile = new Profile();
-			$profile->uid = $uid;
-			$profile->user_id = $user->id;
-			$profile->first_name = $me['first_name'];
-			$profile->last_name = $me['last_name'];
+			$user = $repo->signup( $input );
+			$profile = $user->profile;
 		}
-
-		$profile->access_token = $this->repo->getAccessToken();
-		$profile->save();
-
+		if(!$profile && !$user->id){
+			return Redirect::route('login')->with('error', USER_CANNOT_ADD);
+		}
 		$user = $profile->user;
 
 		Auth::login($user);

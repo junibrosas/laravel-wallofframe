@@ -14,7 +14,7 @@ class User extends Eloquent implements ConfideUserInterface
 	protected $table = 'users';
 	protected $presenter = 'Iboostme\User\UserPresenter';
 	protected $hidden = array('password', 'remember_token');
-	protected $fillable = ['username', 'email', 'photo', 'password', 'password_confirmation', 'confirmation_code'];
+	protected $fillable = ['type_id', 'username', 'email', 'photo', 'password', 'password_confirmation', 'confirmation_code'];
 
 	public function country(){
 		return $this->hasOne('Country', 'id', 'country_id');

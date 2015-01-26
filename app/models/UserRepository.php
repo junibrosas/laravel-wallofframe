@@ -20,23 +20,30 @@ class UserRepository
     public function signup($input)
     {
         $user = new User;
-
         $user->username = array_get($input, 'username');
         $user->email    = array_get($input, 'email');
-        $user->password = array_get($input, 'password');
         $user->type_id = UserType::where('slug', 'customer')->first()->id;
-        // The password confirmation will be removed from model
-        // before saving. This field will be used in Ardent's
-        // auto validation.
+        $user->photo = array_get($input, 'photo') ? array_get($input, 'photo') : '';
+        $user->password = array_get($input, 'password');
         $user->password_confirmation = array_get($input, 'password_confirmation');
-
-        // Generate a random confirmation code
-        $user->confirmation_code     = md5(uniqid(mt_rand(), true));
-
+        $user->confirmation_code     = md5(uniqid(mt_rand(), true)); // Generate a random confirmation code
         $user->confirmed = 1; // forced confirm.
 
         // Save if valid. Password field will be hashed before save
         $this->save($user);
+
+        if ($user->id) {
+            // add a user profile
+            $profile = new Profile();
+            $profile->user_id = $user->id;
+            $profile->uid = array_get($input, 'uid') ? array_get($input, 'uid') : 0;
+            $profile->first_name = array_get($input, 'first_name');
+            $profile->last_name = array_get($input, 'last_name');
+            $profile->access_token = array_get($input, 'access_token') ? array_get($input, 'access_token') : '';
+            $profile->mobile_number = array_get($input, 'mobile_number') ? array_get($input, 'mobile_number') : 0;
+            $profile->address = array_get($input, 'address') ? array_get($input, 'address') : '';
+            $profile->save();
+        }
 
         return $user;
     }

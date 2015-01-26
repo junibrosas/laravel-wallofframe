@@ -209,6 +209,6 @@ class UsersController extends BaseController
     {
         Confide::logout();
 
-        return Redirect::to('/');
+        return Redirect::route('login')->with('success', 'Successfully logged out.');
     }
 }
