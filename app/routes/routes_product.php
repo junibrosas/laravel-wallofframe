@@ -24,7 +24,7 @@ Route::group( ['prefix' => 'api/product', 'namespace' => 'Api'], function () {
     Route::get('new-arrivals', ['as' => 'product.api.arrivals', 'uses' => 'ProductAPIController@getNewArrivals' ]);
     Route::get('best-selling', ['as' => 'product.api.bestSelling', 'uses' => 'ProductAPIController@getBestSelling' ]);
     Route::get('category/{slug}', ['as' => 'product.api.category', 'uses' => 'ProductAPIController@getCategory' ]);
-    Route::get('type/{slug}', ['as' => 'product.api.type', 'uses' => 'ProductAPIController@r' ]);
+    Route::get('type/{slug}', ['as' => 'product.api.type', 'uses' => 'ProductAPIController@getByType' ]);
     Route::get('brand/{slug}', ['as' => 'product.api.brand', 'uses' => 'ProductAPIController@getByBrand' ]);
 
     // for admin only

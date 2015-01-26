@@ -11,8 +11,8 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		$this->data['mustHaves'] = Product::orderByRaw("RAND()")->take(4)->get();
-		$this->data['products'] = Product::orderByRaw("RAND()")->take(4)->get();
+		$this->data['mustHaves'] = $this->productRepo->getByRandom( 4 )->get();
+		$this->data['products'] = $this->productRepo->getByRandom( 4 )->get();
 		$this->data['product'] = Product::first(); // frame of the week
 		return View::make('index', $this->data);
 	}

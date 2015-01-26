@@ -54,6 +54,7 @@ class FacebookController extends \BaseController {
 		if (empty($profile)) {
 			$random_password = str_random(8);
 			$user = new User;
+			$user->type_id = UserType::where('slug','customer')->first()->id;
 			$user->email = isset($me['email']) ? $me['email'] : '';
 			$user->photo = 'https://graph.facebook.com/'.$uid.'/picture?type=large';
 			$user->username = $me['first_name'].'_'.$me['last_name'];

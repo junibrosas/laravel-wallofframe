@@ -92,6 +92,9 @@ class ProductRepository {
     public function getProductsByStatus( ProductStatus $status ){
         return $this->product()->where('status_id', $status->id);
     }
+    public function getByRandom( $take ){
+        return $this->product()->orderByRaw("RAND()")->take( $take );
+    }
 
     public function find($id){
         return $this->product()->whereId($id)->first();
