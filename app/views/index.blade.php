@@ -26,7 +26,7 @@
                     <img id="Image-Maps-Com-image-maps-2015-01-09-040324" src="http://www.image-maps.com/m/private/0/15c0pofi2us334m2ehadpbuaa6_fullframe.jpg" border="0" width="1050" height="931" orgWidth="1050" orgHeight="931" usemap="#image-maps-2015-01-09-040324" alt="" class="img-responsive elem-center"/>
                     <map name="image-maps-2015-01-09-040324" id="ImageMapsCom-image-maps-2015-01-09-040324">
                     <area id="asd" alt="asd" title="asd" href="{{ route('selling') }}" shape="rect" coords="355,0,692,296" style="outline:none;" target="_self"    data-maphilight='asd' />
-                    <area id="asd" alt="asd" title="asd" href="{{ route('browse.type', ['canvas']) }}" shape="rect" coords="714,633,1049,930" style="outline:none;" target="_self"    data-maphilight='asd' />
+                    <area id="asd" alt="asd" title="asd" href="{{ route('browse.type',   ['canvas']) }}" shape="rect" coords="714,633,1049,930" style="outline:none;" target="_self"    data-maphilight='asd' />
                     <area id="asd" alt="asd" title="asd" href="{{ route('browse.type', ['art']) }}" shape="rect" coords="0,315,335,612" style="outline:none;" target="_self"    data-maphilight='asd' />
                     <area shape="rect" coords="1048,929,1050,931" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
                     </map>
@@ -61,7 +61,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center space-md">
-                        <a href="{{ route('arrivals') }}" class="btn btn-default btn-lg">Browse</a>
+                        <a href="{{ $url_collection }}" class="btn btn-default btn-lg">Browse</a>
                     </div>
                 </div>
             </div>
