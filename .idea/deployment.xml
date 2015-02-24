@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="preview_wallofframe">
-    <serverData>
-      <paths name="preview_wallofframe">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/public_html/wallofframe" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
+  <component name="PublishConfigData" serverName="preview_wallofframe" />
 </project>
 
