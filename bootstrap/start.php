@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'local' => array('homestead'),
-    'preview' => array('cjn.cjnetsolutions.com')
+    'preview' => array('192.232.213.244')
 
 ));
 
