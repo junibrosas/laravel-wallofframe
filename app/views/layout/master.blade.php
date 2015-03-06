@@ -17,6 +17,7 @@
     {{ link_css('css/utils.css') }}
     {{ link_css('css/media.css') }}
     {{ link_css('css/range.css') }}
+    {{ link_css('css/borders.css') }}
     {{ link_css('assets/font-awesome/css/font-awesome.min.css') }}
     {{ link_css('assets/owl-carousel/owl.carousel.css') }}
     {{ link_css('assets/owl-carousel/owl.theme.css') }}
@@ -71,5 +72,4 @@
 
         @yield('footer')
     </body>
-
 </html>

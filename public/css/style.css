@@ -871,14 +871,7 @@ body {
 .sell .detail .price a { text-decoration: none; font-size: 28px; color: #252525; }
 
 
-.img-custom-border {
-    border-style: solid;
-    border-width: 48px 42px 42px 39px;
-    -moz-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-    -webkit-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-    -o-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-    border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-}
+
 
 .mainbox .panel-heading { background-color: #252525; border-radius: 0; color: #fff; border: none; font-family: 'opensans-bold'; }
 .mainbox .form-control { border-radius: 0; }
