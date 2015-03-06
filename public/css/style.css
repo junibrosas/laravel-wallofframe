@@ -967,6 +967,8 @@ b { font-family: 'opensans-bold'; }
 }
 .owl-carousel .img-frame { width: 220px !important; }
 .owl-carousel .item .detail { bottom: 15px; }
+.owl-spotlight .item img { display: block;  width: 100%;  height: auto;  }
+.owl-spotlight .item { margin: 0; }
 
 .password-link { font-size: 12px; color: #252525; }
 

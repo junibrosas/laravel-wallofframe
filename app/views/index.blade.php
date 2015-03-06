@@ -4,19 +4,20 @@
     <script>
         $(function(){
             $('img[usemap]').rwdImageMaps();
+            $('.owl-spotlight').owlCarousel({
+                autoPlay: 5000,
+                navigation : false, // Show next and prev buttons
+                slideSpeed : 300,
+                paginationSpeed : 400,
+                singleItem:true
+            });
         });
     </script>
 @stop
 @section('content')
     <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">Frame your life highlights</div>
-            </div>
-        </div>
-    </header>
+    <!-- Spotlight Images -->
+    @include('components.carousels.carousel-main')
 
     <section id="feature">
         <div class="container">

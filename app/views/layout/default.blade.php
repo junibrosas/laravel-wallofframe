@@ -6,7 +6,8 @@
 
 @section('layout')
     @include('components.front.header')
-    <div class="container">
+
+    <div class="container" style="margin-top: -1px;">
         <div class="row">
             <div class="col-md-12">
                 @include('components.alerts.session')
