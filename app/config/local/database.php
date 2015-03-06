@@ -23,9 +23,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'db_wallofframe',
-			'username'  => 'homestead',
-			'password'  => 'secret',
+			'database'  => getenv('db_name'),
+			'username'  => getenv('db_user'),
+			'password'  => getenv('db_password'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
