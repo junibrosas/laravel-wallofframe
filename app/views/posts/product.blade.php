@@ -16,7 +16,7 @@
     <section>
         <div class="container">
             <div class="row sell space-sm"{{-- ng-controller="FrameAppController"--}}>
-                <div class="col-md-6 col-md-offset-4 ">
+                <div class="col-md-7 col-md-offset-3 ">
                     <div class="space-md">
 
                         <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive img-custom-border"/>
