@@ -29,7 +29,7 @@ class ProductController extends \BaseController {
             'backgroundList' => $this->productFormatter->backgroundBulkFormat(ProductBackground::where('is_active', 1)->get()),
 		]);
 
-		return Response::make( View::make('posts.single', $this->data))
+		return Response::make( View::make('posts.product', $this->data))
 			->withCookie( Cookie::make('product_viewed_id', $id) );
 	}
 

@@ -870,6 +870,16 @@ body {
 .sell .detail .price { margin: 10px 0; }
 .sell .detail .price a { text-decoration: none; font-size: 28px; color: #252525; }
 
+
+.img-custom-border {
+    border-style: solid;
+    border-width: 48px 42px 42px 39px;
+    -moz-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
+    -webkit-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
+    -o-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
+    border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
+}
+
 .mainbox .panel-heading { background-color: #252525; border-radius: 0; color: #fff; border: none; font-family: 'opensans-bold'; }
 .mainbox .form-control { border-radius: 0; }
 .mainbox .btn { text-transform: uppercase; font-family: 'opensans-bold'; }
@@ -969,8 +979,11 @@ b { font-family: 'opensans-bold'; }
 .owl-carousel .item .detail { bottom: 15px; }
 .owl-spotlight .item img { display: block;  width: 100%;  height: auto;  }
 .owl-spotlight .item { margin: 0; }
+.owl-product-controls.owl-theme .owl-controls .owl-buttons .owl-prev { left: -40px; top: 37px; font-size: 34px !important;  }
+.owl-product-controls.owl-theme .owl-controls .owl-buttons .owl-next  { right: -40px; top: 37px; font-size: 34px !important;}
+.owl-product-controls.owl-theme .owl-pagination { display: none; }
 
-.password-link { font-size: 12px; color: #252525; }
+.password-link { font-size:  12px; color: #252525; }
 
 .cart .page-heading { margin-left: 0; }
 .cart-amount { text-align: right;  padding: 15px 19px;  }
