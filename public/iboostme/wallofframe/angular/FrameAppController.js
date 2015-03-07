@@ -92,7 +92,7 @@ app.controller("FlowController", function($scope){
 });
 
 // DIRECTIVES
-// this directive will center the image depending on its container.
+// THIS DIRECTIVE WILL CENTER THE IMAGE DEPENDING ON ITS CONTAINER.
 app.directive('imagecenter', function() {
     var topAllowance = - 60;
 
