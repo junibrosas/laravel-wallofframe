@@ -39,7 +39,7 @@ class ProductFrameTableSeeder extends Seeder {
 
 
 			'border-style: solid; border-width: 90px 80px;
-			border-image-slice: 54 54 55 55; border-image-repeat: stretch repeat;',
+			border-image-slice: 54 54 55 55; border-image-repeat: stretch stretch;',
 
 			'border-style: solid; border-width: 50px;
 			border-image-slice: 31; border-image-repeat:stretch;'
