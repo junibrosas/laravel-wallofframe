@@ -9,7 +9,7 @@
                       '<i class="fa fa-chevron-left"></i>',
                       '<i class="fa fa-chevron-right"></i>'
                       ],
-                items : 5,
+                items : 6,
                 itemsDesktop : [1199,3],
                 itemsDesktopSmall : [979,3]
             });

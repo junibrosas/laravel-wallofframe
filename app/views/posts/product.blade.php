@@ -16,21 +16,21 @@
     <section>
         <div class="container">
             <div class="row sell"{{-- ng-controller="FrameAppController"--}}>
-                <div class="col-md-5 col-md-offset-4" style="margin-bottom:30px; ">
+                {{--<div class="col-md-5 col-md-offset-4" style="margin-bottom:30px; ">
+
+                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border-2"/>
+
+                </div>--}}
+                <div class="col-md-8">
 
                     <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border-2"/>
 
                 </div>
                 <div class="col-md-4">
-
                     @include('posts.product-details')
-
                 </div>
-
-                <div class="col-md-8">
-
+                <div class="col-md-12">
                     @include('posts.product-controls')
-
                 </div>
             </div>
         </div>
