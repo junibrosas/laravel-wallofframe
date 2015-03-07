@@ -22,7 +22,7 @@
 
                 </div>--}}
                 <div class="col-md-8">
-                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border custom-border-3"/>
+                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border custom-border-6"/>
 
                     @include('posts.product-controls')
                 </div>

@@ -3,25 +3,49 @@
 }
 .custom-border-1 {
     border-style: solid;
-    border-width: 48px 42px 42px 39px;
-    -moz-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-    -webkit-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-    -o-border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-    border-image: url(http://l.rgbimg.com/cache1wh2Tp/users/x/xy/xymonau/600/owyWE6O.jpg) 24 22 22 repeat;
-}
-.custom-border-2 {
-    border-style: solid;
     border-width: 38px 42px;
     -moz-border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
     -webkit-border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
     -o-border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
     border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
 }
-.custom-border-3 {
+.custom-border-2 {
     border-style: solid;
     border-width: 60px;
     -moz-border-image: url(../uploads/products/frames/wall-frame2.jpg) 55 55 55 55 repeat;
     -webkit-border-image: url(../uploads/products/frames/wall-frame2.jpg) 55 55 55 55 repeat;
     -o-border-image: url(../uploads/products/frames/wall-frame2.jpg) 55 55 55 55 repeat;
     border-image: url(../uploads/products/frames/wall-frame2.jpg) 55 55 55 55 repeat;
+}
+.custom-border-3{
+    border-style: solid;
+    border-width: 60px;
+    -moz-border-image: url(../uploads/products/frames/wall-frame3.jpg) 47 47 47 48 stretch;
+    -webkit-border-image: url(../uploads/products/frames/wall-frame3.jpg) 47 47 47 48 stretch;
+    -o-border-image: url(../uploads/products/frames/wall-frame3.jpg) 47 47 47 48 stretch;
+    border-image: url(../uploads/products/frames/wall-frame3.jpg) 47 47 47 48 stretch;
+}
+.custom-border-4{
+    border-style: solid;
+    border-width: 34px 36px 39px 30px;
+    -moz-border-image: url(../uploads/products/frames/wall-frame4.jpg) 34 stretch;
+    -webkit-border-image: url(../uploads/products/frames/wall-frame4.jpg) 34 stretch;
+    -o-border-image: url(../uploads/products/frames/wall-frame4.jpg) 34 stretch;
+    border-image: url(../uploads/products/frames/wall-frame4.jpg) 34 stretch;
+}
+.custom-border-5 {
+    border-style: solid;
+    border-width: 90px;
+    -moz-border-image: url(../uploads/products/frames/wall-frame5.jpg) 164 stretch;
+    -webkit-border-image: url(../uploads/products/frames/wall-frame5.jpg) 164 stretch;
+    -o-border-image: url(../uploads/products/frames/wall-frame5.jpg) 164 stretch;
+    border-image: url(../uploads/products/frames/wall-frame5.jpg) 164 stretch;
+}
+.custom-border-6 {
+    border-style: solid;
+    border-width: 90px;
+    -moz-border-image: url(../uploads/products/frames/wall-frame6.jpg) 164 stretch;
+    -webkit-border-image: url(../uploads/products/frames/wall-frame6.jpg) 164 stretch;
+    -o-border-image: url(../uploads/products/frames/wall-frame6.jpg) 164 stretch;
+    border-image: url(../uploads/products/frames/wall-frame6.jpg) 164 stretch;
 }
