@@ -14,8 +14,8 @@ class ProductFrameTableSeeder extends Seeder {
 			border-image-slice:  85 84 84 89;
 			border-image-repeat: repeat;',
 
-			'border-style: solid; border-width: 60px;
-			border-image-slice: 55 55 55 55;
+			'border-style: solid; border-width: 75px;
+			border-image-slice: 55;
 			border-image-repeat: repeat;',
 
 			'border-style: solid; border-width: 60px;
@@ -30,12 +30,12 @@ class ProductFrameTableSeeder extends Seeder {
 			border-image-slice:  164;
 			border-image-repeat: stretch;',
 
-			'border-style: solid; border-width: 90px;
-			border-image-slice: 164;
+			'border-style: solid; border-width: 153px 126px;
+			border-image-slice: 185 169;
 			border-image-repeat: stretch;',
 
-			'border-style: solid; border-width: 40px;
-			border-image-slice: 70; border-image-repeat: stretch;',
+			'border-style: solid; border-width: 80px 55px;
+			border-image-slice: 125 81 127 78; border-image-repeat: stretch;',
 
 
 			'border-style: solid; border-width: 90px 80px;
