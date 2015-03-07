@@ -4,11 +4,8 @@
 .custom-border-1 {
     border-style: solid;
     border-width: 38px 42px;
-    -moz-border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
-    -webkit-border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
-    -o-border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
-    border-image: url(../uploads/products/frames/wall-frame1.png) 85 84 84 89 repeat;
-}
+    border-image: url(../uploads/products/frames/wall-frame1.jpg) 85 84 84 89 repeat;
+ }
 .custom-border-2 {
     border-style: solid;
     border-width: 60px;

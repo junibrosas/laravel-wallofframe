@@ -12,6 +12,7 @@ class CreateProductFramesTable extends Migration {
 			$table->string('name');
 			$table->string('slug');
 			$table->string('image');
+			$table->text('border_style');
 			$table->boolean('is_active');
 
 			$table->timestamps();

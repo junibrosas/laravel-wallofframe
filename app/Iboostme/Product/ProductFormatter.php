@@ -70,10 +70,13 @@ class ProductFormatter {
             'name' => $frame->name,
             'slug' => $frame->slug,
             'is_active' => $frame->is_active,
-            'imagePath' => asset('uploads/products/frames/square/'.$frame->image),
-            'imageSquare' => asset('uploads/products/frames/square/'.$frame->image),
+            'image' => $frame->image,
+            'imagePath' => asset('uploads/products/frames/' . $frame->image),
+            'borderStyle' => $frame->border_style,
+            //'imagePath' => asset('uploads/products/frames/square/'.$frame->image),
+            /*'imageSquare' => asset('uploads/products/frames/square/'.$frame->image),
             'imageHorizontal' => asset('uploads/products/frames/horizontal/'.$frame->image),
-            'imageVertical' => asset('uploads/products/frames/vertical/'.$frame->image),
+            'imageVertical' => asset('uploads/products/frames/vertical/'.$frame->image),*/
         ];
         return $result;
     }

@@ -41,9 +41,17 @@ app.controller("DragNDropController", function($http, $scope, productService){
 });
 
 
-
-
 app.controller("FrameAppController", function($http, $scope, productService){
+    $scope.frameList = window.frameList;
+    $scope.currentFrame = $scope.frameList[0];
+
+    console.log($scope.frameList[0]);
+
+    $scope.setCurrentFrame = function( frame ){
+        $scope.currentFrame = frame;
+    }
+});
+/*app.controller("FrameAppController", function($http, $scope, productService){
     $scope.showLoader = false;
     $scope.types = window.types;
     $scope.frameParts = window.parts;
@@ -186,7 +194,7 @@ app.controller("FrameAppController", function($http, $scope, productService){
 
     // initialize
     $scope.changeType( $scope.type );
-});
+});*/
 
 // This is the controller for FlowJs uploading, every progress in uploading will be processed here.
 app.controller("FlowController", function($scope){

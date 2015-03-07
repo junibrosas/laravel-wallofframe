@@ -15,22 +15,14 @@
 @section('content')
     <section>
         <div class="container">
-            <div class="row sell"{{-- ng-controller="FrameAppController"--}}>
-                {{--<div class="col-md-5 col-md-offset-4" style="margin-bottom:30px; ">
-
-                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border-2"/>
-
-                </div>--}}
+            <div class="row sell" ng-controller="FrameAppController">
                 <div class="col-md-8">
-                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border custom-border-6"/>
+                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border" style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); " {{--style="@{{ currentFrame.borderStyle }}"--}}/>
 
                     @include('posts.product-controls')
                 </div>
                 <div class="col-md-4">
                     @include('posts.product-details')
-
-                </div>
-                <div class="col-md-12">
 
                 </div>
             </div>

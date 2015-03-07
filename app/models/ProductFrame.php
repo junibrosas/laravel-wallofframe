@@ -7,6 +7,8 @@ class ProductFrame extends \Eloquent {
 	protected $fillable = [
 		'name',
 		'slug',
-		'image'
+		'image',
+		'border_style',
+		'is_active'
 	];
 }
