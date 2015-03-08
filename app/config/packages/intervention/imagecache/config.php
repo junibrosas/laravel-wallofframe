@@ -65,6 +65,8 @@ return array(
             return $image->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
+
+
             });
         }
 
