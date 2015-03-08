@@ -44,11 +44,18 @@ app.controller("DragNDropController", function($http, $scope, productService){
 app.controller("FrameAppController", function($http, $scope, productService){
     $scope.frameList = window.frameList;
     $scope.currentFrame = $scope.frameList[0];
+    $scope.frameModes = ['Horizontal', 'Vertical', 'Square', 'Original'];
+    $scope.currentMode = $scope.frameModes[$scope.frameModes.length - 1];
 
-    console.log($scope.frameList[0]);
 
+    // sets the current frame to use for border using click event.
     $scope.setCurrentFrame = function( frame ){
         $scope.currentFrame = frame;
+    }
+
+    // sets the current design preview mode using click event.
+    $scope.setPreviewMode = function( mode ){
+        $scope.currentMode = mode;
     }
 });
 

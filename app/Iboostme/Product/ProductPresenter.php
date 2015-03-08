@@ -111,6 +111,7 @@ class ProductPresenter extends Presenter{
     public function imageCachePreview(){
         return url('images/frame-preview/', $this->entity->image);
     }
+
     public function imageCacheSquare(){
         return url('images/frame-square/', $this->entity->image);
     }

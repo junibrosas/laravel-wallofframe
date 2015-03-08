@@ -17,5 +17,5 @@
 .border-right { border-right: 1px solid #d4d4d4; }
 .border-bottom { border-bottom: 1px solid #d4d4d4; }
 .border-full-bottom { border-bottom: 5px solid #252525; }
-
+.pointer { cursor: pointer; }
 

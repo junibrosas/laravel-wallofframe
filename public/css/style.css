@@ -870,8 +870,8 @@ body {
 .sell .detail .price { margin: 10px 0; }
 .sell .detail .price a { text-decoration: none; font-size: 28px; color: #252525; }
 
-
-
+.mode-list li { cursor: pointer; }
+.active-mode { background: #252525; color: white; padding: 5px 10px !important; }
 
 .mainbox .panel-heading { background-color: #252525; border-radius: 0; color: #fff; border: none; font-family: 'opensans-bold'; }
 .mainbox .form-control { border-radius: 0; }
