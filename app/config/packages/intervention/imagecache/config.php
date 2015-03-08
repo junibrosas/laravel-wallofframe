@@ -50,7 +50,7 @@ return array(
    
     'templates' => array(
         'frame-preview' => function($image) {
-            return $image->resize(500, null, function ($constraint) {
+            return $image->resize(600, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
