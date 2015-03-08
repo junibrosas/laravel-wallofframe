@@ -47,10 +47,16 @@ class FacebookController extends \BaseController {
 		$code = Input::get('code');
 		if (strlen($code) == 0) return Redirect::to('/')->with('error', 'There was an error communicating with Facebook');
 
+
+
 		$me = $this->repo->getFacebookUser( $code );
 		$uid = $this->repo->getFacebookId();
 
+
+
 		$profile = Profile::whereUid($uid)->first();
+
+
 		$user = new User();
 		if (empty($profile)) {
 			$random_password = str_random(8);
@@ -69,6 +75,7 @@ class FacebookController extends \BaseController {
 			$repo = App::make('UserRepository');
 
 			$user = $repo->signup( $input );
+
 			$profile = $user->profile;
 		}
 		if(!$profile && !$user->id){

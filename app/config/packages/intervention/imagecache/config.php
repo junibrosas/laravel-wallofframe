@@ -49,27 +49,21 @@ return array(
     */
    
     'templates' => array(
-        'frame-small' => function($image) {
-            return $image->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-        },
-        'frame-medium' => function($image) {
+        'frame-preview' => function($image) {
             return $image->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
         },
-        'frame-large' => function($image) {
-            return $image->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-
-
-            });
+        'frame-square' => function( $image ){
+            return $image->fit(500, 500);
+        },
+        'frame-horizontal' => function( $image ){
+            return $image->fit(550, 390);
+        },
+        'frame-vertical' => function( $image ){
+            return $image->fit(390, 480);
         }
-
     ),
 
     /*

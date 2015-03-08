@@ -48,7 +48,7 @@ class ProductFrameTableSeeder extends Seeder {
             border-image-slice: 31; border-image-repeat: stretch;'
 		);
 
-
+		
 
 		foreach($borderStyles as $i => $borderStyle){
 			$frameName = 'Frame ' . ( $i + 1);
