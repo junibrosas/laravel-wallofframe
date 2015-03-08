@@ -50,7 +50,6 @@ class ProductFrameTableSeeder extends Seeder {
 
 
 
-
 		foreach($borderStyles as $i => $borderStyle){
 			$frameName = 'Frame ' . ( $i + 1);
 			ProductFrame::create([
