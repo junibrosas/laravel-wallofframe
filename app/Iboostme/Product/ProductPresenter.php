@@ -106,4 +106,9 @@ class ProductPresenter extends Presenter{
     public function imageOriginalType(){
         return $this->entity->image_original_type;
     }
+
+    // url based9 image manipulation cache through Intervention Image
+    public function imageCachePreview(){
+        return url('images/frame-medium/', $this->entity->image);
+    }
 }

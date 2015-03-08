@@ -9,5 +9,5 @@ Route::get('test', function(){
     $productFormatter = new ProductFormatter();
     $frames = $productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get());
 
-    trace( $frames );
+    trace( getimagesize( public_path('uploads/products/frames/wall-frame1.jpg') ) );
 });

@@ -1,6 +1,6 @@
 <?php
 
-class Image extends \Eloquent {
+/*class Image extends \Eloquent {
 	protected $table = 'images';
 	protected $fillable = ['user_id', 'imageable_id', 'imageable_type', 'url', 'key'];
 
@@ -12,4 +12,4 @@ class Image extends \Eloquent {
 	public function user(){
 		return $this->belongsTo('User');
 	}
-}
+}*/

@@ -17,7 +17,11 @@
         <div class="container">
             <div class="row sell" ng-controller="FrameAppController">
                 <div class="col-md-8">
-                    <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border" style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); " {{--style="@{{ currentFrame.borderStyle }}"--}}/>
+                    {{--
+                        <img src="{{ $product->present()->imageWithType('original') }}" alt="Original Image" class="img-responsive elem-center custom-border" style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); " />
+                    --}}
+
+                    <img src="{{ $product->present()->imageCachePreview() }}" alt="Original Image" class="img-responsive elem-center custom-border" style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); " />
 
                     @include('posts.product-controls')
                 </div>

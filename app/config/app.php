@@ -203,6 +203,7 @@ return array(
 		'Entrust'    		=> 'Zizaco\Entrust\EntrustFacade',
 		'Countries' 		=> 'Webpatser\Countries\CountriesFacade',
 		'Model' 			=> 'Way\Database\Model',
-		'Bugsnag' => 'Bugsnag\BugsnagLaravel\BugsnagFacade',
+		'Bugsnag' 			=> 'Bugsnag\BugsnagLaravel\BugsnagFacade',
+		'Image' 			=> 'Intervention\Image\Facades\Image'
 	),
 );
