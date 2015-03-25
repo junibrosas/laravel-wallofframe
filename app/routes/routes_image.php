@@ -13,5 +13,5 @@ Route::get('img-frame/{imageName?}', function($imageName = ''){
         $constraint->upsize();
     });*/
 
-    return Response::make($img, 200, array('Content-Type' => 'image/jpg'));
+    return Response::make($image, 200, array('Content-Type' => 'image/jpg'));
 });
