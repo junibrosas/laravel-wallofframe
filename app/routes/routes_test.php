@@ -6,8 +6,5 @@ use Intervention\Image\Facades\Image;
 use Iboostme\Product\ProductFormatter;
 
 Route::get('test', function(){
-    $productFormatter = new ProductFormatter();
-    $frames = $productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get());
-
-    trace( getimagesize( public_path('uploads/products/frames/wall-frame1.jpg') ) );
+    Artisan::call('cache:clear');
 });
