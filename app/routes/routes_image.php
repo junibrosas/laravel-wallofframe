@@ -6,7 +6,7 @@ Route::get('img-frame/{imageName?}', function($imageName = ''){
     /*$img = Image::cache(function($image) use ($imageName) {
 
     }, 10080);*/
-    $image = \Intervention\Image\Facades\Image;
+    $image = new \Intervention\Image\Facades\Image;
     $image->make( public_path('uploads/products/designs/original/').$imageName);
     /*$image->resize(600, null, function ($constraint) {
         $constraint->aspectRatio();
