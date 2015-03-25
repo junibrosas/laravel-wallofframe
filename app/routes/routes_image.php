@@ -10,11 +10,8 @@ Route::get('img-frame/{imageName?}', function($imageName = ''){
             $constraint->upsize();
         });
     }, 10080);
-
+    return Response::make($img, 200, array('Content-Type' => 'image/jpg'));
     trace($img);*/
-    $image = new Intervention\Image\Facades\Image();
-    $image::make( public_path('uploads/products/designs/original/').$imageName);
-    trace($image->response('jpg', 70));
-
-    //return Response::make($img, 200, array('Content-Type' => 'image/jpg'));
+    $image = new Image();
+    return $image::make( public_path('uploads/products/designs/original/').$imageName)->response('jpg');
 });
