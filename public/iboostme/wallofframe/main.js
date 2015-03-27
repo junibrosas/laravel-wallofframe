@@ -8,6 +8,11 @@ $(function() {
     // equalize a responsive column
     $('.equalized').responsiveEqualHeightGrid();
 
+    // frame border list data table
+    $('#table-frame-border').dataTable({
+
+    });
+
 
     // scroll page
     $('a.page-scroll').bind('click', function(event) {

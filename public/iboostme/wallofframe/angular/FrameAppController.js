@@ -57,6 +57,17 @@ app.controller("FrameAppController", function($http, $scope, productService){
     }
 });
 
+app.controller("FrameBorderController", function($http, $scope){
+    $scope.frameList = window.frameList;
+    $scope.currentItem = $scope.frameList[0];
+
+    console.log( $scope.frameList );
+
+    $scope.setCurrentItem = function( frame ){
+        $scope.currentItem = frame;
+    }
+});
+
 // This is the controller for FlowJs uploading, every progress in uploading will be processed here.
 app.controller("FlowController", function($scope){
     // get the fileAdded function event from $flow and check the image width

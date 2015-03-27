@@ -83,7 +83,7 @@ class FrameController extends \BaseController {
     // frame border view
     public function getFrameBorder(){
         JavaScript::put([
-            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::get()),
+            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::orderBy('created_at', 'desc')->get()),
         ]);
         $this->data['pageTitle'] = 'Frame Borders';
         return View::make('admin.frame-border', $this->data);

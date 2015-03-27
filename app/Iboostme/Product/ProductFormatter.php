@@ -73,6 +73,8 @@ class ProductFormatter {
             'image' => $frame->image,
             'imagePath' => asset('uploads/products/frames/' . $frame->image),
             'borderStyle' => $frame->border_style,
+            'date' => $frame->created_at,
+            'date_human' => $frame->created_at->diffForHumans()
             //'imagePath' => asset('uploads/products/frames/square/'.$frame->image),
             /*'imageSquare' => asset('uploads/products/frames/square/'.$frame->image),
             'imageHorizontal' => asset('uploads/products/frames/horizontal/'.$frame->image),
