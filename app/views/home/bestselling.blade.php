@@ -82,7 +82,7 @@
                         <a href="{{ $product->present()->url }}" class="btn btn-default btn-lg btn-block btn-purchase"><i class="fa fa-eye"></i> View</a>
                     </div>
                     <div class="col-md-12 space-sm  no-pad">
-                        @include('posts.recommended')
+                        @include('posts.fragments.recommended')
                     </div>
                 </div>
             </div>

@@ -9,11 +9,17 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     //Dashboard
     Route::get('account', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index' ]);
 
-    //Frame Manage
-    Route::get('design/manage', ['as' => 'admin.design.manage', 'uses' => 'FrameController@designManage']);
-    Route::get('app/manage', ['as' => 'admin.frameApp.manage', 'uses' => 'FrameController@appManage']);
+    // Frame Application
+    Route::get('frame-app', ['as' => 'admin.frameApp.manage', 'uses' => 'FrameController@getFrameApplication']);
+
+    // Frame Design
+    Route::get('frame-design', ['as' => 'admin.design.manage', 'uses' => 'FrameController@getFrameDesign']);
     Route::get('design/upload', ['as' => 'admin.design.upload', 'uses' => 'FrameController@uploadFrameParts']);
 
+    // Frame Border
+    Route::get('frame-border', ['as' => 'admin.frame.border', 'uses' => 'FrameController@getFrameBorder']);
+
+    Route::post('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@postCreateFrameBorder']);
     Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);
     Route::post('frame/update', ['as' => 'admin.frame.update', 'uses' => 'FrameController@postUpdateProduct']);

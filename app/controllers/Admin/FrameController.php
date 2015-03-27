@@ -48,7 +48,8 @@ class FrameController extends \BaseController {
         ]);
     }
 
-    public function designManage(){
+    // frame design view
+    public function getFrameDesign(){
         $status = Input::get('status') ? Input::get('status') : '';
         JavaScript::put([
             'productDeleteUrl' => route('admin.frame.delete'),
@@ -62,23 +63,29 @@ class FrameController extends \BaseController {
             'status' => $status,
             'frame_part' => 'designs'
         ]);
-        return View::make('admin.frame-manage', $this->data);
+        return View::make('admin.frame-design', $this->data);
     }
 
-    public function appManage(){
-        $this->data['product'] = Product::first();
+    // frame application view
+    public function getFrameApplication(){
+        $product = Product::first(); // get the product
         JavaScript::put([
-            'controlEnabled' => true,
-            'url_to_delete' => route('admin.part.delete'),
-            'url_to_activate' => route('admin.part.activate'),
-            'parts' => [['name' => 'Frame', 'slug' => $this->parts[1] ],['name' => 'Background', 'slug' => $this->parts[2] ]],
-            'types' => [ ['name'=>'Square', 'slug' => 'square'], ['name'=>'Vertical', 'slug' => 'vertical'], ['name'=>'Horizontal', 'slug' => 'horizontal'] ], // these types will not be used in the background part.
-            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::get()),
-            'backgroundList' => $this->productFormatter->backgroundBulkFormat(ProductBackground::get()),
+            'square_image' => urlencode($product->present()->image('square')),
+            'preview_image' => urlencode($product->present()->image('preview')),
+            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
+            'backgroundList' => $this->productFormatter->backgroundBulkFormat(ProductBackground::where('is_active', 1)->get()),
         ]);
-        return View::make('admin.app-manage', $this->data);
+        $this->data['product'] = $product;
+        $this->data['pageTitle'] = $product->present()->title;
+        return View::make('admin.frame-application', $this->data);
     }
 
+    // frame border view
+    public function getFrameBorder(){
+        return View::make('admin.frame-border', $this->data);
+    }
+
+    // frame design upload view
     public function uploadFrameParts(){
         JavaScript::put([
             'categories' => $this->data['categories'],
@@ -89,6 +96,29 @@ class FrameController extends \BaseController {
         return View::make('admin.frame-upload', $this->data);
     }
 
+
+    // upload and save new frame border
+    public function postCreateFrameBorder(){
+
+        $this->image_name = Str::random(20).'.jpg'; // image name
+        $img = Image::make( $_FILES['file']['tmp_name']  ); // create image object
+        $borderStyle = Input::get('custom_border_style');
+
+
+        // upload
+        $path = 'uploads/products/frames/'; // path of original image
+        $img->save( public_path($path.$this->image_name) );
+
+        // save
+        $frame = new ProductFrame();
+        $frame->image = $this->image_name;
+        $frame->border_style = $borderStyle;
+        $frame->save();
+
+        return Redirect::back()->with('success', FRAME_BORDER_UPLOAD_SUCCESS);
+    }
+
+    // upload and save frame parts
     public function postUploadFrameParts(){
         $frameData = Session::get('frame_data');
         $this->image_name = Str::random(20).'.jpg'; // image name
@@ -96,9 +126,8 @@ class FrameController extends \BaseController {
         $img = Image::make( $_FILES['file']['tmp_name']  ); // create image object
 
         //frame
-        if( $frameData['part'] == $this->parts[1] ){
+        /*if( $frameData['part'] == $this->parts[1] ){
             $path = 'uploads/products/frames/'.$frameData['size_type'].'/'; // path of original image
-            //$img->fit(641, 445);
             $img->save( public_path($path.$this->image_name) );
 
             $frame = new ProductFrame();
@@ -109,7 +138,7 @@ class FrameController extends \BaseController {
                 'part' => $frameData['part'],
                 'part_image' => asset($path.$this->image_name)
             ];
-        }
+        }*/
 
         //background
         if( $frameData['part'] == $this->parts[2] ){
@@ -254,8 +283,6 @@ class FrameController extends \BaseController {
 
         return ['part' => $part];
     }
-
-
 
     public function postFramePartDelete(){
         $part = Input::get('part');

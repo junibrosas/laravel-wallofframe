@@ -37,8 +37,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Components specific for this page -->
     @yield('header')
-
 
 </head>
     <body ng-controller="MainController as main" ng-cloak>
@@ -70,6 +70,7 @@
         {{--Angular Services--}}
         {{ link_js('iboostme/wallofframe/angular/services/ProductService.js') }}
 
+        <!-- Components specific for this page -->
         @yield('footer')
     </body>
 </html>
