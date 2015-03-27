@@ -18,6 +18,7 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
 
     // Frame Border
     Route::get('frame-border', ['as' => 'admin.frame.border', 'uses' => 'FrameController@getFrameBorder']);
+    Route::get('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@uploadFrameBorder']);
 
     Route::post('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@postCreateFrameBorder']);
     Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);

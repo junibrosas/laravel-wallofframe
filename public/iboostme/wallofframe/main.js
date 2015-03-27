@@ -5,6 +5,11 @@ $(function() {
     console.log(date.getTime());
 
 
+    // equalize a responsive column
+    $('.equalized').responsiveEqualHeightGrid();
+
+
+    // scroll page
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
@@ -13,6 +18,8 @@ $(function() {
         event.preventDefault();
     });
 
+
+    // owl carousel
     $("#owl-related").owlCarousel({
         autoPlay: 3000, //Set AutoPlay to 3 seconds
 
@@ -26,6 +33,8 @@ $(function() {
         ]
     });
 
+
+    // owl carousel
     $("#owl-recommended").owlCarousel({
         autoPlay: 3000, //Set AutoPlay to 3 seconds
 
@@ -34,22 +43,6 @@ $(function() {
         itemsDesktopSmall : [979,3],
     });
 
-    /*$('.frames .item').hover(function(e){
-        var content = $(this).find('.content');
-        var detail = $(this).find('.detail');
-        var isContentDisable = $(this).data('content');
-
-        if( isContentDisable == undefined ){
-            content.attr('style', 'opacity:1; transition: all ease .3s;');
-            detail.attr('style', 'opacity:0; transition: all ease .3s;');
-        }
-    },function(e){
-        var detail = $(this).find('.detail');
-        var content = $(this).find('.content');
-
-        content.attr('style', 'opacity:0; transition: all ease .3s;');
-        detail.attr('style', 'opacity:1; transition: all ease .3s;');
-    });*/
 });
 
 // Highlight the top nav as scrolling occurs

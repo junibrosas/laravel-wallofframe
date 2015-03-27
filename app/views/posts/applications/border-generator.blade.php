@@ -2,6 +2,9 @@
 <div class="borderGenerator">
     <div class="row">
         <div class="col-md-12">
+            <ul class="list list-inline pull-right">
+                <li><a href="{{ route('admin.frame.border') }}" class="btn btn-default"> <i class="fa fa-inbox"></i> View Borders</a></li>
+            </ul>
             <h2 class="side-heading space-sm">Border Generator</h2>
         </div>
         <div class="col-md-4">

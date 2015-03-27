@@ -82,7 +82,16 @@ class FrameController extends \BaseController {
 
     // frame border view
     public function getFrameBorder(){
+        JavaScript::put([
+            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::get()),
+        ]);
+        $this->data['pageTitle'] = 'Frame Borders';
         return View::make('admin.frame-border', $this->data);
+    }
+
+    // create and upload new frame border
+    public function uploadFrameBorder(){
+        return View::make('admin.frame-border-upload', $this->data);
     }
 
     // frame design upload view
@@ -113,6 +122,7 @@ class FrameController extends \BaseController {
         $frame = new ProductFrame();
         $frame->image = $this->image_name;
         $frame->border_style = $borderStyle;
+        $frame->is_active = 1;
         $frame->save();
 
         return Redirect::back()->with('success', FRAME_BORDER_UPLOAD_SUCCESS);

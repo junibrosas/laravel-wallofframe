@@ -46,6 +46,7 @@
 
         {{ link_js('js/jquery.js') }} {{--jQuery--}}
         {{ link_js('js/bootstrap.min.js') }} {{--Bootstrap--}}
+        {{ link_js('js/grids.js') }}
         {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
         {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}
         {{ link_js('assets/datatables/jquery.dataTables.min.js') }} {{--DataTables--}}

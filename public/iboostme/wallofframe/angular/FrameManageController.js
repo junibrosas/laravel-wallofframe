@@ -118,3 +118,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         }
     }
 });
+
+app.controller("FrameBorderController", function($http, $scope){
+    $scope.frameList = window.frameList;
+});

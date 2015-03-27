@@ -879,6 +879,14 @@ body {
 .mainbox .btn-primary {color: #fff; background-color: #3071a9; border-color: #285e8e; }
 .mainbox .signup-link { font-family: 'opensans-bold'; color: #414141; text-decoration: none; }
 
+
+
+.frame-border-list { }
+.frame-border-list .equalized { min-height: 50px; }
+.frame-border-list .badge { }
+.frame-border-list .side-heading .badge {   position: relative;  top: -2px;  left: 5px; text-transform: none;  }
+
+
 .alert { font-family: 'opensans-bold'; border-radius: 0; }
 b { font-family: 'opensans-bold'; }
 .btn { border-radius: 0; }
