@@ -1,5 +1,4 @@
 <?php
-
 //Public Routes
 Route::group( [ 'namespace' => 'Admin' ], function () {
     Route::post('contact/send', [ 'before' => 'csrf', 'as' => 'contacts.create', 'uses' => 'ContactController@create' ]);
@@ -19,8 +18,9 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     // Frame Border
     Route::get('frame-border', ['as' => 'admin.frame.border', 'uses' => 'FrameController@getFrameBorder']);
     Route::get('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@uploadFrameBorder']);
-
     Route::post('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@postCreateFrameBorder']);
+    Route::post('frame-border/manage', ['as' => 'admin.frame.border.manage', 'uses' => 'FrameController@postManageFrameBorders']);
+
     Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);
     Route::post('frame/update', ['as' => 'admin.frame.update', 'uses' => 'FrameController@postUpdateProduct']);

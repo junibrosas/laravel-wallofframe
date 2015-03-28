@@ -82,10 +82,10 @@ class FrameController extends \BaseController {
 
     // frame border view
     public function getFrameBorder(){
-        JavaScript::put([
-            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::orderBy('created_at', 'desc')->get()),
-        ]);
+        $frameList = $this->productFormatter->frameBulkFormat(ProductFrame::orderBy('created_at', 'desc')->get());
+
         $this->data['pageTitle'] = 'Frame Borders';
+        $this->data['frameList'] = $frameList;
         return View::make('admin.frame-border', $this->data);
     }
 
@@ -112,7 +112,6 @@ class FrameController extends \BaseController {
         $this->image_name = Str::random(20).'.jpg'; // image name
         $img = Image::make( $_FILES['file']['tmp_name']  ); // create image object
         $borderStyle = Input::get('custom_border_style');
-
 
         // upload
         $path = 'uploads/products/frames/'; // path of original image
@@ -251,6 +250,30 @@ class FrameController extends \BaseController {
             'flowFilename' => isset($_FILES['file']) ? $_FILES['file']['name'] : $_GET['flowFilename'],
             'flowRelativePath' => isset($_FILES['file']) ? $_FILES['file']['tmp_name'] : $_GET['flowRelativePath']
         ]);
+    }
+
+    // manage frame borders
+    public function postManageFrameBorders(){
+        $bulkAction = Input::get('bulk_action');
+        $selectedFrames = Input::get('selectedFrames');
+
+        if(!$selectedFrames){
+            return Redirect::back()->with('error', 'No frames has been selected.');
+        }
+        if(in_array($bulkAction,['activate', 'deactivate'])){
+            $frames = ProductFrame::whereIn('id', $selectedFrames)->get();
+            $frames->each( function($frame) use ( $bulkAction ){
+                $frame->is_active = $bulkAction == 'activate' ? 1 : 0; // activate or deactivate selected frames
+                trace($frame->is_active);
+                //$frame->save();
+            } );
+        }
+        else if(in_array($bulkAction, ['move_to_trash'])){
+            $frames = ProductFrame::whereIn('id', $selectedFrames)->get();
+
+            $frames->delete(); // delete selected frames
+        }
+
     }
 
     public function postSaveSelection(){

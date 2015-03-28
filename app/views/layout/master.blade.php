@@ -2,7 +2,6 @@
 <html lang="en" ng-app="wallOfFrame">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +21,7 @@
     {{ link_css('assets/font-awesome/css/font-awesome.min.css') }}
     {{ link_css('assets/owl-carousel/owl.carousel.css') }}
     {{ link_css('assets/owl-carousel/owl.theme.css') }}
-
+    {{ link_css('iboostme/js/angular/ngTable/ng-table.css') }}
 
 
 
@@ -58,11 +57,12 @@
         {{ link_js('iboostme/js/angular/currency/finance.js') }}
         {{ link_js('iboostme/js/angular/ngFlow/ng-flow.js') }}
         {{ link_js('iboostme/js/angular/ngFlow/ng-flow-standalone.js') }}
+        {{ link_js('iboostme/js/angular/ngTable/ng-table.min.js') }}
 
         <script>
             var mainApp = {};
-            var app = angular.module("wallOfFrame", ['uiSlider', 'finance', 'flow']);
-            
+            var app = angular.module("wallOfFrame", ['uiSlider', 'finance', 'flow', 'ngTable']);
+
             mainApp.baseUrl = "{{ url() }}";
         </script>
 

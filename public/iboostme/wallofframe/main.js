@@ -8,10 +8,6 @@ $(function() {
     // equalize a responsive column
     $('.equalized').responsiveEqualHeightGrid();
 
-    // frame border list data table
-    $('#table-frame-border').dataTable({
-
-    });
 
 
     // scroll page
@@ -46,6 +42,20 @@ $(function() {
         items : 2,
         itemsDesktop : [1199,3],
         itemsDesktopSmall : [979,3],
+    });
+
+    //icheck
+    $('.icheck').iCheck({
+        checkboxClass: 'icheckbox_flat-red',
+        radioClass: 'iradio_flat-red'
+    });
+
+    $('.iCheck-all').on('ifChecked', function() {
+        $('.icheck').iCheck('check');
+    });
+
+    $('.iCheck-all').on('ifUnchecked', function() {
+        $('.icheck').iCheck('uncheck');
     });
 
 });
