@@ -86,7 +86,12 @@ class FrameController extends \BaseController {
         $status = Input::get('status'); $frames = array(); $frameBorder = new FrameBorder();
         $frameData = ProductFrame::orderBy('created_at', 'desc')->withTrashed()->get();
         $frameGroup = $frameBorder->tabItems($frameData);
-        $frames = $status ? $frameGroup[$status] : $frameData;
+        $frames = $frameData;
+        if($status){
+            if( isset($frameGroup[$status])){
+                $frames = $frameGroup[$status];
+            }
+        }
 
         $frameList = $this->productFormatter->frameBulkFormat($frames);
         $this->data['pageTitle'] = 'Frame Borders';
@@ -275,11 +280,12 @@ class FrameController extends \BaseController {
             } );
         }
         else if(in_array($bulkAction, ['move_to_trash'])){
-            $frames = ProductFrame::whereIn('id', $selectedFrames)->get();
-
-            $frames->delete(); // delete selected frames
+            ProductFrame::whereIn('id', $selectedFrames)->delete(); // delete selected frames
+        }else if(in_array($bulkAction, ['restore'])){
+            ProductFrame::whereIn('id', $selectedFrames)->restore(); // restore selected frames
         }
 
+        return Redirect::back()->with('Successfully done.');
     }
 
     public function postSaveSelection(){

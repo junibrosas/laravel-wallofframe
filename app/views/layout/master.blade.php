@@ -58,6 +58,7 @@
         {{ link_js('iboostme/js/angular/ngFlow/ng-flow.js') }}
         {{ link_js('iboostme/js/angular/ngFlow/ng-flow-standalone.js') }}
         {{ link_js('iboostme/js/angular/ngTable/ng-table.min.js') }}
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
 
         <script>
             var mainApp = {};

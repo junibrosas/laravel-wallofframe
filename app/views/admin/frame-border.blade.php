@@ -22,7 +22,11 @@
                         <option value="-1">Bulk Action</option>
                         <option value="activate">Activate</option>
                         <option value="deactivate">Deactivate</option>
-                        <option value="move_to_trash">Move to Trash</option>
+                        @if(isset($frameGroup['trash']) && count($frameGroup['trash']) > 0)
+                            <option value="restore">Restore</option>
+                        @else
+                            <option value="move_to_trash">Move to Trash</option>
+                        @endif
                     </select>
 
                 </div>
