@@ -798,15 +798,15 @@ body {
     border: none;
     padding-left: 30px;
     padding-right: 30px;
-
+}
+.btn-default:hover, .btn-default.active{
+    background-color: #3d3c3c;
+    color: #fff;
 }
 
 .btn-vivid { background-color: #dcdcdc; color: #252525; }
 .btn-vivid:hover { background-color: #d0d0d0 !important; }
-.btn-default:hover {
-    background-color: #3d3c3c;
-    color: #fff;
-}
+
 .btn-submit { font-family: "telegrafico"; text-transform:uppercase; color: #222; background-color: #fff; border-radius: 0;  padding-right: 35px; padding-left: 35px; font-size:20px; border: none; border-bottom: 4px solid #c4c4c4; }
 .btn-submit:hover { color: #fff; background-color: #dcdedf; border-bottom: 4px solid #a4a4a4; }
 
@@ -998,8 +998,9 @@ b { font-family: 'opensans-bold'; }
 .table-product th { font-family: 'opensans-bold'; }
 .table-product .amount { text-align: right; }
 
+/*Pager*/
 
-.user-content .side-heading { padding-left: 15px; }
+/*.user-content .side-heading { padding-left: 15px; }*/
 .user-content .check { font-size: 30px; margin: 0 auto; }
 .user-content .info { margin-bottom: 10px; }
 .nav-user li a { font-family: 'opensans-bold'; font-size: 13px; color: #252525; }

@@ -7,7 +7,7 @@ use ProductBackground;
 class ProductFormatter {
     public function bulkFormat( $products ){
         $result = array();
-        if($products->count() > 0){
+        if(count($products) > 0){
             foreach($products as $i => $product){
                 $result[] = $this->format($product);
             }
@@ -16,7 +16,7 @@ class ProductFormatter {
     }
     public function frameBulkFormat( $list ){
         $result = array();
-        if($list->count() > 0){
+        if(count($list) > 0){
             foreach($list as $i => $item){
                 $result[] = $this->frameFormat($item);
             }
@@ -25,7 +25,7 @@ class ProductFormatter {
     }
     public function backgroundBulkFormat( $list ){
         $result = array();
-        if($list->count() > 0){
+        if(count($list) > 0){
             foreach($list as $i => $item){
                 $result[] = $this->backgroundFormat($item);
             }

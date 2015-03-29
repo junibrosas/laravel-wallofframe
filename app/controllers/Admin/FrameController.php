@@ -1,5 +1,6 @@
 <?php namespace Admin;
 
+use Iboostme\Product\Border\FrameBorder;
 use Iboostme\Product\ProductFormatter;
 use User;
 use Product;
@@ -82,10 +83,15 @@ class FrameController extends \BaseController {
 
     // frame border view
     public function getFrameBorder(){
-        $frameList = $this->productFormatter->frameBulkFormat(ProductFrame::orderBy('created_at', 'desc')->get());
+        $status = Input::get('status'); $frames = array(); $frameBorder = new FrameBorder();
+        $frameData = ProductFrame::orderBy('created_at', 'desc')->withTrashed()->get();
+        $frameGroup = $frameBorder->tabItems($frameData);
+        $frames = $status ? $frameGroup[$status] : $frameData;
 
+        $frameList = $this->productFormatter->frameBulkFormat($frames);
         $this->data['pageTitle'] = 'Frame Borders';
         $this->data['frameList'] = $frameList;
+        $this->data['frameGroup'] = $frameGroup;
         return View::make('admin.frame-border', $this->data);
     }
 

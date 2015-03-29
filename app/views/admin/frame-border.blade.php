@@ -7,8 +7,15 @@
             <ul class="list list-inline pull-right">
                 <li><a href="{{ route('admin.frame.border.create') }}" class="btn btn-default"> <i class="fa fa-arrow-circle-o-up"></i> Create</a></li>
             </ul>
-            <h2 class="side-heading space-bottom-md">Frame Borders <span class="badge">@{{ totalItems }} items</span></h2>
+            <h2 class="side-heading space-bottom-md">Frame Borders </h2>
+            <ul class="list-inline">
+                <li><a href="{{ route('admin.frame.border') }}" class="btn btn-success" >All <span class="badge">{{ count($frameGroup['all']) }}</span></a></li>
+                <li><a href="{{ route('admin.frame.border', ['status' => 'active']) }}" class="btn btn-success" >Active <span class="badge">{{ count($frameGroup['active']) }}</span></a></li>
+                @if(count($frameGroup['trash']) > 0)
+                    <li><a href="{{ route('admin.frame.border', ['status' => 'trash']) }}" class="btn btn-success" >Trash <span class="badge">{{ count($frameGroup['trash']) }}</span></a></li>
+                @endif
 
+            </ul>
             <div class="col-md-3 no-pad-left">
                 <div class="form-group">
                     <select class="form-control col-md-8" name="bulk_action">
@@ -24,35 +31,23 @@
                   <button type="submit" name="apply" class="btn btn-default">Apply</button>
             </div>
             <div class="col-md-12"></div>
-            <div class="col-md-8">
-                <table class="table ng-table-responsive" ng-table="tableParams" ng-controller="TableController"  template-pagination="custom/pager" >
-                    <thead>
-                        <tr>
-                            <th width="5%"><input type="checkbox" class="iCheck-all icheck"/></th>
-                            <th>Borders</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="frame in tableData">
-                            <th  scope="row"> <input class="icheck" name="selectedFrames[]" type="checkbox" value="@{{ frame.id }}"></th>
-                            <td  data-title="'Border'"><img width="60" ng-src="@{{ frame.imagePath }}" class="img-responsive" alt="@{{ frame.name }}" style="cursor: pointer" ng-click="setCurrentItem(frame)"></td>
-                            <td  data-title="'Date'">
-                                <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ frame.date_human }}</span>
-                            </td>
-                            <td  data-title="'Status'" class="text-center">
-                                <a class="btn btn-success btn-sm" ng-show="frame.is_active == 1 ? true : false" style="cursor: pointer">active</a>
-                                <a class="btn btn-danger btn-sm" ng-show="frame.is_active == 0 ? true : false" style="cursor: pointer">inactive</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div ng-controller="TableController" class="space-top-sm">
+                <div ng-show="tableData.length > 0">
+                    <div class="col-md-8 no-pad-left">
+                        @include('components.tables.table-borders')
+                    </div>
+                    <div class="col-md-4">
+                        <h4 class="label-heading">Preview</h4>
+                        <img ng-src="@{{ currentItem.imagePath }}" class="img-responsive" alt="@{{ currentItem.name }}" style="cursor: pointer">
+                    </div>
+                </div>
+                <div ng-show="tableData.length <= 0" class="col-md-12 no-pad space-top-sm">
+                    <div class="alert alert-danger">
+                        No data available
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h4 class="label-heading">Preview</h4>
-                <img ng-src="@{{ currentItem.imagePath }}" class="img-responsive" alt="@{{ currentItem.name }}" style="cursor: pointer">
-            </div>
+
         </div>
     </div>
 {{ Form::close() }}
