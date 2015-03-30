@@ -1074,6 +1074,9 @@ form label { font-weight: bold;}
 .cuteTitle { text-transform: none; font-size: 14px; line-height: 15px; margin-bottom: 0; }
 .cuteTitle span { font-size: 11px; font-style: italic; }
 
+
+select.form-control { border-radius: 0; }
+
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

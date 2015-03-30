@@ -8,14 +8,17 @@
                 <li><a href="{{ route('admin.frame.border.create') }}" class="btn btn-default"> <i class="fa fa-plus"></i> New Border</a></li>
             </ul>
             <h2 class="side-heading space-bottom-md">Frame Borders </h2>
+
+            {{--Tabs--}}
             <ul class="list-inline">
                 <li><a href="{{ route('admin.frame.border') }}" class="btn btn-success" >All <span class="badge">{{ count($frameGroup['all']) }}</span></a></li>
                 <li><a href="{{ route('admin.frame.border', ['status' => 'active']) }}" class="btn btn-success" >Active <span class="badge">{{ count($frameGroup['active']) }}</span></a></li>
                 @if(isset($frameGroup['trash']) && count($frameGroup['trash']) > 0)
                     <li><a href="{{ route('admin.frame.border', ['status' => 'trash']) }}" class="btn btn-success" >Trash <span class="badge">{{ count($frameGroup['trash']) }}</span></a></li>
                 @endif
-
             </ul>
+
+            {{--Form Actions--}}
             <div class="col-md-3 no-pad-left">
                 <div class="form-group">
                     <select class="form-control col-md-8" name="bulk_action">
@@ -28,7 +31,6 @@
                             <option value="move_to_trash">Move to Trash</option>
                         @endif
                     </select>
-
                 </div>
             </div>
             <div class="col-md-9 no-right">

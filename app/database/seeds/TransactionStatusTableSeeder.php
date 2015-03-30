@@ -8,7 +8,7 @@ class TransactionStatusTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('transaction_statuses')->delete();
-		$data = ['In Delivery', 'Completed', 'Failed'];
+		$data = ['In Process', 'In Delivery', 'Completed', 'Failed'];
 		foreach($data as $d){
 			TransactionStatus::create([
 				'name' => $d,

@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="order in tableData">
-                <th  scope="row"> <input class="icheck" type="checkbox"></th>
+                <th  scope="row"> <input class="icheck" name="transactions[]" type="checkbox" value="@{{ order.id }}"></th>
                 <td  data-title="'Orders'">
                     <a href="@{{ order.url }}" class="link-red">#@{{ order.tracking_number }}</a> <br/> <small>Buyer: @{{ order.buyer }}</small>
                 </td>

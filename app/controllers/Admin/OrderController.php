@@ -3,14 +3,21 @@ namespace Admin;
 use Iboostme\Formatter\TransactionFormatter;
 use Iboostme\Transaction\TransactionRepository;
 use Iboostme\Product\Cart\CartRepository;
+use Iboostme\Transaction\TransactionStatusRepository;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends \BaseController{
     public $transactionRepo;
+    public $cartRepo;
+    public $transactionStatusRepo;
     public function __construct( TransactionRepository $transactionRepository,
-                                 CartRepository $cartRepository ){
+                                 CartRepository $cartRepository,
+                                 TransactionStatusRepository $transactionStatusRepository ){
         $this->transactionRepo = $transactionRepository;
         $this->cartRepo = $cartRepository;
+        $this->transactionStatusRepo = $transactionStatusRepository;
     }
 
 
@@ -35,5 +42,16 @@ class OrderController extends \BaseController{
         $this->data['order'] = $order;
         $this->data['products'] = $products;
         return View::make('admin.order', $this->data);
+    }
+
+    public function postBulkActions(){
+        $transactions = Input::get('transactions'); $actions = Input::get('bulk_action');
+        if(!$transactions) return Redirect::back()->with('error', 'No transactions has been selected.');
+        if(!$actions) return Redirect::back()->with('error', 'No action has been selected.');
+
+        // Change status
+        $this->transactionStatusRepo->changeStatus( Input::get('transactions'), Input::get('bulk_action') );
+
+        return Redirect::back()->with('success', DONE);
     }
 } 
