@@ -8,7 +8,7 @@
     </div>
     <div class="pull-right text-right space-top-sm">
         <span>#{{ $order->present()->trackingNumber }} </span> <br/>
-        <span>{{ date('F d, Y', strtotime( $order->created_at )) }}</span>
+        <span>{{ date('F d, Y', strtotime( $order->created_at )) }}</span> <br/>
     </div>
     <div class="clearfix"></div>
 
