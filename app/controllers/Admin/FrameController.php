@@ -138,6 +138,19 @@ class FrameController extends \BaseController {
         return Redirect::back()->with('success', FRAME_BORDER_UPLOAD_SUCCESS);
     }
 
+    // stores a new frame border OR saves an edited one.
+    public function postStoreFrameBorder(){
+        $borderId = Input::get('border'); $borderName = Input::get('name');
+        $border = ProductFrame::find( $borderId );
+        if(!$border) return Redirect::back()->with('error', 'No frame border has been found.');
+
+        $border->name = $borderName;
+        $border->slug = Str::slug($borderName);
+        $border->save();
+
+        return Redirect::back()->with('success', DONE);
+    }
+
     // upload and save frame parts
     public function postUploadFrameParts(){
         $frameData = Session::get('frame_data');

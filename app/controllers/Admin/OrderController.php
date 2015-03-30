@@ -28,6 +28,7 @@ class OrderController extends \BaseController{
         $orders = $format->bulkFormat( $this->transactionRepo->getTransactions() );
 
         $this->data['orders'] = $orders;
+        $this->data['pageTitle'] = 'Orders';
 
         return View::make('admin.orders', $this->data);
     }
@@ -41,7 +42,14 @@ class OrderController extends \BaseController{
         $this->data['total_amount'] = $total_amount;
         $this->data['order'] = $order;
         $this->data['products'] = $products;
+        $this->data['pageTitle'] = 'Order ' . $order->tracking_number;
         return View::make('admin.order', $this->data);
+    }
+
+    // Creates a new order.
+    public function newOrder(){
+        $this->data['pageTitle'] = 'New Order';
+        return View::make('admin.order-new', $this->data);
     }
 
     public function postBulkActions(){

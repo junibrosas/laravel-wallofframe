@@ -1,6 +1,6 @@
 @include('components.tables.table-footer')
 
-<div  ng-show="tableData.length > 0">
+<div ng-show="tableData.length > 0">
     <table class="table ng-table-responsive" ng-table="tableParams" template-pagination="custom/pager">
         <thead>
             <tr>
@@ -19,7 +19,7 @@
                     <a href="@{{ order.url }}" class="link-red">#@{{ order.tracking_number }}</a> <br/> <small>Buyer: @{{ order.buyer }}</small>
                 </td>
                 <td class="text-center">@{{ order.status }}</td>
-                <td  data-title="'Date'">
+                <td  data-title="'Date'" class="text-center">
                     <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ order.date }}</span>
                 </td>
                 <td  data-title="'Amount'" class="text-center">

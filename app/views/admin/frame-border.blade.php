@@ -1,7 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
-{{ Form::open(['route' => 'admin.frame.border.manage', 'method' => 'post']) }}
+
     <div class="row frame-border-list" ng-controller="FrameBorderController" ng-init='initialData = {{ json_encode($frameList) }}'>
         <div class="col-md-12">
             <ul class="list list-inline pull-right">
@@ -18,33 +18,21 @@
                 @endif
             </ul>
 
-            {{--Form Actions--}}
-            <div class="col-md-3 no-pad-left">
-                <div class="form-group">
-                    <select class="form-control col-md-8" name="bulk_action">
-                        <option value="-1">Bulk Action</option>
-                        <option value="activate">Activate</option>
-                        <option value="deactivate">Deactivate</option>
-                        @if(isset($frameGroup['trash']) && count($frameGroup['trash']) > 0)
-                            <option value="restore">Restore</option>
-                        @else
-                            <option value="move_to_trash">Move to Trash</option>
-                        @endif
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-9 no-right">
-                  <button type="submit" name="apply" class="btn btn-default">Apply</button>
-            </div>
-            <div class="col-md-12"></div>
+
+
             <div ng-controller="TableController" class="space-top-sm">
                 <div ng-show="tableData.length > 0">
                     <div class="col-md-8 no-pad-left">
-                        @include('components.tables.table-borders')
+
+                        {{--Table Form--}}
+                        @include('components.forms.border-table-form')
                     </div>
+
                     <div class="col-md-4">
                         <h4 class="label-heading">Preview</h4>
-                        <img ng-src="@{{ currentItem.imagePath }}" class="img-responsive" alt="@{{ currentItem.name }}" style="cursor: pointer">
+
+                        @include('components.forms.border-preview-form')
+
                     </div>
                 </div>
                 <div ng-show="tableData.length <= 0" class="col-md-12 no-pad space-top-sm">
@@ -56,5 +44,5 @@
 
         </div>
     </div>
-{{ Form::close() }}
+
 @stop

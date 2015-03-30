@@ -68,7 +68,7 @@ class ProductFormatter {
     public function frameFormat( ProductFrame $frame ){
         return [
             'id' => $frame->id,
-            'name' => $frame->name,
+            'name' => $frame->name ? $frame->name : 'Untitled',
             'slug' => $frame->slug,
             'is_active' => $frame->is_active,
             'image' => $frame->image,

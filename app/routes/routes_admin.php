@@ -20,6 +20,7 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     Route::get('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@uploadFrameBorder']);
     Route::post('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@postCreateFrameBorder']);
     Route::post('frame-border/manage', ['as' => 'admin.frame.border.manage', 'uses' => 'FrameController@postManageFrameBorders']);
+    Route::post('frame-border/store', ['as' => 'admin.frame.border.store', 'uses' => 'FrameController@postStoreFrameBorder']);
 
     Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);

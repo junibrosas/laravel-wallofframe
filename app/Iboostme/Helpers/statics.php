@@ -26,7 +26,7 @@ define('PRODUCT_CATEGORY_NOT_FOUND', 'Product category not found');
 define('PRODUCT_TYPE_NOT_FOUND', 'Product type not found');
 define('PRODUCT_EMPTY', 'No products available.');
 define('FILE_IMAGE_WARNING', 'Only PNG,GIF,JPG files allowed with 2MB or less and 1500 width or less.');
-define('FRAME_BORDER_UPLOAD_SUCCESS', 'Successfully uploaded a new frame border');
-define('DONE', 'Successfully done');
+define('FRAME_BORDER_UPLOAD_SUCCESS', 'Successfully uploaded a new frame border.');
+define('DONE', 'Successfully done.');
 
 
