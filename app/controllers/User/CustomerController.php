@@ -37,7 +37,7 @@ class CustomerController extends \BaseController {
 
 	public function getTrackingOrder(){
 		$repo = new TransactionRepository();
-		$transactions = $repo->getUserTransaction();
+		$transactions = $repo->getByUser();
 
 		$this->data['transactions'] = $transactions;
 		return View::make('user.tracking', $this->data);

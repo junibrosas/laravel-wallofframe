@@ -659,7 +659,10 @@ ul.social-buttons li { padding: 0; }
 .btn:active:focus {
     outline: 0;
 }
-
+ul.social-buttons li a i {
+    position: relative;
+    top: 25%;
+}
 
 .portfolio-modal .modal-content {
     padding: 0 0;

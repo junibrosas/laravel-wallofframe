@@ -7,9 +7,21 @@ use Transaction;
 use TransactionStatus;
 
 class TransactionRepository {
-    public function getUserTransaction(){
-        return Transaction::where('user_id', Auth::id())->get();
+
+    public function getTransactions(){
+        return $this->transaction()->get();
     }
+
+    public function getByTrackingNumber( $trackingNumber ){
+        return $this->transaction()->where('tracking_number', $trackingNumber)->first();
+    }
+
+    // retrieve transaction per user logged in.
+    public function getByUser(){
+        return $this->transaction()->where('user_id', Auth::id())->get();
+    }
+
+    // add a new transaction or order.
     public function add( $data ){
         $cartRepo  = new CartRepository();
         $products = $cartRepo->getCartItems( Session::get('product_bag') );
@@ -25,5 +37,10 @@ class TransactionRepository {
             'transaction_status_id' => TransactionStatus::where('slug', 'in-delivery')->first()->id,
             'payment_response' => $data['payment_response']
         ]);
+    }
+
+    // model extension.
+    private function transaction(){
+        return Transaction::orderby('created_at', 'desc');
     }
 } 

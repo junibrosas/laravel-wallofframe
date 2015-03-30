@@ -1,14 +1,8 @@
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
 
-    var date = new Date();
-    console.log(date.getTime());
-
-
     // equalize a responsive column
     $('.equalized').responsiveEqualHeightGrid();
-
-
 
     // scroll page
     $('a.page-scroll').bind('click', function(event) {
@@ -18,7 +12,6 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
     });
-
 
     // owl carousel
     $("#owl-related").owlCarousel({

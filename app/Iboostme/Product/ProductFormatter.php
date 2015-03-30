@@ -23,6 +23,7 @@ class ProductFormatter {
         }
         return $result;
     }
+
     public function backgroundBulkFormat( $list ){
         $result = array();
         if(count($list) > 0){
