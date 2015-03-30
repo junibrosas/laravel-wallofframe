@@ -6,6 +6,7 @@
             <tr>
                 <th ><input type="checkbox" class="iCheck-all icheck"/></th>
                 <th>Orders</th>
+                <th>Status</th>
                 <th>Date</th>
                 <th>Amount</th>
                 <th>Actions</th>
@@ -17,6 +18,7 @@
                 <td  data-title="'Orders'">
                     #@{{ order.tracking_number }} <br/> <small>Buyer: @{{ order.buyer }}</small>
                 </td>
+                <td class="text-center">@{{ order.status }}</td>
                 <td  data-title="'Date'">
                     <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ order.date }}</span>
                 </td>
@@ -25,8 +27,8 @@
                 </td>
                 <td data-title="'Actions'" class="text-center">
                     <button class="btn btn-danger"><i class="fa fa-eye"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                     <button class="btn btn-danger"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
         </tbody>

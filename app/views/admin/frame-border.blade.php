@@ -5,7 +5,7 @@
     <div class="row frame-border-list" ng-controller="FrameBorderController" ng-init='initialData = {{ json_encode($frameList) }}'>
         <div class="col-md-12">
             <ul class="list list-inline pull-right">
-                <li><a href="{{ route('admin.frame.border.create') }}" class="btn btn-default"> <i class="fa fa-arrow-circle-o-up"></i> Create</a></li>
+                <li><a href="{{ route('admin.frame.border.create') }}" class="btn btn-default"> <i class="fa fa-plus"></i> New Border</a></li>
             </ul>
             <h2 class="side-heading space-bottom-md">Frame Borders </h2>
             <ul class="list-inline">
