@@ -5,7 +5,7 @@
 @section('content')
     <section>
         <div class="container checkout">
-            {{ Form::open(['route' => 'checkout.order', 'method' => 'post', 'class' => 'form-horizontal', 'role' => 'form' ]) }}
+            {{ Form::open(['route' => 'checkout.order', 'method' => 'post', 'class' => '', 'role' => 'form' ]) }}
                 <div class="row">
                     <div class="col-md-4">
                         @include('checkout.parts.customer')

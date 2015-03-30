@@ -12,7 +12,7 @@ class TransactionFormatter implements Format {
             'created_at' => $item->created_at,
             'buyer' => $item->user->present()->name,
             'date' => $item->created_at->diffForHumans(),
-            'total_amount' => $item->total_amount,
+            'total_amount' => $item->present()->totalAmount,
             'status' => $item->present()->status,
         ];
 

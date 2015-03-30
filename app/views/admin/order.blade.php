@@ -2,17 +2,24 @@
 
 @section('content')
 
-<div>
+<div class="orders">
     <div class="logo pull-left">
         <a href="{{ route('home.index') }}"><img src="{{ asset('img/logo.png') }}"></a>
     </div>
-    <div class="pull-right">
+    <div class="pull-right text-right space-top-sm">
         <span>#{{ $order->present()->trackingNumber }} </span> <br/>
         <span>{{ date('F d, Y', strtotime( $order->created_at )) }}</span>
     </div>
     <div class="clearfix"></div>
 
-    @include('components.tables.table-invoice-header')
+    {{--Shipping Address--}}
+    <div class="">
+        <p class="lead">Shipping Address</p>
+        <p style="font-weight: bold; font-size: 16px;">{{ $order->user->present()->name }}</p>
+        <address class="margin-none">
+            {{ $order->present()->shippingAddress }}
+        </address>
+    </div>
 
     @include('components.tables.table-summary')
 

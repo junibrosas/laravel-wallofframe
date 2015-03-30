@@ -1,5 +1,6 @@
 <?php namespace Iboostme\Transaction;
 
+use Iboostme\Product\Cart\CartRepository;
 use Laracasts\Presenter\Presenter;
 use Product;
 
@@ -27,7 +28,11 @@ class TransactionPresenter extends Presenter{
     }
 
     public function totalAmount(){
-        return $this->entity->total_amount;
+        $cartRepo = new CartRepository();
+        $products = $cartRepo->getCartItems( json_decode($this->entity->products) ); // retrieve products from this order.
+        $total_amount = $cartRepo->getTotalAmount( $products ); // products with quantity property
+
+        return $total_amount;
     }
 
     public function date(){
