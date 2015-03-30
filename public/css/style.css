@@ -1028,7 +1028,7 @@ b { font-weight: bold;}
 .checkout .fa-truck { font-size: 20px; position: relative; top: 10px; }
 .checkout .radio { font-size: 12px; padding-left: 20px; }
 .checkbox-shipping { font-size: 11px; }
-.normal-link, .normal-link:hover { color: #252525; }
+
 .checkout .method .radio { border-bottom: 2px dashed #c4c4c4; padding-bottom: 20px; }
 .checkout .amount { text-align: right; }
 .checkout .amount .total { padding: 10px 0; margin-top: 10px; }
@@ -1041,8 +1041,9 @@ b { font-weight: bold;}
 
 form label { font-weight: bold;}
 
+.orders
 
-slider span.bar.selection { background-color: #252525; }
+.slider span.bar.selection { background-color: #252525; }
 
 @font-face { font-family: 'MTCORSVA'; src: url('../fonts/MTCORSVA.ttf'); }
 @font-face { font-family: 'telegrafico'; src: url('../fonts/Telegrafico.ttf'); }

@@ -18,4 +18,5 @@
 .border-bottom { border-bottom: 1px solid #d4d4d4; }
 .border-full-bottom { border-bottom: 5px solid #252525; }
 .pointer { cursor: pointer; }
-
+.normal-link, .normal-link:hover { color: #252525; }
+.link-red, .link-red:hover, .link-red:focus { font-weight: bold; color: red; }

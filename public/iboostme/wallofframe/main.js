@@ -38,18 +38,21 @@ $(function() {
     });
 
     //icheck
-    $('.icheck').iCheck({
-        checkboxClass: 'icheckbox_flat-red',
-        radioClass: 'iradio_flat-red'
-    });
+    if($('.icheck').length > 0){
+        $('.icheck').iCheck({
+            checkboxClass: 'icheckbox_flat-red',
+            radioClass: 'iradio_flat-red'
+        });
 
-    $('.iCheck-all').on('ifChecked', function() {
-        $('.icheck').iCheck('check');
-    });
+        $('.iCheck-all').on('ifChecked', function() {
+            $('.icheck').iCheck('check');
+        });
 
-    $('.iCheck-all').on('ifUnchecked', function() {
-        $('.icheck').iCheck('uncheck');
-    });
+        $('.iCheck-all').on('ifUnchecked', function() {
+            $('.icheck').iCheck('uncheck');
+        });
+    }
+
 
 });
 

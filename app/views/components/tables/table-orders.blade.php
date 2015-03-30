@@ -16,7 +16,7 @@
             <tr ng-repeat="order in tableData">
                 <th  scope="row"> <input class="icheck" type="checkbox"></th>
                 <td  data-title="'Orders'">
-                    #@{{ order.tracking_number }} <br/> <small>Buyer: @{{ order.buyer }}</small>
+                    <a href="#" class="link-red">#@{{ order.tracking_number }}</a> <br/> <small>Buyer: @{{ order.buyer }}</small>
                 </td>
                 <td class="text-center">@{{ order.status }}</td>
                 <td  data-title="'Date'">
@@ -28,7 +28,6 @@
                 <td data-title="'Actions'" class="text-center">
                     <button class="btn btn-danger"><i class="fa fa-eye"></i></button>
                     <button class="btn btn-danger"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                 </td>
             </tr>
         </tbody>
