@@ -4,6 +4,10 @@ use Laracasts\Presenter\Presenter;
 use Product;
 
 class TransactionPresenter extends Presenter{
+    public function orderUrl(){
+        return route('admin.order', $this->entity->tracking_number);
+    }
+
     public function trackingNumber(){
         return $this->entity->tracking_number;
     }

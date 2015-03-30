@@ -6,6 +6,7 @@ class TransactionFormatter implements Format {
     public function format( $item ){
         $result  = [
             'id' => $item->id,
+            'url' => $item->present()->orderUrl,
             'tracking_number' => $item->tracking_number,
             'products' => $item->products,
             'created_at' => $item->created_at,

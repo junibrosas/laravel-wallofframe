@@ -29,10 +29,11 @@ class OrderController extends \BaseController{
     public function order( $trackingNumber ){
         $order = $this->transactionRepo->getByTrackingNumber( $trackingNumber ); // retrieve a single order
         $products = $this->cartRepo->getCartItems( json_decode($order->products) ); // retrieve products from this order.
+        $total_amount = $this->cartRepo->getTotalAmount( $products ); // products with quantity property
 
+        $this->data['total_amount'] = $total_amount;
         $this->data['order'] = $order;
-
-        trace($products);
-        //return View::make('', $this->data);
+        $this->data['products'] = $products;
+        return View::make('admin.order', $this->data);
     }
 } 

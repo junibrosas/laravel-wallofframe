@@ -1,4 +1,4 @@
-<h2 class="side-heading space-bottom-md">Summary</h2>
+
 
 @include('components.tables.table-summary')
 

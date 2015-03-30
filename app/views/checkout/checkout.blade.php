@@ -15,6 +15,7 @@
                     </div>
                     <div class="col-md-5">
                         <button type="submit" class="btn btn-default btn-sm btn-purchase pull-right"> Order Now</button>
+                        <h2 class="side-heading space-bottom-md">Summary</h2>
                         @include('checkout.parts.summary')
                         <button type="submit" class="btn btn-default btn-sm btn-purchase pull-right"> Order Now</button>
                     </div>

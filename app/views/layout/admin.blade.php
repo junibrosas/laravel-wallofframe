@@ -2,6 +2,7 @@
 @section('header')
     @parent
     {{ link_css('assets/icheck/skins/flat/red.css') }}
+    {{ link_css('css/adminkit.css') }}
 @stop
 @section('footer')
     {{ link_js('assets/icheck/icheck.min.js') }}
