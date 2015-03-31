@@ -7,4 +7,5 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     Route::get('orders/{number}', ['as' => 'admin.order', 'uses' => 'OrderController@order']);
 
     Route::post('orders/actions', ['as' => 'admin.orders.action', 'uses' => 'OrderController@postBulkActions']);
+    Route::post('orders/store', ['as' => 'admin.orders.store', 'uses' => 'OrderController@postStoreNewOrder']);
 });

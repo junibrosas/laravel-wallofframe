@@ -1,7 +1,7 @@
 <?php
 use Laracasts\Presenter\PresentableTrait;
 
-class ShippingAddress extends Model {
+class ShippingAddress extends \Eloquent {
 	use PresentableTrait;
 
 	protected $table = 'shipping_addresses';
@@ -20,4 +20,5 @@ class ShippingAddress extends Model {
 		'address',
 		'landmark'
 	];
+
 }

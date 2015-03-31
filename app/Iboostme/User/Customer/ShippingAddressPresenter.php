@@ -26,4 +26,8 @@ class ShippingAddressPresenter extends Presenter {
 
         return '';
     }
+
+    public function details(){
+        return $this->name() . ', '.$this->mobile().', '.$this->address().', '.$this->landmark();
+    }
 } 

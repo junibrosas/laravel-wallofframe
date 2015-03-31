@@ -37,11 +37,11 @@ class ProductFormatter {
     public function format( Product $product ){
         $result  = [
             'id' => $product->id,
+            'url' => $product->present()->url,
             'category_id' => $product->category_id,
             'type_id' => $product->type_id,
             'brand_id' => $product->brand_id,
             'status_id' => $product->status_id,
-            'url' => $product->present()->url,
             'title' => $product->present()->title,
             'category' => $product->present()->category,
             'size' => $product->present()->size,

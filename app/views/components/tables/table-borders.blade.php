@@ -1,7 +1,7 @@
 @include('components.tables.table-footer')
 
 <div ng-show="tableData.length > 0">
-    <table class="table ng-table-responsive" ng-table="tableParams" template-pagination="custom/pager">
+    <table class="table table-striped ng-table-responsive" ng-table="tableParams" template-pagination="custom/pager">
         <thead>
             <tr>
                 <th width="5%"><input type="checkbox" class="iCheck-all icheck"/></th>

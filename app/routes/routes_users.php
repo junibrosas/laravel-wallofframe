@@ -27,6 +27,7 @@ Route::group( ['before' => ['auth'], 'prefix' => 'customer', 'namespace' => 'Use
     Route::post('change-password',               ['as' => 'password.update', 'uses' => 'CustomerController@changePassword']);
 
     Route::post('add-address',                  ['as' => 'customer.address.add', 'uses' => 'CustomerController@addShipmentAddress']);
+    Route::post('get-address',                  ['as' => 'customer.address.get', 'uses' => 'CustomerController@getShipmentAddress']);
     Route::post('account/update',               ['as' => 'customer.account.update', 'uses' => 'CustomerController@updateAccount']);
 
 } );

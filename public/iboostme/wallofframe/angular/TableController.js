@@ -2,8 +2,9 @@ app.controller("TableController", function($scope, NgTableParams){
     $scope.$watch('initialData', function(value) {
         var data = value;
 
-        console.log( 'Table Data: ' + data );
         console.log( 'Table Data length: ' + data.length + ' ' );
+        console.log( data );
+
 
         // ngTable Module Initialization
         $scope.tableParams = new NgTableParams({

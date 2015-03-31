@@ -100,6 +100,15 @@ class CustomerController extends \BaseController {
 		return Redirect::back()->with('success', $msg);
 	}
 
+	public function getShipmentAddress(){
+		$userId = Input::get('id');
+		$shipAddress = ShippingAddress::where('user_id', $userId)->get();
+		$shipAddress->each(function( $address ){
+			$address->details = $address->present()->details;
+		});
+		return $shipAddress;
+	}
+
 	public function changePassword(){
 		$rules = array(
 			'old_password'                  => 'required',

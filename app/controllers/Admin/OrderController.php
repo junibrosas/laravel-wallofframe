@@ -1,23 +1,36 @@
 <?php
 namespace Admin;
 use Iboostme\Formatter\TransactionFormatter;
+use Iboostme\Formatter\UserFormatter;
+use Iboostme\Product\ProductFormatter;
+use Iboostme\Product\ProductRepository;
 use Iboostme\Transaction\TransactionRepository;
 use Iboostme\Product\Cart\CartRepository;
 use Iboostme\Transaction\TransactionStatusRepository;
+use Iboostme\User\UserRepository;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 
 class OrderController extends \BaseController{
     public $transactionRepo;
     public $cartRepo;
     public $transactionStatusRepo;
+    public $productRepo;
+    public $productFormat;
+    public $userRepo;
     public function __construct( TransactionRepository $transactionRepository,
                                  CartRepository $cartRepository,
-                                 TransactionStatusRepository $transactionStatusRepository ){
+                                 TransactionStatusRepository $transactionStatusRepository,
+                                 ProductRepository $productRepository,
+                                 ProductFormatter $productFormatter, UserRepository $userRepository ){
         $this->transactionRepo = $transactionRepository;
         $this->cartRepo = $cartRepository;
         $this->transactionStatusRepo = $transactionStatusRepository;
+        $this->productRepo = $productRepository;
+        $this->productFormat = $productFormatter;
+        $this->userRepo = $userRepository;
     }
 
 
@@ -48,10 +61,24 @@ class OrderController extends \BaseController{
 
     // Creates a new order.
     public function newOrder(){
-        $this->data['pageTitle'] = 'New Order';
+        $userFormat = new UserFormatter();
+        $products = $this->productRepo->getAll();
+        $users = $this->userRepo->getCustomers();
+
+
+        $this->data['pageTitle'] = 'New Order'; // give page a title
+        JavaScript::put([
+            'users' => $userFormat->bulkFormat($users),
+            'paymentMethods' => \PaymentMethod::get(),
+            'products' => $this->productFormat->bulkFormat($products)
+
+        ]);
+
         return View::make('admin.order-new', $this->data);
     }
 
+
+    // change order status by bulk action.
     public function postBulkActions(){
         $transactions = Input::get('transactions'); $actions = Input::get('bulk_action');
         if(!$transactions) return Redirect::back()->with('error', 'No transactions has been selected.');
@@ -61,5 +88,10 @@ class OrderController extends \BaseController{
         $this->transactionStatusRepo->changeStatus( Input::get('transactions'), Input::get('bulk_action') );
 
         return Redirect::back()->with('success', DONE);
+    }
+
+    // store a new order
+    public function postStoreNewOrder(){
+        trace( Input::all() );
     }
 } 

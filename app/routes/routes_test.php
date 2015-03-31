@@ -6,6 +6,6 @@ use Intervention\Image\Facades\Image;
 use Iboostme\Product\ProductFormatter;
 
 Route::get('test', function(){
-    $frame = ProductFrame::first();
-    $frame->delete();
+    $shipAddress = ShippingAddress::where('user_id', 5)->get();
+    trace($shipAddress);
 });
