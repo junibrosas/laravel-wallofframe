@@ -9,6 +9,23 @@ use Product;
 
 class TransactionRepository {
 
+    // retrieve products with quantity.
+    public function getProductsWithQuantity( $productArray ){
+        $ids = array();
+        if( count($productArray) > 0 ){
+            foreach( $productArray as $product){
+                $ids[] = $product->id;
+            }
+        }
+        $quantity = array_count_values($ids);
+        $products = Product::whereIn('id', $ids)->get();
+        $products->each(function($product) use($quantity){
+            $product->quantity = $quantity[$product->id];
+        });
+
+        return $products;
+    }
+
     public function getTransactions(){
         return $this->transaction()->get();
     }

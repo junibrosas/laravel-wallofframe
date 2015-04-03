@@ -7,7 +7,7 @@ use Product;
 use Illuminate\Support\Facades\Session;
 class CartRepository {
 
-    public function getCartItems( $productArray = array() ){
+    public function getCartItems( $ids ){
         $ids = array();
         if( count($productArray) > 0 ){
             foreach( $productArray as $product){

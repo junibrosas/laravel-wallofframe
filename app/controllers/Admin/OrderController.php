@@ -51,7 +51,7 @@ class OrderController extends \BaseController{
     // Retrieve a single order
     public function order( $trackingNumber ){
         $order = $this->transactionRepo->getByTrackingNumber( $trackingNumber ); // retrieve a single order
-        $products = $this->cartRepo->getCartItems( json_decode($order->products) ); // retrieve products from this order.
+        $products = $this->transactionRepo->getProductsWithQuantity( json_decode($order->products) ); // retrieve products from this order.
         $total_amount = $order->present()->totalAmount; // products with quantity property
 
         $this->data['total_amount'] = $total_amount;
