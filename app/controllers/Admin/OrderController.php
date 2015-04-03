@@ -38,8 +38,9 @@ class OrderController extends \BaseController{
     // Retrieves all the orders from an administrator's perspective.
     public function orders(){
         $format = new TransactionFormatter();
+        $transactions = $this->transactionRepo->getTransactions();
 
-        $orders = $format->bulkFormat( $this->transactionRepo->getTransactions() );
+        $orders = $format->bulkFormat(  $transactions );
 
         $this->data['orders'] = $orders;
         $this->data['pageTitle'] = 'Orders';

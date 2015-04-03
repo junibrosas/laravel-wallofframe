@@ -26,8 +26,8 @@
                     @{{ main.currencyConvert( order.total_amount, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}
                 </td>
                 <td data-title="'Actions'" class="text-center">
-                    <button class="btn btn-danger"><a href="@{{ order.url }}" style="color: white"><i class="fa fa-eye"></i></a></button>
-                    <button class="btn btn-danger"><i class="fa fa-pencil"></i></button>
+                    <button type="button" class="btn btn-danger"><a href="@{{ order.url }}" style="color: white"><i class="fa fa-eye"></i></a></button>
+                    {{--<button class="btn btn-danger"><i class="fa fa-pencil"></i></button>--}}
                 </td>
             </tr>
         </tbody>
