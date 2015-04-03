@@ -116,6 +116,8 @@ class ProductRepository {
     }
 
     //Helpers
+
+    // record a new user view.
     public function setView($id){
 
         $product = Product::find($id);
@@ -129,6 +131,8 @@ class ProductRepository {
         Session::push('post_viewed', $id);
         Session::put('post_viewed', array_unique(Session::get('post_viewed')));
     }
+
+    // add a new item to product bag
     public function addToBag(Product $product){
         if(is_null(Session::get('product_bag'))){
             Session::put('product_bag', []);
@@ -136,9 +140,13 @@ class ProductRepository {
         Session::push('product_bag', $product->id);
         return Session::get('product_bag');
     }
+
+    // empty a product bag
     public function emptyBag(){
         Session::forget('product_bag');
     }
+
+    // get an image type by size specified.
     public function getImageSizeType( $width, $height ){
         if( $width == $height ){
             return 'square';

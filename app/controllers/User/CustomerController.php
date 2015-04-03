@@ -17,9 +17,11 @@ use Iboostme\Transaction\TransactionRepository;
 
 class CustomerController extends \BaseController {
 	protected $productRepo;
+	protected $transactionRepo;
 
-	public function __construct( ProductRepository $productRepo ){
+	public function __construct( ProductRepository $productRepo, TransactionRepository $transactionRepository ){
 		$this->productRepo = $productRepo;
+		$this->transactionRepo = $transactionRepository;
 	}
 
 	public function getAccount(){
@@ -36,8 +38,7 @@ class CustomerController extends \BaseController {
 	}
 
 	public function getTrackingOrder(){
-		$repo = new TransactionRepository();
-		$transactions = $repo->getByUser();
+		$transactions = $this->transactionRepo->getByUser();
 
 		$this->data['transactions'] = $transactions;
 		return View::make('user.tracking', $this->data);

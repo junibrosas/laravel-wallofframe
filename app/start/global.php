@@ -82,6 +82,7 @@ require app_path().'/filters.php';
 require app_path().'/Iboostme/Helpers/angularpresenter.php';
 require app_path().'/Iboostme/Helpers/helpers.php';
 require app_path().'/Iboostme/Helpers/macros.php';
+require app_path().'/Iboostme/Helpers/ng-macro.php';
 require app_path().'/Iboostme/Helpers/statics.php';
 
 

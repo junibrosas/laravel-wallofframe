@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
+use Transaction;
 
 class OrderController extends \BaseController{
     public $transactionRepo;
@@ -92,6 +93,37 @@ class OrderController extends \BaseController{
 
     // store a new order
     public function postStoreNewOrder(){
-        trace( Input::all() );
+        $user = Input::get('user');
+        $paymentMethod = Input::get('paymentMethod');
+        $shipmentAddress = Input::get('shipmentAddress');
+        $products = Input::get('products');
+
+        if(!isset($user['id'])) return ['status' => 'error', 'message' => 'Please select a buyer.'];
+
+        if(!isset($paymentMethod['id'])) return ['status' => 'error', 'message' => 'Please select a payment method.'];
+
+        if(!isset($shipmentAddress['id'])) return ['status' => 'error', 'message' => 'Please select a shipping address.'];
+
+        if(count($products) <= 0) return ['status' => 'error', 'message' => 'Please select a product(s).'];
+
+        // clone the product id depending on the quantity.
+        $productIds = array();
+        foreach($products as $product){
+            if(isset($product['quantity'])){
+                for($i = 0; $i < $product['quantity']; $i++){
+                    $productIds[] = $product['id'];
+                }
+            }
+        }
+
+        // Saves a new transaction.
+        $transaction['user_id'] = $user['id'];
+        $transaction['payment_method_id'] = $paymentMethod['id'];
+        $transaction['shipping_address_id'] = $shipmentAddress['id'];
+        $transaction['productIds'] = $productIds;
+
+        $this->transactionRepo->newTransaction( $transaction );
+
+        return [ 'status' => 'success', 'message' => 'Saved successfully.'];
     }
 } 

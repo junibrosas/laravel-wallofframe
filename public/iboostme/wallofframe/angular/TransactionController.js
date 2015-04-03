@@ -2,8 +2,8 @@ app.controller("NewOrderController", function($http, $scope, NgTableParams){
     $scope.products = window.products;
     $scope.users = window.users; // get users
     $scope.paymentMethods = window.paymentMethods;
-
     $scope.transaction = {} // transaction model
+    $scope.hasStatus = false;
     var toggleCheck = false;
 
     $scope.transaction = {
@@ -33,7 +33,9 @@ app.controller("NewOrderController", function($http, $scope, NgTableParams){
         var url = mainApp.baseUrl + '/admin/orders/store';
         $http.post(url, $scope.transaction ).
             success(function(data, status, headers, config) {
-                console.log(data);
+                $scope.hasStatus = true;
+                $scope.status = data;
+
             }).
             error(function(data, status, headers, config) {
             });

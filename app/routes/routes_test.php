@@ -6,6 +6,9 @@ use Intervention\Image\Facades\Image;
 use Iboostme\Product\ProductFormatter;
 
 Route::get('test', function(){
-    $shipAddress = ShippingAddress::where('user_id', 5)->get();
-    trace($shipAddress);
+    $productIds = [81,81,81];
+
+
+    trace(json_encode($products));
+    trace($totalAmount);
 });

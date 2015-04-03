@@ -32,9 +32,14 @@
             <label for="">Products Selected</label>
             @include('components.tables.table-products-minimal')
         </div>
+
+        {{ HTML::ngAlertTemplate() }}
+
+        <div class="pull-right">
+            <button class="btn btn-default" ng-click="update()">Save</button>
+        </div>
     </div>
-    <div class="pull-right">
-        <button class="btn btn-default" ng-click="update()">Save</button>
-    </div>
+
+
 </div>
 @stop

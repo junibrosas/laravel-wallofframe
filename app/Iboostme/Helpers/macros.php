@@ -13,3 +13,4 @@ HTML::macro('menu_active', function($route, $title, array $parameters = array(),
 
     return $active;
 });
+
