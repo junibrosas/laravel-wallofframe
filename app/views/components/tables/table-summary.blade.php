@@ -27,7 +27,7 @@
                         </ul>
                     </div>
                 </td>
-                <td>
+                <td class="text-center">
                     {{ $product->quantity }}
                 </td>
                 <td>

@@ -48,7 +48,7 @@ class TransactionRepository {
         $input['user_id'] =  Auth::id();
         $input['shipping_address_id'] = Session::get('billingAddress');
         $input['payment_method_id'] = Session::get('paymentMethodId');
-        $input['productsIds'] = json_encode( Session::get('product_bag') );
+        $input['productIds'] = Session::get('product_bag');
         $input['payment_response'] = $data['payment_response'];
         $input['total_amount'] = $total_amount;
 
@@ -58,7 +58,8 @@ class TransactionRepository {
     // add new transaction.
     public function newTransaction( $data ){
         $totalAmount = 0; $products = array();
-        if( count($data['productIds']) ){
+
+        if( count($data['productIds']) > 0 ){
             foreach($data['productIds'] as $id){
                 $product = Product::find($id);
                 if($product){

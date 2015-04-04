@@ -6,7 +6,5 @@ use Intervention\Image\Facades\Image;
 use Iboostme\Product\ProductFormatter;
 use Iboostme\Transaction\TransactionRepository;
 Route::get('test', function(){
-    $repo = new TransactionRepository();
-    $data['payment_response'] = '';
-    $repo->add( $data );
+    trace( Session::get('product_bag') );
 });

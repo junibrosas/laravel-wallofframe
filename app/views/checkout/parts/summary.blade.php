@@ -11,7 +11,7 @@
         <div class="col-xs-6">Subtotal</div>
         <div class="col-xs-6">{{ ngTotalAmount($total_amount) }}</div>
     </div>
-    <div class="row bg-info total">
+    <div class="row bg-info total ">
         <div class="col-xs-6"><b>Total</b></div>
         <div class="col-xs-6 "><b>{{ ngTotalAmount($total_amount) }}</b></div>
     </div>

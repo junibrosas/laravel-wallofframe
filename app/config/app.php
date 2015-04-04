@@ -129,7 +129,6 @@ return array(
 		'Laracasts\Utilities\UtilitiesServiceProvider',
 		'Lavary\Menu\ServiceProvider',
 		'Clockwork\Support\Laravel\ClockworkServiceProvider',
-		'Webpatser\Countries\CountriesServiceProvider',
 		'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
 
 	),
@@ -201,7 +200,6 @@ return array(
 		'Menu'       		=> 'Lavary\Menu\Facade',
 		'Confide'   		=> 'Zizaco\Confide\Facade',
 		'Entrust'    		=> 'Zizaco\Entrust\EntrustFacade',
-		'Countries' 		=> 'Webpatser\Countries\CountriesFacade',
 		'Model' 			=> 'Way\Database\Model',
 		'Bugsnag' 			=> 'Bugsnag\BugsnagLaravel\BugsnagFacade',
 		'Image' 			=> 'Intervention\Image\Facades\Image'

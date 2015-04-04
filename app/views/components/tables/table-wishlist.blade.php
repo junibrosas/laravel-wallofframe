@@ -43,7 +43,7 @@
         @endforeach
     </table>
 @else
-<div class="alert alert-danger alert-sm space-sm" role="alert">
+<div class="alert alert-danger" role="alert">
     <b>Your wishlist is empty.</b>
 </div>
 @endif
