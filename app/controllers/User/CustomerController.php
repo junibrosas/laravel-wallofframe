@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Iboostme\Transaction\TransactionRepository;
+use Iboostme\Formatter\TransactionFormatter;
 
 class CustomerController extends \BaseController {
 	protected $productRepo;
@@ -38,9 +39,12 @@ class CustomerController extends \BaseController {
 	}
 
 	public function getTrackingOrder(){
+		$format = new TransactionFormatter();
 		$transactions = $this->transactionRepo->getByUser();
 
-		$this->data['transactions'] = $transactions;
+		$orders = $format->bulkFormat(  $transactions );
+
+		$this->data['orders'] = $orders;
 		return View::make('user.tracking', $this->data);
 	}
 

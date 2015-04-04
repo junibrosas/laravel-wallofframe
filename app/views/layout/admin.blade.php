@@ -24,16 +24,20 @@
             </div>
         </div>
         <section>
-           <div class="container">
-               <div class="row user-content">
-                   <div class="col-md-2">
-                       @include('sidebars.sidebar-admin')
-                   </div>
-                   <div class="col-md-10">
+            <div class="container">
+                <div class="row user-content">
+                    <div class="col-md-2">
+                        @if( Auth::user()->isAdmin() )
+                            @include('sidebars.sidebar-admin')
+                        @else
+                            @include('sidebars.sidebar-account')
+                        @endif
+                    </div>
+                    <div class="col-md-10">
                         @yield('content')
-                   </div>
-               </div>
-           </div>
+                    </div>
+                </div>
+            </div>
         </section>
    @include('components.front.footer')
 @stop

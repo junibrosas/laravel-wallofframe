@@ -27,8 +27,6 @@ class CartController extends \BaseController {
 		return View::make('checkout.cart', $this->data);
 	}
 
-
-
 	// Remove an item in the cart
 	public function removeItem(){
 		$product = Product::findOrFail( Input::get('product') );

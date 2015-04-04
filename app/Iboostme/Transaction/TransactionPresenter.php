@@ -6,7 +6,7 @@ use Product;
 
 class TransactionPresenter extends Presenter{
     public function orderUrl(){
-        return route('admin.order', $this->entity->tracking_number);
+        return route('single.order', $this->entity->tracking_number);
     }
 
     public function trackingNumber(){

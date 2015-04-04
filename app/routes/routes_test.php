@@ -4,11 +4,9 @@ use Iboostme\Product\ProductRepository;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use Intervention\Image\Facades\Image;
 use Iboostme\Product\ProductFormatter;
-
+use Iboostme\Transaction\TransactionRepository;
 Route::get('test', function(){
-    $productIds = [81,81,81];
-
-
-    trace(json_encode($products));
-    trace($totalAmount);
+    $repo = new TransactionRepository();
+    $data['payment_response'] = '';
+    $repo->add( $data );
 });

@@ -16,7 +16,8 @@
                 <td width="20%">{{ $transaction->present()->shippingAddress }}</td>
                 <td class="text-center">{{ $transaction->present()->status }}</td>
                 <td>{{ $transaction->present()->date }}</td>
-                <td>{{ $transaction->present()->productNames }}</td>
+                <td></td>
+                {{--<td>{{ $transaction->present()->productNames }}</td>--}}
                 <td class="text-right">{{ $transaction->present()->totalAmount }}</td>
             </tr>
         @endforeach

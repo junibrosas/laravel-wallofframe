@@ -6,5 +6,9 @@
             <h4 class="label-heading">Tracking Order</h4>
         </div>
     </div>
-    @include('components.tables.table-tracking')
+
+    <div ng-controller="TableController" ng-init='initialData = {{ json_encode($orders) }}'>
+        @include('components.tables.table-orders')
+    </div>
+    {{--@include('components.tables.table-tracking')--}}
 @stop

@@ -885,11 +885,9 @@ body {
 
 .mainbox .panel-heading { background-color: #252525; border-radius: 0; color: #fff; border: none; font-weight: bold;}
 .mainbox .form-control { border-radius: 0; }
-.mainbox .btn { text-transform: uppercase; font-weight: bold;}
+.mainbox .btn { text-transform: uppercase; }
 .mainbox .btn-primary {color: #fff; background-color: #3071a9; border-color: #285e8e; }
 .mainbox .signup-link { font-weight: bold;color: #414141; text-decoration: none; }
-
-
 
 .frame-border-list { }
 .frame-border-list .equalized { min-height: 50px; }

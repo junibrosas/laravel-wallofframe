@@ -51,6 +51,7 @@ class User extends Eloquent implements ConfideUserInterface
 		if($type->slug == 'admin'){
 			return true;
 		}
+
 		return false;
 	}
 }
