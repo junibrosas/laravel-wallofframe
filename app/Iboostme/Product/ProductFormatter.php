@@ -3,8 +3,14 @@
 use Product;
 use ProductFrame;
 use ProductBackground;
+use Iboostme\Product\Wishlist\WishlistRepository;
 
 class ProductFormatter {
+    public $wishListRepo;
+    public function __construct( WishlistRepository $wishlistRepository ){
+        $this->wishListRepo = $wishlistRepository;
+    }
+
     public function bulkFormat( $products ){
         $result = array();
         if(count($products) > 0){
@@ -38,6 +44,7 @@ class ProductFormatter {
         $result  = [
             'id' => $product->id,
             'url' => $product->present()->url,
+            'addToBagUrl' => route('bag.add', $product->id),
             'category_id' => $product->category_id,
             'type_id' => $product->type_id,
             'brand_id' => $product->brand_id,
@@ -56,6 +63,7 @@ class ProductFormatter {
             'status' => $product->present()->status,
             'statusObject' => $product->status,
             'is_available' => $product->is_available,
+            'isInWishList' => $this->wishListRepo->isExists( $product ),
             'imageThumb' => $product->present()->image,
             'imageSquare' => $product->present()->imageWithType('square'),
             'imageHorizontal' => $product->present()->imageWithType('horizontal'),

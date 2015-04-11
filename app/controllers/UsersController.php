@@ -75,6 +75,8 @@ class UsersController extends BaseController
             return Redirect::to('/');
         } else {
             $this->data['redirect'] = Input::get('redirect');
+            if(Input::get('redirect')) Session::flash('error', USER_LOGIN_FIRST);
+
             return View::make('home.login', $this->data);
         }
     }

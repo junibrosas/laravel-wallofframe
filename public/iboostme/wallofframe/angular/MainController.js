@@ -65,6 +65,19 @@ app.controller("MainController", ['currencyConverter', '$http', function(currenc
     }
 }]);
 
+app.controller("ProductListingController", function( $http, $scope ){
+
+    $scope.addToWishList = function( product ){
+        $scope.currentProduct = product;
+        $http.get( mainApp.baseUrl+'/customer/ajax-add-wishlist?product='+product.id ).success( function( response ){
+            console.log(response);
+            product.isInWishList = response.product.isInWishList;
+            // $scope.currentProduct.isInWishList = !response.product.isInWishList;
+
+        });
+    }
+});
+
 function onFileAdded(file) {
 
 //// or $event.preventDefault(); depends how you use this function, in scope events or in directive

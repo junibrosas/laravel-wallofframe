@@ -1,4 +1,5 @@
 <?php namespace User;
+use Iboostme\Product\ProductFormatter;
 use Iboostme\Product\ProductRepository;
 use Iboostme\User\Customer\ShippingAddressRepository;
 use Iboostme\User\UserRepository;
@@ -19,10 +20,14 @@ use Iboostme\Formatter\TransactionFormatter;
 class CustomerController extends \BaseController {
 	protected $productRepo;
 	protected $transactionRepo;
+	protected $productFormat;
 
-	public function __construct( ProductRepository $productRepo, TransactionRepository $transactionRepository ){
+	public function __construct( ProductRepository $productRepo,
+								 ProductFormatter $productFormatter,
+								 TransactionRepository $transactionRepository ){
 		$this->productRepo = $productRepo;
 		$this->transactionRepo = $transactionRepository;
+		$this->productFormat = $productFormatter;
 	}
 
 	public function getAccount(){
@@ -54,6 +59,7 @@ class CustomerController extends \BaseController {
 	}
 
 	public function addWishList(){
+
 		if( !Auth::check() ){
 			return Redirect::route('login', ['redirect' => route('customer.wishlist.add', ['product' => Input::get('product'), 'action' => 'redirect'])]);
 		}
@@ -85,7 +91,35 @@ class CustomerController extends \BaseController {
 		if( $action == 'redirect' ){
 			return Redirect::route( 'customer.wishlist' )->with('success', $msg);
 		}
+
+		return ['status' => 'asdasd', 'message'=> $msg, 'product' => $this->productFormat->format( $product )];
 		return Redirect::back()->with('success', $msg);
+	}
+
+	// ajax request of adding a new wish-list
+	public function addWishListThroughAjax(){
+		if( !Auth::check() ){
+			return Redirect::route('login', ['redirect' => route('customer.wishlist.add', ['product' => Input::get('product'), 'action' => 'redirect'])]);
+		}
+
+		$product = Product::find( Input::get('product') );
+		//$action = Input::get('action');
+		$repo = new WishlistRepository();
+
+		if(!$product){
+			$msg = WISHLIST_ADD_ERROR; $status = 'error';
+		}
+
+		if($repo->isExists($product)){
+			$repo->remove( $product );
+			$status = 'success'; $msg = WISHLIST_REMOVED;
+		}
+		else{
+			$repo->add( $product );
+			$status = 'success'; $msg = WISHLIST_ADDED;
+		}
+
+		return ['status' => $status, 'message'=> $msg, 'product' => $this->productFormat->format( $product )];
 	}
 
 	public function addShipmentAddress(){

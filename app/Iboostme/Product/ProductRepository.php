@@ -37,14 +37,14 @@ class ProductRepository {
         //TODO:: Transaction will be queried per weekly
         $transactions = Transaction::get();
         foreach($transactions as $transaction){
-            foreach(json_decode($transaction->products) as $product_id){
-                $products[] = $product_id;
+            foreach(json_decode($transaction->products) as $product){
+                $products[] = $product->id; // collect product ids.
             }
         }
-
         $products = array_count_values($products); // returns an array of product ids
         return Product::whereIn('id', $products);
     }
+
     public function getHighestSelling(){
         $products = array();
 

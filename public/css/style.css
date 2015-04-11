@@ -772,7 +772,8 @@ body {
 #smart-header .dropdown-menu { min-width: 70px; }
 #smart-header .dropdown-menu li { border: none; padding-right: 0; }
 
-.frames .item { /*font-family: 'opensans-light';*/ font-weight: 300; color: #323233; cursor: pointer; margin-bottom: 20px}
+#product-list { min-height: 800px; }
+.frames .item { font-weight: 300; color: #323233; cursor: pointer; margin-bottom: 20px}
 .frames .frame-link { color: #252525; text-decoration: none; }
 .frames .img-frame { min-height: 300px; }
 .frames .item .content .title { /*font-weight: 300;*/font-weight: 300;}
@@ -1072,6 +1073,7 @@ form label { font-weight: bold;}
 .cuteTitle { text-transform: none; font-size: 14px; line-height: 15px; margin-bottom: 0; }
 .cuteTitle span { font-size: 11px; font-style: italic; }
 
+.toggle-red { color:red; }
 
 select.form-control { border-radius: 0; }
 

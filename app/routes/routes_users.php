@@ -17,7 +17,10 @@ Route::group( ['prefix' => '/'], function () {
 // User Profile
 Route::group( ['prefix' => 'customer', 'namespace' => 'User'], function () {
     Route::get('add-wishlist',                 ['as' => 'customer.wishlist.add', 'uses' => 'CustomerController@addWishList']);
+    Route::get('ajax-add-wishlist',            ['as' => 'customer.wishlist.ajax.add', 'uses' => 'CustomerController@addWishListThroughAjax']);
 });
+
+// Auth Users
 Route::group( ['before' => ['auth'], 'prefix' => 'customer', 'namespace' => 'User'], function () {
     Route::get('account',                       ['before' => 'auth.admin', 'as' => 'customer.account', 'uses' => 'CustomerController@getAccount']);
     Route::get('wishlist',                      ['as' => 'customer.wishlist', 'uses' => 'CustomerController@getWishList']);

@@ -1,4 +1,5 @@
 <?php
+define('USER_LOGIN_FIRST', 'You must sign in first in order to proceed.');
 define('USER_CANNOT_ADD', 'Unable to create a new user.');
 define('CONTACT_SUCCESS', 'Thank you for contacting us.');
 define('PASSWORD_FORGOT', 'The information regarding password reset was sent to your email.');

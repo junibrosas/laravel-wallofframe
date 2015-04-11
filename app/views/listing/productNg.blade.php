@@ -13,7 +13,14 @@
                 <h4 class="title">@{{ product.title }} <span>@{{ product.size }}</span></h4>
                 <div class="subhead">@{{ product.category }}</div>
             </div>
-            <div class="description" ><a href="#"><i class="fa fa-tag"></i> @{{ main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</a></div>
+            <div class="description" ><a href="#"><i class="fa fa-tag"></i> @{{ main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</a>
+                <span class="pull-right" ng-controller="ProductListingController">
+                    <a href='@{{ product.addToBagUrl }}'><i class="fa fa-shopping-cart"></i></a> &nbsp;
+                    @if( Auth::check() )
+                        <a style="cursor:pointer" ng-click="addToWishList( product )"><i class="@{{ product.isInWishList == true ? 'toggle-red' : '' }} fa fa-heart"></i></a>
+                    @endif
+                </span>
+            </div>
         </div>
 
         <div class="content hidden-xs" style="display:none" >
