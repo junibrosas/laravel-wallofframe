@@ -56,11 +56,10 @@ class CheckoutController extends \BaseController {
 		// add new user
 		$user = $this->shippingRepo->addUser( $input );
 
+		// Manually Logging In User
+		Auth::login($user);
 
-
-		Auth::login($user); // Manually Logging In User
-
-		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS);
+		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS . ' Be noticed that your temporary password is your email address. ' );
 	}
 
 	public function postOrder(){

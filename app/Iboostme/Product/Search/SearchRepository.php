@@ -4,19 +4,21 @@ use Iboostme\Product\ProductRepository;
 use Product;
 
 class SearchRepository {
+    protected $productRepo;
+    public function __construct( ProductRepository $productRepository ){
+        $this->productRepo = $productRepository;
+    }
+
     public function search($input){
+        $keyword = array_get($input, 'keyword');
+        $priceMin = array_get($input, 'price_min');
+        $priceMax = array_get($input, 'price_max');
 
-        $repo = new ProductRepository();
-        $categoryId = isset( $input['category']) ?  $repo->category($input['category'])->id : '';
-        $typeId = isset($input['type']) ? $repo->type($input['type'])->id : '';
-        $keyword = isset($input['keyword']) ? $input['keyword']: '';
-        $priceMin = isset($input['price_min']) ? $input['price_min']: 0;
-        $priceMax = isset($input['price_max']) ? $input['price_max']: 0;
-
-
+        $categoryIds = $this->getCategoryIds( array_get($input, 'category') ); // array of category
+        $typeIds = $this->getTypeIds( array_get($input, 'type') );
 
         // Advanced Searching
-        return Product::where( function( $query ) use ( $keyword, $categoryId, $typeId, $priceMin, $priceMax ) {
+        return Product::where( function( $query ) use ( $keyword, $categoryIds, $typeIds, $priceMin, $priceMax ) {
             if($keyword){
                 $query->where( function($q) use ($keyword){
                     $q->where('title', 'like', "$keyword%")->orWhere('content', 'like', "$keyword%");
@@ -25,10 +27,34 @@ class SearchRepository {
             if($priceMin > 0){
                 $query->whereRaw('products.price >= '.$priceMin)->whereRaw('products.price <= '.$priceMax);
             }
-            if($categoryId)
-                $query->where('category_id', $categoryId);
-            if($typeId)
-                $query->where('type_id', $typeId);
+
+            if($categoryIds)
+                $query->whereIn('category_id', $categoryIds);
+            if($typeIds)
+                $query->whereIn('type_id', $typeIds);
         });
+    }
+
+
+    // retrieve ids by specifying slugs
+    private function getCategoryIds( $slugs ){
+        $data = array();
+        if( count( $slugs ) > 0 ){
+            foreach($slugs as $slug){
+                $data[] = $this->productRepo->category( $slug )->id;
+            }
+        }
+        return $data;
+    }
+
+    // retrieve ids by specifying slugs
+    private function getTypeIds( $slugs ){
+        $data = array();
+        if( count( $slugs ) > 0 ){
+            foreach($slugs as $slug){
+                $data[] = $this->productRepo->type( $slug )->id;
+            }
+        }
+        return $data;
     }
 } 

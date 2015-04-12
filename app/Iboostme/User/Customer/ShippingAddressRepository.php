@@ -17,7 +17,7 @@ class ShippingAddressRepository {
 
     public function addUser( $input ){
         $username = explode('@', $input['email']); // generated username
-        $input['password'] = 'Tp7xQn03'; // generated password
+        $input['password'] = $input['email']; // generated password
 
         $user = new User;
         $user->username = $username[0];

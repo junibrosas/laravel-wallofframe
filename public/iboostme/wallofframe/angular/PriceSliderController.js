@@ -7,8 +7,8 @@ app.controller('PriceSliderController', ['$scope', function($scope){
         {name: "item 3", "min-acceptable-price": "15",
             "max-acceptable-price": "30"}];
 
-    $scope.lower_price_bound = 0;
-    $scope.upper_price_bound = 1000;
+    $scope.lower_price_bound = window.price_min == undefined ? 0 : window.price_min;
+    $scope.upper_price_bound = window.price_max == undefined ? 1000 : window.price_max;
 
     $scope.priceRange = function(item) {
         return (parseInt(item['min-acceptable-price']) >= $scope.lower_price_bound && parseInt(item['max-acceptable-price']) <= $scope.upper_price_bound);
