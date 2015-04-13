@@ -11,7 +11,7 @@
                     <h2 class="side-heading">Shopping Bag</h2>
                     <div class="row">
                         <div class="col-md-12">
-                            @include('...components.tables.table-cart')
+                            @include('components.tables.table-cart')
                         </div>
                     </div>
                 </div>

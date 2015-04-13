@@ -11,7 +11,8 @@ class CartRepository {
         $quantity = array_count_values($ids);
         $products = $this->product()->whereIn('id', $ids)->get();
         $products->each(function($product) use($quantity){
-            $product->quantity = $quantity[$product->id];
+            $product->quantity = $quantity[$product->id]; // calculate quantity of each product.
+            $product->stocks = 30; // number of stocks of each product.
         });
 
         return $products;

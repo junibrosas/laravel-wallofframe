@@ -8,6 +8,9 @@
         @foreach( $products as $product )
             <tr>
                 <td>
+                    @if( $product->stocks <= 0 )
+                        <div class="row"><div class="col-md-12"><h4>Out of Stock</h4></div></div>
+                    @endif
                     <div class="row">
                         <div class="col-md-3">
                             <a href="{{ $product->present()->url }}">
@@ -28,20 +31,29 @@
                         </div>
                     </div>
                 </td>
-                <td>
-                    {{ Form::open(['route' => 'cart.quantity.change']) }}
-                        {{ Form::hidden('product', $product->id) }}
-                        {{ Form::select('quantity', ['1'=>'1','2'=>'2','3'=>'3','4'=>'4'], $product->quantity, ['class'=>'select-quantity'] ) }}
-                    {{ Form::close() }}
-                </td>
-                <td>
-                    <div class="amount">{{ $product->quantity }} x {{ $product->present()->priceMark }}</div>
-                </td>
+                @if( $product->stocks > 0 )
+                    <td>
+                        {{ Form::open(['route' => 'cart.quantity.change']) }}
+                            {{ Form::hidden('product', $product->id) }}
+                            <?php
+                                // generate array of stocks per product.
+                                $range = range( 1, $product->stocks );
+                            ?>
+                            {{ Form::select('quantity', $range, $product->quantity - 1, ['class'=>'select-quantity'] ) }}
+                        {{ Form::close() }}
+                    </td>
+                    <td>
+                        <div class="amount">{{ $product->quantity }} x {{ $product->present()->priceMark }}</div>
+                    </td>
+                @else
+                    <td></td>
+                    <td></td>
+                @endif
             </tr>
         @endforeach
     </table>
 @else
-<div class="alert alert-danger alert-sm space-sm" role="alert">
-    <b>Your cart is empty.</b>
-</div>
+    <div class="alert alert-danger alert-sm space-sm" role="alert">
+        <b>Your cart is empty.</b>
+    </div>
 @endif

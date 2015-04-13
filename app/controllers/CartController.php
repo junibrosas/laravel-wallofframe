@@ -47,7 +47,7 @@ class CartController extends \BaseController {
 
 		$bag = $this->cartRepo->changeQuantity(
 				Session::get('product_bag'),
-				Input::get('quantity'),
+				Input::get('quantity') + 1,
 				$product);
 
 		Session::put('product_bag', $bag); // refresh the bag.
