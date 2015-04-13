@@ -96,6 +96,7 @@ class UsersController extends BaseController
             if( $redirect ){
                 return Redirect::to($redirect);
             }
+
             return Redirect::to('/');
         } else {
             if ($repo->isThrottled($input)) {

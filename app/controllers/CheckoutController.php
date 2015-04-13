@@ -59,7 +59,7 @@ class CheckoutController extends \BaseController {
 		// Manually Logging In User
 		Auth::login($user);
 
-		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS . ' Be noticed that your temporary password is your email address. ' );
+		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS . ' Be noticed that your username is '. $user->username .'and your temporary password is your email address. ' );
 	}
 
 	public function postOrder(){

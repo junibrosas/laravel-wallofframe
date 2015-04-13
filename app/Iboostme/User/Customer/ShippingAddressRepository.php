@@ -22,10 +22,12 @@ class ShippingAddressRepository {
         $user = new User;
         $user->username = $username[0];
         $user->email = $input['email'];
+        $user->type_id = UserType::where('slug', 'customer')->first()->id;
         $user->password = $input['password'];
         $user->password_confirmation = $input['password'];
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed = 1;
+
         $user->save();
 
         $input['user_id'] = $user->id;
