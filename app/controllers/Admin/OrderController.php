@@ -43,6 +43,11 @@ class OrderController extends \BaseController{
         $orders = $format->bulkFormat(  $transactions );
 
         $this->data['orders'] = $orders;
+
+        Javascript::put([
+            'tableData' => $orders
+        ]);
+
         $this->data['pageTitle'] = 'Orders';
 
         return View::make('admin.orders', $this->data);

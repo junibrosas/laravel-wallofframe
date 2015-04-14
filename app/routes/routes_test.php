@@ -6,5 +6,5 @@ use Intervention\Image\Facades\Image;
 use Iboostme\Product\ProductFormatter;
 use Iboostme\Transaction\TransactionRepository;
 Route::get('test', function(){
-    trace( Session::get('product_bag') );
+
 });
