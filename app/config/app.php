@@ -128,7 +128,6 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Laracasts\Utilities\UtilitiesServiceProvider',
 		'Lavary\Menu\ServiceProvider',
-		'Clockwork\Support\Laravel\ClockworkServiceProvider',
 		'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
 
 	),

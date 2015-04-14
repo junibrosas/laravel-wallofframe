@@ -5,15 +5,7 @@ class BaseController extends Controller {
 	protected $data = [];
 
 	public function __construct() {
-		$this->beforeFilter(function()
-		{
-			//Event::fire('clockwork.controller.start');
-		});
 
-		$this->afterFilter(function()
-		{
-			//Event::fire('clockwork.controller.end');
-		});
 	}
 
 	protected function setupLayout()
