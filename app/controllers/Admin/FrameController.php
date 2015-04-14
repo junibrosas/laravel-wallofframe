@@ -97,6 +97,10 @@ class FrameController extends \BaseController {
         $this->data['pageTitle'] = 'Frame Borders';
         $this->data['frameList'] = $frameList;
         $this->data['frameGroup'] = $frameGroup;
+
+        Javascript::put([
+            'tableData' => $frameList
+        ]);
         return View::make('admin.frame-border', $this->data);
     }
 

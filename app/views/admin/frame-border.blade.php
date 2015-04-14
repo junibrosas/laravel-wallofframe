@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row frame-border-list" ng-controller="FrameBorderController" ng-init='initialData = {{ json_encode($frameList) }}'>
+    <div class="row frame-border-list" ng-controller="FrameBorderController">
         <div class="col-md-12">
             <ul class="list list-inline pull-right">
                 <li><a href="{{ route('admin.frame.border.create') }}" class="btn btn-default"> <i class="fa fa-plus"></i> New Border</a></li>

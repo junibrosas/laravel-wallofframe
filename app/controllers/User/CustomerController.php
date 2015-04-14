@@ -50,6 +50,9 @@ class CustomerController extends \BaseController {
 		$orders = $format->bulkFormat(  $transactions );
 
 		$this->data['orders'] = $orders;
+		Javascript::put([
+			'tableData' => $orders
+		]);
 		return View::make('user.tracking', $this->data);
 	}
 
