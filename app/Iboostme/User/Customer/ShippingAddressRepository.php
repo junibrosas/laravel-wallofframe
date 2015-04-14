@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use ShippingAddress;
 use User;
 use Profile;
+use UserType;
 
 class ShippingAddressRepository {
     // max number of addresses
