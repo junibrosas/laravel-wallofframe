@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Iboostme\Transaction\TransactionRepository;
 use Iboostme\Formatter\TransactionFormatter;
+use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 
 class CustomerController extends \BaseController {
 	protected $productRepo;
