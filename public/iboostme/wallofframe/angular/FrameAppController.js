@@ -58,10 +58,9 @@ app.controller("FrameAppController", function($http, $scope, productService){
 });
 
 app.controller("FrameBorderController", function($http, $scope){
-    $scope.$watch('initialData', function(value) {
-        $scope.totalItems = value.length;
-        $scope.currentItem = value[0];
-    });
+    var tableData = window.tableData;
+    $scope.totalItems = tableData.length;
+    $scope.currentItem = tableData[0];
 
     // select current frame
     $scope.setCurrentItem = function( frame ){
