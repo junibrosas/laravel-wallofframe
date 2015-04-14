@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="orders space-top-sm col-md-12"  ng-controller="TableController" ng-init='initialData = {{ json_encode($orders) }}'>
+        <div class="orders space-top-sm col-md-12"  ng-controller="TableController">
             <ul class="list list-inline pull-right">
                 <li><a href="{{ route('admin.orders.new') }}" class="btn btn-default"> <i class="fa fa-plus"></i> New Order</a></li>
             </ul>
