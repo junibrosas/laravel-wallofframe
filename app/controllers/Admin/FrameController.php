@@ -36,10 +36,10 @@ class FrameController extends \BaseController {
 
         $this->imageGenerateData['thumbs'] = array('width' => '336', 'height' => '459' );
 
-        /*$this->imageGenerateData['preview'] = array('width' => '500', 'height' => '' );
+        $this->imageGenerateData['preview'] = array('width' => '500', 'height' => '' );
         $this->imageGenerateData['square'] = array('width' => '400', 'height' => '400' );
         $this->imageGenerateData['horizontal'] = array('width' => '430', 'height' => '340' );
-        $this->imageGenerateData['vertical'] = array('width' => '340', 'height' => '430' );*/
+        $this->imageGenerateData['vertical'] = array('width' => '340', 'height' => '430' );
 
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
