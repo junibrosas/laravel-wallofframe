@@ -22,6 +22,13 @@
         Drag And Drop your files here
     </div>
     <p style="font-size: 12px;">{{ FILE_IMAGE_WARNING }}</p>
+    {{--Display Errors--}}
+    <div ng-repeat="error in errors">
+        <div class="alert alert-danger">
+            @{{ error.message }}
+        </div>
+    </div>
+
     <div id="error-notify" class="alert alert-success alert-sm alert-dismissable  space-sm" role="alert" style="display:none;">
         <a class="panel-close close" data-dismiss="alert">×</a>
         <b>File size exceeds the limit.</b>

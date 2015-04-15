@@ -70,6 +70,8 @@ app.controller("FrameBorderController", function($http, $scope){
 
 // This is the controller for FlowJs uploading, every progress in uploading will be processed here.
 app.controller("FlowController", function($scope){
+    $scope.errors = []; // list of errors.
+
     // get the fileAdded function event from $flow and check the image width
     $scope.$on('flow::fileAdded', function (event, $flow, file) {
         if (file.file.dimensions) {
@@ -94,16 +96,24 @@ app.controller("FlowController", function($scope){
                 };
                 // 1500 max width and 2mb max size
                 if(this.width <= 1500 && file.size <= 20000000 ){
-                    console.log('valid and dimension size');
+                    file.file.isUploadable = true;
                     $scope.$flow.addFile(file.file);
+                }else{
+                    file.file.isUploadable = false;
+                    //$scope.errors.push({ message:  + 'Large file dimension: ' +  file.file.name });
                 }
             }
             img.src = event.target.result;
         };
+
         event.preventDefault();
 
         //return false;// do not add file to be uploaded
         //// or $event.preventDefault(); depends how you use this function, in scope events or in directive
+    });
+
+    $scope.$on('flow::filesSubmitted', function (event, $flow, file) {
+
     });
 });
 
