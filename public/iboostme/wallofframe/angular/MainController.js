@@ -40,7 +40,7 @@ app.controller("MainController", ['currencyConverter', '$http', function(currenc
     this.outCurrency = window.out_currency;
     this.currencies = currencyConverter.currencies;
 
-    console.log(this.outCurrency);
+    console.log('Current Currency: ' + this.outCurrency);
 
     this.getTotal = function total(outCurrency) {
         return currencyConverter.convert(this.quantity * this.cost, this.inCurrency, outCurrency);

@@ -60,15 +60,12 @@
         {{ link_js('iboostme/js/angular/ngTable/ng-table.min.js') }}
         {{ link_js('iboostme/js/angular/ngCheckList/checklist-model.js') }}
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
-
+        {{ link_js('iboostme/wallofframe/app.js')}}
         <script>
             var mainApp = {};
-            var app = angular.module("wallOfFrame", ['uiSlider', 'finance', 'flow', 'ngTable', 'checklist-model']);
-            var publicPath =
             mainApp.baseUrl = "{{ url() }}";
             mainApp.publicPath = '{{ asset('') }}';
         </script>
-
         {{--Angular Controllers--}}
         {{ link_js('iboostme/wallofframe/angular/MainController.js') }}
 

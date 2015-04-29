@@ -9,7 +9,17 @@ class CartRepository {
 
     public function getCartItems( $ids ){
         $quantity = array_count_values($ids);
-        $products = $this->product()->whereIn('id', $ids)->get();
+        $products = $this->product()->find($ids);
+
+        // reverse an array so that the latest pushed data will be in the top order.
+        $ids = array_reverse($ids);
+
+        // sort collection by the order of IDs because the collection returns result by the order of when they are inserted.
+        $products->sortBy(function($model) use ($ids){
+            return array_search($model->getKey(), $ids);
+        });
+
+        // loop through each of the product.
         $products->each(function($product) use($quantity){
             $product->quantity = $quantity[$product->id]; // calculate quantity of each product.
             $product->stocks = 30; // number of stocks of each product.

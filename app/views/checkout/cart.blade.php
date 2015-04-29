@@ -38,7 +38,7 @@
                     @if( count($products) > 0 )
                         <div class="row cart-buttons">
                             <div class="col-md-6">
-                                <a href="{{ URL::previous() }}" class="btn btn-default btn-vivid btn-sm btn-block btn-purchase"><i class="fa fa-shopping-cart"></i> Continue Shopping</a>
+                                <a href="{{ $continueShoppingUrl }}" class="btn btn-default btn-vivid btn-sm btn-block btn-purchase"><i class="fa fa-shopping-cart"></i> Continue Shopping</a>
                             </div>
                             <div class="col-md-6">
                                  <a href="{{ route('checkout.shipping') }}" class="btn btn-default btn-sm btn-block btn-purchase"><i class="fa fa-check"></i> Secure Checkout</a>

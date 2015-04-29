@@ -44,6 +44,7 @@ class OrderController extends \BaseController{
 
         $this->data['orders'] = $orders;
 
+        // assign value to table data.
         Javascript::put([
             'tableData' => $orders
         ]);

@@ -27,7 +27,7 @@ class UserRepository {
 
     // retrieve all customers
     public function getCustomers(){
-        return $this->users()->get();
+        return $this->users()->with('profile')->orderBy('created_at', 'desc')->get();
     }
 
     public function update($input){

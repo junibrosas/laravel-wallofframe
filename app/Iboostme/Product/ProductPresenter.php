@@ -58,7 +58,8 @@ class ProductPresenter extends Presenter{
         $class = '';
         switch($this->entity->status->slug){
             case 'new':
-                $class = ' ribbon-green';
+                $class = '';
+                //$class = ' ribbon-green';
                 break;
             case 'feature';
                 $class = ' ribbon-red';

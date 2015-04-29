@@ -18,12 +18,18 @@ class CartController extends \BaseController {
 			$this->data['total_amount'] = 0;
 			return View::make('checkout.cart', $this->data);
 		}
-
 		$products = $this->cartRepo->getCartItems( Session::get('product_bag') );
 		$total_amount = $this->cartRepo->getTotalAmount( $products ); // products with quantity property
 
 		$this->data['total_amount'] = $total_amount;
 		$this->data['products'] = $products;
+		$routeUrl = route('home.index');
+
+		if($products->first()->category){
+			$routeUrl = route('category', $products->first()->category->slug);
+		}
+		$this->data['continueShoppingUrl'] = $routeUrl;
+
 		return View::make('checkout.cart', $this->data);
 	}
 

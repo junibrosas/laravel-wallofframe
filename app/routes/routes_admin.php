@@ -8,6 +8,9 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     //Dashboard
     Route::get('account', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index' ]);
 
+    // Customers
+    Route::get('customers', ['as' => 'admin.customers', 'uses' => 'CustomerController@index' ]);
+
     // Frame Application
     Route::get('frame-app', ['as' => 'admin.frameApp.manage', 'uses' => 'FrameController@getFrameApplication']);
 

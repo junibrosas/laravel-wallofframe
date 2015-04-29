@@ -8,9 +8,8 @@ class ProductCategoryTableSeeder extends Seeder {
 	public function run()
 	{
 		DB::table('product_categories')->delete();
-		$faker = Faker::create();
 
-		$data = ['Canvas', 'Art'];
+		$data = ['Cosmic Quotes', 'Exclusive', 'Fashion', 'Package Me'];
 		foreach($data as $d){
 			ProductCategory::create([
 				'name' => $d,
