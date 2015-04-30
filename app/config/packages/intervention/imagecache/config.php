@@ -55,7 +55,9 @@ return array(
                 $constraint->upsize();
             });
         },
+
         'frame-square' => function( $image ){
+
             return $image->fit(500, 500);
         },
         'frame-horizontal' => function( $image ){
@@ -63,7 +65,7 @@ return array(
         },
         'frame-vertical' => function( $image ){
             return $image->fit(390, 480);
-        }
+        },
     ),
 
     /*

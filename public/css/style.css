@@ -864,6 +864,7 @@ body {
 .sell .title { text-transform: none; font-size: 25px; margin-bottom: 20px; }
 .sell .title a { color: #252525; text-decoration: none; }
 .sell .price { /*font-weight: bold;f*/ font-weight:bold; font-size: 32px; margin: 0; }
+.sell .price .title { font-size: 15px; }
 .sell .price span { font-size: 20px; }
 .sell .heading { margin-bottom: 20px; padding-bottom: 20px;}
 .sell .stars { margin: 0; }
@@ -881,7 +882,7 @@ body {
 .sell .detail .title span { font-size: 16px; font-style: italic; }
 .sell .detail .title { margin: 0; }
 .sell .detail .price { margin: 10px 0; }
-.sell .detail .price a { text-decoration: none; font-size: 28px; color: #252525; }
+.sell .detail .price a { text-decoration: none; font-size: 25px; color: #252525; }
 
 .mode-list li { cursor: pointer; }
 .mode-list li { text-align: right; padding: 15px 20px;   background-color: #dcdcdc; color: #252525; }

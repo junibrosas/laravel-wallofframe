@@ -36,7 +36,7 @@ app.config(['flowFactoryProvider', function (flowFactoryProvider, $scope, $flow)
 app.controller("MainController", ['currencyConverter', '$http', function(currencyConverter, $http) {
     this.quantity = 1;
     this.cost = 0;
-    this.inCurrency = 'USD';
+    this.inCurrency = 'AED';
     this.outCurrency = window.out_currency;
     this.currencies = currencyConverter.currencies;
 

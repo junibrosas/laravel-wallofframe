@@ -44,7 +44,22 @@ app.controller("FrameAppController", function($http, $scope, productService){
     $scope.frameList = window.frameList;
     $scope.currentFrame = $scope.frameList[0];
     $scope.frameModes = ['Horizontal', 'Vertical', 'Square', 'Original'];
-    $scope.currentMode = $scope.frameModes[$scope.frameModes.length - 1];
+    //$scope.currentMode = $scope.frameModes[$scope.frameModes.length - 1];
+    $scope.frameSizes = [
+        { width: 30, height: 30, gloss: '120', matte: '100' },
+        { width: 40, height: 100, gloss: '150', matte: '130' },
+        { width: 50, height: 50, gloss: '190', matte: '170' },
+        { width: 60, height: 60, gloss: '150', matte: '130' },
+        { width: 50, height: 70, gloss: '180', matte: '160' },
+        { width: 70, height: 70, gloss: '300', matte: '200' },
+        { width: 100, height: 100, gloss: '400', matte: '300' },
+        { width: 200, height: 100, gloss: '550', matte: '400' },
+    ];
+    $scope.framePrices = [
+
+    ];
+    $scope.currentSize = $scope.frameSizes[0];
+
 
     // sets the current frame to use for border using click event.
     $scope.setCurrentFrame = function( frame ){
@@ -54,6 +69,13 @@ app.controller("FrameAppController", function($http, $scope, productService){
     // sets the current design preview mode using click event.
     $scope.setPreviewMode = function( mode ){
         $scope.currentMode = mode;
+    }
+
+    // sets the size selected and change the price
+    $scope.selectedtSize = function( size ){
+
+        console.log(size);
+        $scope.currentSize = size;
     }
 });
 
