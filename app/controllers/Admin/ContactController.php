@@ -1,5 +1,6 @@
 <?php namespace Admin;
 
+use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use User;
 use Contact;
 use Illuminate\Support\Facades\View;
@@ -7,21 +8,41 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validate;
+use Illuminate\Support\Str;
 
 class ContactController extends \BaseController {
 
 	public function __construct(){
 		parent::__construct();
-
 	}
 
 	public function index()
 	{
-		$this->data['contacts'] = Contact::orderby('created_at','desc')->get();
+
+		$contacts = Contact::orderby('created_at','desc')->get();
+		$contacts->each(function($contact){
+			$contact->url = route('contacts.message', [$contact->id, Str::slug( $contact->subject ) ]);
+			$contact->subject = $contact->subject ==  '' ? 'No Subject' : $contact->subject;
+		});
+		$this->data['contacts'] = $contacts;
 		$this->data['html'] = 'admin.contacts.index';
 
-		return View::make('admin.admin', $this->data);
+		// pass table data.
+		JavaScript::put([
+			'tableData' => $contacts
+		]);
+
+		return View::make('admin.contacts', $this->data);
 	}
+
+	public function read( $id ){
+		$contact = Contact::find( $id );
+		$contact->subject = $contact->subject ==  '' ? 'No Subject' : $contact->subject;
+		$this->data['contact'] = $contact;
+		return View::make('admin.contact-message', $this->data);
+
+	}
+
 	public function create()
 	{
 		$contact = new Contact();

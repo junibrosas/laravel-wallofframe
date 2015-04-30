@@ -19,7 +19,7 @@
     <!-- Spotlight Images -->
     @include('components.carousels.carousel-main')
 
-    <section id="feature">
+    {{--<section id="feature">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 ">
@@ -32,13 +32,39 @@
                     <area shape="rect" coords="1048,929,1050,931" alt="Image Map" style="outline:none;" title="Image Map" href="http://www.image-maps.com/index.php?aff=mapped_users_0" />
                     </map>
                     </div>
-                    {{--<img src="{{ asset('img/frames/fullframe.jpg') }}" class="img-responsive elem-center">--}}
+                    --}}{{--<img src="{{ asset('img/frames/fullframe.jpg') }}" class="img-responsive elem-center">--}}{{--
                 </div>
+            </div>
+        </div>
+    </section>--}}
+
+    <section id="feature">
+        <div class="container">
+            <div class="row frame-box-group">
+                <?php
+                    $dataFormat = [
+
+                    ];
+                ?>
+                @foreach($frameBoxData as $frameBox)
+                    <div class="col-md-4 col-xs-6 item">
+                        <div class="box">
+                            <a href="{{ $frameBox['url'] == '' ? '#' : $frameBox['url'] }}" style="cursor: {{ $frameBox['url'] == '' ? 'default' : $frameBox['url'] }}">
+                                <img src="{{ $frameBox['image']  }}" height="297" class="img-responsive elem-center">
+                                <div class="caption">
+                                    <div class="tag">{{ $frameBox['tag'] }}</div>
+                                    <div class="title">{{ $frameBox['title'] }}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </section>
 
-    <section class="border-top border-bottom" id="must-have">
+    {{--<section class="border-top border-bottom" id="must-have">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 item border-right">
@@ -80,20 +106,19 @@
                 <div class="col-md-1"></div>
             </div>
         </div>
-    </section>
+    </section>--}}
 
-
-        <section id="testimony">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p class="content">
-                            <img src="{{ asset('img/qoute-left.png') }}" class="qoute-left">
-                            Wall Of Frame is the Middle East’s Home of luxury brands for your Home Designs and Framing.
-                            <img src="{{ asset('img/qoute-right.png') }}" class="qoute-right">
-                        </p>
-                    </div>
+    <section id="testimony">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="content">
+                        <img src="{{ asset('img/qoute-left.png') }}" class="qoute-left">
+                        Wall Of Frame is the Middle East’s Home of luxury brands for your Home Designs and Framing.
+                        <img src="{{ asset('img/qoute-right.png') }}" class="qoute-right">
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 @stop

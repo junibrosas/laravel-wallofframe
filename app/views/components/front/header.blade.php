@@ -57,7 +57,7 @@
 
                         <li><a href="{{ route('home.index') }}" class="page-scroll home-icon"><i class='fa fa-home'></i></a></li>
                         {{ HTML::menu_active('arrivals', 'New Arrivals', array(), ['class'=>'page-scroll']) }}
-                        {{ HTML::menu_active('selling', 'Best Selling', array(), ['class'=>'page-scroll']) }}
+                        {{--{{ HTML::menu_active('selling', 'Best Selling', array(), ['class'=>'page-scroll']) }}--}}
                         {{ HTML::menu_active('brands', 'Brands', array(), ['class'=>'page-scroll']) }}
                         @foreach( $categories as $category )
                             {{ HTML::menu_active('category', $category->name, array($category->slug), ['class'=>'page-scroll']) }}
