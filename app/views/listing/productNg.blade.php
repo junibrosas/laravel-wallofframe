@@ -33,3 +33,6 @@
         </div>
     </a>
 </div>
+<div class="alert alert-danger alert-sm" ng-show="noProducts" role="alert">
+    <b>{{ PRODUCT_EMPTY }}</b>
+</div>

@@ -2,7 +2,7 @@
 use Iboostme\Product\Cart\CartRepository;
 use Iboostme\User\Customer\ShippingAddressRepository;
 use Iboostme\Email\EmailRepository;
-
+use Iboostme\Transaction\TransactionRepository;
 class CheckoutController extends \BaseController {
 	public $cartRepo;
 	public $shippingRepo;
@@ -70,7 +70,14 @@ class CheckoutController extends \BaseController {
 		if(  $inputs['paymentMethod'] == 'paypal' ){
 			return Redirect::route('paypal.payment');
 		}
+		else if($inputs['paymentMethod'] == 'cash-on-delivery'){
+			$repo = new TransactionRepository();
+			$repo->add(); // add a new transaction
 
+			return Redirect::route('customer.track.order')
+				->with('success', 'Transaction has been completed.');
+		}
+		die();
 		return Redirect::back()->with('error', 'Unexpected Error: You have not selected a payment method');
 	}
 }

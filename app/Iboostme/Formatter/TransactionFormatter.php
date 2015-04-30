@@ -13,6 +13,7 @@ class TransactionFormatter implements Format {
             'buyer' => $item->user->present()->name,
             'date' => $item->created_at->diffForHumans(),
             'total_amount' => $item->present()->totalAmount,
+            'payment_method' => $item->present()->paymentMethod,
             'status' => $item->present()->status,
         ];
 

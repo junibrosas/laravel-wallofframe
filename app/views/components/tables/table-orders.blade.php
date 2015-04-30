@@ -16,12 +16,13 @@
             <tr ng-repeat="order in tableData">
                 <th  scope="row"> <input class="icheck" name="transactions[]" type="checkbox" value="@{{ order.id }}"></th>
                 <td  data-title="'Orders'">
-                    <a href="@{{ order.url }}" class="link-red">#@{{ order.tracking_number }}</a> <br/> <small>Buyer: @{{ order.buyer }}</small>
+                    <a href="@{{ order.url }}" class="link-red">#@{{ order.tracking_number }}</a>
+                    <br/> <small><b>Buyer</b>: @{{ order.buyer }}</small> &nbsp;&nbsp;&nbsp;<small><b>Method</b>: @{{ order.payment_method }}</small>
                 </td>
                 <td class="text-center">@{{ order.status }}</td>
                 <td  data-title="'Date'" class="text-center">
-                    <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ order.date }}</span>
-                </td>
+                                         <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ order.date }}</span>
+                                     </td>
                 <td  data-title="'Amount'" class="text-center">
                     @{{ main.currencyConvert( order.total_amount, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}
                 </td>

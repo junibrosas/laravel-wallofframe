@@ -55,9 +55,14 @@
                             </ul>
                             <h5>AVAILABLE PAYMENT METHODS</h5>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <img src="{{ asset('img/payments/paypal.png') }}" alt="" class="img-responsive"/>
-                                </div>
+                                <?php
+                                $methods = PaymentMethod::get();
+                                $methods->each(function( $method ){ ?>
+                                    <div class="col-md-6" style="padding-right: 0">
+                                        <img src="{{ asset('img/payments/'.$method->image) }}" alt="{{ $method->name }} Method" class="img-responsive" style="margin: auto 0;"/>
+                                    </div>
+                                <?php });
+                                ?>
                             </div>
                         </div>
                     </div>

@@ -26,27 +26,12 @@
 
                         @include('listing.productNg')
 
-                        @if( isset($products) )
-                            @if( $products->count() > 0 )
-                                @foreach($products as $i => $product)
-                                    <div class="col-md-4 col-sm-6 col-xs-6  item ">
-                                        @include('listing.product')
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="alert alert-danger alert-sm" role="alert">
-                                    <b>{{ PRODUCT_EMPTY }}</b>
-                                </div>
-                            @endif
-                        @endif
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             @include('components.paginates.controls')
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <div class="row space-md">

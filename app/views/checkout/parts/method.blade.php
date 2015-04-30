@@ -14,3 +14,4 @@
     @endif
 
 </div>
+<label for="">Note: Cash on Delivery is within United Arab Emirates (UAE).</label>

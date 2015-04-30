@@ -40,7 +40,7 @@ class TransactionRepository {
     }
 
     // User side add a new transaction or order.
-    public function add( $data ){
+    public function add( $data = array() ){
         $cartRepo  = new CartRepository();
         $products = $cartRepo->getCartItems( Session::get('product_bag') );
         $total_amount = $cartRepo->getTotalAmount( $products );
@@ -49,10 +49,10 @@ class TransactionRepository {
         $input['shipping_address_id'] = Session::get('billingAddress');
         $input['payment_method_id'] = Session::get('paymentMethodId');
         $input['productIds'] = Session::get('product_bag');
-        $input['payment_response'] = $data['payment_response'];
+        $input['payment_response'] = array_get($data, 'payment_response');
         $input['total_amount'] = $total_amount;
 
-        $this->newTransaction( $input );
+        return $this->newTransaction( $input );
     }
 
     // add new transaction.
@@ -84,6 +84,8 @@ class TransactionRepository {
         $transaction->payment_response = array_get($data, 'payment_response');
 
         $transaction->save();
+
+        return $transaction;
     }
 
     // model extension.
