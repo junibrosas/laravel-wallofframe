@@ -1098,6 +1098,16 @@ select.form-control { border-radius: 0; }
 }
 .frame-box-group .caption .tag { font-size: 22px; font-family: "telegrafico" !important; margin-bottom: 10px;}
 .frame-box-group .caption .title { font-size: 40px; font-family: "telegrafico" !important; }
+.frame-preview {
+    background: url(../img/frame-background.jpg) no-repeat top center;
+    margin-bottom: 20px;
+    margin-bottom: 20px;
+    background-size: cover;
+    height: 70%;
+    border: 1px solid #ccc;
+    padding-top: 20px;
+}
+
 
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

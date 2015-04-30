@@ -18,7 +18,7 @@ class BaseController extends Controller {
 		// data that are usable in every page.
 		$oc = Session::get('out_currency');
 		JavaScript::put([
-			'out_currency' => isset($oc) ? $oc : 'USD'
+			'out_currency' => isset($oc) ? $oc : 'AED'
 		]);
 		$this->data['categories'] = ProductCategory::get();
 		$this->data['bag_items'] = count(Session::get('product_bag'));
