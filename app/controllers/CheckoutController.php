@@ -77,7 +77,6 @@ class CheckoutController extends \BaseController {
 			return Redirect::route('customer.track.order')
 				->with('success', 'Transaction has been completed.');
 		}
-		die();
 		return Redirect::back()->with('error', 'Unexpected Error: You have not selected a payment method');
 	}
 }

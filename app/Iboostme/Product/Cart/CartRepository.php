@@ -29,6 +29,7 @@ class CartRepository {
             $product->quantity = $quantity[$product->id]; // calculate quantity of each product.
             $product->stocks = 30; // number of stocks of each product.
             $product->size = $package->width.'x'.$package->height;
+            $product->price = $package->gloss;
         });
 
         return $products;
