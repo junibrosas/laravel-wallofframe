@@ -8,7 +8,10 @@
 @stop
 @section('footer')
     @parent
-    {{--{{ link_js('assets/elevatezoom/jquery.elevateZoom-3.0.8.min.js') }}--}}
+    {{ link_js('assets/elevatezoom/jquery.elevateZoom-3.0.8.min.js') }}
+    <script>
+        $(".frame-preview-image").elevateZoom();
+    </script>
 @stop
 @section('content')
     <section>
