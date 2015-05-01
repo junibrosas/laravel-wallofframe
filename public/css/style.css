@@ -1107,7 +1107,8 @@ select.form-control { border-radius: 0; }
     border: 1px solid #ccc;
     padding-top: 20px;
 }
-
+.cbp-item-wrapper {   padding: 11px; }
+.cbp-caption  { cursor: default; }
 
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {

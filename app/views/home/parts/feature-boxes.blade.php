@@ -1,7 +1,7 @@
 <div id="grid-container" class="cbp-l-grid-masonry">
     
     <div class="cbp-item identity motion">
-        <a class="cbp-caption " data-title="Easy Note<br>by GSRthemes9" href="http://placehold.it/800x600">
+        <a class="cbp-caption " data-title="Easy Note<br>by GSRthemes9" href="#">
             <img src="{{ asset('img/framebox/boxframe1.jpg') }}" alt="">
         </a>
     </div>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="cbp-item graphic logos">
-        <a class="cbp-caption " data-title="Tiger<br>by GSRthemes9" href="http://placehold.it/800x600">
+        <a class="cbp-caption " data-title="Tiger<br>by GSRthemes9" href="#">
             <img src="{{ asset('img/framebox/boxframe3.jpg') }}" alt="">
         </a>
     </div>
@@ -61,13 +61,13 @@
     </div>
 
     <div class="cbp-item graphic motion">
-        <a class="cbp-caption " data-title="Remind~Me More<br>by GSRthemes9" href="http://placehold.it/800x600">
+        <a class="cbp-caption " data-title="Remind~Me More<br>by GSRthemes9" href="#">
             <img src="{{ asset('img/framebox/boxframe6.jpg') }}" alt="">
         </a>
     </div>
 
     <div class="cbp-item web-design logos">
-        <a class="cbp-caption " data-title="Workout Buddy<br>by GSRthemes9" href="http://placehold.it/800x600">
+        <a class="cbp-caption " data-title="Workout Buddy<br>by GSRthemes9" href="#">
             <img src="{{ asset('img/framebox/boxframe7.jpg') }}" alt="">
             {{--<div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
@@ -81,7 +81,7 @@
     </div>
 
     <div class="cbp-item identity">
-        <a class="cbp-caption " data-title="Volume Knob<br>by GSRthemes9" href="{{ route('category', 'packages') }}">
+        <a class="cbp-caption " data-title="Volume Knob<br>by GSRthemes9" href="{{ route('category', 'packages') }}" style="cursor: default">
             <div class="cbp-caption-defaultWrap">
                 <img src="{{ asset('img/framebox/boxframe8.jpg') }}" alt="">
             </div>
@@ -96,7 +96,7 @@
     </div>
 
     {{--<div class="cbp-item identity">
-        <a class="cbp-caption " data-title="Ski * Buddy<br>by GSRthemes9" href="http://placehold.it/800x600">
+        <a class="cbp-caption " data-title="Ski * Buddy<br>by GSRthemes9" href="#">
             <div class="cbp-caption-defaultWrap">
                 <img src="http://placehold.it/400x600" alt="">
             </div>
@@ -128,9 +128,9 @@
     </div>
 
     <div class="cbp-item web-design graphic">
-        <a class="cbp-caption " data-title="World Clock Widget<br>by GSRthemes9" href="http://placehold.it/800x600">
+        <a class="cbp-caption " data-title="World Clock Widget<br>by GSRthemes9" href="#">
             <div class="cbp-caption-defaultWrap">
-                <img src="http://placehold.it/400x400" alt="">
+                <img src="#" alt="">
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
@@ -146,7 +146,7 @@
     <div class="cbp-item web-design graphic">
         <a class="cbp-caption " data-title="Sickpuppy<br>by GSRthemes9" href="http://ipsumimage.appspot.com/1200x900,2d67b9">
             <div class="cbp-caption-defaultWrap">
-                <img src="http://placehold.it/400x400" alt="">
+                <img src="#" alt="">
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
