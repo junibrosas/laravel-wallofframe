@@ -3,17 +3,21 @@ use Iboostme\Product\Cart\CartRepository;
 use Iboostme\User\Customer\ShippingAddressRepository;
 use Iboostme\Email\EmailRepository;
 use Iboostme\Transaction\TransactionRepository;
+use Iboostme\Checkout\CheckoutRepository;
 class CheckoutController extends \BaseController {
 	public $cartRepo;
 	public $shippingRepo;
 	public $emailRepo;
+	public $checkoutRepo;
 
 	public function __construct(CartRepository $cartRepo,
+								CheckoutRepository $checkoutRepository,
 								ShippingAddressRepository $shippingRepo,
 								EmailRepository $emailRepo){
 		$this->cartRepo = $cartRepo;
 		$this->shippingRepo = $shippingRepo;
 		$this->emailRepo = $emailRepo;
+		$this->checkoutRepo = $checkoutRepository;
 	}
 	public function index()
 	{
@@ -73,6 +77,9 @@ class CheckoutController extends \BaseController {
 		else if($inputs['paymentMethod'] == 'cash-on-delivery'){
 			$repo = new TransactionRepository();
 			$repo->add(); // add a new transaction
+
+			// remove sessions
+			$this->checkoutRepo->removeSessions();
 
 			return Redirect::route('customer.track.order')
 				->with('success', 'Transaction has been completed.');

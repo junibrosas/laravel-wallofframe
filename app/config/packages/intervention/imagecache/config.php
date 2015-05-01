@@ -66,6 +66,11 @@ return array(
         'frame-vertical' => function( $image ){
             return $image->fit(390, 480);
         },
+        'frame-size' => function( $image ){
+            $width = Input::get('width');
+            $height = Input::get('height');
+            return $image->fit($width, $height);
+        },
     ),
 
     /*
