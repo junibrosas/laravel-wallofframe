@@ -10,7 +10,9 @@
     @parent
     {{ link_js('assets/elevatezoom/jquery.elevateZoom-3.0.8.min.js') }}
     <script>
-        $(".frame-preview-image").elevateZoom();
+        $(".frame-preview-image").elevateZoom({
+            easing : true
+        });
     </script>
 @stop
 @section('content')
