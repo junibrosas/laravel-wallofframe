@@ -1,6 +1,12 @@
 @extends('layout.default')
+@section('header')
+    <!-- cubeportfolio -->
+    {{ link_css('js/cubeportfolio/cubeportfolio.min.css') }}
+@stop
 @section('footer')
     {{ link_js('assets/rwdImageMaps/jQuery.rwdImageMaps.js') }}
+    {{ link_js('js/cubeportfolio/jquery.cubeportfolio.min.js') }}
+    {{ link_js('js/cubeportfolio/main30.js') }}
     <script>
         $(function(){
             $('img[usemap]').rwdImageMaps();
@@ -38,14 +44,19 @@
         </div>
     </section>--}}
 
-    <section id="feature">
+    <section id="feature" class="dashed-divider">
+        <div class="container">
+            <div class="col-md-12">
+                @include('home.parts.feature-boxes')
+            </div>
+        </div>
+    </section>
+
+
+
+    {{--<section id="feature">
         <div class="container">
             <div class="row frame-box-group">
-                <?php
-                    $dataFormat = [
-
-                    ];
-                ?>
                 @foreach($frameBoxData as $frameBox)
                     <div class="col-md-4 col-xs-6 item">
                         <div class="box">
@@ -59,10 +70,9 @@
                         </div>
                     </div>
                 @endforeach
-
             </div>
         </div>
-    </section>
+    </section>--}}
 
     {{--<section class="border-top border-bottom" id="must-have">
         <div class="container">

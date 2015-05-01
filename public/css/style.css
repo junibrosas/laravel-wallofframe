@@ -1096,8 +1096,8 @@ select.form-control { border-radius: 0; }
     line-height: 0.8;
 
 }
-.frame-box-group .caption .tag { font-size: 22px; font-family: "telegrafico" !important; margin-bottom: 10px;}
-.frame-box-group .caption .title { font-size: 40px; font-family: "telegrafico" !important; }
+.frame-box-group .caption .tag, #feature .cbp-l-caption-title{ color:white; font-size: 22px; font-family: "telegrafico" !important; margin-bottom: 10px;}
+.frame-box-group .caption .title, #feature .cbp-l-caption-desc { font-size: 40px; font-family: "telegrafico" !important;  line-height: 0.8; color: white; }
 .frame-preview {
     background: url(../img/frame-background.jpg) no-repeat top center;
     margin-bottom: 20px;
