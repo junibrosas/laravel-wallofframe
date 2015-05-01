@@ -26,7 +26,7 @@
                             <ul class="list-unstyled list-detail">
                                 <li>Type: {{ $product->present()->type }}</li>
                                 <li>Category: {{ $product->present()->category }}</li>
-                                <li>Size: {{ $product->present()->size }}</li>
+                                <li>Size: {{ $product->size }}</li>
                             </ul>
                         </div>
                     </div>

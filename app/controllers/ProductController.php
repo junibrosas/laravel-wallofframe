@@ -23,6 +23,7 @@ class ProductController extends \BaseController {
 		$this->data['product'] = $product;
 
 		JavaScript::put([
+			'frameSizes' => ProductPackage::get(),
 			'square_image' => urlencode($product->present()->image('square')),
 			'preview_image' => urlencode($product->present()->image('preview')),
 			'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
@@ -123,10 +124,15 @@ class ProductController extends \BaseController {
 
 	public function addToBag($id){
 		$product = Product::find($id);
+		$package = ProductPackage::find( Input::get('size') );
+
 		if(!$product){
 			return Redirect::back()->with('error', PRODUCT_NOT_FOUND);
 		}
-
+		if(!$package){
+			return Redirect::back()->with('error', 'Please select a product size.');
+		}
+		$product->package_id = $package->id;
 		$this->productRepo->addToBag($product);
 
 		return Redirect::back()->with('success', ADDED_TO_BAG);

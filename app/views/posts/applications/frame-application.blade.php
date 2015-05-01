@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="frame-preview">
-                    <img ng-src="{{ $product->present()->imageCachePreview }}" alt="Original Image" class="img-responsive elem-center custom-border" style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); " width="200"/>
+                    <img ng-src="{{ $product->present()->imageCachePreview }}" alt="Original Image" class="frame-preview-image img-responsive elem-center custom-border" style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); width: 20%;" />
                 </div>
             </div>
             <div class="col-md-2">

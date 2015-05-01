@@ -12,11 +12,7 @@ app.config(['flowFactoryProvider', function (flowFactoryProvider, $scope, $flow)
         testChunks: false,
         forceChunkSize: true
     };
-    /*flowFactoryProvider.on('fileAdded', function (file){
-        if ( file.size > 20000000 ){ // 2MB
-            return false;
-        }
-    });*/
+
     flowFactoryProvider.on('fileSuccess', function (file, data){
         var data = JSON.parse(data);
         if(data.part == 'background' || data.part == 'frame'){

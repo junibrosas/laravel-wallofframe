@@ -8,5 +8,6 @@ use Iboostme\Transaction\TransactionRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 Route::get('test', function(){
+    //Session::forget('product_bag');
     trace(Session::get('product_bag'));
 });

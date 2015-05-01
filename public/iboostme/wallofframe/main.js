@@ -53,7 +53,6 @@ $(function() {
         });
     }
 
-
 });
 
 // Highlight the top nav as scrolling occurs
@@ -65,3 +64,5 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
+
+

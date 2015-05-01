@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 
+		// Disable Foreign key check for this connection before running seeders
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
 		//Static
 		$this->call('CountriesSeeder');
 		$this->call('ProductCategoryTableSeeder');
@@ -24,5 +27,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UserTableSeeder');
 		$this->call('ProfileTableSeeder');
 		$this->call('ProductTableSeeder');
+
+		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
 }
