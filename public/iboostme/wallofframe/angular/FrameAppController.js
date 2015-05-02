@@ -43,18 +43,7 @@ app.controller("DragNDropController", function($http, $scope, productService){
 app.controller("FrameAppController", function($http, $scope, productService){
     $scope.frameList = window.frameList;
     $scope.currentFrame = $scope.frameList[0];
-    /*$scope.frameSizes = [
-        { width: 30, height: 30, gloss: '120', matte: '100' },
-        { width: 40, height: 100, gloss: '150', matte: '130' },
-        { width: 50, height: 50, gloss: '190', matte: '170' },
-        { width: 60, height: 60, gloss: '150', matte: '130' },
-        { width: 50, height: 70, gloss: '180', matte: '160' },
-        { width: 70, height: 70, gloss: '300', matte: '200' },
-        { width: 100, height: 100, gloss: '400', matte: '300' },
-        { width: 200, height: 100, gloss: '550', matte: '400' },
-    ];*/
     $scope.frameSizes = window.frameSizes;
-    console.log($scope.frameSizes );
     $scope.currentSize = $scope.frameSizes[0];
 
     // sets the current frame to use for border using click event.
@@ -135,6 +124,18 @@ app.controller("FlowController", function($scope){
     });
 });
 
+app.controller("BorderGeneratorController", ['$scope', function( $scope){
+    $scope.frameSizes = window.frameSizes;
+    $scope.currentSize = $scope.frameSizes[0];
+
+    // sets the size selected and change the price
+    $scope.selectedtSize = function( size ){
+        $scope.currentSize = size;
+        $('#cssEl').css("width", size.width + 'px')
+            .css("min-height", size.height + 'px');
+    }
+}]);
+
 // DIRECTIVES
 // THIS DIRECTIVE WILL CENTER THE IMAGE DEPENDING ON ITS CONTAINER.
 app.directive('imagecenter', function() {
@@ -151,3 +152,6 @@ app.directive('imagecenter', function() {
         }
     };
 });
+
+
+

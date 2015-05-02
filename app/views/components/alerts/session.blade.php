@@ -7,7 +7,7 @@
 
 @if( Session::has('error'))
 	<div class="alert alert-danger alert-sm alert-dismissable  space-sm" role="alert">
-		<a class="panel-close close" data-dismiss="alert">×</a> 
+		<a class="panel-close close" data-dismiss="alert">×</a>
 		<b>{{ Session::get('error') }}</b>
 	</div>
 @endif
