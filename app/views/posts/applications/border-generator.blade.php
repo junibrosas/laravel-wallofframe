@@ -1,5 +1,5 @@
 {{ Form::open(['route' => 'admin.frame.border.create', 'method' => 'post', 'files' => true ]) }}
-<div class="borderGenerator">
+<div class="borderGenerator" ng-controller="BorderGeneratorController">
     <div class="row">
         <div class="col-md-12">
             <ul class="list list-inline pull-right">
@@ -70,12 +70,26 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="css">
-                <h2 class="side-heading">Preview</h2>
-                <div id="cssEl"></div>
-                <h2 class="side-heading">Style</h2>
-                <div id="styleEl"></div>
+            <div class="row">
+                <div class="col-md-8">
+                <div class="css">
+                        <h2 class="side-heading">Preview</h2>
+                        <div id="cssEl" ></div>
+                        {{--<h2 class="side-heading">Style</h2>
+                        <div id="styleEl"></div>--}}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-unstyled mode-list" style="margin-bottom: 20px;">
+                        <li ng-repeat="size in frameSizes" ng-click="selectedtSize( size )" ng-class="currentSize === size ? 'active-mode' : '' ">
+                            @{{ size.width +'x'+ size.height }}
+                        </li>
+                    </ul>
+                </div>
             </div>
+
+
+
         </div>
 
         <div class="col-md-3 col-md-offset-9">

@@ -19,7 +19,8 @@ use Iboostme\Product\ProductRepository;
 use Illuminate\Support\Str;
 use ProductFrame;
 use ProductBackground;
-
+use ProductPackage;
+use Illuminate\Support\Facades\File;
 
 class FrameController extends \BaseController {
     public $image_name;
@@ -83,7 +84,7 @@ class FrameController extends \BaseController {
 
     // frame border view
     public function getFrameBorder(){
-        $status = Input::get('status'); $frames = array(); $frameBorder = new FrameBorder();
+        $status = Input::get('status'); $frameBorder = new FrameBorder();
         $frameData = ProductFrame::orderBy('created_at', 'desc')->withTrashed()->get();
         $frameGroup = $frameBorder->tabItems($frameData);
         $frames = $frameData;
@@ -99,13 +100,18 @@ class FrameController extends \BaseController {
         $this->data['frameGroup'] = $frameGroup;
 
         Javascript::put([
-            'tableData' => $frameList
+            'tableData' => $frameList,
+
         ]);
+
         return View::make('admin.frame-border', $this->data);
     }
 
     // create and upload new frame border
     public function uploadFrameBorder(){
+        JavaScript::put([
+            'frameSizes' => ProductPackage::get()
+        ]);
         return View::make('admin.frame-border-upload', $this->data);
     }
 
@@ -119,7 +125,6 @@ class FrameController extends \BaseController {
         ]);
         return View::make('admin.frame-upload', $this->data);
     }
-
 
     // upload and save new frame border
     public function postCreateFrameBorder(){
@@ -292,17 +297,24 @@ class FrameController extends \BaseController {
             $frames = ProductFrame::whereIn('id', $selectedFrames)->get();
             $frames->each( function($frame) use ( $bulkAction ){
                 $frame->is_active = $bulkAction == 'activate' ? 1 : 0; // activate or deactivate selected frames
-                trace($frame->is_active);
-                //$frame->save();
+                $frame->save();
             } );
         }
-        else if(in_array($bulkAction, ['move_to_trash'])){
-            ProductFrame::whereIn('id', $selectedFrames)->delete(); // delete selected frames
-        }else if(in_array($bulkAction, ['restore'])){
-            ProductFrame::whereIn('id', $selectedFrames)->restore(); // restore selected frames
+        else if(in_array($bulkAction, ['delete'])){
+            $frames = ProductFrame::whereIn('id', $selectedFrames)->get();
+            $frames->each(function($frame){
+                $file = public_path('uploads/products/frames/'.$frame->image);
+                if( File::exists($file) ){
+                    File::delete($file); // delete the file
+                }
+                $frame->forceDelete(); // delete selected frames
+            });
+
+        }else{
+            return Redirect::back()->with('error', 'No action has been selected.');
         }
 
-        return Redirect::back()->with('Successfully done.');
+        return Redirect::back()->with('success', 'Successfully done.');
     }
 
     public function postSaveSelection(){

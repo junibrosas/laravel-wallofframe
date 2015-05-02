@@ -128,7 +128,13 @@ $(document).ready(function() {
 
             borderImage = "url(" + UserImageCache.getSrc() + ") " + joinValues(imageOffset);
 
-            customBorderStyle.val( style );
+            var styleToStore = "border-style: solid;\n"
+                + "border-width: " + borderWidthStr + ";\n"
+                + "border-image-slice: " +joinValues(imageOffset)+ ";\n"
+                + "border-image-repeat" +repeatStr+ ";\n";
+
+            // save this value to storage.
+            customBorderStyle.val( styleToStore );
         }
         styleEl.html(style);
         cssEl.html(' ')
@@ -137,6 +143,7 @@ $(document).ready(function() {
                 .css("-webkit-border-image", borderImage + repeatStr)
                 .css("-o-border-image", borderImage + repeatStr)
                 .css("border-image", borderImage + fillStr + repeatStr);
+
     }
 
     fillEl.change(function() {
