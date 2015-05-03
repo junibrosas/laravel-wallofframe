@@ -53,18 +53,16 @@ class FacebookController extends \BaseController {
 		$uid = $this->repo->getFacebookId();
 
 
-
+		if(!isset($me['email'])) return Redirect::route('login')->with('error', 'Oppss! Seems like we cannot retrieve your email on facebook. Try using a working facebook email address.');
 
 
 		$profile = Profile::whereUid($uid)->first();
-		trace($profile);
-		die();
 
 		$user = new User();
 		if (empty($profile)) {
 			$random_password = str_random(8);
 			$input = array(
-				'email' => isset($me['email']) ? $me['email'] : '',
+				'email' => $me['email'],
 				'photo' => 'https://graph.facebook.com/'.$uid.'/picture?type=large',
 				'username' => $me['first_name'].'_'.$me['last_name'],
 				'password' => $random_password,
