@@ -47,24 +47,23 @@ class FacebookController extends \BaseController {
 		$code = Input::get('code');
 		if (strlen($code) == 0) return Redirect::to('/')->with('error', 'There was an error communicating with Facebook');
 
-
-
 		$me = $this->repo->getFacebookUser( $code );
 		$uid = $this->repo->getFacebookId();
-
 
 		if(!isset($me['email'])) return Redirect::route('login')->with('error', 'Oppss! Seems like we cannot retrieve your email on facebook. Try using a working facebook email address.');
 
 
 		$profile = Profile::whereUid($uid)->first();
 
-		$user = new User();
+
 		if (empty($profile)) {
 			$random_password = str_random(8);
+			$username = preg_replace('/\s+/', '', $me['first_name'].$me['last_name']);
+			$username = strtolower($username);
 			$input = array(
 				'email' => $me['email'],
 				'photo' => 'https://graph.facebook.com/'.$uid.'/picture?type=large',
-				'username' => $me['first_name'].'_'.$me['last_name'],
+				'username' => $username,
 				'password' => $random_password,
 				'password_confirmation' => $random_password,
 				'uid' => $uid,
@@ -79,10 +78,9 @@ class FacebookController extends \BaseController {
 
 			$profile = $user->profile;
 		}
-		trace($user);
-		die();
-		if(!$user->id){
-			return Redirect::route('login')->with('error', USER_CANNOT_ADD);
+
+		if($user->errors){
+			return Redirect::route('login')->withErrors($user->errors);
 		}
 
 		$user = $profile->user;
