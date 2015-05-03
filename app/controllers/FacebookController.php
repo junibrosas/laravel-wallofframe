@@ -53,12 +53,12 @@ class FacebookController extends \BaseController {
 		$uid = $this->repo->getFacebookId();
 
 
-		/*trace($me);
-		die();*/
+
 
 
 		$profile = Profile::whereUid($uid)->first();
-
+		trace($profile);
+		die();
 
 		$user = new User();
 		if (empty($profile)) {
