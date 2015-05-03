@@ -81,9 +81,11 @@ class FacebookController extends \BaseController {
 
 			$profile = $user->profile;
 		}
-		if(!$profile && !$user->id){
+
+		if(!$user->id){
 			return Redirect::route('login')->with('error', USER_CANNOT_ADD);
 		}
+
 		$user = $profile->user;
 
 		Auth::login($user);
