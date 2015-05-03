@@ -45,6 +45,7 @@ class CheckoutController extends \BaseController {
 
 	public function postShipping(){
 		$input = Input::all();
+
 		$rules = array(
 			'email' => 'required|email|unique:users',
 			'mobile_number' => 'required|numeric',
@@ -56,14 +57,17 @@ class CheckoutController extends \BaseController {
 		if($validator->fails())
 			return Redirect::back()->withInput()->withErrors( $validator );
 
-
 		// add new user
 		$user = $this->shippingRepo->addUser( $input );
+
+		if(!$user->id) return Redirect::back()->withInput()->with('error', 'Unable to create a new user. Please try again.');
 
 		// Manually Logging In User
 		Auth::login($user);
 
-		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS . ' Be noticed that your username is '. $user->username .'and your temporary password is your email address. ' );
+		//return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS . ' Be noticed that your username is '. $user->username .' and your temporary password is your email address. ' );
+
+		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS);
 	}
 
 	public function postOrder(){

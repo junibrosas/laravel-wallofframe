@@ -5,7 +5,7 @@
         <div class="container checkout">
             <div class="row">
                 <div class="col-md-6">
-                    <h2 class="side-heading">{{ $heading }}</h2>
+
                     @include('components.forms.ship-complete-form', [$address = new ShippingAddress() ])
                 </div>
                 <div class="col-md-6">

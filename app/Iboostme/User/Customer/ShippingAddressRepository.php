@@ -6,6 +6,7 @@ use ShippingAddress;
 use User;
 use Profile;
 use UserType;
+use Illuminate\Support\Facades\App;
 
 class ShippingAddressRepository {
     // max number of addresses
@@ -17,27 +18,33 @@ class ShippingAddressRepository {
     }
 
     public function addUser( $input ){
-        $username = explode('@', $input['email']); // generated username
-        $input['password'] = $input['email']; // generated password
+        //$username = explode('@', $input['email']); // generated username
+        /*$username = $input['username'];
+        $password = $input['password'];*/
+        //$input['password'] = $input['email']; // generated password
 
-        $user = new User;
-        $user->username = $username[0];
+        /*$user = new User;
+        $user->username = $username;
         $user->email = $input['email'];
         $user->type_id = UserType::where('slug', 'customer')->first()->id;
-        $user->password = $input['password'];
-        $user->password_confirmation = $input['password'];
+        $user->password = $password;
+        $user->password_confirmation = $password;
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed = 1;
 
-        $user->save();
+        $user->save();*/
 
-        $input['user_id'] = $user->id;
-        Profile::create( $input );
-        ShippingAddress::create( $input );
+        $repo = App::make('UserRepository');
+        $user = $repo->signup( $input );
+        if($user->id){
+            $input['user_id'] = $user->id;
+            Profile::create( $input );
+            ShippingAddress::create( $input );
 
-        // email a new user
-        $emailRepo = new EmailRepository();
-        $emailRepo->newUserWithPassword( $user, $input['password'] );
+            // email a new user
+            $emailRepo = new EmailRepository();
+            //$emailRepo->newUserWithPassword( $user, $input['password'] );
+        }
 
         return $user;
     }
