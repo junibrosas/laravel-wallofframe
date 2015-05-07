@@ -1,11 +1,9 @@
 @extends('layout.master')
 @section('header')
     @parent
-    {{ link_css('assets/icheck/skins/flat/red.css') }}
     {{ link_css('css/adminkit.css') }}
 @stop
 @section('footer')
-    {{ link_js('assets/icheck/icheck.min.js') }}
     {{ link_js('iboostme/wallofframe/profile.js') }}
     {{ link_js('iboostme/wallofframe/angular/FrameManageController.js') }}
     {{ link_js('iboostme/wallofframe/angular/FrameAppController.js') }}

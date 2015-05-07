@@ -129,7 +129,7 @@ return array(
 		'Laracasts\Utilities\UtilitiesServiceProvider',
 		'Lavary\Menu\ServiceProvider',
 		'Bugsnag\BugsnagLaravel\BugsnagLaravelServiceProvider',
-
+		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider'
 	),
 
 	/*
@@ -201,6 +201,7 @@ return array(
 		'Entrust'    		=> 'Zizaco\Entrust\EntrustFacade',
 		'Model' 			=> 'Way\Database\Model',
 		'Bugsnag' 			=> 'Bugsnag\BugsnagLaravel\BugsnagFacade',
-		'Image' 			=> 'Intervention\Image\Facades\Image'
+		'Image' 			=> 'Intervention\Image\Facades\Image',
+		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 	),
 );

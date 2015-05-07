@@ -10,14 +10,14 @@ class ProductPackageTableSeeder extends Seeder {
 		DB::table('product_packages')->truncate();
 
 		$frameSizes = [
-        [ 'width' => 30, 'height' => 30, 'gloss' => 120, 'matte' => 100],
-        ['width' => 40, 'height' => 100, 'gloss' => 150, 'matte' => 130],
-        ['width' => 50, 'height' => 50, 'gloss' => 190, 'matte' => 170 ],
-        [ 'width' => 60, 'height' => 60, 'gloss' => 150, 'matte' => 130 ],
-        [ 'width' => 50, 'height' => 70, 'gloss' => 180, 'matte' => 160 ],
-        [ 'width' => 70, 'height' => 70, 'gloss' => 300, 'matte' => 200 ],
-        [ 'width' => 100, 'height' => 100, 'gloss' => 400, 'matte' => 300 ],
-        [ 'width' => 200, 'height' => 100, 'gloss' => 550, 'matte' => 400]
+        [ 'width' => 30, 'height' => 30, 'price' => 120],
+        ['width' => 40, 'height' => 100, 'price' => 150],
+        ['width' => 50, 'height' => 50, 'price' => 190],
+        [ 'width' => 60, 'height' => 60, 'price' => 150],
+        [ 'width' => 50, 'height' => 70, 'price' => 180 ],
+        [ 'width' => 70, 'height' => 70, 'price' => 300],
+        [ 'width' => 100, 'height' => 100, 'price' => 400],
+        [ 'width' => 200, 'height' => 100, 'price' => 550]
     	];
 
 		foreach( $frameSizes as $size ){

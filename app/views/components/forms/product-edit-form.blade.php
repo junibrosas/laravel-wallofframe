@@ -11,10 +11,10 @@
         <label for="password">Excerpt</label>
         <textarea class="form-control" name="excerpt" ng-model="selectedProduct.excerpt" style="height: 50px" ></textarea>
     </div>
-    <div class="form-group">
+    {{--<div class="form-group">
         <label for="password">Price</label>
         <input class="form-control" type="text" name="price" ng-model="selectedProduct.price">
-    </div>
+    </div>--}}
     <div class="form-group">
         <label for="password">Views</label>
         <input class="form-control" type="text" name="views" ng-model="selectedProduct.views">

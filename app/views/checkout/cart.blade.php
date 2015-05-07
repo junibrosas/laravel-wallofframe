@@ -1,18 +1,16 @@
-@extends('...layout.default')
-@section('footer')
-    {{ link_js('iboostme/wallofframe/cart.js') }}
-@stop
+@extends('layout.default')
 @section('content')
-    <section>
+    <section ng-controller="CartController">
         <div class="container cart">
-
             <div class="row">
                 <div class="col-md-8">
+
+
                     <h2 class="side-heading">Shopping Bag</h2>
                     <div class="row">
-                        <div class="col-md-12">
+                         <div class="col-md-12">
                             @include('components.tables.table-cart')
-                        </div>
+                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -23,7 +21,7 @@
                             <div>Shipping</div>
                         </div>
                         <div class="col-xs-6 side">
-                            <div class="cart-value">{{ ngTotalAmount( $total_amount ) }}</div>
+                            <div class="cart-value">@{{ main.currencyConvert( totalAmount , main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</div>
                             <div>Free</div>
                         </div>
                     </div>
@@ -32,7 +30,7 @@
                             <div class="cart-title">Final Total</div>
                         </div>
                         <div class="col-xs-6">
-                             <div class="cart-value">{{ ngTotalAmount( $total_amount ) }}</div>
+                             <div class="cart-value">@{{ main.currencyConvert( totalAmount , main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</div>
                         </div>
                     </div>
                     @if( count($products) > 0 )
@@ -41,7 +39,9 @@
                                 <a href="{{ $continueShoppingUrl }}" class="btn btn-default btn-vivid btn-sm btn-block btn-purchase"><i class="fa fa-shopping-cart"></i> Continue Shopping</a>
                             </div>
                             <div class="col-md-6">
-                                 <a href="{{ route('checkout.shipping') }}" class="btn btn-default btn-sm btn-block btn-purchase"><i class="fa fa-check"></i> Secure Checkout</a>
+                                <button type="submit" class="btn btn-default btn-sm btn-block btn-purchase" ng-click="checkout(tableData)">
+                                    <i class="fa fa-check"></i> Secure Checkout
+                                </button>
                             </div>
                         </div>
                     @endif

@@ -13,7 +13,6 @@
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
                     <div class="cbp-l-caption-body">
-                        <div class="cbp-l-caption-title">Features</div>
                         <div class="cbp-l-caption-desc">Brands</div>
                     </div>
                 </div>
@@ -35,7 +34,7 @@
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
                     <div class="cbp-l-caption-body">
-                        <div class="cbp-l-caption-title">Styles</div>
+                        <div class="cbp-l-caption-title">Exclusive</div>
                         <div class="cbp-l-caption-desc">Fashion <br /> Illustrations</div>
                     </div>
                 </div>
@@ -51,8 +50,8 @@
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
                     <div class="cbp-l-caption-body">
-                        <div class="cbp-l-caption-title">Features</div>
-                        <div class="cbp-l-caption-desc">Cosmic <br /> Quotes</div>
+                    <div class="cbp-l-caption-title">Cosmic</div>
+                        <div class="cbp-l-caption-desc">Quotes</div>
                     </div>
                 </div>
             </div>

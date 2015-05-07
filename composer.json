@@ -17,8 +17,8 @@
 		"paypal/rest-api-sdk-php": "*",
 		"way/database": "dev-master",
 		"bugsnag/bugsnag-laravel" : "1.*",
-		"intervention/imagecache": "~2.1"
-
+		"intervention/imagecache": "~2.1",
+		"gloudemans/shoppingcart": "~1.2"
 	},
 	"require-dev": {
 	  "way/generators": "~2.0",

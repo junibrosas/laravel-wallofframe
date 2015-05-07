@@ -22,7 +22,8 @@
                         </li>
                     </ul>
                 </li>
-                <li><a class="link" href="{{ route('cart.index') }}">My Bag ({{ $bag_items }}) <i class="fa fa-shopping-cart"></i></a></li>
+
+                <li><a class="link" href="{{ route('cart.index') }}">My Bag (<span id="cart-item-count"></span>) <i class="fa fa-shopping-cart"></i></a></li>
                 @if(Auth::check())
                     <li><a class="link" href="{{ route('logout') }}">Logout</a></li>
                 @endif
@@ -50,7 +51,7 @@
                     </button>
                 </div>
 
-                
+
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
                     <ul class="nav navbar-nav ">

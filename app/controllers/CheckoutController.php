@@ -21,12 +21,12 @@ class CheckoutController extends \BaseController {
 	}
 	public function index()
 	{
-		if( $this->cartRepo->isCartEmpty() )  return Redirect::route('cart.index')->with('error', CHECKOUT_EMPTY_BAG);
+		if( Cart::count() < 1 )  return Redirect::route('cart.index')->with('error', CHECKOUT_EMPTY_BAG);
 
 		if( !$this->shippingRepo->hasAddresses( Auth::user() ))  return Redirect::route('cart.index')->with('error', CHECKOUT_EMPTY_ADDRESS);
 
-		$products = $this->cartRepo->getCartItems( Session::get('product_bag') );
-		$total_amount = $this->cartRepo->getTotalAmount( $products ); // products with quantity property
+		$products = Cart::content();
+		$total_amount = Cart::total(); // products with quantity property
 
 		$this->data['user'] = Auth::user();
 		$this->data['total_amount'] = $total_amount;
@@ -82,8 +82,7 @@ class CheckoutController extends \BaseController {
 			$repo = new TransactionRepository();
 			$repo->add(); // add a new transaction
 
-			// remove sessions
-			$this->checkoutRepo->removeSessions();
+			$this->checkoutRepo->removeSessions(); // remove sessions
 
 			return Redirect::route('customer.track.order')
 				->with('success', 'Transaction has been completed.');

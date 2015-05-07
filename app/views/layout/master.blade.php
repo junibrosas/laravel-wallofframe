@@ -22,6 +22,7 @@
     {{ link_css('assets/owl-carousel/owl.carousel.css') }}
     {{ link_css('assets/owl-carousel/owl.theme.css') }}
     {{ link_css('iboostme/js/angular/ngTable/ng-table.css') }}
+    {{ link_css('assets/icheck/skins/flat/red.css') }}
 
 
 
@@ -50,6 +51,7 @@
         {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
         {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}
         {{ link_js('assets/datatables/jquery.dataTables.min.js') }} {{--DataTables--}}
+        {{ link_js('assets/icheck/icheck.min.js') }} {{--iCheck--}}
         {{ link_js('iboostme/wallofframe/main.js') }}
 
         {{--Angular Modules--}}
@@ -74,5 +76,6 @@
 
         <!-- Components specific for this page -->
         @yield('footer')
+
     </body>
 </html>

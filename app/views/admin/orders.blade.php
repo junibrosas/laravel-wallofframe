@@ -10,7 +10,7 @@
 
             {{--Form Actions--}}
             {{ Form::open(['route'=>'admin.orders.action', 'method' => 'post' ]) }}
-            <div class="space-top-sm">
+            <div class="space-top-sm" style="padding-bottom: 50px;">
                 <div class="col-md-3 no-pad-left ">
                     <div class="form-group">
                         <select class="form-control col-md-8" name="bulk_action">
@@ -21,6 +21,7 @@
                         </select>
                     </div>
                 </div>
+                <div class="space-bottom-sm"></div>
                 <div class="col-md-9 no-right">
                       <button type="submit" name="apply" class="btn btn-default">Apply</button>
                 </div>

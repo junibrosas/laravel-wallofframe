@@ -11,27 +11,27 @@
                 <td>
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="{{ $product->present()->url }}">
-                            <img src='{{ $product->present()->image('square') }}' data-zoom-image="{{ asset('uploads/products/large/frame2.jpg') }}" class="img-responsive" width="80"/>
+                            <a href="{{ $product->options->url }}">
+                            <img src='{{ $product->options->image }}'  class="img-responsive" width="80"/>
                             </a>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div>
-                        <h6>{{ $product->present()->title }}</h6>
+                        <h6>{{ $product->name }}</h6>
                         <ul class="list-unstyled list-detail">
-                            <li>Type: {{ $product->present()->type }}</li>
-                            <li>Category: {{ $product->present()->category }}</li>
-                            <li>Size: {{ $product->present()->size }}</li>
+                            <li>Type: {{ $product->options->type }}</li>
+                            <li>Category: {{ $product->options->category }}</li>
+                            <li>Size: {{ $product->options->width .'x'.$product->options->height }}</li>
                         </ul>
                     </div>
                 </td>
                 <td class="text-center">
-                    {{ $product->quantity }}
+                    {{ $product->qty }}
                 </td>
                 <td>
-                    <div class="amount">{{ ngTotalAmount($product->present()->totalPrice( $product->quantity )) }}</div>
+                    <div class="amount">{{ ngTotalAmount($product->subtotal) }}</div>
                 </td>
             </tr>
         @endforeach

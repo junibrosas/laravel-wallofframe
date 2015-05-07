@@ -2,6 +2,9 @@
 
 @section('footer')
     {{ link_js('iboostme/wallofframe/angular/FrameAppController.js') }}
+    {{ link_js('iboostme/wallofframe/cart.js') }}
+    {{ link_js('iboostme/wallofframe/angular/CartController.js') }}
+    {{ link_js('iboostme/wallofframe/angular/TableController.js') }}
 @stop
 
 @section('layout')

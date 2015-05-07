@@ -3,6 +3,7 @@ use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 class BaseController extends Controller {
 
 	protected $data = [];
+	protected $outCurrency;
 
 	public function __construct() {
 
@@ -17,10 +18,11 @@ class BaseController extends Controller {
 
 		// data that are usable in every page.
 		$oc = Session::get('out_currency');
+		$this->outCurrency = isset( $oc ) ? $oc : 'AED';
 		JavaScript::put([
-			'out_currency' => isset($oc) ? $oc : 'AED'
+			'out_currency' => $this->outCurrency,
+			'cartTotalItems' => Cart::count()
 		]);
 		$this->data['categories'] = ProductCategory::get();
-		$this->data['bag_items'] = count(Session::get('product_bag'));
 	}
 }

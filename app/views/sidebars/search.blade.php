@@ -23,8 +23,8 @@
         <div ng-controller="PriceSliderController">
             <slider floor="0" ceiling="1000" ng-model-low="lower_price_bound" ng-model-high="upper_price_bound"></slider>
             <div class="clearfix space-xs">
-                <div class="pull-left">@{{ main.currencyConvert( lower_price_bound, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}  </div>
-                <div class="pull-right">@{{ main.currencyConvert( upper_price_bound, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }} +</div>
+                <div class="pull-left">@{{ main.currencyConvert(lower_price_bound, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }} </div>
+                <div class="pull-right">@{{ main.currencyConvert(upper_price_bound, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }} +</div>
             </div>
             {{--Price Range Values--}}
             <input type="hidden" name="price_min" value="@{{lower_price_bound}}"/>

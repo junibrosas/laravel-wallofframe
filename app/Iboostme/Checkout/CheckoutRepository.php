@@ -8,11 +8,13 @@
 
 namespace Iboostme\Checkout;
 
-
+use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 class CheckoutRepository {
+
     public function removeSessions(){
         Session::forget('billingAddress');
         Session::forget('paymentMethodId');
-        Session::forget('product_bag');
+        Cart::destroy();
     }
 } 

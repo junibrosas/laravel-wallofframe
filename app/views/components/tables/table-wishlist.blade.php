@@ -3,8 +3,8 @@
         <tr>
             <th>Item(s)</th>
             <th>Date</th>
-            <th class="text-right">Price</th>
-            <th></th>
+            {{--<th class="text-right">Price</th>--}}
+            {{--<th></th>--}}
         </tr>
         @foreach( $products as $product )
             <tr>
@@ -33,12 +33,12 @@
                 <td>
                     {{ $product->present()->wishlistDate }}
                 </td>
-                <td>
+                {{--<td>
                     <div class="amount">{{ $product->present()->priceMark }}</div>
-                </td>
-                <td style="width: 5%">
+                </td>--}}
+                {{--<td style="width: 5%">
                     <a href="{{ route('bag.add', $product->id) }}" class="btn btn-default btn-xs btn-block btn-purchase"> Add to Bag</a>
-                </td>
+                </td>--}}
             </tr>
         @endforeach
     </table>

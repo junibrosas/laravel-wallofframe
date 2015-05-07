@@ -137,8 +137,12 @@ class ProductRepository {
         if(is_null(Session::get('product_bag'))){
             Session::put('product_bag', []);
         }
+
         //compile data to be inserted in the bag item.
-        $productBag  = json_encode([$product->id, $product->package_id]);
+        $productBag =[
+            'product' => $product->id,
+            'package' => $product->package_id
+        ];
 
         Session::push('product_bag', $productBag);
         return Session::get('product_bag');

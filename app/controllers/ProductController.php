@@ -132,8 +132,29 @@ class ProductController extends \BaseController {
 		if(!$package){
 			return Redirect::back()->with('error', 'Please select a product size.');
 		}
-		$product->package_id = $package->id;
-		$this->productRepo->addToBag($product);
+
+
+		$productData = array('id' => $product->id,
+			'name' => $product->title,
+			'qty' => 1,
+			'price' => $package->price,
+			'options' => array(
+				'url' => $product->present()->url,
+				'image' => $product->present()->image('square'),
+				'width' => $package->width,
+				'height' => $package->height,
+				'category' => $product->present()->category,
+				'type' => $product->present()->type,
+				'category_slug' => $product->category->slug,
+
+			)
+		);
+
+		// add new product to the bag.
+		Cart::add( $productData );
+
+		/*$product->package_id = $package->id;
+		$this->productRepo->addToBag($product);*/
 
 		return Redirect::back()->with('success', ADDED_TO_BAG);
 	}

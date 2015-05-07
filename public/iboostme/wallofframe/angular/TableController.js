@@ -1,25 +1,17 @@
-app.controller("TableController", function($scope, NgTableParams){
-
-    $scope.$watch('initialData', function(value) {
-
-    });
+app.controller("TableController", ['$scope', 'NgTableParams', function($scope, NgTableParams){
 
     // tableData is a requirement. Each routes that uses TableController.js
     // must have a tableData variable specified.
-    var data = window.tableData;
-
-    console.log( 'Table Data length: ' + data.length + ' ' );
-    console.log( data );
-
 
     // ngTable Module Initialization
+    var ngTableData = window.tableData;
     $scope.tableParams = new NgTableParams({
         page: 1,            // show first page
         count: 10           // count per page
     }, {
-        total: data.length, // length of data
+        total: ngTableData.length, // length of data
         getData: function($defer, params) {
-            var slicedData = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
+            var slicedData = ngTableData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
             $defer.resolve(slicedData);
 
@@ -27,4 +19,8 @@ app.controller("TableController", function($scope, NgTableParams){
         }
     });
 
-});
+    $scope.removeTableItem = function(item){
+        $scope.tableData.splice($scope.tableData.indexOf(item),1);
+    }
+
+}]);

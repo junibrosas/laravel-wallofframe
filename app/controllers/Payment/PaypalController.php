@@ -1,4 +1,5 @@
 <?php namespace Payment;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Iboostme\Product\Cart\CartRepository;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
@@ -20,13 +21,15 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 use Iboostme\Transaction\TransactionRepository;
-
+use Iboostme\Checkout\CheckoutRepository;
 
 class PaypalController extends \BaseController {
 	private $_api_context;
-
-	public function __construct()
+	protected $checkoutRepo;
+	public function __construct(CheckoutRepository $checkoutRepository)
 	{
+		$this->checkoutRepo = $checkoutRepository;
+
 		// setup PayPal api context
 		$paypal_conf = Config::get('paypal');
 		$this->_api_context = new ApiContext(new OAuthTokenCredential($paypal_conf['client_id'], $paypal_conf['secret']));
@@ -37,20 +40,22 @@ class PaypalController extends \BaseController {
 		$payer = new Payer();
 		$payer->setPaymentMethod('paypal');
 
-		$cartRepo  = new CartRepository();
-		$products = $cartRepo->getCartItems( Session::get('product_bag') );
+		$products = Cart::content();
 		$items = array();
-		$total_amount = $cartRepo->getTotalAmount( $products );
+		$total_amount = Cart::total();
+		$currency = 'USD';
+
+
 
 		if($products->count() > 0){
 			// get items
-			foreach( $products as $product ){
+			foreach( $products as $i=>$product ){
 				$item = new Item();
-				$item->setName( $product->present()->title ) // item name
-				->setCurrency('USD')
-					->setQuantity( $product->quantity )
-					->setSku($product->id)
-					->setPrice( $product->price ); // unit price
+				$item->setName($product->name ) // item name
+				->setCurrency($currency)
+					->setQuantity($product->qty)
+					->setSku($product->rowid)
+					->setPrice($product->price); // unit price
 
 				$items[] = $item;
 			}
@@ -61,7 +66,7 @@ class PaypalController extends \BaseController {
 		$item_list->setItems( $items );
 
 		$amount = new Amount();
-		$amount->setCurrency('USD')
+		$amount->setCurrency($currency)
 			->setTotal($total_amount);
 
 		$transaction = new Transaction();
@@ -84,8 +89,8 @@ class PaypalController extends \BaseController {
 		} catch (\PayPal\Exception\PPConnectionException $ex) {
 			if (\Config::get('app.debug')) {
 				echo "Exception: " . $ex->getMessage() . PHP_EOL;
-				$err_data = json_decode($ex->getData(), true);
-				trace($err_data);
+				/*$err_data = json_decode($ex->getData(), true);
+				trace($err_data);*/
 				exit;
 			} else {
 				die('Some error occur, sorry for inconvenient');
@@ -138,9 +143,9 @@ class PaypalController extends \BaseController {
 
 		if ($result->getState() == 'approved') { // payment made
 
-			// process payment
-			$this->saveTransaction( json_decode($result) );
-			$this->removeSessions();
+			$this->saveTransaction( json_decode($result) ); // process payment
+
+			$this->checkoutRepo->removeSessions(); // remove sessions and destroy cart
 
 			return Redirect::route('customer.track.order')
 				->with('success', 'Payment success');
@@ -153,11 +158,5 @@ class PaypalController extends \BaseController {
 		$repo = new TransactionRepository();
 		$data['payment_response'] = json_encode( $result );
 		$repo->add( $data );
-	}
-
-	private function removeSessions(){
-		Session::forget('billingAddress');
-		Session::forget('paymentMethodId');
-		Session::forget('product_bag');
 	}
 }

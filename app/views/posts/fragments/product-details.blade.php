@@ -5,8 +5,7 @@
         <h4 class="title"><a href="{{ $product->present()->url }}">{{ $product->present()->title }} <span>@{{ currentSize.width +'x'+currentSize.height }}</span></a></h4>
         <div class="subhead">{{ $product->present()->type }}</div>
     </div>
-    <div class="price"><span class="title">Glossy</span> <a href="#"><i class="fa fa-tag"></i> @{{ main.currencyConvert(currentSize.gloss, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</a></div>
-    <div class="price"><span class="title">Matte</span> <a href="#"><i class="fa fa-tag"></i> @{{ main.currencyConvert(currentSize.matte, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</a></div>
+    <div class="price"><a href="#"><i class="fa fa-tag"></i> @{{main.currencyConvert(currentSize.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }} </a></div>
 </div>
 <div class="description">
     {{ Str::limit($product->present()->content, 280  ) }}

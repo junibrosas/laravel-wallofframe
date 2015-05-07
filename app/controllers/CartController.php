@@ -1,6 +1,7 @@
 <?php
 use Iboostme\Product\ProductRepository;
 use Iboostme\Product\Cart\CartRepository;
+use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 class CartController extends \BaseController {
 	public $productRepo;
 	public $cartRepo;
@@ -13,11 +14,48 @@ class CartController extends \BaseController {
 	// Display the cart
 	public function index()
 	{
-		if( $this->cartRepo->isCartEmpty() ){
+		if(Cart::count() <= 0){
+			// add empty values for the variables
+			Javascript::put([
+				'tableData' => []
+			]);
+			$this->data['products'] = [];
+			$this->data['total_amount'] = Cart::total();
+			return View::make('checkout.cart', $this->data);
+		}
+
+
+		$products = Cart::content();
+		$total_amount = Cart::total(); // products with quantity property
+
+		$this->data['products'] = $products;
+		$this->data['total_amount'] = $total_amount;
+		$routeUrl = route('home.index');
+
+		// backing url used in the 'continue shopping' button
+		if($products->first()->options){
+			$routeUrl = route('category', $products->first()->options->category_slug);
+		}
+
+		$productItems = array();
+		foreach($products as $product){
+			$productItems[] = $product;
+ 		}
+
+		// add data to the table
+		Javascript::put([
+			'cartItems' => $productItems,
+		]);
+		$this->data['continueShoppingUrl'] = $routeUrl;
+		return View::make('checkout.cart', $this->data);
+
+		/*if( $this->cartRepo->isCartEmpty() ){
 			$this->data['products'] = [];
 			$this->data['total_amount'] = 0;
 			return View::make('checkout.cart', $this->data);
 		}
+
+
 		$products = $this->cartRepo->getCartItems( Session::get('product_bag') );
 		$total_amount = $this->cartRepo->getTotalAmount( $products ); // products with quantity property
 
@@ -30,33 +68,41 @@ class CartController extends \BaseController {
 		}
 		$this->data['continueShoppingUrl'] = $routeUrl;
 
-		return View::make('checkout.cart', $this->data);
+		return View::make('checkout.cart', $this->data);*/
 	}
 
 	// Remove an item in the cart
 	public function removeItem(){
-		$product = Product::findOrFail( Input::get('product') );
+		$id = Input::get('rowid');
 
 		//remove an item
-		$bag = $this->cartRepo->removeItem(
-			Session::get('product_bag'),
-			$product);
-
-		Session::put('product_bag', $bag); // refresh the bag.
+		Cart::remove($id);
 
 		return Redirect::back()->with('success', CART_ITEM_REMOVE);
 	}
 
+	// Update the items of the cart
+	public function update(){
+		$products = Input::get('products');
+		if(count($products) > 0){
+			foreach($products as $product){
+				Cart::update($product['rowid'], $product);
+			}
+		}
+	}
+
 	// Change the quantity of an item in the cart
 	public function changeQuantity(){
-		$product = Product::findOrFail( Input::get('product') );
+		$id = Input::get('rowid');
+		$quantity = Input::get('qty');
 
-		$bag = $this->cartRepo->changeQuantity(
-				Session::get('product_bag'),
-				Input::get('quantity') + 1,
-				$product);
+		$isUpdated = Cart::update($id, $quantity);
+		if(!$isUpdated){
+			// is not updated
+		}
 
-		Session::put('product_bag', $bag); // refresh the bag.
+		return Cart::get($id);
+
 
 		return Redirect::back()->with('success', CART_QUANTITY_CHANGED);
 	}

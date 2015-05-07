@@ -25,7 +25,7 @@
                         <li>Size: @{{ product.size }}</li>
                     </ul>
                 </td>
-                <td class="text-right"> <small>@{{ main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</small> </td>
+                <td class="text-right"> <small>@{{main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</small> </td>
             </tr>
         </tbody>
     </table>

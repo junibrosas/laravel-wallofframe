@@ -10,7 +10,6 @@ Route::group( ['prefix' => '/'], function () {
     Route::get('brands', ['as' => 'brands', 'uses' => 'ProductController@getBrands' ]);
     Route::get('brands/{id}/{slug}', ['as' => 'brand', 'uses' => 'ProductController@getByBrands' ]);
     Route::post('changeCurrency', ['as' => 'currency.change', 'uses' => 'ProductController@getCurrencyAndChange' ]);
-
 });
 
 // Product Search

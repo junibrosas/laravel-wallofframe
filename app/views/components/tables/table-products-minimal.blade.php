@@ -9,7 +9,7 @@
     <tbody>
         <tr ng-repeat="product in transaction.products">
             <td>@{{ product.title }}</td>
-            <td> <small>@{{ main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</small> </td>
+            <td> <small>@{{main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</small> </td>
             <td>
                 <input type="text" ng-model="product.quantity" ng-init="product.quantity = 1" class="form-control"  onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
             </td>

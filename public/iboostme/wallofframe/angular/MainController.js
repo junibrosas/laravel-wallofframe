@@ -29,7 +29,7 @@ app.config(['flowFactoryProvider', function (flowFactoryProvider, $scope, $flow)
 }]);
 
 
-app.controller("MainController", ['currencyConverter', '$http', function(currencyConverter, $http) {
+app.controller("MainController", ['currencyConverter', '$http', 'ngCartItems','$scope', '$interval', function(currencyConverter, $http, ngCartItems, $scope, $interval) {
     this.quantity = 1;
     this.cost = 0;
     this.inCurrency = 'AED';
@@ -37,6 +37,13 @@ app.controller("MainController", ['currencyConverter', '$http', function(currenc
     this.currencies = currencyConverter.currencies;
 
     console.log('Current Currency: ' + this.outCurrency);
+
+    $interval(function() {
+        console.log(ngCartItems.getTotalItems());
+        $scope.totalCartItems = ngCartItems.getTotalItems();
+        $('#cart-item-count').html(ngCartItems.getTotalItems());
+    },1000);
+
 
     this.getTotal = function total(outCurrency) {
         return currencyConverter.convert(this.quantity * this.cost, this.inCurrency, outCurrency);
@@ -59,6 +66,7 @@ app.controller("MainController", ['currencyConverter', '$http', function(currenc
                 console.log(data);
             });
     }
+
 }]);
 
 app.controller("ProductListingController", function( $http, $scope ){
@@ -78,3 +86,4 @@ function onFileAdded(file) {
 
 //// or $event.preventDefault(); depends how you use this function, in scope events or in directive
 }
+

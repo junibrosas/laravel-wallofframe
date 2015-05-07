@@ -5,7 +5,6 @@ class ProductPackage extends \Eloquent {
 	protected $fillable = [
 		'width',
 		'height',
-		'gloss',
-		'matte'
+		'price',
 	];
 }

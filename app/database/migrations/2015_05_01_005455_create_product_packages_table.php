@@ -16,8 +16,7 @@ class CreateProductPackagesTable extends Migration {
 			$table->increments('id');
 			$table->integer('width');
 			$table->integer('height');
-			$table->decimal('gloss', 5, 2);
-			$table->decimal('matte', 5, 2);
+			$table->decimal('price', 5, 2);
 
 			$table->timestamps();
 			$table->softDeletes();
