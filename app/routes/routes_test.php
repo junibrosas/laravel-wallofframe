@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Session;
 Route::get('test', function(){
     //trace($this->outCurrency);
     //Cart::destroy();
-    $transaction = Transaction::find(6);
+    /*$transaction = Transaction::find(6);
     $products = json_decode($transaction->products);
     foreach($products as $product){
         trace($product->name);
-    }
+    }*/
+
+    trace( Hash::make('homestead') );
 });

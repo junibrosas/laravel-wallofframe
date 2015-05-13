@@ -1,40 +1,164 @@
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en-gb" class="no-js"> <!--<![endif]-->
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Coming Soon | Wall Of Frame</title>
-{{ link_css('css/503.css') }}
-{{ link_js('js/jquery.js') }}
-{{ link_js('js/cufon-yui.js') }}
-{{ link_js('js/Akzidenz-Grotesk_BQ_500-Akzidenz-Grotesk_BQ_500-Akzidenz-Grotesk_BQ_italic_700.font.js') }}
-{{ link_js('js/FontSoupGerman_700.font.js') }}
-{{ link_js('js/Gotham_Rounded_Medium_350.font.js') }}
+	<title>Coming Soon | Wall Of Frame</title>
+	
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+    
+    <!-- Favicon --> 
+	<link rel="shortcut icon" href="images/favicon.ico">
+    
+    <!-- this styles only adds some repairs on idevices  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google fonts - witch you want to use - (rest you can just remove) -->
+   	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    
+    <!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    
+    <!-- ######### CSS STYLES ######### -->
+	
+    <link rel="stylesheet" href="503/css/reset.css" type="text/css" />
+	<link rel="stylesheet" href="503/css/style.css" type="text/css" />
+    
+    <link rel="stylesheet" href="503/css/font-awesome/503/css/font-awesome.min.css">
+    
+    <!-- animations -->
+    <link href="503/js/animations/503/css/animations.min.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <!-- responsive devices styles -->
+	<link rel="stylesheet" media="screen" href="503/css/responsive-leyouts.css" type="text/css" />
+    
+    <!-- shortcodes -->
+    <link rel="stylesheet" media="screen" href="503/css/shortcodes.css" type="text/css" /> 
+    
+    <link rel="stylesheet" media="screen" href="503/js/comingsoon/csoon.css" type="text/css" /> 
+	
+    <script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="503/js/comingsoon/jquery.bcat.bgswitcher.js"></script>
+    
+    
+    <script>
+    $(document).ready(function() {
+      //Callback works only with direction = "down"
+      $('.flipTimer').flipTimer({ direction: 'down', date: 'May 20, 2015 00:00:00', callback: function() { alert('times up!'); } });
+    });
+  </script>
+    
+    
+</head>
+
+<body>
+
+<div id="bg-body">
+</div><!--end -->
+
 <script type="text/javascript">
-	Cufon.replace('.logo h1', {fontFamily: 'FontSoupGerman'});
-	Cufon.replace('.logo span', {fontFamily: 'Gotham Rounded Medium'});
-	Cufon.replace('h2 strong', {fontFamily: 'Akzidenz-Grotesk BQ'});
-	Cufon.replace('h2 span', {fontFamily: 'Akzidenz-Grotesk BQ'});
+var srcBgArray = ["./503/js/comingsoon/img-slider-1.jpg","./503/js/comingsoon/img-slider-2.jpg","./503/js/comingsoon/img-slider-3.jpg"];
+
+$(document).ready(function() {
+  $('#bg-body').bcatBGSwitcher({
+    urls: srcBgArray,
+    alt: 'Full screen background image',
+    links: true,
+    prevnext: true
+  });
+});
+</script><!--end of bg-body script-->
+
+<script>
+function validateForm() {
+    var x = document.forms["myForm"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        alert("Not a valid e-mail address");
+        return false;
+    }
+}
 </script>
 
-</head>
-<body>
-<div id="wrapper">
-	<div class="main_content">
-		<div class="uppersection">
-			<div class="logo"><h1>wtf</h1><span>we.the.fashion</span></div>
-			<h2><strong>Coming Soon</strong> <br/>to redefine the <span>'fashion'</span></h2>
-			<p>Etiam ut eros est, quis ornare dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-		</div>
-		<ul class="social">
-			<li><a href="#" class="fb">Facebook</a></li>
-			<li><a href="#" class="tw">Twitter</a></li>
-			<li><a href="#" class="google">Google+</a></li>
-			<li><a href="#" class="insta">Instagram</a></li>
-			<li><a href="#" class="skype">Skype</a></li>
-			<li><a href="#" class="vimeo">Vimeo</a></li>
-		</ul>
-	</div>
+
+<div class="site_wrapper">
+
+<div class="comingsoon_page">
+<div class="container">
+	
+    <div class="topcontsoon">
+    
+    	<img src="img/logo-white.png" alt="" />
+        
+        <div class="clearfix"></div>
+        
+        <h5>We're Launching Soon</h5>
+        
+    </div><!-- end section -->
+        
+    <div class="countdown_dashboard">
+      
+        <div class="flipTimer">
+        
+            <div class="days"></div>
+            
+            <div class="hours"></div>
+            
+            <div class="minutes"></div>
+            
+            <div class="seconds"></div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="fttext">DAYS</div>
+            <div class="fttext">HRS</div>
+            <div class="fttext">MIN</div>
+            <div class="fttext">SEC</div>
+            
+        </div>
+        
+		
+    </div><!-- end section -->
+    
+    
+    <div class="clearfix"></div>
+    
+    <div class="socialiconssoon">
+    	
+        <p>Our website is under construction. We'll be here soon with our new awesome site. Get best experience with this one.</p>
+        
+        <div class="clearfix margin_top3"></div>
+
+        <div class="clearfix"></div>
+        <div class="margin_top3"></div>
+
+        <a href="https://www.facebook.com/profile.php?id=152956851568721&fref=ts"><i class="fa fa-facebook"></i></a>
+        <a href="http://www.twitter.com/echobeatsAE"><i class="fa fa-twitter"></i></a>
+        
+	
+    </div><!-- end section -->
+
 </div>
+</div>
+
+</div>
+
+    
+<!-- ######### JS FILES ######### -->
+<script type="text/javascript" src="503/js/comingsoon/jquery.flipTimer.js"></script>
+
+<!-- animations -->
+<script src="503/js/animations/503/js/animations.min.js" type="text/javascript"></script>
+
+
 </body>
 </html>
