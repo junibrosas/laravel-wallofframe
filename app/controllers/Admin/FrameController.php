@@ -123,6 +123,7 @@ class FrameController extends \BaseController {
             'types' => ProductType::get(),
             'frame_part' => 'designs',
         ]);
+
         return View::make('admin.frame-upload', $this->data);
     }
 

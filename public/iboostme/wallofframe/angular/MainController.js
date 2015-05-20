@@ -39,7 +39,6 @@ app.controller("MainController", ['currencyConverter', '$http', 'ngCartItems','$
     console.log('Current Currency: ' + this.outCurrency);
 
     $interval(function() {
-        console.log(ngCartItems.getTotalItems());
         $scope.totalCartItems = ngCartItems.getTotalItems();
         $('#cart-item-count').html(ngCartItems.getTotalItems());
     },1000);

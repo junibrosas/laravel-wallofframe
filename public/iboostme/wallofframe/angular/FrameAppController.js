@@ -136,6 +136,7 @@ app.controller("BorderGeneratorController", ['$scope', function( $scope){
     }
 }]);
 
+
 // DIRECTIVES
 // THIS DIRECTIVE WILL CENTER THE IMAGE DEPENDING ON ITS CONTAINER.
 app.directive('imagecenter', function() {

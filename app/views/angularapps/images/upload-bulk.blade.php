@@ -1,5 +1,4 @@
 <div
-
     flow-init
     flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
     {{--flow-files-submitted="$flow.upload()"--}}

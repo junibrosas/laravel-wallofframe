@@ -1,5 +1,8 @@
 @extends('layout.profile')
+@section('footer')
+    @parent
 
+@stop
 @section('content')
     <div class="row">
         <div class="col-md-12">

@@ -55,10 +55,7 @@
       $('.flipTimer').flipTimer({ direction: 'down', date: 'May 20, 2015 00:00:00', callback: function() { alert('times up!'); } });
     });
   </script>
-    
-    
 </head>
-
 <body>
 
 <div id="bg-body">

@@ -4,6 +4,7 @@ Route::group( [ 'namespace' => 'Admin' ], function () {
     Route::post('contact/send', [ 'before' => 'csrf', 'as' => 'contacts.create', 'uses' => 'ContactController@create' ]);
 } );
 
+// Administrator Routes
 Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'namespace' => 'Admin' ], function (){
     //Dashboard
     Route::get('account', ['as' => 'admin.dashboard.index', 'uses' => 'DashboardController@index' ]);
@@ -24,6 +25,8 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     Route::post('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@postCreateFrameBorder']);
     Route::post('frame-border/manage', ['as' => 'admin.frame.border.manage', 'uses' => 'FrameController@postManageFrameBorders']);
     Route::post('frame-border/store', ['as' => 'admin.frame.border.store', 'uses' => 'FrameController@postStoreFrameBorder']);
+
+
 
     Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);
