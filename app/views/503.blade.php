@@ -52,7 +52,7 @@
     <script>
     $(document).ready(function() {
       //Callback works only with direction = "down"
-      $('.flipTimer').flipTimer({ direction: 'down', date: 'May 20, 2015 00:00:00', callback: function() { alert('times up!'); } });
+      $('.flipTimer').flipTimer({ direction: 'down', date: 'May 26, 2015 00:00:00', callback: function() { alert('times up!'); } });
     });
   </script>
 </head>
