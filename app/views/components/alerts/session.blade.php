@@ -22,3 +22,9 @@
 		</ul>
 	</div>
 @endif
+
+{{-- Ajax Response--}}
+<div class="alert alert-sm alert-dismissable  space-sm" role="alert" id="ajax-response" style="display:none;">
+	<a class="panel-close close" data-dismiss="alert">×</a>
+	<b id="ajax-response-message"></b>
+</div>

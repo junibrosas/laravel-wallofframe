@@ -18,7 +18,8 @@
 		"way/database": "dev-master",
 		"bugsnag/bugsnag-laravel" : "1.*",
 		"intervention/imagecache": "~2.1",
-		"gloudemans/shoppingcart": "~1.2"
+		"gloudemans/shoppingcart": "~1.2",
+		"bllim/laravalid": "dev-laravel4"
 	},
 	"require-dev": {
 	  "way/generators": "~2.0",

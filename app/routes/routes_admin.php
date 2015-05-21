@@ -13,20 +13,24 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     Route::get('customers', ['as' => 'admin.customers', 'uses' => 'CustomerController@index' ]);
 
     // Frame Application
-    Route::get('frame-app', ['as' => 'admin.frameApp.manage', 'uses' => 'FrameController@getFrameApplication']);
+    Route::get('frame-app', ['as' => 'admin.frameApp.manage', 'uses' => 'FrameController@getApplication']);
 
     // Frame Design
-    Route::get('frame-design', ['as' => 'admin.design.manage', 'uses' => 'FrameController@getFrameDesign']);
+    Route::get('frame-design', ['as' => 'admin.design.manage', 'uses' => 'FrameController@getDesigns']);
     Route::get('design/upload', ['as' => 'admin.design.upload', 'uses' => 'FrameController@uploadFrameParts']);
 
     // Frame Border
-    Route::get('frame-border', ['as' => 'admin.frame.border', 'uses' => 'FrameController@getFrameBorder']);
+    Route::get('frame-border', ['as' => 'admin.frame.border', 'uses' => 'FrameController@getBorders']);
     Route::get('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@uploadFrameBorder']);
     Route::post('frame-border/create', ['as' => 'admin.frame.border.create', 'uses' => 'FrameController@postCreateFrameBorder']);
     Route::post('frame-border/manage', ['as' => 'admin.frame.border.manage', 'uses' => 'FrameController@postManageFrameBorders']);
     Route::post('frame-border/store', ['as' => 'admin.frame.border.store', 'uses' => 'FrameController@postStoreFrameBorder']);
 
-
+    // Frame Sizes
+    Route::get('frame-sizes', ['as' => 'admin.frame.sizes', 'uses' => 'FrameSizeController@index']);
+    Route::post('sizes/add', ['as' => 'admin.frame.sizes.add', 'uses' => 'FrameSizeController@store']);
+    Route::post('sizes/update', ['as' => 'admin.frame.sizes.update', 'uses' => 'FrameSizeController@update']);
+    Route::post('sizes/actions', ['as' => 'admin.frame.sizes.actions', 'uses' => 'FrameSizeController@postActions']);
 
     Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);

@@ -4,8 +4,8 @@
     {{ HTML::menu_active('admin.customers', 'Customers', array(), ['class'=>'page-scroll']) }}
     {{ HTML::menu_active('contacts.index', 'Inbox', array(), ['class'=>'page-scroll']) }}
     {{ HTML::menu_active('admin.orders', 'Orders', array(), ['class'=>'page-scroll']) }}
-    {{ HTML::menu_active('admin.design.manage', 'Frame Designs', array(), ['class'=>'page-scroll']) }}
-    {{--{{ HTML::menu_active('admin.frameApp.manage', 'Frame Application', array(), ['class'=>'page-scroll']) }}--}}
-    {{ HTML::menu_active('admin.frame.border', 'Frame Borders', array(), ['class'=>'page-scroll']) }}
+    {{ HTML::menu_active('admin.design.manage', 'Designs', array(), ['class'=>'page-scroll']) }}
+    {{ HTML::menu_active('admin.frame.border', 'Borders', array(), ['class'=>'page-scroll']) }}
+    {{ HTML::menu_active('admin.frame.sizes', 'Sizes', array(), ['class'=>'page-scroll']) }}
 
 </ul>

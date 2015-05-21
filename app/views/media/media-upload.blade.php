@@ -1,67 +1,54 @@
 @extends('layout.admin')
+@section('footer')
+    @parent
+    {{ link_js('js/ng/ngMedia.js') }}
+@stop
 @section('content')
-    <div class="MediaController" flow-init>
-        <div flow-prevent-drop
-              flow-drag-enter="style={border: '5px solid green'}"
-              flow-drag-leave="style={}"
-              ng-style="style">
-            <div class="alert drag-drop-box" flow-drop flow-drag-enter="class='alert-success'" flow-drag-leave="class=''" ng-class="class">
-                Drag And Drop your file here
+    <div >
+        <div>
+            <div ng-controller="MediaFlowController"
+                flow-init
+                flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+                flow-files-submitted="$flow.upload()">
+
+                <div class="space-sm">
+                    <div class="pull-left">
+                        <button class="btn btn-success btn-xs" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select Images</button>
+                        <button class="btn btn-danger btn-xs" ng-show="$flow.files.length" ng-click="$flow.cancel()">Remove All</button>
+                    </div>
+                    <a href="{{ route('admin.design.manage') }}" class="btn btn-default btn-xs pull-right">Manage Designs</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="alert drag-drop-box" flow-drop flow-drag-enter="class='alert-success'" flow-drag-leave="class=''"
+                    flow-prevent-drop
+                    flow-drag-enter="style={border: '5px solid green'}"
+                    flow-drag-leave="style={}"
+                    ng-class="class">
+                    Drag And Drop your files here
+                </div>
+                <p style="font-size: 12px;">{{ FILE_IMAGE_WARNING }}</p>
+
+                <div id="error-notify" class="alert alert-success alert-sm alert-dismissable  space-sm" role="alert" style="display:none;">
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                    <b>File size exceeds the limit.</b>
+                </div>
+
+                <div class="row" flow-transfers>
+                    <div class="col-md-3 space-bottom-sm" ng-repeat="file in transfers">
+                        <div class="thumbnail" ng-hide="$flow.files.length">
+                            <img src="http://www.placehold.it/800x400/EFEFEF/AAAAAA&text=no+image" />
+                        </div>
+                        <div class="thumbnail" ng-show="$flow.files.length">
+                            <img flow-img="$flow.files[$index]" />
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="12" aria-valuemax="100" style="width: @{{ file.progress() * 100 }}%;"></div>
+                        </div>
+                        <div class="label" ng-attr-id="flow-item-@{{$index}}"></div>
+                        <button class="btn btn-danger btn-xs" ng-show="$flow.files.length" ng-click="file.cancel()">Remove</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <a class="btn btn-small btn-success" ng-click="$flow.resume()">Upload</a>
-        <a class="btn btn-small btn-danger" ng-click="$flow.pause()">Pause</a>
-        <a class="btn btn-small btn-info" ng-click="$flow.cancel()">Cancel</a>
-        <span class="label label-info">Size: @{{$flow.getSize()}}</span>
-        <span class="label label-info">Is Uploading: @{{$flow.isUploading()}}</span>
-        <table class="table table-hover table-bordered table-striped" flow-transfers>
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Size</th>
-                    <th>Relative Path</th>
-                    <th>Unique Identifier</th>
-                    <th>#Chunks</th>
-                    <th>Progress</th>
-                    <th>Paused</th>
-                    <th>Uploading</th>
-                    <th>Completed</th>
-                    <th>Settings</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="file in transfers">
-            <td>@{{$index+1}}</td>
-            <td>@{{file.name}}</td>
-            <td>@{{file.size}}</td>
-            <td>@{{file.relativePath}}</td>
-            <td>@{{file.uniqueIdentifier}}</td>
-            <td>@{{file.chunks.length}}</td>
-            <td>@{{file.progress()}}</td>
-            <td>@{{file.paused}}</td>
-            <td>@{{file.isUploading()}}</td>
-            <td>@{{file.isComplete()}}</td>
-            <td>
-            <div class="btn-group">
-            <a class="btn btn-mini btn-warning" ng-click="file.pause()" ng-hide="file.paused">
-            Pause
-            </a>
-            <a class="btn btn-mini btn-warning" ng-click="file.resume()" ng-show="file.paused">
-            Resume
-            </a>
-            <a class="btn btn-mini btn-danger" ng-click="file.cancel()">
-            Cancel
-            </a>
-            <a class="btn btn-mini btn-info" ng-click="file.retry()" ng-show="file.error">
-            Retry
-            </a>
-            </div>
-            </td>
-            </tr>
-            </tbody>
-        </table>
-
-
     </div>
 @stop

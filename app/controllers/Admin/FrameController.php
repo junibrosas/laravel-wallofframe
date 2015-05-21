@@ -51,7 +51,7 @@ class FrameController extends \BaseController {
     }
 
     // frame design view
-    public function getFrameDesign(){
+    public function getDesigns(){
         $status = Input::get('status') ? Input::get('status') : '';
         JavaScript::put([
             'productDeleteUrl' => route('admin.frame.delete'),
@@ -69,7 +69,7 @@ class FrameController extends \BaseController {
     }
 
     // frame application view
-    public function getFrameApplication(){
+    public function getApplication(){
         $product = Product::first(); // get the product
         JavaScript::put([
             'square_image' => urlencode($product->present()->image('square')),
@@ -83,7 +83,7 @@ class FrameController extends \BaseController {
     }
 
     // frame border view
-    public function getFrameBorder(){
+    public function getBorders(){
         $status = Input::get('status'); $frameBorder = new FrameBorder();
         $frameData = ProductFrame::orderBy('created_at', 'desc')->withTrashed()->get();
         $frameGroup = $frameBorder->tabItems($frameData);
@@ -167,21 +167,6 @@ class FrameController extends \BaseController {
         $this->image_name = Str::random(20).'.jpg'; // image name
         $oldImageFile = '';
         $img = Image::make( $_FILES['file']['tmp_name']  ); // create image object
-
-        //frame
-        /*if( $frameData['part'] == $this->parts[1] ){
-            $path = 'uploads/products/frames/'.$frameData['size_type'].'/'; // path of original image
-            $img->save( public_path($path.$this->image_name) );
-
-            $frame = new ProductFrame();
-            $frame->image = $this->image_name;
-            $frame->save();
-
-            return [
-                'part' => $frameData['part'],
-                'part_image' => asset($path.$this->image_name)
-            ];
-        }*/
 
         //background
         if( $frameData['part'] == $this->parts[2] ){
@@ -292,7 +277,7 @@ class FrameController extends \BaseController {
         $selectedFrames = Input::get('selectedFrames');
 
         if(!$selectedFrames){
-            return Redirect::back()->with('error', 'No frames has been selected.');
+            return Redirect::back()->with('error', NO_ITEMS_SELECTED);
         }
         if(in_array($bulkAction,['activate', 'deactivate'])){
             $frames = ProductFrame::whereIn('id', $selectedFrames)->get();
@@ -312,10 +297,10 @@ class FrameController extends \BaseController {
             });
 
         }else{
-            return Redirect::back()->with('error', 'No action has been selected.');
+            return Redirect::back()->with('error', NO_ACTION_SELECTED);
         }
 
-        return Redirect::back()->with('success', 'Successfully done.');
+        return Redirect::back()->with('success', DONE);
     }
 
     public function postSaveSelection(){
