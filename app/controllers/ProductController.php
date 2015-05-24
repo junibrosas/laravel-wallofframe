@@ -16,7 +16,7 @@ class ProductController extends \BaseController {
 	public function index($id, $slug = ''){
 		$product = $this->productRepo->find($id); // get the product
 		$products = Product::orderby(DB::raw('RAND()'))->take(10)->get();
-		$this->productRepo->setView($id); // set a unique view
+		//$this->productRepo->setView($id); // set a unique view
 
 		$this->data['products'] = $products; // related products
 		$this->data['pageTitle'] = $product->present()->title;

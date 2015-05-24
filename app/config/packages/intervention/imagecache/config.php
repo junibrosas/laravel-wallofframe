@@ -32,7 +32,7 @@ return array(
     
     'paths' => array(
         public_path('uploads/products/frames/'),
-        public_path('uploads/products/designs/original/')
+        public_path('uploads/attachments/')
     ),
 
     /*

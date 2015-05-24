@@ -110,7 +110,7 @@ class ProductPresenter extends Presenter{
 
     // url based image manipulation cache through Intervention Image
     public function imageCachePreview(){
-        return url('images/frame-preview/'.$this->entity->image);
+        return url('images/frame-preview/'.$this->entity->filename);
     }
 
     public function imageCacheSquare(){

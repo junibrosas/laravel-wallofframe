@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-12">
 
-                    @include('posts.fragments.related')
+                    {{--@include('posts.fragments.related')--}}
 
                 </div>
             </div>
