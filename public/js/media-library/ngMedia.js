@@ -31,7 +31,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
     });*/
     $(document).on('opened', '.remodal', function () {
         if($scope.mediaItems.length <= 0){
-            $http.get('/media/modal').
+            $http.get(mainApp.baseUrl+'/media/modal').
                 success(function(data, status, headers, config) {
                     // add media items from response.
                     $scope.mediaItems = data;
