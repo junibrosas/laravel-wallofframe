@@ -48,7 +48,7 @@ app.controller("FlowController", function($scope){
 });
 
 app.controller("FrameUploadController", function($http, $scope){
-    $http.post('/admin/upload-config', {}).
+    $http.post(mainApp.baseUrl+'/admin/upload-config', {}).
         success(function(data, status, headers, config) {
             $scope.showLoader = false;
             $scope.categories = data.categories;
@@ -291,7 +291,7 @@ app.controller("FrameSizeController", function($http, $scope) {
             height: size.height,
             price: size.price
         };
-        $http.post('/admin/sizes/add', $scope.size ).
+        $http.post(mainApp.baseUrl+'/admin/sizes/add', $scope.size ).
             success(function(data, status, headers, config) {
                 $scope.errors = data.errors;
                 if(data.errors !== undefined){
@@ -309,7 +309,7 @@ app.controller("FrameSizeController", function($http, $scope) {
     // submit edited form
     $scope.submitEdit = function(){
 
-        $http.post('/admin/sizes/update', $scope.size ).
+        $http.post(mainApp.baseUrl+'/admin/sizes/update', $scope.size ).
             success(function(data, status, headers, config) {
                 $scope.errors = data.errors;
                 if(data.errors !== undefined){

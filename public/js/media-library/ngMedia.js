@@ -47,7 +47,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
     $scope.getMediaItems = function(){
         var modal = $.remodal.lookup[$('[data-remodal-id=mediaModal]').data('remodal')];
 
-        $http.post('/media/items', { items: $scope.mediaIds }).
+        $http.post(mainApp.baseUrl+'/media/items', { items: $scope.mediaIds }).
             success(function(data, status, headers, config) {
 
                 // add media items from response.
