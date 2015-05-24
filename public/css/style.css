@@ -1060,7 +1060,7 @@ form label { font-weight: bold;}
 #browse-pages .active { background-color: #252525; color: #fff; padding: 5px; }
 .home-icon { font-size: 20px !important; }
 
-.drag-drop-box { min-height: 50px; border: 2px dashed #ccc; }
+.drag-drop-box { min-height: 50px; border: 2px dashed #ccc;}
 .frame-upload { }
 .frame-upload .progress { height: 10px; }
 .frame-upload .thumbnail { margin-bottom: 10px; }
@@ -1107,6 +1107,11 @@ select.form-control { border-radius: 0; }
     border: 1px solid #ccc;
     padding-top: 20px;
 }
+.square-thumb {
+    width: 150px;
+    height: 150px;
+}
+
 .cbp-item-wrapper {   padding: 11px; }
 .form-group .label-danger { }
 /*cloacking angular scripts*/

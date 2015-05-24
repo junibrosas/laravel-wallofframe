@@ -53,6 +53,9 @@ $(function() {
         });
     }
 
+    //nail thumb
+    $('.nailthumb-container').nailthumb();
+
 });
 
 // Highlight the top nav as scrolling occurs

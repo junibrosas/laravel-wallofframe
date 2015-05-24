@@ -12,12 +12,10 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     // Customers
     Route::get('customers', ['as' => 'admin.customers', 'uses' => 'CustomerController@index' ]);
 
-    // Frame Application
-    Route::get('frame-app', ['as' => 'admin.frameApp.manage', 'uses' => 'FrameController@getApplication']);
-
     // Frame Design
     Route::get('frame-design', ['as' => 'admin.design.manage', 'uses' => 'FrameController@getDesigns']);
-    Route::get('design/upload', ['as' => 'admin.design.upload', 'uses' => 'FrameController@uploadFrameParts']);
+    //Route::get('design/upload', ['as' => 'admin.design.upload', 'uses' => 'FrameController@uploadFrameParts']);
+
 
     // Frame Border
     Route::get('frame-border', ['as' => 'admin.frame.border', 'uses' => 'FrameController@getBorders']);
@@ -32,12 +30,20 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     Route::post('sizes/update', ['as' => 'admin.frame.sizes.update', 'uses' => 'FrameSizeController@update']);
     Route::post('sizes/actions', ['as' => 'admin.frame.sizes.actions', 'uses' => 'FrameSizeController@postActions']);
 
-    Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);
+    /*Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);*/
+
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);
     Route::post('frame/update', ['as' => 'admin.frame.update', 'uses' => 'FrameController@postUpdateProduct']);
     Route::post('frame/delete', ['as' => 'admin.frame.delete', 'uses' => 'FrameController@postDeleteProduct']);
-    Route::post('part/delete', ['as' => 'admin.part.delete', 'uses' => 'FrameController@postFramePartDelete']);
+    Route::post('part/delete', ['as' => 'admin.part.delete', 'uses' => 'FrameController@postFrameDelete']);
     Route::post('part/activate', ['as' => 'admin.part.activate', 'uses' => 'FrameController@postFramePartActivation']);
+
+
+
+    // Frame Upload
+    Route::get('design/upload', ['as' => 'admin.design.upload', 'uses' => 'FrameUploadController@index']);
+    Route::post('design-upload', ['as'=>'admin.design.store', 'uses' => 'FrameUploadController@store']);
+    Route::post('upload-config', ['as' => 'frame.upload.config', 'uses' => 'FrameUploadController@config']);
 });
 
 //Contact

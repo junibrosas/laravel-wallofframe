@@ -7,6 +7,7 @@ use Product;
 use ProductBrand;
 use ProductType;
 use ProductStatus;
+use ProductCategory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,8 @@ use ProductFrame;
 use ProductBackground;
 use ProductPackage;
 use Illuminate\Support\Facades\File;
+use Attachment;
+
 
 class FrameController extends \BaseController {
     public $image_name;
@@ -35,17 +38,10 @@ class FrameController extends \BaseController {
         parent::__construct();
         $this->productFormatter = $productFormatter;
 
-        $this->imageGenerateData['thumbs'] = array('width' => '336', 'height' => '459' );
-
-        $this->imageGenerateData['preview'] = array('width' => '500', 'height' => '' );
-        $this->imageGenerateData['square'] = array('width' => '400', 'height' => '400' );
-        $this->imageGenerateData['horizontal'] = array('width' => '430', 'height' => '340' );
-        $this->imageGenerateData['vertical'] = array('width' => '340', 'height' => '430' );
-
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
             'progressUrl' => route('admin.frame.saveSelection'), // url to save the upload image selection data
-            'uploadUrl' => route('admin.frame.doUpload'), // url to upload an image
+            //'uploadUrl' => route('admin.frame.doUpload'), // url to upload an image
             'onCompleteUrl' => route('admin.design.manage', ['status' => 'unpublished']), // redirect to specified url after uploading completed.
         ]);
     }
@@ -66,20 +62,6 @@ class FrameController extends \BaseController {
             'frame_part' => 'designs'
         ]);
         return View::make('admin.frame-design', $this->data);
-    }
-
-    // frame application view
-    public function getApplication(){
-        $product = Product::first(); // get the product
-        JavaScript::put([
-            'square_image' => urlencode($product->present()->image('square')),
-            'preview_image' => urlencode($product->present()->image('preview')),
-            'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
-            'backgroundList' => $this->productFormatter->backgroundBulkFormat(ProductBackground::where('is_active', 1)->get()),
-        ]);
-        $this->data['product'] = $product;
-        $this->data['pageTitle'] = $product->present()->title;
-        return View::make('admin.frame-application', $this->data);
     }
 
     // frame border view
@@ -107,24 +89,13 @@ class FrameController extends \BaseController {
         return View::make('admin.frame-border', $this->data);
     }
 
+
     // create and upload new frame border
     public function uploadFrameBorder(){
         JavaScript::put([
             'frameSizes' => ProductPackage::get()
         ]);
         return View::make('admin.frame-border-upload', $this->data);
-    }
-
-    // frame design upload view
-    public function uploadFrameParts(){
-        JavaScript::put([
-            'categories' => $this->data['categories'],
-            'brands' => ProductBrand::get(),
-            'types' => ProductType::get(),
-            'frame_part' => 'designs',
-        ]);
-
-        return View::make('admin.frame-upload', $this->data);
     }
 
     // upload and save new frame border
@@ -159,116 +130,6 @@ class FrameController extends \BaseController {
         $border->save();
 
         return Redirect::back()->with('success', DONE);
-    }
-
-    // upload and save frame parts
-    public function postUploadFrameParts(){
-        $frameData = Session::get('frame_data');
-        $this->image_name = Str::random(20).'.jpg'; // image name
-        $oldImageFile = '';
-        $img = Image::make( $_FILES['file']['tmp_name']  ); // create image object
-
-        //background
-        if( $frameData['part'] == $this->parts[2] ){
-            $path = 'uploads/products/backgrounds/'; // path of original image
-            $img->fit(641, 445);
-            $img->save( public_path($path.$this->image_name) );
-
-            $bg = new ProductBackground();
-            $bg->image = $this->image_name;
-            $bg->save();
-
-            return [
-                'part' => $frameData['part'],
-                'part_image' => asset($path.$this->image_name)
-            ];
-        }
-
-        $productID = isset( $frameData['product'] ) ? $frameData['product'] : '';
-        $tempDir = public_path('uploads/products/'.$frameData['part'].'/original/'); // path of original image
-        if (!file_exists($tempDir)) {
-            mkdir($tempDir);
-        }
-
-        // upload original
-        $img->save( $tempDir.'/'. $this->image_name );
-
-        // save a product
-        $repo = new ProductRepository();
-        if($productID){
-            $product = Product::find( $productID );
-            $oldImageFile = $product->image;
-
-            $product->image = $this->image_name;
-            $product->width = $img->width();
-            $product->height = $img->height();
-            $product->image_type = 'square';
-            $product->image_original_type = $repo->getImageSizeType( $img->width(), $img->height() );
-            $product->save();
-        }else{
-            $product = new Product();
-            $product->status_id = $repo->status('unpublished')->id;
-            $product->category_id = $repo->category($frameData['category'])->id;
-            $product->brand_id = $repo->brand($frameData['brand'])->id;
-            $product->type_id = $repo->type($frameData['type'])->id;
-            $product->image = $this->image_name;
-            $product->width = $img->width();
-            $product->height = $img->height();
-            $product->image_type = 'square';
-            $product->image_original_type = $repo->getImageSizeType( $img->width(), $img->height() );
-            $product->save();
-        }
-
-        // generate thumbs
-        foreach( $this->imageGenerateData as $type => $data ){
-            $image_name = $this->image_name;
-            $image_width = $data['width'];
-            $image_height = $data['height'];
-            $image_destination = public_path('uploads/products/'.$frameData['part'].'/'.$type.'/'); // path to generated images
-
-            if (!file_exists($image_destination)) {
-                mkdir($image_destination);
-            }
-
-            // resize image
-            if($type != 'preview'){
-                $img->fit($image_width, $image_height);
-            }else{
-                $img->resize(500, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
-            }
-
-            // save image
-            $img->save($image_destination.$image_name);
-
-            if($oldImageFile){
-                unlink( $image_destination.'/'. $oldImageFile ); // remove the previous image
-            }
-
-        }
-        if($oldImageFile){
-            unlink( $tempDir.'/'. $oldImageFile ); // remove the previous image
-        }
-
-
-        Session::forget('frame_data'); // forget session data
-
-
-        // Just imitate that the file was stored.
-        echo json_encode([
-            'success' => true,
-            'files' => $_FILES,
-            'get' => $_GET,
-            'post' => $_POST,
-            //optional
-            'flowTotalSize' => isset($_FILES['file']) ? $_FILES['file']['size'] : $_GET['flowTotalSize'],
-            'flowIdentifier' => isset($_FILES['file']) ? $_FILES['file']['name'] . '-' . $_FILES['file']['size']
-                : $_GET['flowIdentifier'],
-            'flowFilename' => isset($_FILES['file']) ? $_FILES['file']['name'] : $_GET['flowFilename'],
-            'flowRelativePath' => isset($_FILES['file']) ? $_FILES['file']['tmp_name'] : $_GET['flowRelativePath']
-        ]);
     }
 
     // manage frame borders
@@ -309,12 +170,20 @@ class FrameController extends \BaseController {
     }
 
     public function postUpdateProduct(){
-        $product_id = Input::get('id'); $data = Input::all();
+        $designImageId = Input::get('designImage');
+        $data = Input::all();
+        if($designImageId){
+            $attachment = Attachment::find($designImageId);
+            $data['attachment_id'] = $attachment->id;
+            $data['filename'] = $attachment->filename;
+        }
+        $product_id = Input::get('id');
         $isUpdated = Product::find( $product_id )->update( $data );
         $product = Product::find( $product_id );
+
         return array(
             'status' => $isUpdated == true ? 'success' : 'failed',
-            'product' => $product
+            'product' =>  $this->productFormatter->format($product)
         );
     }
 
@@ -344,29 +213,17 @@ class FrameController extends \BaseController {
         return ['part' => $part];
     }
 
-    public function postFramePartDelete(){
-        $part = Input::get('part');
+    public function postFrameDelete(){
         $sizeType = Input::get('size_type');
         $itemId = Input::get('id');
 
-        if($part == 'frame'){
-            $path = 'uploads/products/frames/'.$sizeType.'/'; // path of original image
-            $frame = ProductFrame::find($itemId);
+        $path = 'uploads/products/frames/'.$sizeType.'/'; // path of original image
+        $frame = ProductFrame::find($itemId);
 
-            unlink( public_path($path). $frame->image ); // remove the previous image
-            $frame->delete();
-        }
-        if($part == 'background' ){
-            $path = 'uploads/products/backgrounds/'; // path of original image
-            $bg = ProductBackground::find($itemId);
-
-            unlink( public_path($path). $bg->image ); // remove the previous image
-            $bg->delete();
-        }
-        return trace(Input::all());
+        unlink( public_path($path). $frame->image ); // remove the previous image
+        $frame->delete();
     }
 
-    private function generateThumbnail($img){
 
-    }
+
 }

@@ -1,80 +1,3 @@
-app.controller("DragNDropController", function($http, $scope, productService){
-    $scope.showLoader = false;
-    $scope.categories = window.categories;
-    $scope.brands = window.brands;
-    $scope.types = window.types;
-
-    //$scope.currentCategory = $scope.categories[0].slug;
-    $scope.currentCategory = $scope.categories[0];
-    $scope.currentBrand = $scope.brands[0];
-    $scope.currentType = $scope.types[0];
-
-    $scope.imageUpload = function(){
-        $scope.showLoader = true;
-    }
-
-    var sendSelectionData = function(){
-        var data = {
-            category : $scope.currentCategory.slug,
-            brand: $scope.currentBrand.slug,
-            type: $scope.currentType.slug,
-            part: window.frame_part
-        }
-
-        // save data to session
-        $http.post( progressUrl, data ).
-            success(function(data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function(data, status, headers, config) {
-                //console.log(data);
-            });
-    } 
-
-    $scope.selectionChanged = function( index, slug ){
-        sendSelectionData();
-    }
-
-
-
-    sendSelectionData();
-});
-
-app.controller("FrameAppController", function($http, $scope, productService){
-    $scope.frameList = window.frameList;
-    $scope.currentFrame = $scope.frameList[0];
-    $scope.frameSizes = window.frameSizes;
-    $scope.currentSize = $scope.frameSizes[0];
-
-    // sets the current frame to use for border using click event.
-    $scope.setCurrentFrame = function( frame ){
-        $scope.currentFrame = frame;
-    }
-
-    // sets the current design preview mode using click event.
-    $scope.setPreviewMode = function( mode ){
-        $scope.currentMode = mode;
-    }
-
-    // sets the size selected and change the price
-    $scope.selectedtSize = function( size ){
-        $scope.currentSize = size;
-    }
-
-
-});
-
-app.controller("FrameBorderController", function($http, $scope){
-    var tableData = window.tableData;
-    $scope.totalItems = tableData.length;
-    $scope.currentItem = tableData[0];
-
-    // select current frame
-    $scope.setCurrentItem = function( frame ){
-        $scope.currentItem = frame;
-    }
-});
-
 // This is the controller for FlowJs uploading, every progress in uploading will be processed here.
 app.controller("FlowController", function($scope){
     $scope.errors = []; // list of errors.
@@ -124,6 +47,91 @@ app.controller("FlowController", function($scope){
     });
 });
 
+app.controller("FrameUploadController", function($http, $scope){
+    $http.post('/admin/upload-config', {}).
+        success(function(data, status, headers, config) {
+            $scope.showLoader = false;
+            $scope.categories = data.categories;
+            $scope.brands = data.brands;
+            $scope.types = data.types;
+
+            $scope.config = {
+                category: $scope.categories[0],
+                brand: $scope.brands[0],
+                type: $scope.types[0]
+            }
+        }).
+        error(function(data, status, headers, config) {
+            app.ajaxResponse('Unexpected Error.', 'error');
+        });
+    $scope.onConfigChange = function(){
+        console.log($scope.config);
+    }
+    /*
+    $scope.imageUpload = function(){
+        $scope.showLoader = true;
+    }
+
+    var sendSelectionData = function(){
+        var data = {
+            category : $scope.currentCategory.slug,
+            brand: $scope.currentBrand.slug,
+            type: $scope.currentType.slug,
+            part: window.frame_part
+        }
+
+        // save data to session
+        $http.post( progressUrl, data ).
+            success(function(data, status, headers, config) {
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                //console.log(data);
+            });
+    } 
+
+    $scope.selectionChanged = function( index, slug ){
+        sendSelectionData();
+    }
+
+    sendSelectionData();*/
+});
+
+app.controller("FrameAppController", function($http, $scope, productService){
+    $scope.frameList = window.frameList;
+    $scope.currentFrame = $scope.frameList[0];
+    $scope.frameSizes = window.frameSizes;
+    $scope.currentSize = $scope.frameSizes[0];
+
+    // sets the current frame to use for border using click event.
+    $scope.setCurrentFrame = function( frame ){
+        $scope.currentFrame = frame;
+    }
+
+    // sets the current design preview mode using click event.
+    $scope.setPreviewMode = function( mode ){
+        $scope.currentMode = mode;
+    }
+
+    // sets the size selected and change the price
+    $scope.selectedtSize = function( size ){
+        $scope.currentSize = size;
+    }
+
+
+});
+
+app.controller("FrameBorderController", function($http, $scope){
+    var tableData = window.tableData;
+    $scope.totalItems = tableData.length;
+    $scope.currentItem = tableData[0];
+
+    // select current frame
+    $scope.setCurrentItem = function( frame ){
+        $scope.currentItem = frame;
+    }
+});
+
 app.controller("BorderGeneratorController", ['$scope', function( $scope){
     $scope.frameSizes = window.frameSizes;
     $scope.currentSize = $scope.frameSizes[0];
@@ -159,6 +167,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $scope.currentType = {};
         $scope.currentStatus = {};
         $scope.currentMakePublic = {};
+        $scope.designImage = {};
 
         // get navigations
         $http.get( window.productNavigationUrl ).success( function( data ){
@@ -193,13 +202,13 @@ app.controller("FrameManageController", function($http, $scope, productService) 
             url : window.productDeleteUrl,
             data : productService.getProduct()
         }).success(function (data) {
-            console.log(data);
             productService.getProducts().splice( index, 1);
         });
     }
 
     // get the selected product
     $scope.selectProduct = function( index, product ){
+        $('#save-mark').hide();
         $scope.selectedProduct = product;
         $scope.selectedProductIndex = index;
         $scope.currentCategory = getCurrent( product.category_id, $scope.categories );
@@ -231,18 +240,20 @@ app.controller("FrameManageController", function($http, $scope, productService) 
     // submits the product form
     $scope.submitProduct = function(){
         $('#load-mark').show(); $('#save-mark').hide();
+
         this.selectedProduct.category_id = $scope.currentCategory.id;
         this.selectedProduct.brand_id = $scope.currentBrand.id;
         this.selectedProduct.type_id = $scope.currentType.id;
         this.selectedProduct.status_id = $scope.currentStatus.id;
         this.selectedProduct.is_available = $scope.currentMakePublic.value;
+        this.selectedProduct.designImage = $('#design-image-single').data('image-id');
 
         // sends the form
         $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
             if( data.status == 'success' ){
+                $scope.selectedProduct.imageSquare = data.product.imageSquare;
                 $('#load-mark').hide();
                 $('#save-mark').show();
-                //$('#save-mark').show().fadeIn('fast').delay(1000).fadeOut('fast');
             }
         });
     }
@@ -256,7 +267,6 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         }
     }
 });
-
 
 app.controller("FrameSizeController", function($http, $scope) {
     $scope.size = []; // single model
@@ -316,7 +326,6 @@ app.controller("FrameSizeController", function($http, $scope) {
     }
 
 });
-
 
 // DIRECTIVES
 // THIS DIRECTIVE WILL CENTER THE IMAGE DEPENDING ON ITS CONTAINER.

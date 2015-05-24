@@ -96,7 +96,7 @@ class ProductPresenter extends Presenter{
         return asset('uploads/products/designs/thumbs/' . $this->entity->image);
     }
     public function imageWithType( $type ){
-        return asset('uploads/products/designs/'.$type.'/' . $this->entity->image);
+        return asset('uploads/products/designs/'.$type.'/' . $this->entity->filename);
     }
     public function imagePreview(){
         return asset('uploads/products/designs/preview/' . $this->entity->image);

@@ -66,9 +66,9 @@ class ProductController extends \BaseController {
 		if(!$category)
 			return Redirect::route('home.index')->with('error', PRODUCT_CATEGORY_NOT_FOUND);
 
-		$items = $this->productRepo->getViews(); // popular products
+		//$items = $this->productRepo->getViews(); // popular products
 
-		$this->data['items'] = $items;
+		//$this->data['items'] = $items;
 		$this->data['pageTitle'] = $category->name;
 		$this->data['heading'] = $this->data['pageTitle'];
 

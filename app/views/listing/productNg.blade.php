@@ -6,17 +6,15 @@
             </div>
         @endif
 
-        <img ng-src="@{{ product.imageThumb }}" class="img-responsive img-frame">
+        <img ng-src="@{{ product.imageVertical }}" class="img-responsive img-frame">
 
         <div class="detail">
             <div style="min-height: 45px">
-                <h4 class="title">@{{ product.title }} <span>@{{ product.size }}</span></h4>
+                <h4 class="title">@{{ product.title }}</h4>
                 <div class="subhead">@{{ product.category }}</div>
             </div>
             <div class="description">
-               {{-- <a href="#"><i class="fa fa-tag"></i> @{{ main.currencyConvert( product.price, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}</a>--}}
                 <span class="pull-right" ng-controller="ProductListingController">
-                    {{--<a href='@{{ product.addToBagUrl }}'><i class="fa fa-shopping-cart"></i></a> &nbsp;--}}
                     @if( Auth::check() )
                         <a style="cursor:pointer" ng-click="addToWishList( product )"><i class="@{{ product.isInWishList == true ? 'toggle-red' : '' }} fa fa-heart"></i></a>
                     @endif

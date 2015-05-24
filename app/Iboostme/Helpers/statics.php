@@ -31,5 +31,6 @@ define('FRAME_BORDER_UPLOAD_SUCCESS', 'Successfully uploaded a new frame border.
 define('DONE', 'Successfully done.');
 define('NO_ACTION_SELECTED', 'No action has been selected.');
 define('NO_ITEMS_SELECTED', 'No items has been selected.');
+define('NO_DESIGN_SELECTED', 'No frame design has been selected.');
 
 

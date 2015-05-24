@@ -8,18 +8,6 @@
         <textarea class="form-control" name="content" ng-model="selectedProduct.content" style="height: 50px" ></textarea>
     </div>
     <div class="form-group">
-        <label for="password">Excerpt</label>
-        <textarea class="form-control" name="excerpt" ng-model="selectedProduct.excerpt" style="height: 50px" ></textarea>
-    </div>
-    {{--<div class="form-group">
-        <label for="password">Price</label>
-        <input class="form-control" type="text" name="price" ng-model="selectedProduct.price">
-    </div>--}}
-    <div class="form-group">
-        <label for="password">Views</label>
-        <input class="form-control" type="text" name="views" ng-model="selectedProduct.views">
-    </div>
-    <div class="form-group">
         <label>Select Category:</label>
          <select name="category_id" ng-model="currentCategory" ng-options="category.name for category in categories" class="form-control"></select>
     </div>

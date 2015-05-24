@@ -23,8 +23,10 @@
     {{ link_css('assets/owl-carousel/owl.theme.css') }}
     {{ link_css('iboostme/js/angular/ngTable/ng-table.css') }}
     {{ link_css('assets/icheck/skins/flat/red.css') }}
+    {{ link_css('js/jqNailThumb/jquery.nailthumb.1.1.min.css') }}
 
 
+    {{ link_js('js/jquery.js') }} {{--jQuery--}}
 
     <!-- Digital Countdown Timer -->
     {{ link_js('assets/countdown/countdown.js') }}
@@ -45,14 +47,17 @@
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
 
-        {{ link_js('js/jquery.js') }} {{--jQuery--}}
         {{ link_js('js/bootstrap.min.js') }} {{--Bootstrap--}}
         {{ link_js('js/grids.js') }}
         {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
         {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}
         {{ link_js('assets/datatables/jquery.dataTables.min.js') }} {{--DataTables--}}
         {{ link_js('assets/icheck/icheck.min.js') }} {{--iCheck--}}
+        {{ link_js('js/jqNailThumb/jquery.nailthumb.1.1.min.js') }} {{--NailThumb--}}
         {{ link_js('iboostme/wallofframe/main.js') }}
+
+        <!-- Specific Angular Modules -->
+        @yield('modules')
 
         {{--Angular Modules--}}
         {{ link_js('iboostme/js/angular/angular-slider/angular-slider.js') }}
@@ -63,6 +68,9 @@
         {{ link_js('iboostme/js/angular/ngCheckList/checklist-model.js') }}
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
         {{ link_js('iboostme/wallofframe/app.js')}}
+
+
+
         <script>
             var mainApp = {};
             mainApp.baseUrl = "{{ url() }}";

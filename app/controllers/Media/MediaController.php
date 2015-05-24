@@ -3,7 +3,9 @@ use Illuminate\Support\Facades\View;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Attachment;
 class MediaController extends \BaseController {
     public function __construct()
     {
@@ -20,11 +22,32 @@ class MediaController extends \BaseController {
     public function index(){
 
 
+        return View::make('media.media', $this->data);
+    }
+
+
+    // display the modal via ajax
+    public function modal(){
+        return Attachment::orderBy('created_at', 'desc')->get()->toJson();
+    }
+
+
+    // uploading media library modal
+    public function upload(){
+
+        $this->data['attachments'] = Attachment::orderBy('created_at', 'desc')->get();
         return View::make('media.media-upload', $this->data);
     }
 
     public function store(){
-        $imgName = isset($_FILES['file']) ? $_FILES['file']['name'] : $_GET['flowFilename'];
+        // path of original image
+        $tempDir = public_path('uploads/attachments');
+
+        $assetDir = asset('uploads/attachments');
+
+
+        // original file name
+        $imgName = Input::get('flowFilename');
 
         // create a new randomized image filename
         $randomFileName = Str::random(20).'.jpg';
@@ -32,27 +55,31 @@ class MediaController extends \BaseController {
         // create image object via intervention image.
         $img = Image::make( $_FILES['file']['tmp_name']  );
 
-        // path of original image
-        $tempDir = public_path('uploads/test');
 
-        // resize image to fixed size
-        $img->resize(300, 200);
 
         // save the image
         $img->save( $tempDir.'/'. $randomFileName );
 
+        $explosion = explode('.', $imgName);
 
-        echo json_encode([
-            'success' => true,
-            'files' => $_FILES,
-            'get' => $_GET,
-            'post' => $_POST,
-            //optional
-            'flowTotalSize' => isset($_FILES['file']) ? $_FILES['file']['size'] : $_GET['flowTotalSize'],
-            'flowIdentifier' => isset($_FILES['file']) ? $_FILES['file']['name'] . '-' . $_FILES['file']['size']
-                : $_GET['flowIdentifier'],
-            'flowFilename' => isset($_FILES['file']) ? $_FILES['file']['name'] : $_GET['flowFilename'],
-            'flowRelativePath' => isset($_FILES['file']) ? $_FILES['file']['tmp_name'] : $_GET['flowRelativePath']
+        // save to the database.
+        Attachment::create([
+            'user_id' => Auth::id(),
+            'url' => $assetDir.'/'. $randomFileName,
+            'name' => $explosion[0],
+            'filename' => $randomFileName,
+            'mime_type' => $img->mime()
         ]);
+
+        echo json_encode(Input::all());
     }
+
+    // query the items selected by the modal and return a response
+    public function ajaxGetItems(){
+        $items = Input::get('items'); // get the array of item ids.
+
+        return Attachment::whereIn('id', $items)->get()->toJson();
+    }
+
+
 }

@@ -1,7 +1,5 @@
 @extends('layout.admin')
 
-@include('media.components.media-assets')
-
 @section('content')
     <div ng-controller="FrameManageController">
         <div class="row">
@@ -39,37 +37,20 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-12">
-                        <div ng-show="showUploadImageForm" ng-controller="FrameUploadController">
+                        <div ng-show="showUploadImageForm" ng-controller="DragNDropController">
                             @include('angularapps.images.upload-single')
                         </div>
                         <div class="text-right">
                             <button class="btn btn-danger btn-xs"
                                 ng-show="showControlButtons"
                                 ng-click="removeSelectedProduct( selectedProductIndex )"> Remove Selected Item</button>
-                            {{--<button class="btn btn-danger btn-xs"
+                            <button class="btn btn-danger btn-xs"
                                 ng-show="showControlButtons"
-                                ng-click="showUploadImageForm = !showUploadImageForm"> Change Image</button>--}}
-
-                            {{--Media Gallery Uploader Modal--}}
-                            <a  href="#mediaModal" ng-show="showControlButtons" class="btn btn-danger btn-xs"> Change Image</a>
-                            <div ng-controller="MediaController as media" style="margin-top: 10px">
-                                <div class="remodal" data-remodal-id="mediaModal" id="mediaModal">
-                                    @include('media.media-upload')
-                                </div>
-                                <div ng-repeat="item in mediaSelectedItems">
-                                    <input type="hidden" id="design-image-single" data-image-id="@{{ item.id }}"/>
-                                    <div style="margin: 0 auto;">
-                                        @include('media/components/list-media')
-                                    </div>
-                                </div>
-                            </div>
-                            {{--Media Gallery Uploader Modal--}}
-
+                                ng-click="showUploadImageForm = !showUploadImageForm"> Change Image</button>
                         </div>
                         <div ng-show="showProductForm">
                             @include('components.forms.product-edit-form')
                         </div>
-
                     </div>
                 </div>
             </div>

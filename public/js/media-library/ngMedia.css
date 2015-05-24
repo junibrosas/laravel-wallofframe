@@ -1,0 +1,14 @@
+
+.media-selected {
+    outline: 6px solid #1e8cbe;
+}
+.media-item{
+
+}
+.media-add-btn {
+    border: 2px dashed #ccc;
+    font-weight: bold;
+
+    color: #252525;
+}
+.media-add-btn:hover, .media-add-btn:focus, .media-add-btn:active {   color: #B2ADAD; text-decoration: none; }
