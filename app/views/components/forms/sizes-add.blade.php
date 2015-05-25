@@ -1,6 +1,6 @@
 <form class="mainbox product-update" ng-submit="submitAdd(size)">
     <div class="form-group">
-        <label for="password">Order No.</label>
+        <label for="password">Priority No.</label>
         <input class="form-control" type="text" ng-model="size.order">
         <div class="label label-danger" ng-show="errors.order[0]">@{{ errors.order.toString()}}</div>
     </div>
