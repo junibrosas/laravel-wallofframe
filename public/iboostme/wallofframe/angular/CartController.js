@@ -34,7 +34,7 @@ app.controller('CartController', ['$scope','$http', 'ngCartItems', function($sco
         update();
 
         // remove the cart item from the server
-        $http.post('/cart/remove', product)
+        $http.post(mainApp.baseUrl+'/cart/remove', product)
             .success(function(data, status, headers, config) {
             console.log('successfully deleted.');
         });
@@ -49,7 +49,7 @@ app.controller('CartController', ['$scope','$http', 'ngCartItems', function($sco
 
     // submit changes for checkout
     $scope.checkout = function( products ){
-        $http.post('/cart/update', { products : products})
+        $http.post(mainApp.baseUrl+'/cart/update', { products : products})
             .success(function(data, status, headers, config) {
                 window.location.replace("/checkout/shipping");
             });
