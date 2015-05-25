@@ -7,6 +7,11 @@
     <meta property="og:description" content="{{ $product->present()->content }}" />
     {{ link_css('js/jqNailThumb/jquery.nailthumb.1.1.min.css') }}
     {{ link_css('js/jqLightbox/css/lightbox.css') }}
+    <style type="text/css">
+        .zoomWindowContainer > div{
+            margin-left: 20px !important;
+        }
+    </style>
 @stop
 @section('footer')
     @parent
