@@ -57,7 +57,7 @@ class ProductRepository {
         }
 
         $products = array_count_values($products);
-        trace($products);
+
         $highest = 0;
         foreach($products as $occurrence => $product_id ){
             $current = $occurrence;

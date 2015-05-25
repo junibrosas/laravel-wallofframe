@@ -16,9 +16,6 @@ class CartRepositoryBackup {
         $products = $this->product()->find($items);
 
 
-        trace($products);
-        die();
-
         // reverse an array so that the latest pushed data will be in the top order.
         $ids = array_reverse($items);
 

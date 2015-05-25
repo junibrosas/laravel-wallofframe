@@ -195,8 +195,7 @@ class UsersController extends BaseController
                 ->with('notice', $notice_msg);
         } else {
             $error_msg = Lang::get('confide::confide.alerts.wrong_password_reset');
-            trace($error_msg);
-            die();
+
             return Redirect::route('reset.password', $input['token'])
                 ->withInput()
                 ->with('error', $error_msg);
