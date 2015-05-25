@@ -773,7 +773,7 @@ body {
 #product-list { min-height: 800px; }
 .frames .item { font-weight: 300; color: #323233; cursor: pointer; margin-bottom: 20px}
 .frames .frame-link { color: #252525; text-decoration: none; }
-.frames .img-frame { min-height: 300px; }
+.frames .img-frame { }
 .frames .item .content .title { font-weight: 300; }
 .frames .item .content { background-color: #fff; padding: 40px 25px 10px 25px;/* position: relative; top: -300px; left: 15px; height: 93%; width: 78%;*/
     position: absolute;
@@ -791,8 +791,11 @@ body {
     width: 79%; }
 .frames .item .content .description { padding-top: 10px; margin-top: 20px; border-top: 2px dashed #ddd; }
 .frames .description a { color: #252525; /*font-weight: bold;*/ font-weight: bold; }
-.frames .item .detail { background-color: rgba(255, 255, 255, 0.9); /*position: absolute; top: -88px; padding: 5px 15px; width: 100%;  min-height: 80px;*/
-    position: absolute; bottom:0px; padding: 5px 15px; width: 91%; min-height: 80px;
+.frames .item .detail {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    width: 100%;
+    background-color: #E5E5E5;
 }
 .frames .item .detail .title { text-transform: none; font-size: 14px; line-height: 15px; margin-bottom: 0; }
 .frames .item .detail .title span { font-size: 11px; font-style: italic; }

@@ -9,7 +9,7 @@ class ProductBrandTableSeeder extends Seeder {
 	{
 		DB::table('product_brands')->delete();
 
-		$data = ['Dior', 'Louis Vitton', 'Versace', 'Hermes','Prada', 'Chanel','Ralph Lauren', 'Karl Lagerfeld','Oscar De La Renta', 'Giorgio Armani','Alexander Mcqueen', 'Christian Louboutin'];
+		$data = ['Chanel', 'Oscar Dela Renta', 'Prada', 'Ralph Lauren','Alexander Mcqueen', 'Christian Dior','Dior', 'Giordio Armani','Karl Lagerfeld', 'Louboutin','LV'];
 		foreach($data as $d){
 			ProductBrand::create([
 				'name' => $d,
