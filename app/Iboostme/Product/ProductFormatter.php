@@ -58,7 +58,7 @@ class ProductFormatter {
             'priceMark' => $product->present()->priceMark,
             'excerpt' => $product->present()->excerpt,
             'content' => $product->present()->content,
-            'views' => $product->views,
+            //'views' => $product->views,
             'statusClass' => $product->present()->statusClass,
             'status' => $product->present()->status,
             'statusObject' => $product->status,

@@ -35,9 +35,11 @@ class ProductController extends \BaseController {
 			->withCookie( Cookie::make('product_viewed_id', $id) );
 	}
 
+
+
 	public function getNewArrivals()
 	{
-		$items = $this->productRepo->getViews(); // popular products
+		$items = $this->productRepo->getAll(); // popular products
 
 		$this->data['items'] = $items;
 		$this->data['heading'] = 'New Arrivals';
@@ -105,9 +107,6 @@ class ProductController extends \BaseController {
 		$brand = ProductBrand::find($id);
 		if(!$brand) return Redirect::route('home.index');
 
-		$items = $this->productRepo->getViews(); // popular products
-
-		$this->data['items'] = $items;
 		$this->data['pageTitle'] = $brand->name . ' Brands';
 		$this->data['heading'] = $this->data['pageTitle'];
 		$this->data['has_images'] = true;
