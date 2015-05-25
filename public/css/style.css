@@ -1100,8 +1100,7 @@ select.form-control { border-radius: 0; }
 .frame-box-group .caption .title, #feature .cbp-l-caption-desc { font-size: 40px; font-family: "telegrafico" !important;  line-height: 0.8; color: white; }
 .frame-preview {
     background: url(../img/frame-background.jpg) no-repeat top center;
-    margin-bottom: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     background-size: cover;
     height: 70%;
     border: 1px solid #ccc;

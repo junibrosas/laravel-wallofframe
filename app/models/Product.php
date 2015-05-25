@@ -34,4 +34,8 @@ class Product extends \Eloquent {
 	public function wishlist(){
 		return $this->hasOne('Wishlist', 'product_id', 'id');
 	}
+
+	public function attachment(){
+		return $this->belongsTo('Attachment');
+	}
 }

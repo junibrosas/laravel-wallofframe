@@ -178,6 +178,7 @@ class FrameController extends \BaseController {
             $data['filename'] = $attachment->filename;
         }
         $product_id = Input::get('id');
+        $data['slug'] = Str::slug($data['title']);
         $isUpdated = Product::find( $product_id )->update( $data );
         $product = Product::find( $product_id );
 
