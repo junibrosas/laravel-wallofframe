@@ -64,11 +64,9 @@ class ProductFormatter {
             'statusObject' => $product->status,
             'is_available' => $product->is_available,
             'isInWishList' => $this->wishListRepo->isExists( $product ),
-            'imageThumb' => $product->present()->image,
             'imageSquare' => $product->present()->imageWithType('square'),
             'imageHorizontal' => $product->present()->imageWithType('horizontal'),
             'imageVertical' => $product->present()->imageWithType('vertical'),
-            'imagePreview' => $product->present()->imageWithType('preview')
         ];
 
         return $result;

@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <a href="{{ $product->present()->url }}">
-                            <img src='{{ $product->present()->image('square') }}' data-zoom-image="{{ asset('uploads/products/large/frame2.jpg') }}" class="img-responsive" width="150"/>
+                            <img src='{{ $product->present()->imageWithType('square') }}' data-zoom-image="{{ asset('uploads/products/large/frame2.jpg') }}" class="img-responsive" width="150"/>
                             </a>
                             {{ Form::open(['route' => 'cart.remove']) }}
                                 {{ Form::hidden('product', $product->id) }}

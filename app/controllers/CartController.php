@@ -46,6 +46,7 @@ class CartController extends \BaseController {
 		Javascript::put([
 			'cartItems' => $productItems,
 		]);
+
 		$this->data['continueShoppingUrl'] = $routeUrl;
 		return View::make('checkout.cart', $this->data);
 

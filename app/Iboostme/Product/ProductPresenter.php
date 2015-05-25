@@ -85,30 +85,8 @@ class ProductPresenter extends Presenter{
     public function wishlistDate(){
         return date('m-d-Y', strtotime($this->entity->wishlist->created_at));
     }
-    public function image( $type = '' ){
-        if($type)
-            $type = $this->entity->image_type;
-
-        if( !$this->entity->image )
-            return asset('img/frame1.jpg');
-
-        if($type){
-            return asset('uploads/products/designs/'.$type.'/' . $this->entity->image);
-        }
-
-        return asset('uploads/products/designs/thumbs/' . $this->entity->image);
-    }
     public function imageWithType( $type ){
         return asset('uploads/products/designs/'.$type.'/' . $this->entity->filename);
-    }
-    public function imagePreview(){
-        return asset('uploads/products/designs/preview/' . $this->entity->image);
-    }
-    public function imageType(){
-        return $this->entity->image_type;
-    }
-    public function imageOriginalType(){
-        return $this->entity->image_original_type;
     }
 
     // url based image manipulation cache through Intervention Image

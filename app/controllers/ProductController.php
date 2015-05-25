@@ -23,10 +23,8 @@ class ProductController extends \BaseController {
 
 		JavaScript::put([
 			'frameSizes' => ProductPackage::get(),
-			'square_image' => urlencode($product->present()->image('square')),
-			'preview_image' => urlencode($product->present()->image('preview')),
+			'square_image' => urlencode($product->present()->imageWithType('square')),
 			'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
-            'backgroundList' => $this->productFormatter->backgroundBulkFormat(ProductBackground::where('is_active', 1)->get()),
 		]);
 
 
@@ -138,7 +136,7 @@ class ProductController extends \BaseController {
 			'price' => $package->price,
 			'options' => array(
 				'url' => $product->present()->url,
-				'image' => $product->present()->image('square'),
+				'image' => $product->present()->imageWithType('square'),
 				'width' => $package->width,
 				'height' => $package->height,
 				'category' => $product->present()->category,
@@ -150,9 +148,6 @@ class ProductController extends \BaseController {
 
 		// add new product to the bag.
 		Cart::add( $productData );
-
-		/*$product->package_id = $package->id;
-		$this->productRepo->addToBag($product);*/
 
 		return Redirect::back()->with('success', ADDED_TO_BAG);
 	}

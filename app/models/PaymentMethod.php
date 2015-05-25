@@ -1,7 +1,10 @@
 <?php
-
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 class PaymentMethod extends \Eloquent {
+	use SoftDeletingTrait;
+
 	protected $table = 'payment_methods';
+	protected $dates = ['deleted_at'];
 	protected $fillable = [
 		'slug',
 		'name',
