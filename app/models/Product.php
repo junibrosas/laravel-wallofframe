@@ -27,6 +27,11 @@ class Product extends \Eloquent {
 		return $this->hasOne('ProductCategory', 'id', 'category_id');
 	}
 
+	public function brand(){
+		return $this->hasOne('ProductBrand', 'id', 'brand_id');
+	}
+
+
 	public function type(){
 		return $this->hasOne('ProductType', 'id', 'type_id');
 	}

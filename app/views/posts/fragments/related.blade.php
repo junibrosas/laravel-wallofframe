@@ -4,13 +4,12 @@
         @foreach($products as $i => $product)
         <div class="item"  data-content="false">
             <a href="{{ $product->present()->url }}" class="frame-link">
-                <img src="{{ $product->present()->image }}" class="img-responsive">
+                <img src="{{ $product->present()->imageWithType('vertical') }}" class="img-responsive">
                 <div class="detail">
                     <div style="min-height: 43px">
-                        <h4 class="title">{{ $product->present()->title }} <span>{{ $product->present()->size }}</span></h4>
-                        <div class="subhead">{{ $product->present()->category }}</div>
+                        <h4 class="title">{{ $product->present()->title }}</h4>
+                        <div class="subhead">{{ $product->present()->brand }} | {{ $product->present()->category }}</div>
                     </div>
-                    <div class="description"><a href="#"><i class="fa fa-tag"></i> {{$product->present()->priceMark}}</a></div>
                 </div>
             </a>
         </div>

@@ -20,6 +20,9 @@ class ProductPresenter extends Presenter{
     public function category(){
         return ucfirst($this->entity->category->name);
     }
+    public function brand(){
+        return ucfirst($this->entity->brand->name);
+    }
     public function size(){
         return $this->entity->width . 'x' . $this->entity->height;
     }
