@@ -7,9 +7,9 @@
                 </div>
                 {{--Enlarger Button--}}
                 <div class="pull-right">
-                    <a href="{{ $product->attachment->url }}" class="btn btn-default btn-xs"
+                    {{--<a href="{{ $product->attachment->url }}" class="btn btn-default btn-xs"
                                     data-lightbox="design-enlarge"
-                                    data-title="{{ $product->present()->title }} Design">view large</a>
+                                    data-title="{{ $product->present()->title }} Design">view large</a>--}}
                 </div>
             </div>
             <div class="col-md-2">
