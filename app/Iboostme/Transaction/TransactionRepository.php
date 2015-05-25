@@ -50,19 +50,20 @@ class TransactionRepository {
         $input['payment_response'] = array_get($data, 'payment_response');
         $input['total_amount'] = $totalAmount;
         $input['cart_content'] = $cartContent;
+
+
         return $this->newTransaction( $input );
     }
 
     // add new transaction.
     public function newTransaction( $data ){
-        $totalAmount = 0;
         $transaction = new Transaction();
         $transaction->tracking_number = generateUniqueId();
         $transaction->user_id = array_get($data, 'user_id');
         $transaction->shipping_address_id = array_get($data, 'shipping_address_id');
         $transaction->payment_method_id = array_get($data, 'payment_method_id');
         $transaction->transaction_status_id = TransactionStatus::where('slug', 'in-process')->first()->id;
-        $transaction->total_amount = $totalAmount;
+        $transaction->total_amount = array_get($data, 'total_amount');
         $transaction->products = json_encode(array_get($data, 'cart_content'));
         $transaction->payment_response = array_get($data, 'payment_response');
 

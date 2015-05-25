@@ -72,6 +72,7 @@ class CheckoutController extends \BaseController {
 
 	public function postOrder(){
 		$inputs =  Input::all();
+
 		Session::put('billingAddress', $inputs['billingAddress']);
 		Session::put('paymentMethodId', PaymentMethod::getIdBySlug( Input::get('paymentMethod')) );
 
