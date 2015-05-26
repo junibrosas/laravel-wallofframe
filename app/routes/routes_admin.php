@@ -1,7 +1,7 @@
 <?php
 //Public Routes
 Route::group( [ 'namespace' => 'Admin' ], function () {
-    Route::post('contact/send', [ 'before' => 'csrf', 'as' => 'contacts.create', 'uses' => 'ContactController@create' ]);
+    Route::post('contact/send', [ 'as' => 'contacts.create', 'uses' => 'ContactController@create' ]);
 } );
 
 // Administrator Routes

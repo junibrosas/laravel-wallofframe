@@ -23,11 +23,11 @@ app.config(['flowFactoryProvider', function (flowFactoryProvider, $scope, $flow)
         }
 
     });
+
     flowFactoryProvider.on('catchAll', function (event) {
         console.log('catchAll', arguments);
     });
 }]);
-
 
 app.controller("MainController", ['currencyConverter', '$http', 'ngCartItems','$scope', '$interval', function(currencyConverter, $http, ngCartItems, $scope, $interval) {
     this.quantity = 1;
@@ -86,3 +86,22 @@ function onFileAdded(file) {
 //// or $event.preventDefault(); depends how you use this function, in scope events or in directive
 }
 
+
+app.controller("ContactFormController", ['$http', '$scope',function($http, $scope){
+    $('#contact-ajax-response').hide();
+    $scope.contactFormSubmit = function(){
+        $http.post(mainApp.baseUrl+'/contact/send', $scope.contact ).
+            success(function(data, status, headers, config) {
+                $scope.errors = data.errors;
+                if(data.errors !== undefined){
+                }
+                else{
+                    $scope.contact = {};
+                    $('#contact-ajax-response').html('Message successfully sent.').show().fadeIn('fast').delay(3000).fadeOut('fast');
+                }
+            }).
+            error(function(data, status, headers, config) {
+                $('#contact-ajax-response').html('Unexpected Error Occurred.', 'error').show();
+            });
+    }
+}]);

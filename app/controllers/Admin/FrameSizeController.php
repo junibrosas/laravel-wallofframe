@@ -6,7 +6,6 @@ use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
-
 use ProductPackage;
 
 class FrameSizeController extends \BaseController {

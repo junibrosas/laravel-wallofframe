@@ -5,7 +5,7 @@ use User;
 use Contact;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validate;
 use Illuminate\Support\Str;
@@ -48,7 +48,9 @@ class ContactController extends \BaseController {
 		$contact = new Contact();
 		$validator = $contact->validate( Input::all() );
 		if($validator->fails()){
-			return Redirect::back()->withErrors($validator);
+			return Response::json(array(
+					'errors' => $validator->messages())
+			);
 		}
 		Contact::create( Input::all() ); // saves a new contact
 		return Redirect::back()->with('success', CONTACT_SUCCESS);
