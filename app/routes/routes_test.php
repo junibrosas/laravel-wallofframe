@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 use ProductCategory;
 use Iboostme\Product\Size\ProductSizeRepository;
 Route::get('test', function(){
-    $sizeRepository = new  ProductSizeRepository();
+    $sizeRepository = new ProductSizeRepository();
     $sizes = $sizeRepository->getAll();
     trace($sizes);
 
