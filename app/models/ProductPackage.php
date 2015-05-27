@@ -9,4 +9,7 @@ class ProductPackage extends \Eloquent {
 		'height',
 		'price',
 	];
+	public function category(){
+		return $this->hasOne('ProductCategory','id', 'category_id');
+	}
 }

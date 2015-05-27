@@ -7,6 +7,7 @@
                 <th ><input type="checkbox" class="iCheck-all icheck"/></th>
                 <th>Width</th>
                 <th>Height</th>
+                <th>Category</th>
                 <th>Price</th>
             </tr>
         </thead>
@@ -15,6 +16,7 @@
                <th  scope="row"> <input class="icheck" name="tableItems[]" type="checkbox" value="@{{ size.id }}"></th>
                <td class="text-center">@{{ size.width }}</td>
                <td class="text-center">@{{ size.height }}</td>
+               <td class="text-center">@{{ size.category.name }}</td>
                <td class="text-center">@{{ size.price }}</td>
             </tr>
         </tbody>

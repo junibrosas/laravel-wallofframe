@@ -6,4 +6,5 @@ class ProductCategory extends \Eloquent {
 		'name',
 		'slug'
 	];
+
 }

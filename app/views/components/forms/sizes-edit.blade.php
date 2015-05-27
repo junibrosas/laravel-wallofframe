@@ -15,6 +15,12 @@
         <div class="label label-danger" ng-show="errors.height[0]">@{{ errors.height.toString()}}</div>
     </div>
     <div class="form-group">
+        <label for="category">Category Exclusive To</label>
+        <select ng-model="size.category" ng-options="category.name for category in categories track by category.id" class="form-control">
+            <option value="">All</option>
+        </select>
+    </div>
+    <div class="form-group">
         <label for="password">Price</label>
         <input class="form-control" type="text" ng-model="size.price">
         <div class="label label-danger" ng-show="errors.price[0]">@{{ errors.price.toString()}}</div>

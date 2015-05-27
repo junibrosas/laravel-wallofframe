@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use ProductPackage;
-
+use ProductCategory;
 class FrameSizeController extends \BaseController {
     // frame size view
     public function index(){
-        $sizes = ProductPackage::orderBy('order', 'asc')->get();
+        $sizes = ProductPackage::orderBy('category_id', 'asc')->orderBy('order', 'asc')->with('category')->get();
         Javascript::put([
-            'tableData' => $sizes
+            'tableData' => $sizes,
+            'categories' => ProductCategory::get()
         ]);
         return View::make('admin.sizes', $this->data);
     }

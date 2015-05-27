@@ -269,8 +269,9 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 });
 
 app.controller("FrameSizeController", function($http, $scope) {
-    $scope.size = []; // single model
+    //$scope.size = []; // single model
     $scope.isToUpdate = false;
+    $scope.categories = window.categories;
 
     // sets the size selected and change the price
     $scope.selectedSize = function( size ){
@@ -285,13 +286,15 @@ app.controller("FrameSizeController", function($http, $scope) {
 
     // submit created form
     $scope.submitAdd = function(size){
-        $scope.size = {
+        var sizeData = {
             order: size.order,
             width: size.width,
             height: size.height,
-            price: size.price
+            price: size.price,
+            category_id: size.category ? size.category.id : ''
         };
-        $http.post(mainApp.baseUrl+'/admin/sizes/add', $scope.size ).
+
+        $http.post(mainApp.baseUrl+'/admin/sizes/add', sizeData ).
             success(function(data, status, headers, config) {
                 $scope.errors = data.errors;
                 if(data.errors !== undefined){
@@ -299,6 +302,7 @@ app.controller("FrameSizeController", function($http, $scope) {
                 }
                 else{
                     app.ajaxResponse('Created Successfully');
+                    $scope.size = []; // reset the model
                 }
             }).
             error(function(data, status, headers, config) {
@@ -308,7 +312,7 @@ app.controller("FrameSizeController", function($http, $scope) {
 
     // submit edited form
     $scope.submitEdit = function(){
-
+        $scope.size.category_id = $scope.size.category ? $scope.size.category.id : '';
         $http.post(mainApp.baseUrl+'/admin/sizes/update', $scope.size ).
             success(function(data, status, headers, config) {
                 $scope.errors = data.errors;
