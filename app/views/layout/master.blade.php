@@ -46,7 +46,6 @@
 </head>
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
-
         {{ link_js('js/bootstrap.min.js') }} {{--Bootstrap--}}
         {{ link_js('js/grids.js') }}
         {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
@@ -69,13 +68,12 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
         {{ link_js('iboostme/wallofframe/app.js')}}
 
-
-
         <script>
             var mainApp = {};
             mainApp.baseUrl = "{{ url() }}";
             mainApp.publicPath = '{{ asset('') }}';
         </script>
+
         {{--Angular Controllers--}}
         {{ link_js('iboostme/wallofframe/angular/MainController.js') }}
 

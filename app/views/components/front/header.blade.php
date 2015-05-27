@@ -1,10 +1,6 @@
 <div id="smart-header">
         <div class="container">
         <div class="col-md-6 hidden-xs">
-            {{--<ul class="list-inline list-contact">
-                <li><a class="link" href="#"><i class="fa fa-phone"></i> +971 4 3106904 </a></li>
-                <li><a href="#">Available Worldwide Shipping</a></li>
-            </ul>--}}
         </div>
         <div class="col-md-6">
             <ul class="list-inline pull-right list-smart">
@@ -42,18 +38,18 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
                     </button>
                 </div>
 
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 ">
+                <div class="collapse navbar-collapse" id="main-navbar">
                     <ul class="nav navbar-nav ">
 
                         <li><a href="{{ route('home.index') }}" class="page-scroll home-icon"><i class='fa fa-home'></i></a></li>
