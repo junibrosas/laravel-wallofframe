@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 col-xs-6 item" ng-repeat="product in products">
+<div class="col-md-4 col-sm-6 item" ng-repeat="product in products">
     <a href="@{{ product.url }}" class="frame-link">
         @if(isset($no_ribbon) == false)
             <div class="ribbon-wrapper" ng-show="product.statusClass ? true : false">
