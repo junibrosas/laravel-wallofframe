@@ -796,6 +796,7 @@ body {
     padding: 5px 15px;
     width: 100%;
     background-color: #E5E5E5;
+    min-height: 70px;
 }
 .frames .item .detail .title { text-transform: none; font-size: 14px; line-height: 15px; margin-bottom: 0; }
 .frames .item .detail .title span { font-size: 11px; font-style: italic; }
