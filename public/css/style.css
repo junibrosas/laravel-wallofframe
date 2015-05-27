@@ -1108,6 +1108,7 @@ select.form-control { border-radius: 0; }
     height: 70%;
     border: 1px solid #ccc;
     padding-top: 20px;
+    min-height: 500px;
 }
 .square-thumb {
     width: 150px;

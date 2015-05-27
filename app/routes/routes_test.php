@@ -7,14 +7,11 @@ use Iboostme\Product\ProductFormatter;
 use Iboostme\Transaction\TransactionRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+use ProductCategory;
+use Iboostme\Product\Size\ProductSizeRepository;
 Route::get('test', function(){
-    //trace($this->outCurrency);
-    //Cart::destroy();
-    /*$transaction = Transaction::find(6);
-    $products = json_decode($transaction->products);
-    foreach($products as $product){
-        trace($product->name);
-    }*/
+    $sizeRepository = new  ProductSizeRepository();
+    $sizes = $sizeRepository->getAll();
+    trace($sizes);
 
-    trace( Hash::make('homestead') );
 });

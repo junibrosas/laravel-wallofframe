@@ -15,7 +15,6 @@ class Product extends \Eloquent {
 	public function newQuery($excludeDeleted = true)
 	{
 		$query = parent::newQuery($excludeDeleted);
-		//$query->where('is_available', '1');
 		return $query;
 	}
 

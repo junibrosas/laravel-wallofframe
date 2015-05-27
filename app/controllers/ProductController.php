@@ -2,27 +2,33 @@
 use Iboostme\Product\ProductRepository;
 use Iboostme\Product\ProductFormatter;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
+use Iboostme\Product\Size\ProductSizeRepository;
 class ProductController extends \BaseController {
 	public $productRepo;
 	public $productFormatter;
+	public $sizeRepository;
 	public $take = 20;
 	public $page = 1;
 
-	public function __construct(ProductRepository $productRepo, ProductFormatter $productFormatter){
+	public function __construct(ProductRepository $productRepo,
+								ProductFormatter $productFormatter,
+								ProductSizeRepository $productSizeRepository){
 		$this->productFormatter = $productFormatter;
 		$this->productRepo = $productRepo;
+		$this->sizeRepository = $productSizeRepository;
 	}
 
 	public function index($id, $slug = ''){
 		$product = $this->productRepo->find($id); // get the product
-		$products = Product::orderby(DB::raw('RAND()'))->take(10)->get();
+		$products = Product::orderby(DB::raw('RAND()'))->take(10)->get(); // products to be used in the related.
 
 		$this->data['products'] = $products; // related products
 		$this->data['pageTitle'] = $product->present()->title;
 		$this->data['product'] = $product;
 
+		$categoryToExclude = $product->category->slug == 'limited-edition' ? $product->category->slug : '';
 		JavaScript::put([
-			'frameSizes' => ProductPackage::get(),
+			'frameSizes' => $this->sizeRepository->getAll( $categoryToExclude ),
 			'square_image' => urlencode($product->present()->imageWithType('square')),
 			'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
 		]);

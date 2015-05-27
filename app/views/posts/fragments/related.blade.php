@@ -4,7 +4,7 @@
         @foreach($products as $i => $product)
         <div class="item"  data-content="false">
             <a href="{{ $product->present()->url }}" class="frame-link">
-                <img src="{{ $product->present()->imageWithType('vertical') }}" class="img-responsive">
+                <img src="{{ $product->present()->imageWithType('square') }}" class="img-responsive" style="border: 3px solid #E5E5E5">
                 <div class="detail">
                     <div style="min-height: 43px">
                         <h4 class="title">{{ $product->present()->title }}</h4>
