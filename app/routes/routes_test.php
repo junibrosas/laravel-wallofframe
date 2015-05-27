@@ -8,10 +8,6 @@ use Iboostme\Transaction\TransactionRepository;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use ProductCategory;
-use Iboostme\Product\Size\ProductSizeRepository;
 Route::get('test', function(){
-    $sizeRepository = new ProductSizeRepository();
-    $sizes = $sizeRepository->getAll();
-    trace($sizes);
 
 });
