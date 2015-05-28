@@ -3,6 +3,7 @@
     {{ link_css('iboostme/js/angular/angular-slider/angular-slider.css') }}
 @stop
 @section('footer')
+    {{ link_js('js/jqNotify/notify.min.js') }}
     {{ link_js('assets/jscroll/jquery.jscroll.min.js') }}
     {{ link_js('iboostme/wallofframe/angular/PriceSliderController.js') }}
     {{ link_js('iboostme/wallofframe/angular/ProductBrowseController.js') }}

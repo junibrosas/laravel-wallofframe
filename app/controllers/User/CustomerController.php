@@ -37,7 +37,6 @@ class CustomerController extends \BaseController {
 	}
 
 	public function getWishList(){
-
 		$products = $this->productRepo->getWishlist();
 
 		$this->data['products'] = $products;
@@ -62,6 +61,7 @@ class CustomerController extends \BaseController {
 		return View::make('user.change-password', $this->data);
 	}
 
+	// normal request of adding a new wish-list
 	public function addWishList(){
 
 		if( !Auth::check() ){
@@ -96,7 +96,6 @@ class CustomerController extends \BaseController {
 			return Redirect::route( 'customer.wishlist' )->with('success', $msg);
 		}
 
-		return ['status' => 'asdasd', 'message'=> $msg, 'product' => $this->productFormat->format( $product )];
 		return Redirect::back()->with('success', $msg);
 	}
 

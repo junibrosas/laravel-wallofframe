@@ -21,6 +21,7 @@
 
                 <li><a class="link" href="{{ route('cart.index') }}">My Bag (<span id="cart-item-count"></span>) <i class="fa fa-shopping-cart"></i></a></li>
                 @if(Auth::check())
+                    <li><a class="link" href="{{ route('customer.wishlist') }}">My WishList <i class="toggle-red fa fa-heart"></i></a></li>
                     <li><a class="link" href="{{ route('logout') }}">Logout</a></li>
                 @endif
             </ul>

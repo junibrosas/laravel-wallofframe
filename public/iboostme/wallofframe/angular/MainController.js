@@ -69,14 +69,16 @@ app.controller("MainController", ['currencyConverter', '$http', 'ngCartItems','$
 }]);
 
 app.controller("ProductListingController", function( $http, $scope ){
-
-    $scope.addToWishList = function( product ){
+    // add or remove a selected item to the wishList
+    $scope.addToWishList = function( product, e ){
         $scope.currentProduct = product;
         $http.get( mainApp.baseUrl+'/customer/ajax-add-wishlist?product='+product.id ).success( function( response ){
-            console.log(response);
             product.isInWishList = response.product.isInWishList;
-            // $scope.currentProduct.isInWishList = !response.product.isInWishList;
-
+            if(product.isInWishList){
+                $.notify(product.title + " design added to WishList.",{ className:"success", position: "right bottom"});
+            }else{
+                $.notify(product.title + " design removed from WishList.",{ className:"success", position: "right bottom"});
+            }
         });
     }
 });
