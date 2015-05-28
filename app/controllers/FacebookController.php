@@ -45,23 +45,37 @@ class FacebookController extends \BaseController {
 	public function loginCallback()
 	{
 		$code = Input::get('code');
-		if (strlen($code) == 0) return Redirect::to('/')->with('error', 'There was an error communicating with Facebook');
+		$replacementEmail = Input::get('replacement_email');
+
+		if (strlen($code) == 0){
+			return Redirect::to('/')->with('error', 'There was an error communicating with Facebook');
+		}
 
 		$me = $this->repo->getFacebookUser( $code );
 		$uid = $this->repo->getFacebookId();
 
-		if(!isset($me['email'])) return Redirect::route('login')->with('error', 'Oppss! Seems like we cannot retrieve your email on facebook. Try using a working facebook email address.');
-
-
 		$profile = Profile::whereUid($uid)->first();
 
-
 		if (empty($profile)) {
+
+			// if facebook email is not working or does not exists, replace it with
+			// an email specified by the user.
+			if($replacementEmail) {
+				$me['email'] = $replacementEmail;
+			}
+
+			if(!isset($me['email'])) {
+				$this->data['code'] = $code;
+				Session::flash('error', 'Opps! Seems like we cannot retrieve your email on facebook. Try using a working email address.');
+
+				return View::make('home.sign-email', $this->data);
+			}
+
 			$random_password = str_random(8);
 			$username = preg_replace('/\s+/', '', $me['first_name'].$me['last_name']);
 			$username = strtolower($username);
 			$input = array(
-				'email' => $me['email'],
+					'email' => $me['email'],
 				'photo' => 'https://graph.facebook.com/'.$uid.'/picture?type=large',
 				'username' => $username,
 				'password' => $random_password,
@@ -76,11 +90,11 @@ class FacebookController extends \BaseController {
 
 			$user = $repo->signup( $input );
 
-			$profile = $user->profile;
-		}
+			if($user->errors){
+				return Redirect::route('login')->withErrors($user->errors);
+			}
 
-		if($user->errors){
-			return Redirect::route('login')->withErrors($user->errors);
+			$profile = $user->profile;
 		}
 
 		$user = $profile->user;
