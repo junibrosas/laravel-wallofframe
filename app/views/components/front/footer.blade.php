@@ -4,7 +4,7 @@
             <div class="col-md-4">
                 <h2 class="title">Wall of Frame</h2>
                 <p class="desc">
-                    Wall of Frame is the Middle East’s Home of luxury brands for your Home Designs and Framing.
+                    Wall OF Frame is the Middle East’s Home of luxury brands for your Home Designs and Framing.
                 </p>
             </div>
             <div class="col-md-3">
@@ -25,9 +25,8 @@
             </div>
             <div class="col-md-3">
                 <ul class="list-inline social-buttons">
-                    <li><a href="https://www.facebook.com/pages/Wall-Of-Frame/903348669675279?fref=ts"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="{{ Config::get('site.social_facebook') }}"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="{{ Config::get('site.social_instagram') }}"><i class="fa fa-instagram"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-4 ">

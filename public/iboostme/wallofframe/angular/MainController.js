@@ -97,11 +97,11 @@ app.controller("ContactFormController", ['$http', '$scope',function($http, $scop
                 }
                 else{
                     $scope.contact = {};
-                    $('#contact-ajax-response').html('Message successfully sent.').show().fadeIn('fast').delay(3000).fadeOut('fast');
+                    $('#contact-ajax-response').html('<i class="fa fa-check"></i> Message successfully sent.').show().fadeIn('fast').delay(3000).fadeOut('fast');
                 }
             }).
             error(function(data, status, headers, config) {
-                $('#contact-ajax-response').html('Unexpected Error Occurred.', 'error').show();
+                $('#contact-ajax-response').html('<i class="fa fa-times"></i> Unexpected Error Occurred.', 'error').show();
             });
     }
 }]);

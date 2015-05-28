@@ -1,10 +1,7 @@
 <div ng-controller="ContactFormController">
     <form method="post" id="contact-form" ng-submit="contactFormSubmit()">
         <div class="row">
-            <div  class="col-sm-12">
-                <div class="alert alert-success" id="contact-ajax-response" role="alert">
-                </div>
-            </div>
+
         </div>
         <h2>Contact Us</h2>
         <div class="col-sm-6">
@@ -34,6 +31,10 @@
         <div class="col-md-12">
             <textarea class="form-control" ng-model="contact.message" name="message" placeholder="Message *" required="required"></textarea>
             <div class="label label-danger" ng-show="errors.message[0]">@{{ errors.message.toString()}}</div>
+        </div>
+        <div class="col-sm-12">
+            <div class="space-xs"></div>
+            <div class="alert alert-success alert-ajax-response" id="contact-ajax-response" role="alert"></div>
         </div>
         <div class="col-md-12 space-sm">
             <button class="btn btn-submit pull-right">Send</button>

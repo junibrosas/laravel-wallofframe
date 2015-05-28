@@ -905,6 +905,7 @@ body {
 
 
 .alert { font-weight: bold;border-radius: 0; }
+.alert-ajax-response { margin: 0; padding: 10px; }
 b { font-weight: bold;}
 .btn { border-radius: 0; }
 
