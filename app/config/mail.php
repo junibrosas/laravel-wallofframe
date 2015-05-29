@@ -55,7 +55,7 @@ return array(
  |
  */
 
-    'from' => array('address' => 'juni@cjnetsolutions.com', 'name' => 'Wall of Frames'),
+    'from' => array('address' => getenv('email_address'), 'name' => 'Wall of Frames'),
 
  /*
  |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return array(
  |
  */
 
-    'username' => 'juni@cjnetsolutions.com',
+    'username' => getenv('email_address'),
 
  /*
  |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return array(
  |
  */
 
-    'password' => '<u3SLbnK',
+    'password' => getenv('email_password'),
 
  /*
  |--------------------------------------------------------------------------
