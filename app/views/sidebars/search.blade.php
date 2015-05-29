@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="filter-item ">
+    {{--<div class="filter-item ">
         <div class="filter-heading clearfix"><h4>Price Range</h4></div>
         <div ng-controller="PriceSliderController">
             <slider floor="0" ceiling="1000" ng-model-low="lower_price_bound" ng-model-high="upper_price_bound"></slider>
@@ -26,11 +26,11 @@
                 <div class="pull-left">@{{ main.currencyConvert(lower_price_bound, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }} </div>
                 <div class="pull-right">@{{ main.currencyConvert(upper_price_bound, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }} +</div>
             </div>
-            {{--Price Range Values--}}
+            --}}{{--Price Range Values--}}{{--
             <input type="hidden" name="price_min" value="@{{lower_price_bound}}"/>
             <input type="hidden" name="price_max" value="@{{upper_price_bound}}"/>
         </div>
-    </div>
+    </div>--}}
 
     <div class="filter-item border-bottom">
         <div class="filter-heading clearfix"><h4>Category</h4></div>
