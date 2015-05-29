@@ -3,7 +3,7 @@
         // variable initializations
         $input = isset( $input ) ? $input : array();
         $keyword = array_get($input, 'keyword');
-        $types = is_null( array_get($input, 'type') ) ? array() : array_get($input, 'type');
+        //$types = is_null( array_get($input, 'type') ) ? array() : array_get($input, 'type');
         $categories = is_null( array_get($input, 'category') ) ? array() : array_get($input, 'category');
     ?>
 
@@ -33,7 +33,7 @@
     </div>
 
     <div class="filter-item border-bottom">
-        <div class="filter-heading clearfix"><h4>Category</h4> {{--<button class="btn">Reset</button>--}}</div>
+        <div class="filter-heading clearfix"><h4>Category</h4></div>
         <div class="check-group">
             @if( ProductCategory::get()->count() > 0 )
                 @foreach( ProductCategory::get() as $category )
@@ -45,8 +45,8 @@
         </div>
     </div>
 
-    <div class="filter-item border-bottom">
-        <div class="filter-heading clearfix"><h4>Types</h4> {{--<button class="btn">Reset</button>--}}</div>
+    {{--<div class="filter-item border-bottom">
+        <div class="filter-heading clearfix"><h4>Types</h4></div>
         <div class="check-group">
             @if( ProductType::get()->count() > 0 )
                 @foreach( ProductType::get() as $type )
@@ -56,7 +56,7 @@
                 @endforeach
             @endif
         </div>
-    </div>
+    </div>--}}
 
     <div class="text-center">
         <button type="submit" class="btn btn-default btn-lg">Search</button>

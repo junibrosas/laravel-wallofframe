@@ -71,9 +71,6 @@ class ProductController extends \BaseController {
 		if(!$category)
 			return Redirect::route('home.index')->with('error', PRODUCT_CATEGORY_NOT_FOUND);
 
-		//$items = $this->productRepo->getViews(); // popular products
-
-		//$this->data['items'] = $items;
 		$this->data['pageTitle'] = $category->name;
 		$this->data['heading'] = $this->data['pageTitle'];
 
@@ -113,7 +110,6 @@ class ProductController extends \BaseController {
 
 		$this->data['pageTitle'] = $brand->name . ' Brands';
 		$this->data['heading'] = $this->data['pageTitle'];
-		$this->data['has_images'] = true;
 
 		JavaScript::put([ 'loadEnabled' => true, 'apiUrl' => route('product.api.brand', [$brand->slug, 'status' => '']) ]); // enable angular product browsing
 

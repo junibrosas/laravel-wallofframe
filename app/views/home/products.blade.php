@@ -35,11 +35,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row space-md">
-                <div class="col-md-12 ">
-                    {{--@include('posts.fragments.popular-views')--}}
-                </div>
-            </div>
         </div>
     </section>
 @stop

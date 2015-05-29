@@ -1,4 +1,5 @@
 <?php namespace Api;
+use Iboostme\Product\Search\SearchRepository;
 use Iboostme\Product\ProductFormatter;
 use Iboostme\Product\ProductRepository;
 use Illuminate\Pagination\Paginator;
@@ -9,44 +10,65 @@ use ProductStatus;
 class ProductAPIController extends \BaseController  {
     public $productRepo;
     public $productFormatter;
+    protected $searchRepo;
     public $take = 20;
     public $page = 1;
     public $offset = 1;
 
-    public function __construct(ProductRepository $productRepo, ProductFormatter $productFormatter){
+    public function __construct(ProductRepository $productRepo,
+                                ProductFormatter $productFormatter,
+                                SearchRepository $searchRepo){
         $this->productRepo = $productRepo;
         $this->productFormatter = $productFormatter;
+        $this->searchRepo = $searchRepo;
 
         $this->take = Input::get('take') ? Input::get('take') : $this->take;
         $this->page = Input::get('page') ? Input::get('page') : $this->page;
     }
 
+    // get new arrival products
     public function getNewArrivals(){
-        $paginator = $this->productRepo->getNewArrivals()->paginate( $this->take );
+        $paginate = $this->productRepo->getNewArrivals()->paginate( $this->take );
 
-        return $this->mapData( $paginator );
+        return $this->mapData( $paginate );
     }
 
+    // get best selling products
     public function getBestSelling(){
-        $paginator = $this->productRepo->getBestSelling()->orderBy('created_at', 'DESC')->paginate( $this->take );
-        return $this->mapData( $paginator );
+        $paginate = $this->productRepo->getBestSelling()->orderBy('created_at', 'DESC')->paginate( $this->take );
+
+        return $this->mapData( $paginate );
     }
 
+    // get products by category
     public function getCategory( $slug ){
         $category = $this->productRepo->category($slug);
-        $paginator = $this->productRepo->getProductsByCategory( $category )->orderBy('created_at', 'DESC')->paginate( $this->take );
-        return $this->mapData( $paginator );
+        $paginate = $this->productRepo->getProductsByCategory( $category )->orderBy('created_at', 'DESC')->paginate( $this->take );
+
+        return $this->mapData( $paginate );
     }
 
+    // get products by type
     public function getByType($slug){
         $type = $this->productRepo->type($slug);
         $paginate = $this->productRepo->getProductsByType( $type )->paginate( $this->take );
         return $this->mapData( $paginate );
     }
 
+    // get products by brand
     public function getByBrand($slug){
         $brand = $this->productRepo->brand($slug);
         $paginate = $this->productRepo->getProductsByBrand( $brand )->paginate( $this->take );
+
+        return $this->mapData( $paginate );
+    }
+
+    // get products by search using search inputs
+    public function getBySearch(){
+        $paginate = $this->searchRepo->search( Input::all() )
+            ->orderBy('created_at', 'DESC')
+            ->paginate( $this->take );
+
         return $this->mapData( $paginate );
     }
 
@@ -89,7 +111,7 @@ class ProductAPIController extends \BaseController  {
         return ['navigation' => $statuses];
     }
 
-    // map paginator data
+    // map paginate data
     private function mapData( Paginator $paginator ){
         $products = $this->productFormatter->bulkFormat($paginator);
         return [
