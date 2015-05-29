@@ -8,7 +8,7 @@
           target="_blank"><i class="fa fa-facebook"></i></a>
     </li>
     <li>
-        <a href="http://twitter.com/share?url={{ urlencode($product->present()->url) }}%2Fpages%2Ftweet-button&text={{ urlencode('Woah, check this awesome frames.') }}" target="_blank">
+        <a href="http://twitter.com/share?url={{ urlencode($product->present()->url) }}%2Fpages%2Ftweet-button&text={{ urlencode('Wow, Check these awesome Frames.') }}" target="_blank">
             <i class="fa fa-twitter"></i>
         </a>
     </li>

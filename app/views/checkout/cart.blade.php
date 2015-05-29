@@ -51,7 +51,7 @@
                                 <li>30 DAYS FREE RETURNS</li>
                                 <li>SECURE PAYMENT</li>
                                 <li>CASH ON DELIVERY</li>
-                                <li>CALL US (02) 858 0777</li>
+                                <li>CONTACT US at {{ Config::get('site.contact_email') }}</li>
                             </ul>
                             <h5>AVAILABLE PAYMENT METHODS</h5>
                             <div class="row">

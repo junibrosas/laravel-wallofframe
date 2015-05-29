@@ -10,7 +10,7 @@ Route::group( ['prefix' => '/'], function () {
     Route::get('logout',                    ['as' => 'logout', 'uses' => 'UsersController@logout']);
     Route::post('users',                    ['as' => 'users.store', 'uses' => 'UsersController@store']);
     Route::post('users/login',              ['as' => 'users.auth', 'uses' => 'UsersController@doLogin']);
-    Route::post('users/forgot_password',    ['as' => 'users.forgot.password', 'uses' => 'UsersController@doForgotPassword']);
+    Route::post('forgot_password',    ['as' => 'users.forgot.password', 'uses' => 'UsersController@doForgotPassword']);
     Route::post('users/reset_password',     ['as' => 'users.reset.password', 'uses' => 'UsersController@doResetPassword']);
 } );
 
