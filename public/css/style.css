@@ -913,6 +913,24 @@ body {
 b { font-weight: bold;}
 .btn { border-radius: 0; }
 
+.stage-modal-content {
+    background: url(../img/stage-background.jpg) no-repeat center center;
+    position: absolute;
+    background-size: 100% auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.modal-cart-form {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    padding: 24px;
+    padding: 1.5rem;
+}
 .canvas-texture-to-image{
     position: relative;
     display: block;
@@ -961,9 +979,20 @@ b { font-weight: bold;}
 .frame-types {
 
 }
+#closebt-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.9);
+    color: #fff;
+    font-size: 16px;
+    padding: 1.5rem;
+}
+.frame-types li { padding-left: 20px; padding-right: 20px;}
 .art-on-wall-btn { color: #252525; font-weight: bold; margin: 20px 0; }
 .art-on-wall-btn:hover, .art-on-wall-btn:focus { color: #727272; text-decoration: none; }
-.frame-type-title { color: #bababa; text-transform: capitalize; }
+.frame-type-title { color: #bababa; text-transform: capitalize; text-decoration: none; font-weight: bold; font-size: 16px; }
 .frame-type-img {  border: 3px solid #bababa; cursor: pointer; }
 .frame-type-selected .frame-type-img{ border-color: #30beda; }
 .frame-type-selected .frame-type-title { color: #30beda; }

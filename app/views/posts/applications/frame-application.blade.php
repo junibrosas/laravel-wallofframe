@@ -2,7 +2,7 @@
     <div class="col-md-8">
         <div class="row">
             <div class="col-md-12">
-                <div class="frame-preview" ng-class="is">
+                <div class="frame-preview">
                     {{--Framed Image--}}
                     <div class="elem-center"
                         ng-show="currentFrameType == frameTypes[0]"
@@ -10,7 +10,7 @@
                         <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+300) +'&height='+(currentSize.height+300) }}"
                             alt="{{ $product->present()->title }}"
                             data-zoom-image="{{ $product->attachment->url }}"
-                            class="frame-preview-image img-responsive custom-border" />
+                            class="{{--frame-preview-image--}} img-responsive custom-border" />
                     </div>
 
                     {{--Canvas Image--}}
@@ -26,14 +26,14 @@
                         <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+300) +'&height='+(currentSize.height+300) }}"
                             alt="{{ $product->present()->title }}"
                             data-zoom-image="{{ $product->attachment->url }}"
-                            class="frame-preview-image img-responsive elem-center" />
+                            class="{{--frame-preview-image--}} img-responsive elem-center" />
                     </div>
 
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="text-right" style="padding-top: 20px;">
-                    <a href="#" class="art-on-wall-btn"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> View art on a wall</a>
+                    <a id="stage-modal" href="#animatedModal" class="art-on-wall-btn"><span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> View art on a wall</a>
                 </div>
                 <div class="row frame-types">
                     <div class="col-sm-2" ng-class="currentFrameType == frameTypes[0] ? 'frame-type-selected'  : ''">
