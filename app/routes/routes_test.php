@@ -1,8 +1,9 @@
 <?php
+use User;
+use Transaction;
 Route::get('test', function(){
-    $emailRepo = new \Iboostme\Email\EmailRepository();
-    $user = User::find(51);
-    trace($user);
+    $transaction = Transaction::first();
 
-    $emailRepo->newUser(  $user );
+    return \Illuminate\Support\Facades\View::make('emails.customer-new-order', ['transaction' => $transaction]);
+    //$emailRepo->newUser(  $user );
 });

@@ -84,10 +84,15 @@ class CheckoutController extends \BaseController {
 			return Redirect::route('paypal.payment');
 		}
 		else if($inputs['paymentMethod'] == 'cash-on-delivery'){
+			// add a new transaction
 			$repo = new TransactionRepository();
-			$repo->add(); // add a new transaction
+			$transaction = $repo->add();
 
-			$this->checkoutRepo->removeSessions(); // remove sessions
+			// remove sessions
+			$this->checkoutRepo->removeSessions();
+
+			// send email confirmation to both admin and user
+			$this->emailRepo->newOrder( $transaction );
 
 			return Redirect::route('customer.track.order')
 				->with('success', 'Transaction has been completed.');

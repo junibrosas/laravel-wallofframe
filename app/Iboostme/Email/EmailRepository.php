@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use User;
+use Transaction;
 
 class EmailRepository {
     public function newUserWithPassword( User $user, $password ){
@@ -13,9 +14,23 @@ class EmailRepository {
     }
 
     public function newUser( User $user ){
-        Mail::queueOn('default', 'emails.auth.new-user', array('user' => $user), function($message) use ($user)
+        Mail::queueOn('default', 'emails.new-user', array('user' => $user), function($message) use ($user)
         {
             $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New user is registered');
+        });
+    }
+
+    public function newOrder( Transaction $transaction ){
+        // Administrator
+        Mail::queueOn('default', 'emails.admin-new-order', array('transaction' => $transaction), function($message) use ($transaction)
+        {
+            $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New Order Received.');
+        });
+
+        // Customer
+        Mail::queueOn('default', 'emails.customer-new-order', array('transaction' => $transaction), function($message) use ($transaction)
+        {
+            $message->to( $transaction->user->present()->email, $transaction->user->present()->name )->subject('New Order Received.');
         });
     }
 } 

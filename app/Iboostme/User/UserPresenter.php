@@ -15,6 +15,9 @@ class UserPresenter extends Presenter{
     public function avatar(){
         return $this->entity->images()->orderby('created_at','desc')->first();
     }
+    public function mobileNumber(){
+        return $this->entity->profile->mobile_number;
+    }
     // Shipping addresses of a user
     public function addresses(){
         return $this->entity->shippingAddresses;
