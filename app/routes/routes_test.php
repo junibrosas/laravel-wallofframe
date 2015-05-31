@@ -1,5 +1,8 @@
 <?php
 Route::get('test', function(){
     $emailRepo = new \Iboostme\Email\EmailRepository();
-    $emailRepo->newUser( User::find(51) );
+    $user = User::find(51);
+    trace($user);
+
+    $emailRepo->newUser(  $user );
 });
