@@ -4,6 +4,5 @@ Route::get('test', function(){
     $user = User::find(51);
     trace($user);
 
-    die();
     $emailRepo->newUser(  $user );
 });
