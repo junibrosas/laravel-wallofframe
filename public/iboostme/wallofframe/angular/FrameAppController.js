@@ -102,6 +102,8 @@ app.controller("FrameAppController", function($http, $scope, productService){
     $scope.currentFrame = $scope.frameList[0];
     $scope.frameSizes = window.frameSizes;
     $scope.currentSize = $scope.frameSizes[0];
+    $scope.frameTypes = ['framed', 'canvas', 'art'];
+    $scope.currentFrameType = $scope.frameTypes[0];
 
     // sets the current frame to use for border using click event.
     $scope.setCurrentFrame = function( frame ){
@@ -118,6 +120,11 @@ app.controller("FrameAppController", function($http, $scope, productService){
         $scope.currentSize = size;
     }
 
+    // set selected frame type
+    $scope.selectedFrameType = function( type ){
+        console.log(type);
+        $scope.currentFrameType = type;
+    }
 
 });
 
