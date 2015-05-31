@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th ><input type="checkbox" class="iCheck-all icheck"/></th>
+                <th>Order No.</th>
                 <th>Tracking Number</th>
                 <th>Status</th>
                 <th>Date</th>
@@ -15,6 +16,7 @@
         <tbody>
             <tr ng-repeat="order in tableData">
                 <th  scope="row"> <input class="icheck" name="transactions[]" type="checkbox" value="@{{ order.id }}"></th>
+                <td class="text-center">@{{ order.id }}</td>
                 <td  data-title="'Orders'">
                     <a href="@{{ order.url }}" class="link-red">#@{{ order.tracking_number }}</a>
                     <br/> <small><b>Buyer</b>: @{{ order.buyer }}</small> &nbsp;&nbsp;&nbsp;<small><b>Method</b>: @{{ order.payment_method }}</small>
