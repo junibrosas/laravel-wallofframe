@@ -4,29 +4,32 @@
             <div class="col-md-12">
                 <div class="frame-preview">
                     {{--Framed Image--}}
-                    <div class="elem-center"
+                    <div class="elem-center box-shadow-frame"
                         ng-show="currentFrameType == frameTypes[0]"
-                        style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); width: @{{ (currentSize.width+300) }}};">
-                        <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+300) +'&height='+(currentSize.height+300) }}"
+                        style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); width: 550px;">
+                        <img
+                            ng-src="{{ $product->present()->imageWithType('square') }}"
+                            width="550"
                             alt="{{ $product->present()->title }}"
-                            data-zoom-image="{{ $product->attachment->url }}"
-                            class="{{--frame-preview-image--}} img-responsive custom-border" />
+                            class="img-responsive custom-border" />
                     </div>
 
                     {{--Canvas Image--}}
                     <div ng-show="currentFrameType == frameTypes[1]" class="canvas-texture-to-image">
-                        <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+300) +'&height='+(currentSize.height+300) }}"
+                        <img
+                            ng-src="{{ $product->present()->imageWithType('square') }}"
+                            width="550"
                             alt="{{ $product->present()->title }}"
-                            data-zoom-image="{{ $product->attachment->url }}"
                             class="img-responsive elem-center " />
                     </div>
 
                     {{--Art Image--}}
                     <div ng-show="currentFrameType == frameTypes[2]">
-                        <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+300) +'&height='+(currentSize.height+300) }}"
+                        <img
+                            ng-src="{{ $product->present()->imageWithType('square') }}"
+                            width="550"
                             alt="{{ $product->present()->title }}"
-                            data-zoom-image="{{ $product->attachment->url }}"
-                            class="{{--frame-preview-image--}} img-responsive elem-center" />
+                            class="img-responsive elem-center" />
                     </div>
 
                 </div>

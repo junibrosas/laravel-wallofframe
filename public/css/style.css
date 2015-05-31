@@ -962,9 +962,14 @@ b { font-weight: bold;}
     bottom: 0;
     left: 0;
 }
+.box-shadow-frame{
+    -webkit-box-shadow: 1px 10px 23px 4px rgba(0,0,0,0.44);
+    -moz-box-shadow: 1px 10px 23px 4px rgba(0,0,0,0.44);
+    box-shadow: 1px 10px 23px 4px rgba(0,0,0,0.44);
+}
 .canvas-texture-to-image img{
-    width: auto;
-    height: auto;
+    /*width: auto;
+    height: auto;*/
     position: relative;
     z-index: 1;
     margin: 0 auto;/*
