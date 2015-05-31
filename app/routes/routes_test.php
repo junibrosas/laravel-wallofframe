@@ -1,8 +1,8 @@
 <?php
 
 Route::get('test', function(){
-    Mail::send('emails.email-test-message', array('key' => 'value'), function($message)
+    Mail::queueOn('default', 'emails.auth.new-user', array('user' => $user), function($message) use ($user)
     {
-        $message->to('powerlogic1992@gmail.com', 'John Smith')->subject('Welcome!');
+        $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New user is available');
     });
 });
