@@ -99,6 +99,10 @@ class FacebookController extends \BaseController {
 
 		$user = $profile->user;
 
+		// sending email about new user
+		$emailRepo = new \Iboostme\Email\EmailRepository();
+		$emailRepo->newUser($user);
+
 		Auth::login($user);
 
 		return Redirect::to('/')->with('success', 'Successfully logged in with Facebook');

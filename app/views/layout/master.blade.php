@@ -11,7 +11,7 @@
     <title>{{ isset($pageTitle) ? $pageTitle . ' |' : '' }}  Wall of Frame</title>
 
     <!-- Bootstrap Core CSS -->
-    {{ link_css('css/bootstrap.min.css') }}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     {{ link_css('assets/datatables/jquery.dataTables.css') }}
     {{ link_css('css/style.css') }}
     {{ link_css('css/utils.css') }}
@@ -45,7 +45,7 @@
 </head>
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
-        {{ link_js('js/bootstrap.min.js') }} {{--Bootstrap--}}
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> {{--Bootstrap--}}
         {{ link_js('js/grids.js') }}
         {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
         {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}

@@ -39,19 +39,9 @@ class UsersController extends BaseController
             $profile->last_name = Input::get('last_name');
             $profile->save();
 
-            // sending email with confirmation code.
-            /*if (Config::get('confide::signup_email')) {
-                Mail::queueOn(
-                    Config::get('confide::email_queue'),
-                    Config::get('confide::email_account_confirmation'),
-                    compact('user'),
-                    function ($message) use ($user) {
-                        $message
-                            ->to($user->email, $user->username)
-                            ->subject(Lang::get('confide::confide.email.account_confirmation.subject'));
-                    }
-                );
-            }*/
+            // sending email about new user
+            $emailRepo = new \Iboostme\Email\EmailRepository();
+            $emailRepo->newUser($user);
 
             return Redirect::action('UsersController@login')
                 ->with('success', Lang::get('confide::confide.alerts.account_created'));

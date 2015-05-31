@@ -24,7 +24,7 @@
     </script>
 @stop
 @section('content')
-    <section ng-controller="FrameAppController">
+    <section>
         <div class="container">
 
             @include('posts.applications.frame-application')

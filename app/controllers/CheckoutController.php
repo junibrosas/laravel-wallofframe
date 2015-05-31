@@ -62,14 +62,18 @@ class CheckoutController extends \BaseController {
 
 		if(!$user->id) return Redirect::back()->withInput()->with('error', 'Unable to create a new user. Please try again.');
 
+		// sending email about new user
+		$emailRepo = new \Iboostme\Email\EmailRepository();
+		$emailRepo->newUser($user);
+
 		// Manually Logging In User
 		Auth::login($user);
-
-		//return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS . ' Be noticed that your username is '. $user->username .' and your temporary password is your email address. ' );
 
 		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS);
 	}
 
+
+	// process new orders
 	public function postOrder(){
 		$inputs =  Input::all();
 

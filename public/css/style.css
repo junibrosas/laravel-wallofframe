@@ -871,12 +871,12 @@ body {
 .sell { }
 .sell .title { text-transform: none; font-size: 25px; margin-bottom: 20px; }
 .sell .title a { color: #252525; text-decoration: none; }
-.sell .price { /*font-weight: bold;f*/ font-weight:bold; font-size: 32px; margin: 0; }
+.sell .price {  font-weight:bold; font-size: 32px; margin: 0; }
 .sell .price .title { font-size: 15px; }
 .sell .price span { font-size: 20px; }
 .sell .heading { margin-bottom: 20px; padding-bottom: 20px;}
 .sell .stars { margin: 0; }
-.sell .description { font-size: 14px; line-height: 30px; padding-bottom: 20px; }
+.sell .description { font-size: 14px; line-height: 30px; padding-bottom: 20px; padding-top: 20px;}
 .sell .share-heading { font-size: 20px; color: #575757; /*font-family: 'opensans-light';*/ font-weight: 300; text-transform: none; }
 .sell .socials { font-size: 20px; color: #575757; margin-left: 10px; margin-top: 8px;  }
 .sell .socials a { color: #575757; }
@@ -913,6 +913,13 @@ body {
 b { font-weight: bold;}
 .btn { border-radius: 0; }
 
+.frame-types { }
+.art-on-wall-btn { color: #252525; font-weight: bold; margin: 20px 0; }
+.art-on-wall-btn:hover, .art-on-wall-btn:focus { color: #727272; text-decoration: none; }
+.frame-type-title { color: #bababa; text-transform: capitalize; }
+.frame-type-img {  border: 3px solid #bababa; cursor: pointer; }
+.frame-type-selected .frame-type-img{ border-color: #30beda; }
+.frame-type-selected .frame-type-title { color: #30beda; }
 .frame-thumbs { margin: 10px 0 0 6px; }
 .frame-thumbs img { border:2px solid #C6C6C6; margin: 0 6px 10px 6px; float: left; } /*Change the colour*/
 .frame-thumbs .active img { border:2px solid #333 !important;  }
@@ -1108,19 +1115,21 @@ select.form-control { border-radius: 0; }
 .frame-box-group .caption .tag, #feature .cbp-l-caption-title{ color:white; font-size: 22px; font-family: "telegrafico" !important; margin-bottom: 10px;}
 .frame-box-group .caption .title, #feature .cbp-l-caption-desc { font-size: 40px; font-family: "telegrafico" !important;  line-height: 0.8; color: white; }
 .frame-preview {
-    background: url(../img/frame-background.jpg) no-repeat top center;
-    margin-bottom: 5px;
+    /*background: url(../img/frame-background.jpg) no-repeat top center;
     background-size: cover;
     height: 70%;
-    border: 1px solid #ccc;
-    padding-top: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;*/
     min-height: 500px;
+    padding-top: 20px;
+
 }
 .square-thumb {
     width: 150px;
     height: 150px;
 }
-
+.selling-price {  font-weight:bold; font-size: 25px; margin: 0; color: #252525; }
+.selling-price:hover { color: #252525; }
 .cbp-item-wrapper {   padding: 11px; }
 .form-group .label-danger { }
 
