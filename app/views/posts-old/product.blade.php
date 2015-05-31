@@ -7,6 +7,7 @@
     <meta property="og:description" content="{{ $product->present()->content }}" />
     {{ link_css('js/jqNailThumb/jquery.nailthumb.1.1.min.css') }}
     {{ link_css('js/jqLightbox/css/lightbox.css') }}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
     <style type="text/css">
         .zoomWindowContainer > div{
             margin-left: 20px !important;
@@ -15,18 +16,30 @@
 @stop
 @section('footer')
     @parent
+    {{ link_js('js/jqFullModal/animatedModal.min.js') }}
     {{ link_js('assets/elevatezoom/jquery.elevateZoom-3.0.8.min.js') }}
     {{ link_js('js/jqLightbox/js/lightbox.min.js') }}
     <script>
-        $(".frame-preview-image").elevateZoom({
-            easing : true
+        $(function(){
+            $(".frame-preview-image").elevateZoom({
+                easing : true
+            });
+            $("#stage-modal").animatedModal({
+                animatedIn: 'zoomIn',
+                animatedOut: 'zoomOut'
+            });
         });
+
     </script>
 @stop
 @section('content')
-    <section>
+    <section ng-controller="FrameAppController">
         <div class="container">
 
+            {{--Application Modal--}}
+            @include('posts.stage-modal.artModal')
+
+            {{--Application Page--}}
             @include('posts.applications.frame-application')
 
         </div>
