@@ -1,1 +1,1 @@
-You have a new registered user ({{ $user->present()->name }}).
+You have a new registered user.
