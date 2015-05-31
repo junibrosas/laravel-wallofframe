@@ -5,7 +5,7 @@
         <thead>
             <tr>
                 <th ><input type="checkbox" class="iCheck-all icheck"/></th>
-                <th>Orders</th>
+                <th>Tracking Number</th>
                 <th>Status</th>
                 <th>Date</th>
                 <th>Amount</th>

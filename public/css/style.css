@@ -61,6 +61,10 @@ h6 {
     font-weight: 700;
 }
 
+.img-border{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
 .img-centered {
     margin: 0 auto;
 }
@@ -1119,6 +1123,7 @@ select.form-control { border-radius: 0; }
 
 .cbp-item-wrapper {   padding: 11px; }
 .form-group .label-danger { }
+
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

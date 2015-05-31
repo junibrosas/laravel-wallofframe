@@ -7,5 +7,6 @@
     {{ HTML::menu_active('admin.design.manage', 'Designs', array(), ['class'=>'page-scroll']) }}
     {{ HTML::menu_active('admin.frame.border', 'Borders', array(), ['class'=>'page-scroll']) }}
     {{ HTML::menu_active('admin.frame.sizes', 'Sizes', array(), ['class'=>'page-scroll']) }}
+    {{ HTML::menu_active('admin.brands.index', 'Brands', array(), ['class'=>'page-scroll']) }}
 
 </ul>

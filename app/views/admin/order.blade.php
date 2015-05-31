@@ -7,6 +7,7 @@
             <a href="{{ route('home.index') }}"><img src="{{ asset('img/logo.png') }}"></a>
         </div>
         <div class="pull-right text-right space-top-sm">
+            <h4><b>Tracking Number</b></h4>
             <span>#{{ $order->present()->trackingNumber }} </span> <br/>
             <span>{{ date('F d, Y', strtotime( $order->created_at )) }}</span> <br/>
         </div>

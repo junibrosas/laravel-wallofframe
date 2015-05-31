@@ -1,4 +1,5 @@
 @extends('layout.default')
+
 @section('content')
     <section >
         <div class="container">

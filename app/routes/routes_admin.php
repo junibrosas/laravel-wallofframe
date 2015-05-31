@@ -30,8 +30,6 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
     Route::post('sizes/update', ['as' => 'admin.frame.sizes.update', 'uses' => 'FrameSizeController@update']);
     Route::post('sizes/actions', ['as' => 'admin.frame.sizes.actions', 'uses' => 'FrameSizeController@postActions']);
 
-    /*Route::post('design/upload', ['as'=>'admin.frame.doUpload', 'uses' => 'FrameController@postUploadFrameParts']);*/
-
     Route::post('frame/selection', ['as'=>'admin.frame.saveSelection', 'uses' => 'FrameController@postSaveSelection']);
     Route::post('frame/update', ['as' => 'admin.frame.update', 'uses' => 'FrameController@postUpdateProduct']);
     Route::post('frame/delete', ['as' => 'admin.frame.delete', 'uses' => 'FrameController@postDeleteProduct']);

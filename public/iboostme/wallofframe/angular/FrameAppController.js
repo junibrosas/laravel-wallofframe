@@ -331,6 +331,25 @@ app.controller("FrameSizeController", function($http, $scope) {
 
 });
 
+
+app.controller("BrandsController", function($http, $scope) {
+    $scope.selectedBrand = function( brand ){
+        console.log(brand);
+        $scope.brand = brand; // selected brand
+    }
+    $scope.submitEdit = function(){
+        $http.post(mainApp.baseUrl + '/admin/brand/update', $scope.brand).
+            success(function(data, status, headers, config) {
+                if(data.success){
+                    $.notify( data.responseMessage,{ className:"success", position: "right bottom"});
+                }
+            }).
+            error(function(data, status, headers, config) {
+                app.ajaxResponse('Unexpected Error.', 'error');
+            });
+    }
+});
+
 // DIRECTIVES
 // THIS DIRECTIVE WILL CENTER THE IMAGE DEPENDING ON ITS CONTAINER.
 app.directive('imagecenter', function() {
