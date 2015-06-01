@@ -26,14 +26,26 @@ class EmailRepository {
     }
 
     public function newOrder( Transaction $transaction ){
+        $adminData = array(
+            'trackingNumber' => $transaction->tracking_number,
+            'totalAmount' => $transaction->total_amount,
+            'userFullName' => $transaction->user->present()->name,
+            'userEmail' => $transaction->user->present()->email
+        );
+
         // Administrator
-        Mail::queueOn('default', 'emails.admin-new-order', array('transaction' => $transaction), function($message) use ($transaction)
+        Mail::queueOn('default', 'emails.admin-new-order', $adminData, function($message) use ($transaction)
         {
             $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New Order Received.');
         });
 
+        $customerData = array(
+            'tracking_number' => $transaction->tracking_number,
+            'total_amount' => $transaction->total_amount,
+            'userFullName' => $transaction->user->present()->name
+        );
         // Customer
-        Mail::queueOn('default', 'emails.customer-new-order', array('transaction' => $transaction), function($message) use ($transaction)
+        Mail::queueOn('default', 'emails.customer-new-order', $customerData, function($message) use ($transaction)
         {
             $message->to( $transaction->user->present()->email, $transaction->user->present()->name )->subject('New Order Received.');
         });
