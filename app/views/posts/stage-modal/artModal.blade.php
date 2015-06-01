@@ -20,12 +20,17 @@
             </div>
 
             {{--Canvas Image--}}
-            <div ng-show="currentFrameType == frameTypes[1]" class="canvas-texture-to-image">
-                <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+100) +'&height='+(currentSize.height+100) }}"
-                    alt="{{ $product->present()->title }}"
-                    data-zoom-image="{{ $product->attachment->url }}"
-                    class="img-responsive elem-center " />
+            <div>
+                <div ng-show="currentFrameType == frameTypes[1]" class="canvas-2d-effect art-mode" style=" margin: 0 auto; width: @{{ currentSize.width+100 }}px">
+                    <div  class="canvas-texture-to-image">
+                        <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+100) +'&height='+(currentSize.height+100) }}"
+                            alt="{{ $product->present()->title }}"
+                            data-zoom-image="{{ $product->attachment->url }}"
+                            class="img-responsive elem-center " />
+                    </div>
+                </div>
             </div>
+
 
             {{--Art Image--}}
             <div ng-show="currentFrameType == frameTypes[2]">

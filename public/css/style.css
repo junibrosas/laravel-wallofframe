@@ -936,6 +936,7 @@ b { font-weight: bold;}
     display: block;
     padding: 0;
 }
+
 .canvas-2d-effect:after{
     background: #eef3f6;
     -webkit-box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,.05);
@@ -954,6 +955,19 @@ b { font-weight: bold;}
     left: 120px;
     width: 500px;
     right: 0;
+}
+
+.canvas-2d-effect.art-mode:before{
+    width: inherit;
+    top: 54px;
+    left: 0;
+    margin: 0 auto;
+}
+.canvas-2d-effect.art-mode:after{
+    width: inherit;
+    top: 54px;
+    left: 0;
+    margin: 0 auto;
 }
 .canvas-2d-effect:before{
     background: #eef3f6;
