@@ -1041,7 +1041,7 @@ b { font-weight: bold;}
 .frame-types li { padding-left: 20px; padding-right: 20px;}
 .art-on-wall-btn { color: #252525; font-weight: bold; margin: 20px 0; }
 .art-on-wall-btn:hover, .art-on-wall-btn:focus { color: #727272; text-decoration: none; }
-.frame-type-title { color: #bababa; text-transform: capitalize; text-decoration: none; font-weight: bold; font-size: 16px; }
+.frame-type-title { text-align:center; color: #bababa; text-transform: capitalize; text-decoration: none; font-weight: bold; font-size: 16px; }
 .frame-type-img {  border: 3px solid #bababa; cursor: pointer; }
 .frame-type-selected .frame-type-img{ border-color: #30beda; }
 .frame-type-selected .frame-type-title { color: #30beda; }
