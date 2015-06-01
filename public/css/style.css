@@ -1043,8 +1043,8 @@ b { font-weight: bold;}
 .art-on-wall-btn:hover, .art-on-wall-btn:focus { color: #727272; text-decoration: none; }
 .frame-type-title { text-align:center; color: #bababa; text-transform: capitalize; text-decoration: none; font-weight: bold; font-size: 16px; }
 .frame-type-img {  border: 3px solid #bababa; cursor: pointer; }
-.frame-type-selected .frame-type-img{ border-color: #30beda; }
-.frame-type-selected .frame-type-title { color: #30beda; }
+.frame-type-selected .frame-type-img{ border-color: #252525; }
+.frame-type-selected .frame-type-title { color: #252525; }
 .frame-thumbs { margin: 10px 0 0 6px; }
 .frame-thumbs img { border:2px solid #C6C6C6; margin: 0 6px 10px 6px; float: left; } /*Change the colour*/
 .frame-thumbs .active img { border:2px solid #333 !important;  }
