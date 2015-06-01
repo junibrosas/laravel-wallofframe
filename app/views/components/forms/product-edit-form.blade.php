@@ -16,10 +16,6 @@
          <select name="brand_id" ng-model="currentBrand" ng-options="brand.name for brand in brands" class="form-control"></select>
     </div>
     <div class="form-group">
-        <label>Select Type:</label>
-         <select name="type_id" ng-model="currentType" ng-options="type.name for type in types" class="form-control"></select>
-    </div>
-    <div class="form-group">
         <label>Status:</label>
          <select name="status_id" ng-model="currentStatus" ng-options="status.name for status in statuses" class="form-control"></select>
     </div>
