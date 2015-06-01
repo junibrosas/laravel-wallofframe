@@ -32,9 +32,6 @@ class UsersController extends BaseController
         $user = $repo->signup(Input::all());
         if ($user->id) {
 
-            trace($user);
-            die();
-
             // sending email about new user
             $emailRepo = new \Iboostme\Email\EmailRepository();
             $emailRepo->newUser($user);
