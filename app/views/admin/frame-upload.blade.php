@@ -16,10 +16,10 @@
                         <label>Select Brand:</label>
                         <select name="" ng-model="currentBrand" ng-options="brand.name for brand in brands" ng-change="selectionChanged()" class="form-control"></select>
                     </div>
-                    <div class="form-group">
+                    {{--<div class="form-group">
                         <label>Select Type:</label>
                         <select name="" ng-model="currentType" ng-options="type.name for type in types" ng-change="selectionChanged()" class="form-control"></select>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
