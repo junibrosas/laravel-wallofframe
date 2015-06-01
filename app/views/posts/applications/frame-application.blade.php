@@ -15,7 +15,7 @@
                     </div>
 
                     {{--Canvas Image--}}
-                    <div ng-show="currentFrameType == frameTypes[1]" class="canvas-texture-to-image">
+                    <div ng-show="currentFrameType == frameTypes[1]" class="canvas-texture-to-image canvas-2d-effect">
                         <img
                             ng-src="{{ $product->present()->imageWithType('square') }}"
                             width="550"
