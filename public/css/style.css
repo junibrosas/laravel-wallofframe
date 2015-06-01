@@ -937,17 +937,26 @@ b { font-weight: bold;}
     padding: 0;
 }
 .canvas-2d-effect:after{
-    background-image: -webkit-gradient(linear,left top,left bottom,from(#e3e6ea),to(#eef3f6));
-    box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,.05);
     background: #eef3f6;
+    -webkit-box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,.05);
+    box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,.05);
+    background-image: -webkit-linear-gradient(top,#e3e6ea 0,#eef3f6 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#e3e6ea),to(#eef3f6));
+    background-image: linear-gradient(top,#e3e6ea 0,#eef3f6 100%);
     content: "";
     position: absolute;
-    height: 10px;
-    left: 0;
-    right: 0;
-    top: -10px;
-    background: #1a1c1d;
     z-index: 1;
+    left: 10px;
+    right: 40px;
+    z-index: 5;
+    -webkit-transform: skewX(-64deg);
+    -ms-transform: skewX(-64deg);
+    transform: skewX(-64deg);
+    height: 5px;
+    top: -5px;
+    left: 5px;
+    right: 20px;
+
 }
 .canvas-texture-to-image:after {
     content: "";
