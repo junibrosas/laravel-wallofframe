@@ -21,7 +21,8 @@ class EmailRepository {
         );
         Mail::queueOn('default', 'emails.new-user', $data, function($message) use ($user)
         {
-            $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New user is registered');
+            $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )
+                ->subject('Wall of Frame - New user is registered');
         });
     }
 
@@ -37,7 +38,8 @@ class EmailRepository {
         // Administrator
         Mail::queueOn('default', 'emails.admin-new-order', $adminData, function($message) use ($transaction)
         {
-            $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New Order Received.');
+            $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )
+                ->subject('Wall of Frame - New Order Received.');
         });
 
         $customerData = array(
@@ -49,7 +51,8 @@ class EmailRepository {
         // Customer
         Mail::queueOn('default', 'emails.customer-new-order', $customerData, function($message) use ($transaction)
         {
-            $message->to( $transaction->user->present()->email, $transaction->user->present()->name )->subject('New Order Received.');
+            $message->to( $transaction->user->present()->email, $transaction->user->present()->name )
+                ->subject('Wall of Frame - New Order Received.');
         });
     }
 
@@ -65,7 +68,7 @@ class EmailRepository {
             $message
                 ->from($data['email'],  $data['customerName'])
                 ->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator'  )
-                ->subject($data['customerName'].' sent you a message.');
+                ->subject('Wall of Frame - '.$data['customerName'].' sent you a message.');
         });
     }
 } 
