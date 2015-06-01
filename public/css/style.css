@@ -960,13 +960,13 @@ b { font-weight: bold;}
 .canvas-2d-effect.art-mode:before{
     width: inherit;
     top: 54px;
-    left: 0;
+    left: -5px;
     margin: 0 auto;
 }
 .canvas-2d-effect.art-mode:after{
     width: inherit;
     top: 54px;
-    left: 0;
+    left: 5px;
     margin: 0 auto;
 }
 .canvas-2d-effect:before{
