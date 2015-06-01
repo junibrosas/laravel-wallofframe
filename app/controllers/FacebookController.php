@@ -105,6 +105,16 @@ class FacebookController extends \BaseController {
 
 		Auth::login($user);
 
-		return Redirect::to('/')->with('success', 'Successfully logged in with Facebook');
+		// get a redirection url after login is successful.
+		if( Session::has('redirectAfterLogin') ){
+			$redirect = Session::get('redirectAfterLogin');
+
+			//remove session
+			Session::forget('redirectAfterLogin');
+
+			//return Redirect::to($redirect)->with('success', FACEBOOK_SUCCESS_LOGIN);;
+		}
+
+		return Redirect::to('/')->with('success', FACEBOOK_SUCCESS_LOGIN);
 	}
 }

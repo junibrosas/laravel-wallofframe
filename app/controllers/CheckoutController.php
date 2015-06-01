@@ -38,6 +38,9 @@ class CheckoutController extends \BaseController {
 	public function getShippingForm(){
 		if( Auth::check() ) return Redirect::route('checkout.cart');
 
+		// set a redirection url after login is successful.
+		Session::put('redirectAfterLogin', route('checkout.cart'));
+
 		$this->data['heading'] = 'Shipping Information';
 		$this->data['pageTitle'] = $this->data['heading'];
 		return View::make('checkout.shipping', $this->data);
