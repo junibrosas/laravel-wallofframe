@@ -936,7 +936,7 @@ b { font-weight: bold;}
     display: block;
     padding: 0;
 }
-.canvas-2d-effect:before, .canvas-2d-effect:after{
+.canvas-2d-effect:after{
     background-image: -webkit-gradient(linear,left top,left bottom,from(#e3e6ea),to(#eef3f6));
     box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,.05);
     background: #eef3f6;
