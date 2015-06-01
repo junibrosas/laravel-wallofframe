@@ -946,17 +946,22 @@ b { font-weight: bold;}
     content: "";
     position: absolute;
     z-index: 1;
-    left: 10px;
-    right: 40px;
     z-index: 5;
     -webkit-transform: skewX(-64deg);
     -ms-transform: skewX(-64deg);
     transform: skewX(-64deg);
     height: 5px;
-    top: -5px;
-    left: 5px;
+    top: 14px;
+    left: 119px;
     right: 20px;
-
+    width: 550px;
+}
+.canvas-2d-effect.effect-position:before{
+    left: 20px;
+    right: 119px;
+    -webkit-transform: skewX(64deg);
+    -ms-transform: skewX(64deg);
+    transform: skewX(64deg);
 }
 .canvas-texture-to-image:after {
     content: "";
