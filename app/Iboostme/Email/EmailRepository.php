@@ -14,7 +14,7 @@ class EmailRepository {
     }
 
     public function newUser( User $user ){
-        Mail::queueOn('default', 'emails.new-user', array('user' => $user), function($message) use ($user)
+        Mail::queueOn('default', 'emails.new-user', compact($user), function($message) use ($user)
         {
             $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )->subject('New user is registered');
         });
