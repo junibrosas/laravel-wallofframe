@@ -1,5 +1,6 @@
 <?php namespace Admin;
 
+use Iboostme\Email\EmailRepository;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use User;
 use Contact;
@@ -52,6 +53,9 @@ class ContactController extends \BaseController {
 					'errors' => $validator->messages())
 			);
 		}
+		$emailRepo = new EmailRepository();
+		$emailRepo->newContact( Input::all() );
+
 		Contact::create( Input::all() ); // saves a new contact
 		return Redirect::back()->with('success', CONTACT_SUCCESS);
 	}

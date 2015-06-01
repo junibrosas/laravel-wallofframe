@@ -52,4 +52,17 @@ class EmailRepository {
             $message->to( $transaction->user->present()->email, $transaction->user->present()->name )->subject('New Order Received.');
         });
     }
+
+    // send a new contact message
+    public function newContact( $input ){
+        $data = array(
+            'customerName' => array($input, 'first_name').' '.array($input, 'last_name'),
+            'email' => array_get($input, 'email'),
+            'contactMessage' => array_get($input, 'message'),
+        );
+        Mail::queueOn('default', 'emails.contact-message', $data, function($message) use ($data)
+        {
+            $message->to( $data['email'], $data['customerName'] )->subject($data['customerName'].' sent you a message.');
+        });
+    }
 } 

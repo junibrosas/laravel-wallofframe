@@ -94,13 +94,14 @@ app.controller("ContactFormController", ['$http', '$scope',function($http, $scop
     $scope.contactFormSubmit = function(){
         $http.post(mainApp.baseUrl+'/contact/send', $scope.contact ).
             success(function(data, status, headers, config) {
-                $scope.errors = data.errors;
+                console.log(data);
+                /*$scope.errors = data.errors;
                 if(data.errors !== undefined){
                 }
                 else{
                     $scope.contact = {};
                     $('#contact-ajax-response').html('<i class="fa fa-check"></i> Message successfully sent.').show().fadeIn('fast').delay(3000).fadeOut('fast');
-                }
+                }*/
             }).
             error(function(data, status, headers, config) {
                 $('#contact-ajax-response').html('<i class="fa fa-times"></i> Unexpected Error Occurred.', 'error').show();
