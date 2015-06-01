@@ -962,12 +962,18 @@ b { font-weight: bold;}
     top: 54px;
     left: -5px;
     margin: 0 auto;
+    -webkit-transform: skewX(18deg);
+    -ms-transform: skewX(18deg);
+    transform: skewX(18deg);
 }
 .canvas-2d-effect.art-mode:after{
     width: inherit;
     top: 54px;
     left: 5px;
     margin: 0 auto;
+    -webkit-transform: skewX(-18deg);
+    -ms-transform: skewX(-18deg);
+    transform: skewX(-18deg);
 }
 .canvas-2d-effect:before{
     background: #eef3f6;
