@@ -55,7 +55,7 @@ return array(
  |
  */
 
-    'from' => array('address' => getenv('email_address'), 'name' => 'Wall of Frames'),
+    'from' => array('address' => getenv('email_address'), 'name' => 'Wall of Frame'),
 
  /*
  |--------------------------------------------------------------------------
