@@ -52,10 +52,10 @@
                             ng-class="currentFrameType == frameTypes[1] ? 'frame-type-selected'  : ''">
                                <a href="" class="frame-type-title">Canvas</a>
                         </li>
-                        <li ng-click="selectedFrameType( frameTypes[2] )"
+                        {{--<li ng-click="selectedFrameType( frameTypes[2] )"
                             ng-class="currentFrameType == frameTypes[2] ? 'frame-type-selected'  : ''">
                                <a href="" class="frame-type-title">Art</a>
-                        </li>
+                        </li>--}}
                     </ul>
                 </div>
                 <div class="col-md-2">
