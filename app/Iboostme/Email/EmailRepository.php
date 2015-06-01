@@ -41,8 +41,8 @@ class EmailRepository {
         });
 
         $customerData = array(
-            'tracking_number' => $transaction->tracking_number,
-            'total_amount' => $transaction->total_amount,
+            'trackingNumber' => $transaction->tracking_number,
+            'totalAmount' => $transaction->total_amount,
             'userFullName' => $transaction->user->present()->name,
             'currency' => $transaction->currency
         );
