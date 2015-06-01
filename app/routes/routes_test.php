@@ -10,7 +10,7 @@ Route::get('test', function(){
     Mail::queueOn('default', 'emails.test', $data, function($message) use ($data)
     {
         $message
-            ->to( 'justignite1992@gmail.com', 'Wall Of Frame Administrator'  )
+            ->to( 'powerlogic1992@gmail.com', 'Wall Of Frame Administrator'  )
             ->subject($data['customerName'].' sent you a message.');
     });
 });
