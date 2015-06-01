@@ -56,7 +56,7 @@ class EmailRepository {
     // send a new contact message
     public function newContact( $input ){
         $data = array(
-            'customerName' => array($input, 'first_name').' '.array($input, 'last_name'),
+            'customerName' => array_get($input, 'first_name').' '.array_get($input, 'last_name'),
             'email' => array_get($input, 'email'),
             'contactMessage' => array_get($input, 'message'),
         );
