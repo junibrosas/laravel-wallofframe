@@ -15,13 +15,16 @@
                     </div>
 
                     {{--Canvas Image--}}
-                    <div ng-show="currentFrameType == frameTypes[1]" class="canvas-texture-to-image canvas-2d-effect">
-                        <img
-                            ng-src="{{ $product->present()->imageWithType('square') }}"
-                            width="550"
-                            alt="{{ $product->present()->title }}"
-                            class="img-responsive elem-center " />
+                    <div class="canvas-2d-effect" ng-show="currentFrameType == frameTypes[1]" >
+                        <div class="canvas-texture-to-image ">
+                            <img
+                                ng-src="{{ $product->present()->imageWithType('square') }}"
+                                width="550"
+                                alt="{{ $product->present()->title }}"
+                                class="img-responsive elem-center " />
+                        </div>
                     </div>
+
 
                     {{--Art Image--}}
                     <div ng-show="currentFrameType == frameTypes[2]">
