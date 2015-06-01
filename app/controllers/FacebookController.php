@@ -88,20 +88,21 @@ class FacebookController extends \BaseController {
 
 			$repo = App::make('UserRepository');
 
+			// sign up a new user
 			$user = $repo->signup( $input );
 
 			if($user->errors){
 				return Redirect::route('login')->withErrors($user->errors);
 			}
 
+			// sending email about new user
+			$emailRepo = new \Iboostme\Email\EmailRepository();
+			$emailRepo->newUser($user);
+
 			$profile = $user->profile;
 		}
 
 		$user = $profile->user;
-
-		// sending email about new user
-		$emailRepo = new \Iboostme\Email\EmailRepository();
-		$emailRepo->newUser($user);
 
 		Auth::login($user);
 
