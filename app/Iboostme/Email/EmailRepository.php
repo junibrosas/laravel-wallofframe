@@ -62,7 +62,9 @@ class EmailRepository {
         );
         Mail::queueOn('default', 'emails.contact-message', $data, function($message) use ($data)
         {
-            $message->to( $data['email'], $data['customerName'] )->subject($data['customerName'].' sent you a message.');
+            $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator'  )
+                ->from($data['email'],  $data['customerName'])
+                ->subject($data['customerName'].' sent you a message.');
         });
     }
 } 
