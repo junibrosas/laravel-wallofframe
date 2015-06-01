@@ -32,13 +32,6 @@ class UsersController extends BaseController
         $user = $repo->signup(Input::all());
         if ($user->id) {
 
-            // add a user profile
-            $profile = new Profile();
-            $profile->user_id = $user->id;
-            $profile->first_name    = Input::get('first_name');
-            $profile->last_name = Input::get('last_name');
-            $profile->save();
-
             // sending email about new user
             $emailRepo = new \Iboostme\Email\EmailRepository();
             $emailRepo->newUser($user);
