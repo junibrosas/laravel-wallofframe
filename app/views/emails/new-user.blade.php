@@ -1,6 +1,6 @@
 <p>New user gladly registered to the system.</p>
 
-Username: {{ $user->username }}<br/>
+Username: <br/>
 Name: {{ $user->present()->name }}<br/>
 Email: {{ $user->present()->email }}<br/>
 
