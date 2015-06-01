@@ -88,6 +88,9 @@ class CheckoutController extends \BaseController {
 			$repo = new TransactionRepository();
 			$transaction = $repo->add();
 
+			//add transaction currency that is used.
+			$transaction->currency = $this->outCurrency;
+
 			// remove sessions
 			$this->checkoutRepo->removeSessions();
 

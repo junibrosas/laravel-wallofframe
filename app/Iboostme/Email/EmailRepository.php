@@ -30,7 +30,8 @@ class EmailRepository {
             'trackingNumber' => $transaction->tracking_number,
             'totalAmount' => $transaction->total_amount,
             'userFullName' => $transaction->user->present()->name,
-            'userEmail' => $transaction->user->present()->email
+            'userEmail' => $transaction->user->present()->email,
+            'currency' => $transaction->currency
         );
 
         // Administrator
@@ -42,7 +43,8 @@ class EmailRepository {
         $customerData = array(
             'tracking_number' => $transaction->tracking_number,
             'total_amount' => $transaction->total_amount,
-            'userFullName' => $transaction->user->present()->name
+            'userFullName' => $transaction->user->present()->name,
+            'currency' => $transaction->currency
         );
         // Customer
         Mail::queueOn('default', 'emails.customer-new-order', $customerData, function($message) use ($transaction)

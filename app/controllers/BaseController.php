@@ -3,7 +3,7 @@ use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 class BaseController extends Controller {
 
 	protected $data = [];
-	protected $outCurrency;
+	protected $outCurrency; // the currency;
 
 	public function __construct() {
 
