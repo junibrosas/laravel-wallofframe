@@ -113,7 +113,7 @@ class FacebookController extends \BaseController {
 			//remove session
 			Session::forget('redirectAfterLogin');
 
-			//return Redirect::to($redirect)->with('success', FACEBOOK_SUCCESS_LOGIN);;
+			return Redirect::to($redirect)->with('success', FACEBOOK_SUCCESS_LOGIN);;
 		}
 
 		return Redirect::to('/')->with('success', FACEBOOK_SUCCESS_LOGIN);
