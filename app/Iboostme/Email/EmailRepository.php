@@ -15,7 +15,7 @@ class EmailRepository {
 
     public function newUser( User $user ){
         $data = array(
-            'user' => $user->name,
+            'username' => $user->name,
             'name' => $user->present()->name,
             'email' => $user->present()->email
         );
