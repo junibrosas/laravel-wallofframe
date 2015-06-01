@@ -951,9 +951,9 @@ b { font-weight: bold;}
     transform: skewX(-64deg);
     height: 5px;
     top: 14px;
-    left: 119px;
-    right: 20px;
-    width: 550px;
+    left: 0;
+    width: 500px;
+    right: 158px;
 }
 .canvas-2d-effect:before{
     background: #eef3f6;
@@ -967,10 +967,9 @@ b { font-weight: bold;}
     z-index: 5;
     height: 5px;
     top: 14px;
-    width: 550px;
-
-    left: 20px;
-    right: 119px;
+    width: 500px;
+    left: 158px;
+    right: 0;
     -webkit-transform: skewX(64deg);
     -ms-transform: skewX(64deg);
     transform: skewX(64deg);
