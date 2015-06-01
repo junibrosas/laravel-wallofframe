@@ -7,10 +7,11 @@ Route::get('test', function(){
         'email' => 'justignite1992@gmail.com',
         'contactMessage' => 'Hello there.',
     );
-    Mail::send('default', 'emails.test', $data, function($message) use ($data)
+    Mail::queueOn('default', 'emails.test', $data, function($message) use ($data)
     {
         $message
-            ->to( 'powerlogic1992@gmail.com', 'Wall Of Frame Administrator'  )
+            ->from($data['email'],  $data['customerName'])
+            ->to( 'justignite1992@gmail.com', 'Wall Of Frame Administrator'  )
             ->subject($data['customerName'].' sent you a message.');
     });
 });
