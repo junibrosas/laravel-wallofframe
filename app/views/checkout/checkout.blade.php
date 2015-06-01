@@ -1,5 +1,14 @@
 @extends('layout.default')
+@section('header')
+    @parent
+     {{ link_css('js/jqModal/jquery.remodal.css') }}
+     <style type="text/css">
+        .remodal { max-width: 500px !important; }
+     </style>
+@stop
 @section('footer')
+    @parent
+    {{ link_js('js/jqModal/jquery.remodal.js') }}
     {{ link_js('iboostme/wallofframe/cart.js') }}
 @stop
 @section('content')
@@ -24,4 +33,11 @@
         </div>
     </section>
 
+
+
+<div class="remodal" data-remodal-id="newShippingAddress">
+    <h4>Shipping Address</h4>
+        @include('components.forms.ship-alternative-checkout', ['address'=>new ShippingAddress()])
+    <br>
+</div>
 @stop

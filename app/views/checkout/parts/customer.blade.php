@@ -10,12 +10,12 @@
     </div>
 </div>
 <div>
-    <h6 class="space-top-sm space-bottom-xs">BILLING INFORMATION</h6>
+    <h6 class="space-top-sm space-bottom-xs">SHIPPING INFORMATION</h6>
     <div class="border-bottom"></div>
 
     <div class="form-group">
         @if(count($user->present()->addresses) > 0 )
-            <span class="space-sm">Select Billing Address</span>
+            <span class="space-sm"><i class="fa fa-truck"></i> Select Shipping Address</span>
             @foreach( $user->present()->addresses as $i => $address )
                 <div class="radio">
                     <label>
@@ -28,20 +28,11 @@
                 </div>
             @endforeach
         @endif
-    </div>
-    <h6 class="space-top-md space-bottom-xs">SHIPPING INFORMATION</h6>
-    <div class=" border-bottom"></div>
-    <div class="row">
-        <div class="col-md-1">
-            <i class="fa fa-truck"></i>
+        <div class="text-center">
+            <a href="#newShippingAddress" style="font-weight: bold; color: #252525;">New Shipping Information</a>
         </div>
-        <div class="col-md-11">
-            <div class="checkbox checkbox-shipping">
-                <label>
-                    <input type="checkbox" value="" checked>
-                    Deliver to the same address
-                </label>
-            </div>
-        </div>
+
     </div>
 </div>
+
+
