@@ -907,7 +907,7 @@ body {
 .frame-border-list .badge { }
 .frame-border-list .side-heading .badge {   position: relative;  top: -2px;  left: 5px; text-transform: none;  }
 
-
+.alert-sm { padding: 10px; }
 .alert { font-weight: bold;border-radius: 0; }
 .alert-ajax-response { margin: 0; padding: 10px; }
 b { font-weight: bold;}

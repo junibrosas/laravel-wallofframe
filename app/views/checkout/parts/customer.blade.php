@@ -27,6 +27,10 @@
                     </label>
                 </div>
             @endforeach
+        @else
+            <div class="alert alert-warning text-center alert-sm" role="alert" style="margin-top: 5px;">
+                You have no shipping address yet.
+            </div>
         @endif
         <div class="space-sm"></div>
         <div class="text-center">
