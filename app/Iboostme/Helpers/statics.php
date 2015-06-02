@@ -12,7 +12,7 @@ define('WISHLIST_ADDED', 'Successfully added to your wishlist.');
 define('WISHLIST_REMOVED', 'Successfully removed to your wishlist.');
 define('WISHLIST_ADD_ERROR', 'Unable to add this product. Product not found.');
 define('WISHLIST_EXISTS', 'Product already exists.');
-define('ADDRESS_ADDED', 'Successfully added a new shipping address.');
+define('ADDRESS_ADDED', 'You have successfully added a new shipping address.');
 define('ADDRESS_UPDATED', 'Successfully updated a shipping address.');
 define('ADDRESS_MAXIMUM', 'Opps. You already have the maximum number of addresses.');
 define('ACCOUNT_UPDATED', 'Account successfully updated.');

@@ -5,7 +5,10 @@
     </a>
     <div class="media-body">
         <p>Hi, <b>{{ $user->present()->name }}</b></p>
-        <p>Please complete the form below.</p>
+        @if(count($user->present()->addresses) <= 0 )
+            <p>Please complete the form below.</p>
+        @endif
+
         <p class="space-sm">Not you? <a href="{{ route('logout') }}" class="normal-link">Click here!</a></p>
     </div>
 </div>
@@ -15,7 +18,7 @@
 
     <div class="form-group">
         @if(count($user->present()->addresses) > 0 )
-            <span class="space-sm"><i class="fa fa-truck"></i> Select Shipping Address</span>
+            <i class="fa fa-truck"></i><div class="selected-shipping-title">Select Shipping Address</div>
             @foreach( $user->present()->addresses as $i => $address )
                 <div class="radio">
                     <label>
@@ -34,7 +37,7 @@
         @endif
         <div class="space-sm"></div>
         <div class="text-center">
-            <a href="#newShippingAddress" style="font-weight: bold; color: #252525;">New Shipping Information</a>
+            <a href="#newShippingAddress" class="new-shipping-btn">New Shipping Information</a>
         </div>
 
     </div>
