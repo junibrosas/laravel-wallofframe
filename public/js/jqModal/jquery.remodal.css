@@ -229,7 +229,7 @@ body.remodal-is-active .remodal {
 }
 
 /* Dialog buttons */
-
+.btn-removal,
 .remodal-confirm,
 .remodal-cancel {
     font-size: 10pt;
@@ -253,12 +253,13 @@ body.remodal-is-active .remodal {
     background-clip: padding-box;
 }
 
-.remodal-confirm {
+.btn-removal, .remodal-confirm {
     color: #16a085;
     border: 2px solid #16a085;
     background: #f4f4f4;
 }
-
+.btn-removal:hover,
+.btn-removal:active,
 .remodal-confirm:hover,
 .remodal-confirm:active {
     color: #f4f4f4;

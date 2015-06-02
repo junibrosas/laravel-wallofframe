@@ -17,7 +17,7 @@
         <input class="form-control" placeholder="Landmark" type="text" name="landmark" value="{{ $address->landmark }}">
     </div>
     <div class="form-actions form-group  clearfix">
-        <button type="submit" class="remodal-confirm">Add</button>
+        <button type="submit" class="btn-removal">Add</button>
     </div>
     <div class="col-md-12"></div>
 {{ Form::close() }}

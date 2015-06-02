@@ -28,6 +28,7 @@
                 </div>
             @endforeach
         @endif
+        <div class="space-sm"></div>
         <div class="text-center">
             <a href="#newShippingAddress" style="font-weight: bold; color: #252525;">New Shipping Information</a>
         </div>

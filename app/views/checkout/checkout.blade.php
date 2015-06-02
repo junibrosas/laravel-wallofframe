@@ -37,6 +37,13 @@
 
 <div class="remodal" data-remodal-id="newShippingAddress">
     <h4>Shipping Address</h4>
+        @if(Session::has('shipping_error'))
+            <div class="alert alert-danger" role="alert">
+                <b>{{ Session::get('shipping_error') }} </b>
+                <div class="space-xs"></div>
+            </div>
+        @endif
+
         @include('components.forms.ship-alternative-checkout', ['address'=>new ShippingAddress()])
     <br>
 </div>

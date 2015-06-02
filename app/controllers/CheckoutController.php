@@ -23,7 +23,7 @@ class CheckoutController extends \BaseController {
 	{
 		if( Cart::count() < 1 )  return Redirect::route('cart.index')->with('error', CHECKOUT_EMPTY_BAG);
 
-		if( !$this->shippingRepo->hasAddresses( Auth::user() ))  return Redirect::route('cart.index')->with('error', CHECKOUT_EMPTY_ADDRESS);
+
 
 		$products = Cart::content();
 		$total_amount = Cart::total(); // products with quantity property
@@ -78,6 +78,8 @@ class CheckoutController extends \BaseController {
 
 	// process new orders
 	public function postOrder(){
+		if( !$this->shippingRepo->hasAddresses( Auth::user() ))  return Redirect::route('checkout.cart',['#newShippingAddress'])->with('shipping_error', CHECKOUT_EMPTY_ADDRESS);
+
 		$inputs =  Input::all();
 
 		Session::put('billingAddress', $inputs['billingAddress']);
