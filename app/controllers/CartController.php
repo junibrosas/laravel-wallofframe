@@ -77,7 +77,6 @@ class CartController extends \BaseController {
 				'category' => $product->present()->category,
 				'type' => $product->present()->type,
 				'category_slug' => $product->category->slug,
-
 			)
 		);
 

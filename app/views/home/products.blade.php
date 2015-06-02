@@ -12,11 +12,11 @@
     <section >
         <div class="container">
             <div class="row border-bottom" >
-                <div class="col-md-4">
+                {{--<div class="col-md-4">
                     @include('sidebars.search')
                     <div class="space-sm"></div>
-                </div>
-                <div class="col-md-8" ng-controller="ProductBrowseController" id="pbApp">
+                </div>--}}
+                <div class="col-md-12" ng-controller="ProductBrowseController" id="pbApp">
                     <h2 class="page-heading">{{ $heading }}</h2>
                     <div class="row">
                         <div class="col-md-12">
