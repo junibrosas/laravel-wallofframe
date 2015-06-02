@@ -9,6 +9,12 @@ function generateUniqueId(){
     return $uid;
 }
 
+// Generate a tracking number with 6 digits.
+function generateTrackingNumber(){
+    $number = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+    return $number;
+}
+
 // clone an object to specific times. Returns an array of cloned objects
 function cloneObject($object, $times){
     $clones = array();

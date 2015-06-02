@@ -58,7 +58,7 @@ class TransactionRepository {
     // add new transaction.
     public function newTransaction( $data ){
         $transaction = new Transaction();
-        $transaction->tracking_number = generateUniqueId();
+        $transaction->tracking_number = generateTrackingNumber();
         $transaction->user_id = array_get($data, 'user_id');
         $transaction->shipping_address_id = array_get($data, 'shipping_address_id');
         $transaction->payment_method_id = array_get($data, 'payment_method_id');
