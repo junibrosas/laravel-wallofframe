@@ -120,39 +120,7 @@ class ProductController extends \BaseController {
 		Session::put('out_currency', Input::get('currency') );
 	}
 
-	public function addToBag($id){
-		$product = Product::find($id);
-		$package = ProductPackage::find( Input::get('size') );
 
-		if(!$product){
-			return Redirect::back()->with('error', PRODUCT_NOT_FOUND);
-		}
-		if(!$package){
-			return Redirect::back()->with('error', 'Please select a product size.');
-		}
-
-
-		$productData = array('id' => $product->id,
-			'name' => $product->title,
-			'qty' => 1,
-			'price' => $package->price,
-			'options' => array(
-				'url' => $product->present()->url,
-				'image' => $product->present()->imageWithType('square'),
-				'width' => $package->width,
-				'height' => $package->height,
-				'category' => $product->present()->category,
-				'type' => $product->present()->type,
-				'category_slug' => $product->category->slug,
-
-			)
-		);
-
-		// add new product to the bag.
-		Cart::add( $productData );
-
-		return Redirect::back()->with('success', ADDED_TO_BAG);
-	}
 
 
 }

@@ -9,11 +9,18 @@
     </div>
     <div class="form-group">
         <label>Select Category:</label>
-         <select name="category_id" ng-model="currentCategory" ng-options="category.name for category in categories" class="form-control"></select>
+        <div class="space-xs"></div>
+        <span ng-repeat="category in categories">
+            <label>
+                <input type="checkbox" checklist-model="selectedProduct.categories" checklist-value="category"> @{{ category.name }}
+            </label> <br/>
+        </span>
     </div>
     <div class="form-group">
         <label>Select Brand:</label>
-         <select name="brand_id" ng-model="currentBrand" ng-options="brand.name for brand in brands" class="form-control"></select>
+         <select name="brand_id" ng-model="currentBrand" ng-options="brand.name for brand in brands" class="form-control">
+            <option value="">No Brand</option>
+         </select>
     </div>
     <div class="form-group">
         <label>Status:</label>

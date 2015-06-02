@@ -3,7 +3,7 @@
 <div class="detail">
     <div style="min-height: 43px">
         <h4 class="title"><a href="{{ $product->present()->url }}">{{ $product->present()->title }} <span>@{{ currentSize.width +'x'+currentSize.height }}</span></a></h4>
-        <div class="subhead">{{ $product->present()->brand }} | {{ $product->present()->category }} | {{ $product->present()->type }}</div>
+        <div class="subhead">{{ $product->present()->brand }} | {{ $product->present()->category(' | ') }}</div>
     </div>
 </div>
 <div class="description">

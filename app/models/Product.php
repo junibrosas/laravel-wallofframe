@@ -31,6 +31,12 @@ class Product extends \Eloquent {
 	}
 
 
+	// return categories with pivot table
+	public function categories(){
+		return $this->belongsToMany('ProductCategory', 'product_pivot_categories');
+
+	}
+
 	public function type(){
 		return $this->hasOne('ProductType', 'id', 'type_id');
 	}

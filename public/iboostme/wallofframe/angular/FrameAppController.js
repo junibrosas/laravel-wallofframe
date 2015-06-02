@@ -56,8 +56,8 @@ app.controller("FrameUploadController", function($http, $scope){
             $scope.types = data.types;
 
             $scope.config = {
-                category: $scope.categories[0],
-                brand: $scope.brands[0],
+                categories: [],
+                brand: [],
                 type: $scope.types[0]
             }
         }).
@@ -167,6 +167,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         { name: 'True', value: 1 }
 
     ];
+
     var initialize = function(){
         $scope.selectedProduct = {}; //empty first
         $scope.currentCategory = {};
@@ -191,8 +192,6 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
     }
 
-
-
     initialize();
 
     // get products by status
@@ -216,6 +215,9 @@ app.controller("FrameManageController", function($http, $scope, productService) 
     // get the selected product
     $scope.selectProduct = function( index, product ){
         $('#save-mark').hide();
+        $scope.selectedProduct = {
+            categories: product.categories
+        };
         $scope.selectedProduct = product;
         $scope.selectedProductIndex = index;
         $scope.currentCategory = getCurrent( product.category_id, $scope.categories );
@@ -244,12 +246,14 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         );
     }
 
+
     // submits the product form
     $scope.submitProduct = function(){
         $('#load-mark').show(); $('#save-mark').hide();
 
+        this.selectedProduct.categories = $scope.selectedProduct.categories;
         this.selectedProduct.category_id = $scope.currentCategory.id;
-        this.selectedProduct.brand_id = $scope.currentBrand.id;
+        this.selectedProduct.brand_id = $scope.currentBrand ? $scope.currentBrand.id : '';
         this.selectedProduct.type_id = $scope.currentType.id;
         this.selectedProduct.status_id = $scope.currentStatus.id;
         this.selectedProduct.is_available = $scope.currentMakePublic.value;
@@ -257,7 +261,9 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
         // sends the form
         $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
+            console.log(data);
             if( data.status == 'success' ){
+
                 $scope.selectedProduct.imageSquare = data.product.imageSquare;
                 $('#load-mark').hide();
                 $('#save-mark').show();

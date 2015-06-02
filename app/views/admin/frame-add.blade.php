@@ -58,22 +58,29 @@
                     </div>
                 </div>
                 <div class="col-md-4" ng-controller="FrameUploadController as frameUpload">
-                    <input type="hidden" name="category" value="@{{ config.category.slug }}"/>
+                    <input ng-repeat="category in config.categories" type="hidden" name="categories[]" value="@{{ category.id }}"/>
                     <input type="hidden" name="brand" value="@{{ config.brand.slug }}"/>
                     <input type="hidden" name="type" value="@{{ config.type.slug }}"/>
                     <div class="mainbox">
                         <div class="form-group">
                             <label>Select Category:</label>
-                            <select ng-model="config.category" ng-options="category.name for category in categories" class="form-control"></select>
+                            <div class="space-xs"></div>
+                            <span ng-repeat="category in categories">
+                                <label>
+                                    <input type="checkbox" checklist-model="config.categories" checklist-value="category"> @{{ category.name }}
+                                </label> <br/>
+                            </span>
                         </div>
                         <div class="form-group">
                             <label>Select Brand:</label>
-                            <select ng-model="config.brand" ng-options="brand.name for brand in brands" class="form-control"></select>
+                            <select ng-model="config.brand" ng-options="brand.name for brand in brands" class="form-control">
+                                <option value="">No Brand</option>
+                            </select>
                         </div>
-                        <div class="form-group">
+                        {{--<div class="form-group">
                             <label>Select Type:</label>
                             <select ng-model="config.type" ng-options="type.name for type in types" class="form-control"></select>
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
             {{ Form::close(); }}

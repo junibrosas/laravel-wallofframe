@@ -1,11 +1,12 @@
 <?php
+use Product;
 Route::get('test', function(){
-    $data = array(
-        'first_name' => 'Julius',
-        'last_name' => 'Caesar',
-        'email' => 'justignite1992@gmail.com',
-        'message' => 'Hello there.',
-    );
-    $repo = new \Iboostme\Email\EmailRepository();
-    $repo->newContact( $data );
+    /*$slug = 'limited-edition';
+    $productRepo = new \Iboostme\Product\ProductRepository();
+    $category = $productRepo->category($slug);
+    $products = $productRepo->getProductsByCategory( $category )->get();
+
+    trace($products);*/
+
+    trace(Product::find(8)->present()->category);
 });

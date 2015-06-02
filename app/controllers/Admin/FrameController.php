@@ -3,6 +3,7 @@
 use Iboostme\Product\Border\FrameBorder;
 use Iboostme\Product\ProductFormatter;
 use User;
+use ProductPivotCategory;
 use Product;
 use ProductBrand;
 use ProductType;
@@ -37,6 +38,7 @@ class FrameController extends \BaseController {
     public function __construct(ProductRepository $productRepo, ProductFormatter $productFormatter ){
         parent::__construct();
         $this->productFormatter = $productFormatter;
+        $this->productRepo = $productRepo;
 
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
@@ -171,16 +173,17 @@ class FrameController extends \BaseController {
 
     public function postUpdateProduct(){
         $designImageId = Input::get('designImage');
-        $data = Input::all();
+        $product_id = Input::get('id');
+        $input = Input::all();
+
         if($designImageId){
             $attachment = Attachment::find($designImageId);
-            $data['attachment_id'] = $attachment->id;
-            $data['filename'] = $attachment->filename;
+            $input['attachment_id'] = $attachment->id;
+            $input['filename'] = $attachment->filename;
         }
-        $product_id = Input::get('id');
-        $data['slug'] = Str::slug($data['title']);
-        $isUpdated = Product::find( $product_id )->update( $data );
         $product = Product::find( $product_id );
+
+        $isUpdated = $this->productRepo->update( $input );
 
         return array(
             'status' => $isUpdated == true ? 'success' : 'failed',

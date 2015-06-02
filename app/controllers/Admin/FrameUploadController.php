@@ -14,6 +14,7 @@ use ProductBrand;
 use ProductType;
 use ProductCategory;
 use ProductStatus;
+use ProductPivotCategory;
 
 
 class FrameUploadController extends \BaseController {
@@ -47,6 +48,7 @@ class FrameUploadController extends \BaseController {
     // resize and store new frame designs
     public function store(){
         $input = Input::all();
+
         if(!$input['designs']){
             return Redirect::back()->with('error', NO_DESIGN_SELECTED);
         }
@@ -78,7 +80,6 @@ class FrameUploadController extends \BaseController {
             $product = new Product();
             $repo = new ProductRepository();
             $product->status_id = $repo->status('published')->id;
-            $product->category_id = $repo->category(array_get($input, 'category'))->id;
             $product->brand_id = $repo->brand(array_get($input, 'brand'))->id;
             $product->type_id = $repo->type(array_get($input, 'type'))->id;
             $product->filename = $attach->filename;
@@ -87,6 +88,19 @@ class FrameUploadController extends \BaseController {
             $product->slug = Str::slug( $product->title );
             $product->is_available = 1;
             $product->save();
+
+            // store product category
+            $categories = $input['categories'];
+
+            // create new product categories
+            if(count($categories) > 0){
+                foreach($categories as $categoryId){
+                    $productPivotCategory = new ProductPivotCategory();
+                    $productPivotCategory->product_id = $product->id;
+                    $productPivotCategory->product_category_id = $categoryId;
+                    $productPivotCategory->save();
+                }
+            }
         }
 
 

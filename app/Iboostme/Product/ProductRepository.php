@@ -5,11 +5,13 @@ use Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Transaction;
 use ProductCategory;
 use ProductType;
 use ProductBrand;
 use ProductStatus;
+use ProductPivotCategory;
 
 class ProductRepository {
 
@@ -78,8 +80,10 @@ class ProductRepository {
         return $products;
     }
     public function getProductsByCategory( ProductCategory $category ){
-        $query = $this->product()->where('category_id', $category->id);
-        return $query;
+        return Product::leftJoin('product_pivot_categories', 'products.id', '=', 'product_pivot_categories.product_id')
+            ->leftJoin('product_categories', 'product_pivot_categories.product_category_id', '=', 'product_categories.id')
+            ->where('product_pivot_categories.product_category_id', $category->id)
+            ->select(DB::raw('products.*'));
     }
     public function getProductsByBrand( ProductBrand $brand ){
         $query = $this->product()->where('brand_id', $brand->id);
@@ -96,6 +100,35 @@ class ProductRepository {
         return $this->product()->orderByRaw("RAND()")->take( $take );
     }
 
+    // create new product
+    public function create(){
+
+    }
+
+    // updated a product
+    public function update($input){
+        $product_id = $input['id'];
+        $input['slug'] = Str::slug(array_get($input, 'title'));
+        $isUpdated = Product::find( $product_id )->update( $input );
+
+
+        // current product categories delete
+        $categories = $input['categories'];
+        ProductPivotCategory::where('product_id', $product_id )->delete();
+
+        // create new product categories
+        if(count($categories) > 0){
+            foreach($categories as $category){
+                $productPivotCategory = new ProductPivotCategory();
+                $productPivotCategory->product_id = $product_id;
+                $productPivotCategory->product_category_id = $category['id'];
+                $productPivotCategory->save();
+            }
+        }
+
+        return $isUpdated;
+    }
+
     public function find($id){
         return $this->product()->whereId($id)->first();
     }
@@ -109,6 +142,7 @@ class ProductRepository {
         return ProductType::where('slug', $slug)->first();
     }
     public function brand( $slug ){
+
         return ProductBrand::where('slug', $slug)->first();
     }
     public function status( $slug ){

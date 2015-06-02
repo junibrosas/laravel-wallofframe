@@ -13,7 +13,7 @@ class CreateProductTable extends Migration {
 			$table->integer('attachment_id');
 			$table->integer('status_id');
 			$table->integer('type_id');
-			$table->integer('category_id');
+			$table->string('category_id');
 			$table->integer('brand_id');
 			$table->string('title');
 			$table->text('content');

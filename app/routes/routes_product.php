@@ -2,7 +2,7 @@
 // Product
 Route::group( ['prefix' => '/'], function () {
     Route::get('preview/{id}/{slug?}', ['as' => 'post.single', 'uses' => 'ProductController@index' ]);
-    Route::get('add-bag/{id}', ['as' => 'bag.add', 'uses' => 'ProductController@addToBag']);
+
     Route::get('best-selling', ['as' => 'selling', 'uses' => 'ProductController@getBestSelling' ]);
     Route::get('category/{slug}', ['as' => 'category', 'uses' => 'ProductController@getByCategory' ]);
     Route::get('type/{slug}', ['as' => 'browse.type', 'uses' => 'ProductController@getByType' ]);

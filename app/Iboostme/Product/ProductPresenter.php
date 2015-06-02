@@ -3,6 +3,7 @@ use Illuminate\Support\Str;
 use Laracasts\Presenter\Presenter;
 use Iboostme\Product\Wishlist\WishlistRepository;
 use Illuminate\Support\Facades\Form;
+use ProductCategory;
 
 class ProductPresenter extends Presenter{
     public function url(){
@@ -17,9 +18,27 @@ class ProductPresenter extends Presenter{
         return 'Untitled';
 
     }
-    public function category(){
-        return ucfirst($this->entity->category->name);
+    public function category( $delimiter = ', '){
+        $categories = $this->entity->categories;
+        $categoryStorage = array();
+        if(count($categories) > 0){
+            foreach($categories as $category){
+                $categoryStorage[] = $category->name;
+            }
+        }
+        return implode($delimiter, $categoryStorage);
     }
+    public function categories(){
+        $ids = array();
+        $categories = $this->entity->categories;
+        if(count($categories) > 0){
+            foreach($categories as $category){
+                $ids[] = $category->id;
+            }
+        }
+        return ProductCategory::find($ids);
+    }
+
     public function brand(){
         return ucfirst($this->entity->brand->name);
     }

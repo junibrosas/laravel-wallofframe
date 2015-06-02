@@ -49,27 +49,42 @@ class CartController extends \BaseController {
 
 		$this->data['continueShoppingUrl'] = $routeUrl;
 		return View::make('checkout.cart', $this->data);
+	}
 
-		/*if( $this->cartRepo->isCartEmpty() ){
-			$this->data['products'] = [];
-			$this->data['total_amount'] = 0;
-			return View::make('checkout.cart', $this->data);
+
+	// Add item to Cart
+	public function addToBag($id){
+		$product = Product::find($id);
+		$package = ProductPackage::find( Input::get('size') );
+
+		if(!$product){
+			return Redirect::back()->with('error', PRODUCT_NOT_FOUND);
+		}
+		if(!$package){
+			return Redirect::back()->with('error', 'Please select a product size.');
 		}
 
 
-		$products = $this->cartRepo->getCartItems( Session::get('product_bag') );
-		$total_amount = $this->cartRepo->getTotalAmount( $products ); // products with quantity property
+		$productData = array('id' => $product->id,
+			'name' => $product->title,
+			'qty' => 1,
+			'price' => $package->price,
+			'options' => array(
+				'url' => $product->present()->url,
+				'image' => $product->present()->imageWithType('square'),
+				'width' => $package->width,
+				'height' => $package->height,
+				'category' => $product->present()->category,
+				'type' => $product->present()->type,
+				'category_slug' => $product->category->slug,
 
-		$this->data['total_amount'] = $total_amount;
-		$this->data['products'] = $products;
-		$routeUrl = route('home.index');
+			)
+		);
 
-		if($products->first()->category){
-			$routeUrl = route('category', $products->first()->category->slug);
-		}
-		$this->data['continueShoppingUrl'] = $routeUrl;
+		// add new product to the bag.
+		Cart::add( $productData );
 
-		return View::make('checkout.cart', $this->data);*/
+		return Redirect::back()->with('success', ADDED_TO_BAG);
 	}
 
 	// Remove an item in the cart
