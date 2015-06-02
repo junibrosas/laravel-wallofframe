@@ -3,7 +3,13 @@
 <div class="detail">
     <div style="min-height: 43px">
         <h4 class="title"><a href="{{ $product->present()->url }}">{{ $product->present()->title }} <span>@{{ currentSize.width +'x'+currentSize.height }}</span></a></h4>
-        <div class="subhead">{{ $product->present()->brand }} | {{ $product->present()->category(' | ') }}</div>
+        <div class="subhead">
+            @if($product->present()->brand)
+                {{ implode(' | ', [$product->present()->brand, $product->present()->category(' | ') ]) }}
+            @else
+                {{ $product->present()->category(' | ') }}
+            @endif
+        </div>
     </div>
 </div>
 <div class="description">
