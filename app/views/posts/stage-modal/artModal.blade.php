@@ -12,7 +12,7 @@
             {{--Framed Image--}}
             <div class="elem-center box-shadow-frame-light"
                 ng-show="currentFrameType == frameTypes[0]"
-                style="@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); width: @{{ (currentSize.width+100) }}};">
+                style="border-width: 9px !important;@{{ currentFrame.borderStyle }} border-image-source: url('@{{ currentFrame.imagePath }}'); width: @{{ (currentSize.width+100) }}};">
                 <img ng-src="{{ url('images/frame-size/'.$product->filename.'?') }}@{{ 'width=' +(currentSize.width+100) +'&height='+(currentSize.height+100) }}"
                     alt="{{ $product->present()->title }}"
                     data-zoom-image="{{ $product->attachment->url }}"

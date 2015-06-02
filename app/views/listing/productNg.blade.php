@@ -9,8 +9,6 @@
         <img ng-src="@{{ product.imageSquare }}" class="img-responsive img-frame">
 
         <div class="detail">
-
-
             <div>
                 <h4 class="title">@{{ product.title }}</h4>
                 <div class="subhead">@{{ product.category }}</div>
