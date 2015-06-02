@@ -10,7 +10,7 @@
                 <th>Status</th>
                 <th>Date</th>
                 <th>Amount</th>
-                <th>Actions</th>
+                {{--<th>Actions</th>--}}
             </tr>
         </thead>
         <tbody>
@@ -28,10 +28,9 @@
                 <td  data-title="'Amount'" class="text-center">
                     @{{ main.currencyConvert( order.total_amount, main.inCurrency, main.outCurrency ) | currency : main.outCurrency + ' ' }}
                 </td>
-                <td data-title="'Actions'" class="text-center">
+                {{--<td data-title="'Actions'" class="text-center">
                     <button type="button" class="btn btn-danger"><a href="@{{ order.url }}" style="color: white"><i class="fa fa-eye"></i></a></button>
-                    {{--<button class="btn btn-danger"><i class="fa fa-pencil"></i></button>--}}
-                </td>
+                </td>--}}
             </tr>
         </tbody>
     </table>
