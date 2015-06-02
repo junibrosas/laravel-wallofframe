@@ -67,34 +67,6 @@ app.controller("FrameUploadController", function($http, $scope){
     $scope.onConfigChange = function(){
         console.log($scope.config);
     }
-    /*
-    $scope.imageUpload = function(){
-        $scope.showLoader = true;
-    }
-
-    var sendSelectionData = function(){
-        var data = {
-            category : $scope.currentCategory.slug,
-            brand: $scope.currentBrand.slug,
-            type: $scope.currentType.slug,
-            part: window.frame_part
-        }
-
-        // save data to session
-        $http.post( progressUrl, data ).
-            success(function(data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function(data, status, headers, config) {
-                //console.log(data);
-            });
-    } 
-
-    $scope.selectionChanged = function( index, slug ){
-        sendSelectionData();
-    }
-
-    sendSelectionData();*/
 });
 
 app.controller("FrameAppController", function($http, $scope, productService){
@@ -229,21 +201,6 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         productService.setProduct( $scope.selectedProduct ); // pass to the service
 
         $scope.showControlButtons = true;
-
-        var data = {
-            product: $scope.selectedProduct.id,
-            category : $scope.currentCategory.slug,
-            brand: $scope.currentBrand.slug,
-            type: $scope.currentType.slug,
-            part: window.frame_part
-        }
-
-        // save data to session
-        $http.post( window.progressUrl, data ).
-            success(function(data, status, headers, config) {
-                console.log(data);
-            }
-        );
     }
 
 

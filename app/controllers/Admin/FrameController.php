@@ -42,7 +42,6 @@ class FrameController extends \BaseController {
 
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
-            'progressUrl' => route('admin.frame.saveSelection'), // url to save the upload image selection data
             //'uploadUrl' => route('admin.frame.doUpload'), // url to upload an image
             'onCompleteUrl' => route('admin.design.manage', ['status' => 'unpublished']), // redirect to specified url after uploading completed.
         ]);
@@ -164,11 +163,6 @@ class FrameController extends \BaseController {
         }
 
         return Redirect::back()->with('success', DONE);
-    }
-
-    public function postSaveSelection(){
-        Session::put('frame_data', Input::all() );
-        return Session::get('frame_data');
     }
 
     public function postUpdateProduct(){

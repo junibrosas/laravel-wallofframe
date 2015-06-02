@@ -12,7 +12,7 @@ class MediaController extends \BaseController {
         parent::__construct();
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
-            'progressUrl' => route('admin.frame.saveSelection'), // url to save the upload image selection data
+            //'progressUrl' => route('admin.frame.saveSelection'), // url to save the upload image selection data
             'uploadUrl' => route('media.upload'), // url to upload an image
             'onCompleteUrl' => route('admin.design.manage', ['status' => 'unpublished']), // redirect to specified url after uploading completed.
         ]);
