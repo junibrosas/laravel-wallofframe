@@ -63,19 +63,20 @@
                         </li>--}}
                     </ul>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2" >
                     <select
-                        ng-model="currentSize"
-                        ng-init="size == frameSizes[0]"
-                        ng-options="size.width +'&quot; x '+ size.height+'&quot;' for size in frameSizes"
+                        ng-show="currentFrameType != frameTypes[1]"
+                        ng-model="currentFrame"
+                        ng-init="frame == frameList[0]"
+                        ng-options="frame.name for frame in frameList"
                         class="form-control">
                     </select>
                 </div>
                 <div class="col-md-2">
                     <select
-                        ng-model="currentFrame"
-                        ng-init="frame == frameList[0]"
-                        ng-options="frame.name for frame in frameList"
+                        ng-model="currentSize"
+                        ng-init="size == frameSizes[0]"
+                        ng-options="size.width +'&quot; x '+ size.height+'&quot;' for size in frameSizes"
                         class="form-control">
                     </select>
                 </div>
