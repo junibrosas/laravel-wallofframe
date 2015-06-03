@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-6 item animated bounceIn" ng-repeat="product in products">
+<div class="col-md-3 col-sm-6 item animated flipInX" ng-repeat="product in products">
     <a href="@{{ product.url }}" class="frame-link ">
         @if(isset($no_ribbon) == false)
             <div class="ribbon-wrapper" ng-show="product.statusClass ? true : false">
