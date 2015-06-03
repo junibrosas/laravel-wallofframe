@@ -6,7 +6,7 @@ return array(
 
     'host' => 'smtp.gmail.com',
 
-    'port' => 465,
+    'port' => 25,
 
     'from' => array('address' => getenv('email_address'), 'name' => 'Wall of Frame'),
 
