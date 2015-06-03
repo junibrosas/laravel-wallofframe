@@ -780,7 +780,7 @@ body {
 .frames .img-frame { border: 3px solid #E5E5E5; transition: all .3s ease;  min-height: 200px; width: 100%; }
 
 
-.frames .item:hover > .detail{
+.frames .item:hover .detail{
     background-color: #ADAAAA  !important;
 }
 .frames .item:hover .img-frame{
