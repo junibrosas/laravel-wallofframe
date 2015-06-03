@@ -216,6 +216,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         this.selectedProduct.is_available = $scope.currentMakePublic.value;
         this.selectedProduct.designImage = $('#design-image-single').data('image-id');
 
+
         // sends the form
         $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
             console.log(data);

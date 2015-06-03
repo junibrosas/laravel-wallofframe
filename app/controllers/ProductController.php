@@ -26,17 +26,26 @@ class ProductController extends \BaseController {
 		$this->data['pageTitle'] = $product->present()->title;
 		$this->data['product'] = $product;
 
-		$categoryToExclude = $product->category->slug == 'limited-edition' ? $product->category->slug : '';
+
+		// Get all the categories of the product. Prioritize the
+		// pricing of the product if it has a 'limited-edition' category.
+		if(count($product->categories) > 0){
+			foreach($product->categories as $category){
+				$categoryToExclude = ''; // this is the category to exclude from the normal pricing and sizes.
+				if($category->slug == 'limited-edition'){
+					$categoryToExclude = $category->slug;
+				}
+			}
+		}
+
 		JavaScript::put([
 			'frameSizes' => $this->sizeRepository->getAll( $categoryToExclude ),
 			'square_image' => urlencode($product->present()->imageWithType('square')),
 			'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
 		]);
 
-
 		// save cookie to product that has been viewed.
-		return Response::make( View::make('posts.product', $this->data))
-			->withCookie( Cookie::make('product_viewed_id', $id) );
+		return Response::make( View::make('posts.product', $this->data));
 	}
 
 
