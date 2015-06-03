@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Mail;
 Route::get('test', function(){
     $data['email'] = 'powerlogic1992@gmail.com';
     $data['customerName'] = 'Juni Brosas';
