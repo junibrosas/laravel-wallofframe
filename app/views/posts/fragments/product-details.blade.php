@@ -50,10 +50,12 @@
 <div class="space-sm"></div>
 
 {{--Frames--}}
-<label for="frame">Frame</label>
-<select
-    ng-model="currentFrame"
-    ng-init="frame == frameList[0]"
-    ng-options="frame.name for frame in frameList"
-    class="form-control">
-</select>
+<div ng-show="currentFrameType != frameTypes[1]">
+    <label for="frame">Frame</label>
+    <select
+        ng-model="currentFrame"
+        ng-init="frame == frameList[0]"
+        ng-options="frame.name for frame in frameList"
+        class="form-control">
+    </select>
+</div>

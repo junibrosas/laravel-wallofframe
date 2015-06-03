@@ -89,10 +89,6 @@
                     <a href="{{ url('add-bag/'.$product->id.'?size=') }}@{{ currentSize.id }}" class="btn btn-default btn-block btn-lg btn-purchase"> Add to Bag</a>
                 </div>
             </div>
-
-
         </div>
-
-
     </div>
 </div>
