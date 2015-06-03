@@ -22,7 +22,7 @@ define('CHECKOUT_EMPTY_BAG', 'Unable to proceed to checkout with empty cart.');
 define('CHECKOUT_EMPTY_ADDRESS', 'Your order cannot be checked out. Please provide shipping address. ' );
 define('CHECKOUT_ADDED_ADDRESS', 'Successfully added a shipping address. ');
 define('TRANSACTION_EMPTY', 'You have no transactions yet.');
-define('TRANSACTION_COMPLETE', 'Thank you for your purchase. You will receive a confirmation email with all the details of your purchase.');
+define('TRANSACTION_COMPLETE', 'Thank you for your purchase. You will receive a confirmation email with regards to your purchase.');
 define('PRODUCT_NOT_FOUND', 'Product not found');
 define('PRODUCT_CATEGORY_NOT_FOUND', 'Product category not found');
 define('PRODUCT_TYPE_NOT_FOUND', 'Product type not found');
