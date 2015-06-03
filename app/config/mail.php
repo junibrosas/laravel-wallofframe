@@ -4,14 +4,14 @@ return array(
 
     'driver' => 'smtp',
 
-    'host' => 'smtp.gmail.com',
+    'host' => 'smtp.googlemail.com',
 
     'port' => 587, //  25 or 465, 587.
 
     'from' => array('address' => getenv('email_address'), 'name' => 'Wall of Frame'),
 
 
-    'encryption' => 'ssl',
+    'encryption' => 'ssl', // tls
 
 
     'username' => getenv('email_address'),
