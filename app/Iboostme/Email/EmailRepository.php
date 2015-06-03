@@ -10,7 +10,7 @@ class EmailRepository {
     // sends email about a new user successfully registered.
     public function newUser( User $user ){
         $data = array(
-            'username' => $user->name,
+            'username' => $user->username,
             'name' => $user->present()->name,
             'email' => $user->present()->email
         );
