@@ -1,6 +1,6 @@
 <?php
 Route::get('test', function(){
-    $data['email'] = 'justignite1992@gmail.com';
+    $data['email'] = 'powerlogic1992@gmail.com';
     $data['customerName'] = 'Juni Brosas';
     Mail::queueOn('default', 'emails.customer-contact-reply', $data, function($message) use ($data)
     {
