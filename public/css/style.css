@@ -777,7 +777,16 @@ body {
 #product-list { min-height: 800px; }
 .frames .item { font-weight: 300; color: #323233; cursor: pointer; margin-bottom: 20px}
 .frames .frame-link { color: #252525; text-decoration: none; }
-.frames .img-frame { border: 3px solid #E5E5E5;  min-height: 200px; width: 100%; }
+.frames .img-frame { border: 3px solid #E5E5E5; transition: all .3s ease;  min-height: 200px; width: 100%; }
+
+
+.frames .item:hover > .detail{
+    background-color: #ADAAAA  !important;
+}
+.frames .item:hover .img-frame{
+    border: 3px solid #ADAAAA ;
+}
+
 .frames .item .content .title { font-weight: 300; }
 .frames .item .content { background-color: #fff; padding: 40px 25px 10px 25px;/* position: relative; top: -300px; left: 15px; height: 93%; width: 78%;*/
     position: absolute;
@@ -796,12 +805,13 @@ body {
 .frames .item .content .description { padding-top: 10px; margin-top: 20px; border-top: 2px dashed #ddd; }
 .frames .description a { color: #252525; /*font-weight: bold;*/ font-weight: bold; }
 .frames .item .detail {
-    background-color: rgba(255, 255, 255, 0.9);
     padding: 5px 15px;
     width: 100%;
     background-color: #E5E5E5;
     min-height: 70px;
+    transition: all .3s ease;
 }
+
 .frames .item .detail .title { text-transform: none; font-size: 14px; line-height: 15px; margin-bottom: 0; }
 .frames .item .detail .title span { font-size: 11px; font-style: italic; }
 .frames .item .detail .description { padding-top: 5px; }
