@@ -22,7 +22,7 @@ class EmailRepository {
         });
 
         // To Customer
-        Mail::queueOn('default', 'emails.customer-new-users', $data, function($message) use ($user)
+        Mail::queueOn('default', 'emails.customer-new-user', $data, function($message) use ($user)
         {
             $message->to( $user->present()->email, $user->present()->name )
                 ->subject('Welcome to Wall Of Frame. Thank you for registering your profile.');
