@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Mail;
 Route::get('test', function(){
     $data = [
-        'email' => 'justignite1992@gmail.com',
+        'email' => 'powerlogic1992@gmail.com',
         'customerName' => 'Juni Brosas'
     ];
 
