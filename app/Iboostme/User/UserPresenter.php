@@ -13,7 +13,7 @@ class UserPresenter extends Presenter{
         return $this->entity->email;
     }
     public function avatar(){
-        return $this->entity->images()->orderby('created_at','desc')->first();
+        return $this->entity->photo;
     }
     public function mobileNumber(){
         return $this->entity->profile->mobile_number;

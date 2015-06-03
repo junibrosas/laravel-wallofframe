@@ -1,7 +1,7 @@
 <h2 class="side-heading space-bottom-md">Customer Information</h2>
 <div class="media">
     <a class="media-left" href="{{ route('customer.account') }}">
-        <img src="{{ asset('img/profile.jpg') }}" alt="customer profile image">
+        <img src="{{ $user->present()->avatar }}" alt="customer profile image" width="150px">
     </a>
     <div class="media-body">
         <p>Hi, <b>{{ $user->present()->name }}</b></p>
