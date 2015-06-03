@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'driver' => 'email',
+    'driver' => 'mail',
     'host' => 'smtp.googlemail.com',
     'port' => 587, //  25 or 465, 587.
     'from' => array('address' => getenv('email_address'), 'name' => 'Wall of Frame'),
