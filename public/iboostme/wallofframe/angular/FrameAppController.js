@@ -209,7 +209,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $('#load-mark').show(); $('#save-mark').hide();
 
         this.selectedProduct.categories = $scope.selectedProduct.categories;
-        this.selectedProduct.category_id = $scope.currentCategory.id;
+        //this.selectedProduct.category_id = $scope.currentCategory.id;
         this.selectedProduct.brand_id = $scope.currentBrand ? $scope.currentBrand.id : '';
         this.selectedProduct.type_id = $scope.currentType.id;
         this.selectedProduct.status_id = $scope.currentStatus.id;
