@@ -10,7 +10,7 @@
                 
                 @if( $brands->count() > 0 )
                     @foreach( $brands as $i => $brand )
-                        <div class="col-md-2">
+                        <div class="col-md-2 animated flipInX">
                             <a href="{{ $brand->present()->url }}">
                                 <img src="{{ $brand->present()->image }}" alt="Brand Logo" class="img-responsive elem-center"/>
                             </a>
