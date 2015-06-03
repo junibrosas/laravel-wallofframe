@@ -33,8 +33,6 @@
             </div>
         </div>
     </section>
-    
-    <img src="" alt=""/>
 
     <section id="testimony">
         <div class="container">
