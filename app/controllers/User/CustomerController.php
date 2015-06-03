@@ -1,22 +1,25 @@
 <?php namespace User;
-use Iboostme\Product\ProductFormatter;
-use Iboostme\Product\ProductRepository;
-use Iboostme\User\Customer\ShippingAddressRepository;
-use Iboostme\User\UserRepository;
+
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
-use Iboostme\Product\Wishlist\WishlistRepository;
-use Product;
-use ShippingAddress;
-use User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 use Iboostme\Transaction\TransactionRepository;
 use Iboostme\Formatter\TransactionFormatter;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
+use Iboostme\Product\Wishlist\WishlistRepository;
+use Iboostme\Product\ProductFormatter;
+use Iboostme\Product\ProductRepository;
+use Iboostme\User\Customer\ShippingAddressRepository;
+use Iboostme\User\UserRepository;
+use Product;
+use ShippingAddress;
+use User;
 
 class CustomerController extends \BaseController {
 	protected $productRepo;
@@ -125,32 +128,6 @@ class CustomerController extends \BaseController {
 		return ['status' => $status, 'message'=> $msg, 'product' => $this->productFormat->format( $product )];
 	}
 
-	public function addShipmentAddress(){
-		$repo = new ShippingAddressRepository();
-		$shipAddress = ShippingAddress::find( Input::get('shipping_address') );
-
-		if( $repo->isMax( Auth::user() ) )
-			return Redirect::back()->with('error', ADDRESS_MAXIMUM);
-
-		if($shipAddress){
-			$shipAddress->update( Input::all() );
-			$msg = ADDRESS_UPDATED;
-		}else{
-			$repo->add( Input::all() );
-			$msg = ADDRESS_ADDED;
-		}
-		return Redirect::back()->with('success', $msg);
-	}
-
-	public function getShipmentAddress(){
-		$userId = Input::get('id');
-		$shipAddress = ShippingAddress::where('user_id', $userId)->get();
-		$shipAddress->each(function( $address ){
-			$address->details = $address->present()->details;
-		});
-		return $shipAddress;
-	}
-
 	public function changePassword(){
 		$rules = array(
 			'old_password'                  => 'required',
@@ -186,5 +163,46 @@ class CustomerController extends \BaseController {
 		$repo = new UserRepository();
 		$repo->update( Input::all() );
 		return Redirect::back()->with('success', ACCOUNT_UPDATED);
+	}
+
+	// add or update shipping address
+	public function addShippingAddress(){
+		$repo = new ShippingAddressRepository();
+		$shipAddress = ShippingAddress::find( Input::get('shipping_address') );
+
+		if( $repo->isMax( Auth::user() ) )
+			return Redirect::back()->with('error', ADDRESS_MAXIMUM);
+
+		if($shipAddress){
+			$shipAddress->update( Input::all() );
+			$msg = ADDRESS_UPDATED;
+		}else{
+			$repo->add( Input::all() );
+			$msg = ADDRESS_ADDED;
+		}
+		return Redirect::back()->with('success', $msg);
+	}
+
+	// ajax request get the shipping address
+	public function getShippingAddress(){
+		$userId = Input::get('id');
+		$shipAddress = ShippingAddress::where('user_id', $userId)->get();
+		$shipAddress->each(function( $address ){
+			$address->details = $address->present()->details;
+		});
+		return $shipAddress;
+	}
+
+	// remove shipping address
+	public function removeShippingAddress(){
+		$shipAddress = ShippingAddress::find( Input::get('shipping_address') );
+
+		$shipAddress->delete();
+
+		Session::flash('success', 'Successfully removed a shipping address.');
+
+		return Response::json([
+			'redirectUrl' => route('checkout.cart')
+		]);
 	}
 }

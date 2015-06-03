@@ -107,3 +107,19 @@ app.controller("ContactFormController", ['$http', '$scope',function($http, $scop
             });
     }
 }]);
+
+app.controller("ShippingAddressController", ['$http', '$scope',function($http, $scope){
+
+    $scope.removeShippingAddress = function( shippingAddressId ){
+        var postData = {
+            shipping_address:shippingAddressId
+        };
+        $http.post(mainApp.baseUrl+'/customer/remove-address', postData).
+            success(function(data, status, headers, config) {
+                location.reload();
+            }).
+            error(function(data, status, headers, config) {
+
+            });
+    }
+}]);

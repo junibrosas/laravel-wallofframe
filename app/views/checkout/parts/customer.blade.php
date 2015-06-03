@@ -16,11 +16,14 @@
     <h6 class="space-top-sm space-bottom-xs">SHIPPING INFORMATION</h6>
     <div class="border-bottom"></div>
 
-    <div class="form-group">
+    <div class="form-group" ng-controller="ShippingAddressController">
         @if(count($user->present()->addresses) > 0 )
             <i class="fa fa-truck"></i><div class="selected-shipping-title">Select Shipping Address</div>
             @foreach( $user->present()->addresses as $i => $address )
                 <div class="radio">
+
+                    <a ng-click="removeShippingAddress({{ $address->id }})" style="cursor: pointer;" class="btn btn-info btn-xs pull-right btn-edit" ><i class="fa fa-trash-o"></i></a>
+                    {{--<a style="cursor: pointer;" class="btn btn-info btn-xs pull-right btn-edit" style="margin-right: 5px;"><i class="fa fa-pencil"></i></a>--}}
                     <label>
                         <input type="radio" name="billingAddress"  value="{{ $address->id }}" {{ $i == 0 ? 'checked' : '' }}>
                         {{ $address->present()->name }} <br/>

@@ -26,11 +26,13 @@ Route::group( ['before' => ['auth'], 'prefix' => 'customer', 'namespace' => 'Use
     Route::get('wishlist',                      ['as' => 'customer.wishlist', 'uses' => 'CustomerController@getWishList']);
     Route::get('tracking',                      ['as' => 'customer.track.order', 'uses' => 'CustomerController@getTrackingOrder']);
     Route::get('change-password',               ['as' => 'password.change', 'uses' => 'CustomerController@getPassword']);
-
+    Route::post('account/update',               ['as' => 'customer.account.update', 'uses' => 'CustomerController@updateAccount']);
     Route::post('change-password',               ['as' => 'password.update', 'uses' => 'CustomerController@changePassword']);
 
-    Route::post('add-address',                  ['as' => 'customer.address.add', 'uses' => 'CustomerController@addShipmentAddress']);
-    Route::post('get-address',                  ['as' => 'customer.address.get', 'uses' => 'CustomerController@getShipmentAddress']);
-    Route::post('account/update',               ['as' => 'customer.account.update', 'uses' => 'CustomerController@updateAccount']);
+
+    // Shipping Address routes
+    Route::post('add-address',                  ['as' => 'customer.address.add', 'uses' => 'CustomerController@addShippingAddress']);
+    Route::post('get-address',                  ['as' => 'customer.address.get', 'uses' => 'CustomerController@getShippingAddress']);
+    Route::post('remove-address',               ['as' => 'customer.address.get', 'uses' => 'CustomerController@removeShippingAddress']);
 
 } );

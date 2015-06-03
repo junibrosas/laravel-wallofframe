@@ -75,7 +75,6 @@ class CheckoutController extends \BaseController {
 		return Redirect::route('checkout.cart')->with('success', CHECKOUT_ADDED_ADDRESS);
 	}
 
-
 	// process new orders
 	public function postOrder(){
 		if( !$this->shippingRepo->hasAddresses( Auth::user() ))  return Redirect::route('checkout.cart',['#newShippingAddress'])->with('shipping_error', CHECKOUT_EMPTY_ADDRESS);
