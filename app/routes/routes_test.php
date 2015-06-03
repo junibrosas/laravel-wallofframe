@@ -1,8 +1,15 @@
 <?php
+use Illuminate\Support\Facades\Mail;
 Route::get('test', function(){
-    for($i = 0; $i < 100; $i++){
-        $number = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
-        echo $number . '<br>';
-    }
+    $data = [
+        'email' => 'justignite1992@gmail.com',
+        'customerName' => 'Juni Brosas'
+    ];
+
+    Mail::queueOn('default', 'emails.customer-contact-reply', $data, function($message) use ($data)
+    {
+        $message->to( $data['email'],  $data['customerName'] )
+            ->subject('Thank you for contacting with us.');
+    });
 
 });
