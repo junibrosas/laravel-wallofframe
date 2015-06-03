@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration {
 			$table->integer('payment_method_id');
 			$table->integer('transaction_status_id');
 			$table->decimal('total_amount', 9, 2)->nullable();
+			$table->text('shippingAddress')->nullable();
 			$table->text('products')->nullable();
 			$table->text('payment_response')->nullable();
 

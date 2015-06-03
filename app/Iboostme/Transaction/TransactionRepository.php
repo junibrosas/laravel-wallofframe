@@ -58,6 +58,8 @@ class TransactionRepository {
     // add new transaction.
     public function newTransaction( $data ){
         $transaction = new Transaction();
+        $shippingAddressId = array_get($data, 'shipping_address_id');
+
         $transaction->tracking_number = generateTrackingNumber();
         $transaction->user_id = array_get($data, 'user_id');
         $transaction->shipping_address_id = array_get($data, 'shipping_address_id');
@@ -66,6 +68,7 @@ class TransactionRepository {
         $transaction->total_amount = array_get($data, 'total_amount');
         $transaction->products = json_encode(array_get($data, 'cart_content'));
         $transaction->payment_response = array_get($data, 'payment_response');
+        $transaction->shippingAddress = ShippingAddress::find( $shippingAddressId )->toJson();
 
         $transaction->save();
 
