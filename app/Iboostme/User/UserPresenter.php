@@ -17,7 +17,7 @@ class UserPresenter extends Presenter{
 
     public function avatar(){
         if(!$this->entity->photo){
-            return 'placehold.it/150x150/';
+            return 'http://placehold.it/150x150';
         }
 
         return $this->entity->photo;
