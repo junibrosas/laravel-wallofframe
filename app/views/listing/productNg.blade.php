@@ -1,5 +1,5 @@
-<div class="col-md-3 col-sm-6 item" ng-repeat="product in products">
-    <a href="@{{ product.url }}" class="frame-link">
+<div class="col-md-3 col-sm-6 item animated fadeInUp" ng-repeat="product in products">
+    <a href="@{{ product.url }}" class="frame-link ">
         @if(isset($no_ribbon) == false)
             <div class="ribbon-wrapper" ng-show="product.statusClass ? true : false">
                 <div class="ribbon @{{ product.statusClass }}">@{{ product.status }}</div>

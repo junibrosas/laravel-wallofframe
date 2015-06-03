@@ -18,14 +18,13 @@
     {{ link_css('css/media.css') }}
     {{ link_css('css/range.css') }}
     {{ link_css('css/borders.css') }}
+    {{ link_css('css/animate.min.css') }}
     {{ link_css('assets/font-awesome/css/font-awesome.min.css') }}
     {{ link_css('assets/owl-carousel/owl.carousel.css') }}
     {{ link_css('assets/owl-carousel/owl.theme.css') }}
     {{ link_css('iboostme/js/angular/ngTable/ng-table.css') }}
     {{ link_css('assets/icheck/skins/flat/red.css') }}
     {{ link_css('js/jqNailThumb/jquery.nailthumb.1.1.min.css') }}
-
-
     {{ link_js('js/jquery.js') }} {{--jQuery--}}
 
     <!-- Digital Countdown Timer -->
