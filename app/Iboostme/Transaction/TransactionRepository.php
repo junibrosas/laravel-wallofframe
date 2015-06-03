@@ -6,6 +6,7 @@ use Iboostme\Product\Cart\CartRepository;
 use Transaction;
 use TransactionStatus;
 use Product;
+use ShippingAddress;
 use Gloudemans\Shoppingcart\Facades\Cart;
 class TransactionRepository {
 
@@ -62,7 +63,6 @@ class TransactionRepository {
 
         $transaction->tracking_number = generateTrackingNumber();
         $transaction->user_id = array_get($data, 'user_id');
-        $transaction->shipping_address_id = array_get($data, 'shipping_address_id');
         $transaction->payment_method_id = array_get($data, 'payment_method_id');
         $transaction->transaction_status_id = TransactionStatus::where('slug', 'in-process')->first()->id;
         $transaction->total_amount = array_get($data, 'total_amount');

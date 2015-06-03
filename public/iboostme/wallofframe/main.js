@@ -56,6 +56,17 @@ $(function() {
     //nail thumb
     $('.nailthumb-container').nailthumb();
 
+    // this is a confirmation used before checking out order.
+    var confirmButton = $('.confirmation-action');
+    confirmButton.click(function(event){
+        event.preventDefault();
+
+        var choice = confirm(this.getAttribute('data-confirm'));
+        if (choice) {
+            $('.checkout-order-form').submit();
+        }
+    });
+
 });
 
 // Highlight the top nav as scrolling occurs
@@ -67,5 +78,7 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
+
+
 
 

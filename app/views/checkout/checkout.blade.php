@@ -14,7 +14,7 @@
 @section('content')
     <section>
         <div class="container checkout">
-            {{ Form::open(['route' => 'checkout.order', 'method' => 'post', 'class' => '', 'role' => 'form' ]) }}
+            {{ Form::open(['route' => 'checkout.order', 'method' => 'post', 'class' => 'checkout-order-form', 'role' => 'form' ]) }}
                 <div class="row">
                     <div class="col-md-4">
                         @include('checkout.parts.customer')
@@ -23,10 +23,14 @@
                         @include('checkout.parts.method')
                     </div>
                     <div class="col-md-5">
-                        <button type="submit" class="btn btn-default btn-sm btn-purchase pull-right"> Order Now</button>
+                        <button type="submit"
+                            class="confirmation-action btn btn-default btn-sm btn-purchase pull-right"
+                            data-confirm="Are you sure you want to proceed to order?"> Order Now</button>
                         <h2 class="side-heading space-bottom-md">Summary</h2>
                         @include('checkout.parts.summary')
-                        <button type="submit" class="btn btn-default btn-sm btn-purchase pull-right"> Order Now</button>
+                        <button type="submit"
+                            class="confirmation-action btn btn-default btn-sm btn-purchase pull-right"
+                            data-confirm="Are you sure you want to proceed to order?"> Order Now</button>
                     </div>
                 </div>
             {{ Form::close() }}

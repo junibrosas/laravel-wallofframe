@@ -18,12 +18,17 @@ class TransactionPresenter extends Presenter{
     }
 
     public function shippingAddress(){
+        $shippingAddress = \GuzzleHttp\json_decode($this->entity->shippingAddress);
+        if(!$shippingAddress){
+            return '';
+        }
+
         $address = '';
-        $address .= $this->entity->shippingAddress->first_name . ' ';
-        $address .= $this->entity->shippingAddress->last_name . ', ';
-        $address .= $this->entity->shippingAddress->mobile_number . ', ';
-        $address .= $this->entity->shippingAddress->address . ' ';
-        $address .= $this->entity->shippingAddress->landmark . ' ';
+        $address .= $shippingAddress->first_name . ' ';
+        $address .= $shippingAddress->last_name . ', ';
+        $address .= $shippingAddress->mobile_number . ', ';
+        $address .= $shippingAddress->address . ' ';
+        $address .= $shippingAddress->landmark . ' ';
         return $address;
     }
 

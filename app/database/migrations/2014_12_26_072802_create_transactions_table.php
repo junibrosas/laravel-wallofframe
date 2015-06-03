@@ -17,7 +17,6 @@ class CreateTransactionsTable extends Migration {
 			$table->increments('id');
 			$table->string('tracking_number');
 			$table->integer('user_id');
-			$table->integer('shipping_address_id');
 			$table->integer('payment_method_id');
 			$table->integer('transaction_status_id');
 			$table->decimal('total_amount', 9, 2)->nullable();

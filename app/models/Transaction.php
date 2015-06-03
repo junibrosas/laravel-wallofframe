@@ -8,21 +8,19 @@ class Transaction extends \Eloquent {
 	protected $fillable = [
 		'user_id',
 		'tracking_number',
-		'shipping_address_id',
 		'payment_method_id',
 		'transaction_status_id',
 		'total_amount',
 		'products',
-		'payment_response'
+		'payment_response',
+		'shippingAddress'
 	];
 
 	public function user(){
 		return $this->hasOne('User', 'id', 'user_id');
 	}
 
-	public function shippingAddress(){
-		return $this->hasOne('ShippingAddress', 'id', 'shipping_address_id');
-	}
+
 
 	public function transactionStatus(){
 		return $this->hasOne('TransactionStatus', 'id', 'transaction_status_id');
