@@ -40,10 +40,6 @@ class ShippingAddressRepository {
             $input['user_id'] = $user->id;
             Profile::create( $input );
             ShippingAddress::create( $input );
-
-            // email a new user
-            $emailRepo = new EmailRepository();
-            //$emailRepo->newUserWithPassword( $user, $input['password'] );
         }
 
         return $user;

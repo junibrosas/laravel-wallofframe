@@ -6,28 +6,33 @@ use User;
 use Transaction;
 
 class EmailRepository {
-    public function newUserWithPassword( User $user, $password ){
-        Mail::send('emails.auth.generated', array('user' => $user, 'password' => $password), function($message) use ($user)
-        {
-            $message->to( $user->email, $user->present()->name )->subject('Welcome to Wall of Frame!');
-        });
-    }
 
+    // sends email about a new user successfully registered.
     public function newUser( User $user ){
         $data = array(
             'username' => $user->name,
             'name' => $user->present()->name,
             'email' => $user->present()->email
         );
-        Mail::queueOn('default', 'emails.new-user', $data, function($message) use ($user)
+        // To Administrator
+        Mail::queueOn('default', 'emails.admin-new-user', $data, function($message) use ($user)
         {
             $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )
                 ->subject('Wall of Frame - New user is registered');
         });
+
+        // To Customer
+        Mail::queueOn('default', 'emails.customer-new-users', $data, function($message) use ($user)
+        {
+            $message->to( $user->present()->email, $user->present()->name )
+                ->subject('Welcome to Wall Of Frame. Thank you for registering your profile.');
+        });
+
     }
 
+    // sends email about a new successful order.
     public function newOrder( Transaction $transaction ){
-        $adminData = array(
+        $data = array(
             'trackingNumber' => $transaction->tracking_number,
             'totalAmount' => $transaction->total_amount,
             'userFullName' => $transaction->user->present()->name,
@@ -36,23 +41,17 @@ class EmailRepository {
         );
 
         // Administrator
-        Mail::queueOn('default', 'emails.admin-new-order', $adminData, function($message) use ($transaction)
+        Mail::queueOn('default', 'emails.admin-new-order', $data, function($message) use ($transaction)
         {
             $message->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator' )
                 ->subject('Wall of Frame - New Order Received.');
         });
 
-        $customerData = array(
-            'trackingNumber' => $transaction->tracking_number,
-            'totalAmount' => $transaction->total_amount,
-            'userFullName' => $transaction->user->present()->name,
-            'currency' => $transaction->currency
-        );
         // Customer
-        Mail::queueOn('default', 'emails.customer-new-order', $customerData, function($message) use ($transaction)
+        Mail::queueOn('default', 'emails.customer-new-order', $data, function($message) use ($transaction)
         {
             $message->to( $transaction->user->present()->email, $transaction->user->present()->name )
-                ->subject('Wall of Frame - New Order Received.');
+                ->subject('Thank you for your order.');
         });
     }
 
@@ -69,6 +68,13 @@ class EmailRepository {
                 ->from($data['email'],  $data['customerName'])
                 ->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator'  )
                 ->subject('Wall of Frame - '.$data['customerName'].' sent you a message.');
+        });
+
+        // Customer
+        Mail::queueOn('default', 'emails.customer-contact-reply', $data, function($message) use ($data)
+        {
+            $message->to( $data['email'],  $data['customerName'] )
+                ->subject('Thank you for contacting with us.');
         });
     }
 } 

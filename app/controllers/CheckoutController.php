@@ -103,7 +103,7 @@ class CheckoutController extends \BaseController {
 			$this->emailRepo->newOrder( $transaction );
 
 			return Redirect::route('customer.track.order')
-				->with('success', 'Transaction has been completed.');
+				->with('success', TRANSACTION_COMPLETE);
 		}
 		return Redirect::back()->with('error', 'Unexpected Error: You have not selected a payment method');
 	}
