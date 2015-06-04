@@ -19,7 +19,7 @@ define('ACCOUNT_UPDATED', 'Account successfully updated.');
 define('PASSWORD_UPDATED', 'Password has been changed.');
 define('PASSWORD_WRONG', 'Password is not correct.');
 define('CHECKOUT_EMPTY_BAG', 'Unable to proceed to checkout with empty cart.');
-define('CHECKOUT_EMPTY_ADDRESS', 'Your order cannot be checked out. Please provide shipping address. ' );
+define('CHECKOUT_EMPTY_ADDRESS', 'Please provide shipping address below in order to proceed checkout!' );
 define('CHECKOUT_ADDED_ADDRESS', 'Successfully added a shipping address. ');
 define('TRANSACTION_EMPTY', 'You have no transactions yet.');
 define('TRANSACTION_COMPLETE', 'Thank you for your purchase. You will receive a confirmation email with regards to your purchase.');

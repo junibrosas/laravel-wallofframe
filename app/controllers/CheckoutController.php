@@ -77,7 +77,9 @@ class CheckoutController extends \BaseController {
 
 	// process new orders
 	public function postOrder(){
-		if( !$this->shippingRepo->hasAddresses( Auth::user() ))  return Redirect::route('checkout.cart',['#newShippingAddress'])->with('shipping_error', CHECKOUT_EMPTY_ADDRESS);
+		if( !$this->shippingRepo->hasAddresses( Auth::user() )){
+			return Redirect::route('checkout.cart',['#newShippingAddress'])->with('shipping_error', CHECKOUT_EMPTY_ADDRESS);
+		}
 
 		$inputs =  Input::all();
 
