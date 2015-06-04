@@ -60,14 +60,17 @@ class EmailRepository {
         $data = array(
             'customerName' => array_get($input, 'first_name').' '.array_get($input, 'last_name'),
             'email' => array_get($input, 'email'),
+            'company' => array_get($input, 'company'),
             'contactMessage' => array_get($input, 'message'),
         );
+
+        // Administrator
         Mail::queueOn('default', 'emails.contact-message', $data, function($message) use ($data)
         {
             $message
-                ->from($data['email'],  $data['customerName'])
                 ->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator'  )
-                ->subject('Wall of Frame - '.$data['customerName'].' sent you a message.');
+                ->replyTo($data['email'],  $data['customerName'])
+                ->subject('Wall of Frame Contact Form - '.$data['customerName'].' sent you a message.');
         });
 
         // Customer
