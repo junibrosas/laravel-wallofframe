@@ -69,7 +69,7 @@ class EmailRepository {
         {
             $message
                 ->to( Config::get('site.administrator_email'), 'Wall Of Frame Administrator'  )
-                /*->replyTo($data['email'],  $data['customerName'])*/
+                ->replyTo($data['email'],  $data['customerName'])
                 ->subject('Wall of Frame Contact Form - '.$data['customerName'].' sent you a message.');
         });
 
