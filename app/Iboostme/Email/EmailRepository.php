@@ -65,7 +65,7 @@ class EmailRepository {
         );
 
         // Administrator
-        Mail::send('emails.contact-message', $data, function($message) use ($data)
+        Mail::queueOn('default', 'emails.contact-message', $data, function($message) use ($data)
         {
             $message
                 ->replyTo($data['email'],  $data['customerName'])
@@ -74,7 +74,7 @@ class EmailRepository {
         });
 
         // Customer
-        Mail::send('emails.customer-contact-reply', $data, function($message) use ($data)
+        Mail::queueOn('default', 'emails.customer-contact-reply', $data, function($message) use ($data)
         {
             $message->to( $data['email'],  $data['customerName'] )
                 ->subject('Thank you for contacting with us.');
