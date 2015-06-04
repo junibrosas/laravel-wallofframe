@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Mail;
 Route::get('test', function(){
-    $data['email'] = 'powerlogic1992@gmail.com';
+    $data['email'] = 'asshurim@cjnetsolutions.com';
     $data['customerName'] = 'This is a test';
     Mail::queueOn('default', 'emails.customer-contact-reply', $data, function($message) use ($data)
     {
