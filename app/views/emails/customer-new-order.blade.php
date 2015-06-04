@@ -1,5 +1,7 @@
 Dear {{ $userFullName }},
 
+<p>ORDER #{{ $trackingNumber }}.</p>
+
 <p>YOUR SHOPPING CART THANKS YOU.</p>
 
 <p>You will be receiving your order within a quality time to your shipping address.</p>
