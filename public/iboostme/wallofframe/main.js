@@ -57,7 +57,7 @@ $(function() {
     $('.nailthumb-container').nailthumb();
 
     // this is a confirmation used before checking out order.
-    var confirmButton = $('.confirmation-action');
+    /*var confirmButton = $('.confirmation-action');
     confirmButton.click(function(event){
         event.preventDefault();
 
@@ -65,7 +65,7 @@ $(function() {
         if (choice) {
             $('.checkout-order-form').submit();
         }
-    });
+    });*/
 
 });
 
