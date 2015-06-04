@@ -24,6 +24,7 @@ class ContactController extends \BaseController {
 		$contacts->each(function($contact){
 			$contact->url = route('contacts.message', [$contact->id, Str::slug( $contact->subject ) ]);
 			$contact->subject = $contact->subject ==  '' ? 'No Subject' : $contact->subject;
+			$contact->date = $contact->created_at->diffForHumans();
 		});
 		$this->data['contacts'] = $contacts;
 		$this->data['html'] = 'admin.contacts.index';
@@ -71,6 +72,26 @@ class ContactController extends \BaseController {
 		$contact->delete();
 
 		return Redirect::back()->with('success', 'Contact successfully deleted');
+	}
+
+	// process the bulk action
+	public function postActions(){
+		$bulkAction = Input::get('bulk_action');
+		$items = Input::get('tableItems');
+
+		if(!$items){
+			return Redirect::back()->with('error', NO_ITEMS_SELECTED);
+		}
+
+		if(in_array($bulkAction, ['delete'])){
+
+			// Delete selected sizes.
+			Contact::whereIn('id', $items)->delete();
+		}else{
+			return Redirect::back()->with('error', NO_ACTION_SELECTED);
+		}
+
+		return Redirect::back()->with('success', DONE);
 	}
 
 }

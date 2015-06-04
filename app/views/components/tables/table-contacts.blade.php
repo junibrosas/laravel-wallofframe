@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="contact in tableData">
-                <th  scope="row"> <input class="icheck" name="transactions[]" type="checkbox" value="@{{ contact.id }}"></th>
+                <th  scope="row"> <input class="icheck" name="tableItems[]" type="checkbox" value="@{{ contact.id }}"></th>
                 <td  data-title="'Name'">
                     <a href="@{{ contact.url }}" class="link-red">@{{ contact.first_name +' '+ contact.last_name }}</a>
                 </td>
@@ -22,8 +22,9 @@
                 </td>
                 <td><a href="@{{ contact.url }}" class="link-red">@{{ contact.message }}</a></td>
                 <td  data-title="'Date'" class="text-center">
-                    <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ contact.created_at }}</span>
+                    <i class="fa fa-clock-o"></i> <span style="font-size: 13px;">@{{ contact.date }}</span>
                 </td>
+                <td></td>
             </tr>
 
         </tbody>

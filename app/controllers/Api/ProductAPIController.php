@@ -76,11 +76,11 @@ class ProductAPIController extends \BaseController  {
     public function getByStatus(){
         $status = Input::get('status');
         if(!$status){
-            $paginate = Product::paginate( $this->take );
+            $paginate = Product::orderBy('created_at', 'desc')->paginate( $this->take );
         }
         else{
             $productStatus = $this->productRepo->status( $status );
-            $paginate = Product::where('status_id', $productStatus->id)->paginate( $this->take );
+            $paginate = Product::where('status_id', $productStatus->id)->orderBy('created_at', 'desc')->paginate( $this->take );
         }
 
         return $this->mapData( $paginate );
