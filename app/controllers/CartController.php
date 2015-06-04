@@ -99,6 +99,7 @@ class CartController extends \BaseController {
 	// Update the items of the cart
 	public function update(){
 		$products = Input::get('products');
+
 		if(count($products) > 0){
 			foreach($products as $product){
 				Cart::update($product['rowid'], $product);

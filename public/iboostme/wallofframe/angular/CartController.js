@@ -50,6 +50,7 @@ app.controller('CartController', ['$scope','$http', 'ngCartItems', function($sco
     // submit changes for checkout
     $scope.checkout = function( products ){
         $http.post(mainApp.baseUrl+'/cart/update', { products : products})
+
             .success(function(data, status, headers, config) {
                 window.location.replace(mainApp.baseUrl+"/checkout/shipping");
             });

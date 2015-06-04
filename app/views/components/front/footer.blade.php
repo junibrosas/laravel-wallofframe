@@ -10,7 +10,7 @@
                 <div class="space-md"></div>
                 <h2 class="title">Instagram Photos</h2>
                 <script src="//instansive.com/widget/js/instansive.js"></script>
-                <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/28fc0f9148e0ce4c46f712da3ab7db1629f31528.html" id="instansive_28fc0f9148" name="instansive_28fc0f9148"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 70%; border: 0; overflow: hidden;"></iframe>
+                <!-- INSTANSIVE WIDGET --><script src="//instansive.com/widget/js/instansive.js"></script><iframe src="//instansive.com/widgets/28fc0f9148e0ce4c46f712da3ab7db1629f31528.html" id="instansive_28fc0f9148" name="instansive_28fc0f9148"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
             </div>
             <div class="col-md-3">
                 <h2>Categories</h2>
