@@ -55,6 +55,7 @@ class CartController extends \BaseController {
 	// Add item to Cart
 	public function addToBag($id){
 		$product = Product::find($id);
+
 		$package = ProductPackage::find( Input::get('size') );
 
 		if(!$product){

@@ -3,7 +3,7 @@
     <table class="table table-striped ng-table-responsive">
         <thead>
             <tr>
-                <th width="5%"><input type="checkbox" class="iCheck-all icheck"/></th>
+                {{--<th width="5%"><input type="checkbox" class="iCheck-all icheck"/></th>--}}
                 <th>Item(s)</th>
                 <th  >Quantity</th>
                 <th class="pull-right">Price</th>
@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr ng-repeat="product in tableData">
-                <td  scope="row"> <input class="icheck" name="selectedFrames[]" type="checkbox" value="@{{ product.id }}"></td>
+                {{--<td scope="row"> <input class="icheck" name="selectedFrames[]" type="checkbox" value="@{{ product.id }}"></td>--}}
                 <td>
                     <div class="row">
                         <div class="col-md-3">

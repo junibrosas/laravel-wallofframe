@@ -4,8 +4,6 @@
         <div class="container cart">
             <div class="row">
                 <div class="col-md-8">
-
-
                     <h2 class="side-heading">Shopping Bag</h2>
                     <div class="row">
                          <div class="col-md-12">
