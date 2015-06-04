@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Mail;
 Route::get('test', function(){
     $data['email'] = 'info@wallofframe.com';
     $data['email'] = 'This is a test';
