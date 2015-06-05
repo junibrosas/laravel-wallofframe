@@ -8,6 +8,4 @@ Route::get('test', function(){
         $message->to( $data['email'],  $data['customerName'] )
             ->subject('Thank you for contacting with us.');
     });*/
-
-    trace(Hash::makes('secret'));
 });
