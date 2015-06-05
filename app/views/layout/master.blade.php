@@ -45,6 +45,7 @@
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> {{--Bootstrap--}}
+
         {{ link_js('js/grids.js') }}
         {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
         {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}
