@@ -20,6 +20,9 @@ class ProductPresenter extends Presenter{
     }
     public function category( $delimiter = ', '){
         $categories = $this->entity->categories;
+        if(!$categories){
+            return '';
+        }
         $categoryStorage = array();
         if(count($categories) > 0){
             foreach($categories as $category){
