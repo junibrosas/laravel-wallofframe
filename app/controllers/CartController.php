@@ -55,14 +55,15 @@ class CartController extends \BaseController {
 	// Add item to Cart
 	public function addToBag($id){
 		$product = Product::find($id);
+		$backUrl = route('post.single', [$product->id, $product->slug]);
 
 		$package = ProductPackage::find( Input::get('size') );
 
 		if(!$product){
-			return Redirect::back()->with('error', PRODUCT_NOT_FOUND);
+			return Redirect::to($backUrl)->with('error', PRODUCT_NOT_FOUND);
 		}
 		if(!$package){
-			return Redirect::back()->with('error', 'Please select a product size.');
+			return Redirect::to($backUrl)->with('error', 'Please select a product size.');
 		}
 
 
@@ -83,7 +84,7 @@ class CartController extends \BaseController {
 		// add new product to the bag.
 		Cart::add( $productData );
 
-		return Redirect::back()->with('success', ADDED_TO_BAG);
+		return Redirect::to($backUrl)->with('success', ADDED_TO_BAG);
 	}
 
 	// Remove an item in the cart

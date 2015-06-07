@@ -29,9 +29,9 @@ class ProductController extends \BaseController {
 
 		// Get all the categories of the product. Prioritize the
 		// pricing of the product if it has a 'limited-edition' category.
+		$categoryToExclude = ''; // this is the category to exclude from the normal pricing and sizes.
 		if(count($product->categories) > 0){
 			foreach($product->categories as $category){
-				$categoryToExclude = ''; // this is the category to exclude from the normal pricing and sizes.
 				if($category->slug == 'limited-edition'){
 					$categoryToExclude = $category->slug;
 				}

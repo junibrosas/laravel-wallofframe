@@ -22,7 +22,7 @@
                         <h6>{{ $product->name }}</h6>
                         <ul class="list-unstyled list-detail">
                             <li>Type: {{ $product->options->type }}</li>
-                            <li>Category: {{ $product->options->category }}</li>
+                            <li>{{ $product->options->category ? 'Category: ' . $product->options->category : '' }}</li>
                             <li>Size: {{ $product->options->width .'x'.$product->options->height }}</li>
                         </ul>
                     </div>
