@@ -9,10 +9,8 @@
                 <!-- INSTANSIVE WIDGET -->
                 <div class="space-md"></div>
                 <h2 class="title">Instagram Photos</h2>
-                <script src="//instansive.com/widget/js/instansive.js"></script>
-                <!-- INSTANSIVE WIDGET -->
-                <script src="//instansive.com/widget/js/instansive.js"></script>
-                    <iframe src="//instansive.com/widgets/28fc0f9148e0ce4c46f712da3ab7db1629f31528.html" id="instansive_28fc0f9148" name="instansive_28fc0f9148"  scrolling="no" allowtransparency="true" class="instansive-widget" style="width: 100%; border: 0; overflow: hidden;"></iframe>
+                <!-- INSTAGRAM WIDGET -->
+                <iframe src="http://widget.websta.me/in/wallofframe_dubai/?s=100&w=3&h=2&b=0&p=5" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:315px; height: 210px" ></iframe> <!-- websta - web.stagram.com -->
             </div>
             <div class="col-md-3">
                 <h2>Categories</h2>
