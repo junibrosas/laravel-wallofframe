@@ -41,6 +41,17 @@
     <!-- Components specific for this page -->
     @yield('header')
 
+    {{--Google Analytics--}}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-64106384-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
 </head>
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
@@ -73,17 +84,6 @@
             mainApp.publicPath = '{{ asset('') }}';
         </script>
 
-        {{--Google Analytics--}}
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-64106384-1', 'auto');
-          ga('send', 'pageview');
-
-        </script>
 
         {{--Angular Controllers--}}
         {{ link_js('iboostme/wallofframe/angular/MainController.js') }}
