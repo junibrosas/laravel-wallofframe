@@ -1319,6 +1319,7 @@ select.form-control { border-radius: 0; }
     right: 21px;
 }
 
+
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

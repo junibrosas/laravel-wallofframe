@@ -8,7 +8,7 @@
 
         <img ng-src="@{{ product.imageSquare }}" class="img-responsive img-frame">
         <div class="logo-watermark">
-            <img src="{{ asset('img/logo-watermark.png') }}" alt=""/>
+            <img src="{{ asset('img/logo-watermark.png') }}" alt="" width="30"/>
         </div>
 
         <div class="detail">
