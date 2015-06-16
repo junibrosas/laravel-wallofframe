@@ -1324,7 +1324,7 @@ select.form-control { border-radius: 0; }
 .logo-watermark span{
     font-family: 'Walter Turncoat', cursive !important;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
     font-style: italic;
 }
