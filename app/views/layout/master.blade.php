@@ -10,6 +10,9 @@
 
     <title>{{ isset($pageTitle) ? $pageTitle . ' |' : '' }}  Wall of Frame</title>
 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Walter+Turncoat' rel='stylesheet' type='text/css'>
+
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     {{ link_css('assets/datatables/jquery.dataTables.css') }}
@@ -75,7 +78,7 @@
         {{ link_js('iboostme/js/angular/ngFlow/ng-flow-standalone.js') }}
         {{ link_js('iboostme/js/angular/ngTable/ng-table.min.js') }}
         {{ link_js('iboostme/js/angular/ngCheckList/checklist-model.js') }}
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,700,600,400' rel='stylesheet' type='text/css'>
+
         {{ link_js('iboostme/wallofframe/app.js')}}
 
         <script>

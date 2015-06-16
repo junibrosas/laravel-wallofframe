@@ -1,3 +1,5 @@
+
+
 body {
     overflow-x: hidden;
    /* font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;*/
@@ -1317,6 +1319,14 @@ select.form-control { border-radius: 0; }
     position: absolute;
     bottom: 79px;
     right: 21px;
+    line-height: 1;
+}
+.logo-watermark span{
+    font-family: 'Walter Turncoat', cursive !important;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
 }
 
 
