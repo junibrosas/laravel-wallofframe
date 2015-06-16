@@ -1313,6 +1313,12 @@ select.form-control { border-radius: 0; }
 .form-group .label-danger { }
 .alert-dismissable .close, .alert-dismissible .close { right: 0 !important; }
 
+.logo-watermark {
+    position: absolute;
+    bottom: 79px;
+    right: 21px;
+}
+
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
