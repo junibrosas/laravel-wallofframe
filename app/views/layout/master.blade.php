@@ -53,8 +53,25 @@
 
       ga('create', 'UA-64106384-1', 'auto');
       ga('send', 'pageview');
-
     </script>
+
+
+    <!-- Facebook Conversion Code for Wall Of Frame -->
+    <script>(function() {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+        }
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', '6027672556083', {'value':'0.01','currency':'AED'}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6027672556083&amp;cd[value]=0.01&amp;cd[currency]=AED&amp;noscript=1" /></noscript>
 </head>
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')

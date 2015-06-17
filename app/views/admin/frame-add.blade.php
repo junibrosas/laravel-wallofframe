@@ -31,9 +31,12 @@
                 <div class="col-md-8" ng-controller="MediaController as media">
                     <a href="#mediaModal" data-template="{{ route('media.modal')  }}" class="alert drag-drop-box media-add-btn text-center btn-block" >Add Frame Designs</a>
 
+                    {{--Media Modal--}}
                     <div class="remodal" data-remodal-id="mediaModal" id="mediaModal">
                         @include('media.media-upload')
                     </div>
+
+
                     <div class="col-md-2" ng-repeat="item in mediaSelectedItems">
                         <input type="hidden" name="designs[]" value="@{{ item.id }}"/>
 
@@ -57,6 +60,8 @@
                         </button>
                     </div>
                 </div>
+
+                {{--Design Initial Category and Brand--}}
                 <div class="col-md-4" ng-controller="FrameUploadController as frameUpload">
                     <input ng-repeat="category in config.categories" type="hidden" name="categories[]" value="@{{ category.id }}"/>
                     <input type="hidden" name="brand" value="@{{ config.brand.slug }}"/>
@@ -77,10 +82,6 @@
                                 <option value="">No Brand</option>
                             </select>
                         </div>
-                        {{--<div class="form-group">
-                            <label>Select Type:</label>
-                            <select ng-model="config.type" ng-options="type.name for type in types" class="form-control"></select>
-                        </div>--}}
                     </div>
                 </div>
             {{ Form::close(); }}

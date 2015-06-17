@@ -6,6 +6,7 @@
     <div ng-controller="FrameManageController">
         <div class="row">
             <div class="col-md-8">
+                {{--Upper navigations and upload button--}}
                 <div class="row">
                     <div class="col-md-12" >
                         <ul class="list-inline pull-left">
@@ -15,6 +16,8 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+
+                {{--Display frame image designs--}}
                 <div class="row" ng-controller="ProductBrowseController">
                     <div ng-show="showLoadingText" class="text-center">loading...</div>
                     <div class="col-md-12">
@@ -25,7 +28,7 @@
                     </div>
                     <div class="col-sm-3 space-xs design-list" ng-repeat="product in products">
                         <div class="">
-                            <a style="cursor: pointer" ng-click="selectProduct( $index, product )">
+                            <a style="cursor: pointer" ng-click="selectProduct( $index, product )" ng-class="product.id == selectedProduct.id ? 'selected-design-image' : ''">
                                 <div style="position: relative;width: 132px">
                                     <img ng-src="@{{ product.imageSquare }}" alt="" class="img-responsive elem-center"/>
 
@@ -34,12 +37,11 @@
                                         <span style="font-size: 6px; color: @{{ product.watermarkColor }}">Wall Of <br/> Frame</span>
                                     </div>
                                 </div>
-
-
                             </a>
                         </div>
                     </div>
 
+                    {{--Image Browsing pagination --}}
                     <div class="col-md-12" ng-show="!noProducts">
                         @include('components.paginates.controls')
                     </div>
@@ -52,12 +54,11 @@
                             @include('angularapps.images.upload-single')
                         </div>
                         <div class="text-right">
+
+                            {{--Remove Selected Image Button--}}
                             <button class="btn btn-danger btn-xs"
                                 ng-show="showControlButtons"
                                 ng-click="removeSelectedProduct( selectedProductIndex )"> Remove Selected Item</button>
-                            {{--<button class="btn btn-danger btn-xs"
-                                ng-show="showControlButtons"
-                                ng-click="showUploadImageForm = !showUploadImageForm"> Change Image</button>--}}
 
                             {{--Media Gallery Uploader Modal--}}
                             <a  href="#mediaModal" ng-show="showControlButtons" class="btn btn-danger btn-xs"> Change Image</a>
@@ -75,6 +76,8 @@
                             {{--Media Gallery Uploader Modal--}}
 
                         </div>
+
+                        {{--Image Design Image/Update Form--}}
                         <div ng-show="showProductForm">
                             @include('components.forms.product-edit-form')
                         </div>

@@ -34,13 +34,15 @@
                 style="width: 160px;height: 160px; margin-bottom: 17px;"
                 ng-show="$flow.files.length">
                     <img flow-img="$flow.files[$index]" />
-                </div>
-            <div class="progress">
+            </div>
+            <div class="progress" ng-show="$flow.files.length && !file.progress()" >
                 <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="12" aria-valuemax="100" style="width: @{{ file.progress() * 100 }}%;"></div>
             </div>
             <div class="label" ng-attr-id="flow-item-@{{$index}}"></div>
-            <button class="btn btn-danger btn-xs" ng-show="$flow.files.length" ng-click="file.cancel()">Remove</button>
+            <button class="btn btn-danger btn-xs" ng-show="$flow.files.length && !file.progress()" ng-click="file.cancel()">Remove</button>
         </div>
+
+
 
         <div class="col-xs-6 col-md-2" ng-repeat="item in mediaItems">
             @include('media/components/list-media')

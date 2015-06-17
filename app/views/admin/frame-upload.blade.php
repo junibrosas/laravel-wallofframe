@@ -1,6 +1,7 @@
 @extends('layout.admin')
 
 @section('content')
+
     <div class="frame-upload">
         <div class="row" ng-controller="DragNDropController">
             <div class="col-md-8">
