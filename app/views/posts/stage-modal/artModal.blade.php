@@ -17,6 +17,10 @@
                     alt="{{ $product->present()->title }}"
                     data-zoom-image="{{ $product->attachment->url }}"
                     class="img-responsive custom-border" />
+                <div class="logo-watermark" style="  bottom: 55%;
+                                                     left: 52.5%;">
+                    <span style="font-size: 5px;">Wall Of <br/> Frame</span>
+                </div>
             </div>
 
             {{--Canvas Image--}}

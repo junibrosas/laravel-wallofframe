@@ -9,7 +9,6 @@
         <img ng-src="@{{ product.imageSquare }}" class="img-responsive img-frame">
         <div class="logo-watermark">
             <span>Wall Of <br/> Frame</span>
-            {{--<img src="{{ asset('img/logo-watermark.png') }}" alt="" width="40"/>--}}
         </div>
 
         <div class="detail">

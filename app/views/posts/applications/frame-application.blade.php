@@ -12,6 +12,10 @@
                             width="550"
                             alt="{{ $product->present()->title }}"
                             class="img-responsive custom-border" />
+                            <div class="logo-watermark" style="  bottom: 5%;
+                                                                 right: 18%;">
+                                <span style="font-size: 12px;">Wall Of <br/> Frame</span>
+                            </div>
                     </div>
 
                     {{--Canvas Image--}}
