@@ -31,6 +31,19 @@ class TransactionRepository {
         return $this->transaction()->get();
     }
 
+    public function filterTransaction( $filter ){
+        if($filter){
+            if($filter == 'archive')
+                return $this->archive();
+            else
+                return $this->filter( $filter );
+        }else{
+            $transactions = $this->transaction()->get();
+        }
+
+        return $transactions;
+    }
+
     public function getByTrackingNumber( $trackingNumber ){
         return $this->transaction()->where('tracking_number', $trackingNumber)->first();
     }
@@ -73,6 +86,30 @@ class TransactionRepository {
         $transaction->save();
 
         return $transaction;
+    }
+
+    // delete transactions by specified id.
+    public function delete( $transactionIds ){
+        Transaction::whereIn('id', $transactionIds)->delete();
+    }
+
+    public function restore( $transactionIds ){
+        Transaction::whereIn('id', $transactionIds)->restore();
+    }
+
+    private function archive(){
+        return $this->transaction()->onlyTrashed()->get();
+    }
+
+    private function filter( $filter ){
+        $transactions = $this->transaction()->get();
+        $transactions = $transactions->filter(function( $transaction ) use ( $filter ){
+            if( $filter == $transaction->transactionStatus->slug ){
+                return $transaction;
+            }
+        });
+
+        return $transactions;
     }
 
     // model extension.

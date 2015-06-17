@@ -13,8 +13,9 @@ class TransactionStatusRepository {
                 $transaction->save();
             }
         }
-
     }
+
+
 
     public function getBySlug( $slug ){
         $status = TransactionStatus::where('slug', $slug)->first();

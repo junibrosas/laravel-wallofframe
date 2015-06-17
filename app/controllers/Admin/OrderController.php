@@ -11,6 +11,7 @@ use Iboostme\User\UserRepository;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use Transaction;
 
@@ -38,7 +39,7 @@ class OrderController extends \BaseController{
     // Retrieves all the orders from an administrator's perspective.
     public function orders(){
         $format = new TransactionFormatter();
-        $transactions = $this->transactionRepo->getTransactions();
+        $transactions = $this->transactionRepo->filterTransaction( Request::segment(3) );
 
         $orders = $format->bulkFormat(  $transactions );
 
@@ -93,8 +94,19 @@ class OrderController extends \BaseController{
         if(!$transactions) return Redirect::back()->with('error', 'No transactions has been selected.');
         if(!$actions) return Redirect::back()->with('error', 'No action has been selected.');
 
+        // Soft delete transactions
+        if( $actions == 'move-archive' ){
+            $this->transactionRepo->delete( $transactions );
+        }
+        // Restore the soft deleted transactions
+        else if( $actions == 'restore'){
+            $this->transactionRepo->restore( $transactions );
+        }
         // Change status
-        $this->transactionStatusRepo->changeStatus( Input::get('transactions'), Input::get('bulk_action') );
+        else{
+            $this->transactionStatusRepo->changeStatus( Input::get('transactions'), Input::get('bulk_action') );
+        }
+
 
         return Redirect::back()->with('success', DONE);
     }
@@ -133,5 +145,10 @@ class OrderController extends \BaseController{
         $this->transactionRepo->newTransaction( $transaction );
 
         return [ 'status' => 'success', 'message' => 'Saved successfully.'];
+    }
+
+    // catch order filter and redirect to the main order route via GET method.
+    public function postFilterOrder(){
+        return Redirect::route('admin.orders', [Input::get('filter')]);
     }
 } 
