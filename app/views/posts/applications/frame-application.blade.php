@@ -14,7 +14,7 @@
                             class="img-responsive custom-border" />
                             <div class="logo-watermark" style="  bottom: 5%;
                                                                  right: 18%;">
-                                <span style="font-size: 12px;">Wall Of <br/> Frame</span>
+                                <span style="font-size: 21px;">Wall Of <br/> Frame</span>
                             </div>
                     </div>
 
