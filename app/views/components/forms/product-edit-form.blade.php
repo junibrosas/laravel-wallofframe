@@ -27,6 +27,10 @@
          <select name="status_id" ng-model="currentStatus" ng-options="status.name for status in statuses" class="form-control"></select>
     </div>
     <div class="form-group">
+        <label>Logo Watermark Color:</label>
+         <select name="watermark_color" ng-model="currentWatermarkColor" ng-options="color.name for color in watermarkColors" class="form-control"></select>
+    </div>
+    <div class="form-group">
         <label>Make Public:</label>
          <select name="is_available" ng-model="currentMakePublic" ng-options="bool.name for bool in booleans" class="form-control"></select>
     </div>

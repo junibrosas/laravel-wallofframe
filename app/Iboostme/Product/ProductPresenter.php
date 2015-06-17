@@ -114,6 +114,13 @@ class ProductPresenter extends Presenter{
         return asset('uploads/products/designs/'.$type.'/' . $this->entity->filename);
     }
 
+    // Settings
+    public function watermarkColor(){
+        if($this->entity->watermark_color){
+            return '#'.$this->entity->watermark_color;
+        }
+    }
+
     // url based image manipulation cache through Intervention Image
     public function imageCachePreview(){
         return url('images/frame-preview/'.$this->entity->filename);

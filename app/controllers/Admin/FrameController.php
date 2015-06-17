@@ -2,6 +2,7 @@
 
 use Iboostme\Product\Border\FrameBorder;
 use Iboostme\Product\ProductFormatter;
+use Iboostme\Product\ProductSetting;
 use User;
 use ProductPivotCategory;
 use Product;
@@ -59,6 +60,7 @@ class FrameController extends \BaseController {
             'brands' => ProductBrand::get(),
             'types' => ProductType::get(),
             'statuses' => ProductStatus::get(),
+            'watermarkColors' => ProductSetting::colorSelection(),
             'status' => $status,
             'frame_part' => 'designs'
         ]);

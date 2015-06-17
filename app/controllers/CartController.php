@@ -39,6 +39,7 @@ class CartController extends \BaseController {
 
 		$productItems = array();
 		foreach($products as $product){
+			//$product->settingsWaterMarkColor = $product->present()->watermarkColor;
 			$productItems[] = $product;
  		}
 
@@ -78,6 +79,7 @@ class CartController extends \BaseController {
 				'height' => $package->height,
 				'category' => $product->present()->category,
 				'type' => $product->present()->type,
+				'watermarkColor' =>  $product->present()->watermarkColor,
 			)
 		);
 

@@ -20,6 +20,7 @@ class CreateProductTable extends Migration {
 			$table->string('slug');
 			$table->string('filename');
 			$table->boolean('is_available');
+			$table->string('watermark_color');
 			$table->timestamps();
 			$table->softDeletes();
 		});

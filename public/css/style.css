@@ -42,14 +42,14 @@ a.active {
 }
 
 a {
-    color: #fed136;
+    color: inherit;
 }
 
 a:hover,
 a:focus,
 a:active,
 a.active {
-    color: #fec503;
+    color: inherit;
 }
 
 h1,
@@ -1327,6 +1327,7 @@ select.form-control { border-radius: 0; }
     font-size: 10px;
     text-align: center;
     font-style: italic;
+    color: #A7A4A4;
 }
 
 

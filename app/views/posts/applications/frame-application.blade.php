@@ -12,9 +12,11 @@
                             width="550"
                             alt="{{ $product->present()->title }}"
                             class="img-responsive custom-border" />
+
+                            {{--Logo Watermark--}}
                             <div class="logo-watermark" style="  bottom: 5%;
                                                                  right: 18%;">
-                                <span style="font-size: 21px;">Wall Of <br/> Frame</span>
+                                <span style="font-size: 21px; color: {{ $product->present()->watermarkColor }}">Wall Of <br/> Frame</span>
                             </div>
                     </div>
 

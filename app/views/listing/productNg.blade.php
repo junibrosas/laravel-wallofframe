@@ -7,8 +7,10 @@
         @endif
 
         <img ng-src="@{{ product.imageSquare }}" class="img-responsive img-frame">
+
+        {{--Watermark Logo--}}
         <div class="logo-watermark">
-            <span>Wall Of <br/> Frame</span>
+            <span style="color: @{{ product.watermarkColor }}">Wall Of <br/> Frame</span>
         </div>
 
         <div class="detail">

@@ -9,7 +9,7 @@ class Product extends \Eloquent {
 	protected $presenter = 'Iboostme\Product\ProductPresenter';
 	protected $dates = ['deleted_at'];
 	protected $fillable = [
-		'attachment_id','status_id','type_id','category_id','brand_id','title','content','slug','filename','is_available'
+		'attachment_id','status_id','type_id','category_id','brand_id','title','content','slug','filename','is_available','watermark_color'
 	];
 
 	public function newQuery($excludeDeleted = true)

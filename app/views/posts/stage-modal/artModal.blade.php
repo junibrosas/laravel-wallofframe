@@ -19,7 +19,7 @@
                     class="img-responsive custom-border"  />
                 <div class="logo-watermark" style="bottom: 1%;
                                                    right: 1%;">
-                    <span style="font-size: 5px;">Wall Of <br/> Frame</span>
+                    <span style="font-size: 5px; color: {{ $product->present()->watermarkColor }}">Wall Of <br/> Frame</span>
                 </div>
             </div>
 

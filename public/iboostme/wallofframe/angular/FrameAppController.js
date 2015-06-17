@@ -134,11 +134,13 @@ app.controller("FrameManageController", function($http, $scope, productService) 
     $scope.brands = window.brands; // list of brands
     $scope.types = window.types; // list of types
     $scope.statuses = window.statuses; // list of statuses
+    $scope.watermarkColors = window.watermarkColors; //list of watermark colors
     $scope.booleans = [
         { name: 'False', value: 0 },
         { name: 'True', value: 1 }
-
     ];
+
+
 
     var initialize = function(){
         $scope.selectedProduct = {}; //empty first
@@ -148,6 +150,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $scope.currentStatus = {};
         $scope.currentMakePublic = {};
         $scope.designImage = {};
+        $scope.currentWatermarkColor = {};
 
         // get navigations
         $http.get( window.productNavigationUrl ).success( function( data ){
@@ -196,6 +199,8 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $scope.currentBrand = getCurrent( product.brand_id, $scope.brands );
         $scope.currentType = getCurrent( product.type_id, $scope.types );
         $scope.currentStatus = getCurrent( product.status_id, $scope.statuses );
+        var colorArray = getCurrent( product.watermarkHex, $scope.watermarkColors );
+        $scope.currentWatermarkColor = colorArray != undefined ? colorArray : $scope.watermarkColors[0];
         $scope.currentMakePublic = $scope.booleans[ product.is_available ];
 
         productService.setProduct( $scope.selectedProduct ); // pass to the service
@@ -209,11 +214,11 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $('#load-mark').show(); $('#save-mark').hide();
 
         this.selectedProduct.categories = $scope.selectedProduct.categories;
-        //this.selectedProduct.category_id = $scope.currentCategory.id;
         this.selectedProduct.brand_id = $scope.currentBrand ? $scope.currentBrand.id : '';
         this.selectedProduct.type_id = $scope.currentType.id;
         this.selectedProduct.status_id = $scope.currentStatus.id;
         this.selectedProduct.is_available = $scope.currentMakePublic.value;
+        this.selectedProduct.watermark_color = $scope.currentWatermarkColor.color;
         this.selectedProduct.designImage = $('#design-image-single').data('image-id');
 
 

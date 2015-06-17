@@ -23,10 +23,19 @@
                             <b>No available products</b>
                         </div>
                     </div>
-                    <div class="col-md-3 space-xs design-list" ng-repeat="product in products">
+                    <div class="col-sm-3 space-xs design-list" ng-repeat="product in products">
                         <div class="">
                             <a style="cursor: pointer" ng-click="selectProduct( $index, product )">
-                                <img ng-src="@{{ product.imageSquare }}" alt="" class="img-responsive elem-center"/>
+                                <div style="position: relative;width: 132px">
+                                    <img ng-src="@{{ product.imageSquare }}" alt="" class="img-responsive elem-center"/>
+
+                                    {{--Watermark Logo--}}
+                                    <div class="logo-watermark"  style="bottom: 3%; right: 4%;">
+                                        <span style="font-size: 6px; color: @{{ product.watermarkColor }}">Wall Of <br/> Frame</span>
+                                    </div>
+                                </div>
+
+
                             </a>
                         </div>
                     </div>
