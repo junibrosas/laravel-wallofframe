@@ -12,9 +12,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <a href="{{ $product->options->url }}">
-                                <img src='{{ $product->options->image }}'  class="img-responsive" width="80"/>
-                                <div class="logo-watermark" style="  bottom: 3%; right: 17%;">
-                                    <span style="font-size: 4px;">Wall Of <br/> Frame</span>
+                                <div style="position: relative;
+                                              width: 80px">
+                                    <img src='{{ $product->options->image }}'  class="img-responsive" width="80"/>
+                                    <div class="logo-watermark" style="  bottom: 3%;
+                                                                         right: 4%;">
+                                        <span style="font-size: 4px;">Wall Of <br/> Frame</span>
+                                    </div>
                                 </div>
                             </a>
                         </div>
