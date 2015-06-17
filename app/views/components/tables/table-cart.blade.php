@@ -3,7 +3,6 @@
     <table class="table table-striped ng-table-responsive">
         <thead>
             <tr>
-                {{--<th width="5%"><input type="checkbox" class="iCheck-all icheck"/></th>--}}
                 <th>Item(s)</th>
                 <th  >Quantity</th>
                 <th class="pull-right">Price</th>
@@ -11,12 +10,15 @@
         </thead>
         <tbody>
             <tr ng-repeat="product in tableData">
-                {{--<td scope="row"> <input class="icheck" name="selectedFrames[]" type="checkbox" value="@{{ product.id }}"></td>--}}
                 <td>
                     <div class="row">
                         <div class="col-md-3">
                             <a href="@{{ product.options.url  }}">
-                            <img ng-src='@{{ product.options.image  }}' class="img-responsive" width="150"/>
+                                <img ng-src='@{{ product.options.image  }}' class="img-responsive" width="150"/>
+                                <div class="logo-watermark" style="  bottom: 30%;
+                                                                     right: 12%;">
+                                    <span style="font-size: 6px;">Wall Of <br/> Frame</span>
+                                </div>
                             </a>
                             <button type="submit" class="btn btn-danger btn-xs space-xs btn-block" ng-click="remoteCartItem(product);">remove</button>
                         </div>
