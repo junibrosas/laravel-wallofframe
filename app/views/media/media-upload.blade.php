@@ -40,6 +40,7 @@
             </div>
             <div class="label" ng-attr-id="flow-item-@{{$index}}"></div>
             <button class="btn btn-danger btn-xs" ng-show="$flow.files.length && !file.progress()" ng-click="file.cancel()">Remove</button>
+            @{{ file.progress() * 100  }}
         </div>
 
 
