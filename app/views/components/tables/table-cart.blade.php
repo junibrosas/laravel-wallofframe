@@ -15,8 +15,7 @@
                         <div class="col-md-3">
                             <a href="@{{ product.options.url  }}">
                                 <img ng-src='@{{ product.options.image  }}' class="img-responsive" width="150"/>
-                                <div class="logo-watermark" style="  bottom: 30%;
-                                                                     right: 12%;">
+                                <div class="logo-watermark" style="  bottom: 30%; right: 12%;">
                                     <span style="font-size: 6px;">Wall Of <br/> Frame</span>
                                 </div>
                             </a>
