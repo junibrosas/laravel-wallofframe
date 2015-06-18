@@ -62,15 +62,15 @@ class MediaController extends \BaseController {
         $explosion = explode('.', $imgName);
 
         // save to the database.
-        Attachment::create([
-            'user_id' => Auth::id(),
-            'url' => $assetDir.'/'. $randomFileName,
-            'name' => $explosion[0],
-            'filename' => $randomFileName,
-            'mime_type' => $img->mime()
-        ]);
+        $attachment = new Attachment();
+        $attachment->user_id = Auth::id();
+        $attachment->url = $assetDir.'/'. $randomFileName;
+        $attachment->name = $explosion[0];
+        $attachment->filename = $randomFileName;
+        $attachment->mime_type = $img->mime();
+        $attachment->save();
 
-        echo json_encode(Input::all());
+        echo json_encode($attachment);
     }
 
     // query the items selected by the modal and return a response

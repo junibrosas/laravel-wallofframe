@@ -32,7 +32,7 @@
                     <a href="#mediaModal" data-template="{{ route('media.modal')  }}" class="alert drag-drop-box media-add-btn text-center btn-block" >Add Frame Designs</a>
 
                     {{--Media Modal--}}
-                    <div class="remodal" data-remodal-id="mediaModal" id="mediaModal">
+                    <div class="remodal" data-remodal-id="mediaModal" id="mediaModal" >
                         @include('media.media-upload')
                     </div>
 

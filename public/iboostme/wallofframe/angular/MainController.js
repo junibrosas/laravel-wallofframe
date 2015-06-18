@@ -25,7 +25,7 @@ app.config(['flowFactoryProvider', function (flowFactoryProvider, $scope, $flow)
     });
 
     flowFactoryProvider.on('catchAll', function (event) {
-        console.log('catchAll', arguments);
+        //console.log('catchAll', arguments);
     });
 }]);
 

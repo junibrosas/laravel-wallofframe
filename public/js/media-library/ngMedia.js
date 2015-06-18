@@ -1,6 +1,6 @@
 
 // This is the controller for FlowJs uploading, every progress in uploading will be processed here.
-app.controller("MediaFlowController", ['$scope','$http', function($scope, $http){
+app.controller("MediaFlowController", ['$scope','$http','productService', function($scope, $http, productService){
     // handle error on image upload
     $scope.$on('flow::fileError', function (event, $flow, flowFile) {
         console.log(flowFile.error);
@@ -13,6 +13,27 @@ app.controller("MediaFlowController", ['$scope','$http', function($scope, $http)
 
         // Remove all files from the ngFlow uploader to give no space for the uploaded files.
         $scope.$flow.files = [];
+
+        $http.post(mainApp.baseUrl+'/media/items', { items: $scope.mediaIds }).
+            success(function(data, status, headers, config) {
+
+                // add media items to parent property from response.
+                $scope.$parent.mediaSelectedItems = data;
+
+            }).
+            error(function(data, status, headers, config) {
+                app.ajaxResponse('Unexpected error occurred ', 'error');
+            });
+    });
+
+    $scope.$on('flow::fileSuccess', function (file, message, chunk, response) {
+
+        // returned an Attachment model
+        var mediaItem = JSON.parse(response);
+
+        // Push a single media item that is successfully uploaded.
+        $scope.mediaIds.push(mediaItem.id);
+
     });
 }]);
 
@@ -32,14 +53,6 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
             $scope.mediaIds.push(item.id);
         }
     }
-
-    $(document).on('opening', '.remodal', function () {
-
-
-
-
-    });
-
 
     // Event on modal opening
     $(document).on('opened', '.remodal', function () {
@@ -72,7 +85,6 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
         $scope.mediaItems = [];
     });
 
-
     // retrieve the media items via ajax.
     $scope.getMediaItems = function(){
         var modal = $.remodal.lookup[$('[data-remodal-id=mediaModal]').data('remodal')];
@@ -82,8 +94,6 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
 
                 // add media items from response.
                 $scope.mediaSelectedItems = data;
-
-
 
                 modal.close();
             }).

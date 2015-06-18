@@ -110,6 +110,7 @@
 
         {{--Angular Services--}}
         {{ link_js('iboostme/wallofframe/angular/services/ProductService.js') }}
+        {{ link_js('iboostme/wallofframe/angular/services/MediaService.js') }}
 
         <!-- Components specific for this page -->
         @yield('footer')
