@@ -25,27 +25,32 @@
     </div>
 
     <div class="row" flow-transfers>
-        <div class="col-md-2 space-bottom-sm" ng-repeat="file in transfers">
-            <div class="thumbnail" ng-hide="$flow.files.length">
+        <div class="col-md-2 space-bottom-sm" ng-repeat="file in transfers" ng-show="$flow.files.length">
+            {{--<div class="thumbnail" ng-hide="$flow.files.length">
                 <img src="http://www.placehold.it/800x400/EFEFEF/AAAAAA&text=no+image" />
-            </div>
-            <div class="nailthumb-container square-thumb media-item"
-                data-item-id=""
-                style="width: 160px;height: 160px; margin-bottom: 17px;"
-                ng-show="$flow.files.length">
-                    <img flow-img="$flow.files[$index]" />
-            </div>
-            <div class="progress" ng-show="$flow.files.length && !file.progress()" >
+            </div>--}}
+
+            {{--Upload Preview Image--}}
+            <img flow-img="$flow.files[$index]" style="width: 147px;height: 147px;"/>
+
+            {{--Upload Progress Bar--}}
+            <div class="progress media-upload-progress" ng-show="$flow.files.length && !file.isComplete()">
                 <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="12" aria-valuemax="100" style="width: @{{ file.progress() * 100 }}%;"></div>
             </div>
-            <div class="label" ng-attr-id="flow-item-@{{$index}}"></div>
-            <button class="btn btn-danger btn-xs" ng-show="$flow.files.length && !file.progress()" ng-click="file.cancel()">Remove</button>
+
+            {{--Upload Cancel Button--}}
+            <div class="label" ng-attr-id="flow-item-@{{ $index }}"></div>
+            <button class="btn btn-danger btn-sm media-upload-btn-close" ng-show="$flow.files.length && !file.isComplete()" ng-click="file.cancel()">x</button>
         </div>
 
-
-
+        {{--Display Media Items--}}
         <div class="col-xs-6 col-md-2" ng-repeat="item in mediaItems">
             @include('media/components/list-media')
+        </div>
+
+        {{--Display Media Upload PreLoader--}}
+        <div ng-hide="mediaItemsLoaded" class="media-upload-preLoader">
+            <h4><b>Loading Media Items</b></h4>
         </div>
 
     </div>

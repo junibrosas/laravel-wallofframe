@@ -71,6 +71,9 @@ return array(
             $height = Input::get('height');
             return $image->fit($width, $height);
         },
+        'square-small' => function( $image ){
+            return $image->fit(150, 150);
+        },
     ),
 
     /*
