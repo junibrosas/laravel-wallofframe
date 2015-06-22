@@ -12,7 +12,7 @@
                         <ul class="list-inline pull-left">
                             <li ng-repeat="nav in navigation"><a href="@{{ nav.link }}" class="normal-link" ng-click="getProductsByStatus( nav.slug )">@{{ nav.name }} (@{{ nav.total_products }})</a></li>
                         </ul>
-                        <a href="{{ route('admin.design.upload') }}" class="btn btn-default btn-xs pull-right" ng-show="navigation.length > 0">Upload Design</a>
+                        <a href="{{ route('admin.design.upload') }}" class="btn btn-default btn-sm pull-right" ng-show="navigation.length > 0"><i class="fa fa-upload"></i> Upload More</a>
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -56,12 +56,12 @@
                         <div class="text-right">
 
                             {{--Remove Selected Image Button--}}
-                            <button class="btn btn-danger btn-xs"
+                            <button class="btn btn-danger btn-sm"
                                 ng-show="showControlButtons"
                                 ng-click="removeSelectedProduct( selectedProductIndex )"> Remove Selected Item</button>
 
                             {{--Media Gallery Uploader Modal--}}
-                            <a  href="#mediaModal" ng-show="showControlButtons" class="btn btn-danger btn-xs"> Change Image</a>
+                            <a  href="#mediaModal" class="btn btn-danger btn-sm"> <i class="fa fa-picture-o"></i> Upload Design</a>
                             <div ng-controller="MediaController as media" style="margin-top: 10px">
                                 <div class="remodal" data-remodal-id="mediaModal" id="mediaModal">
                                     @include('media.media-upload')

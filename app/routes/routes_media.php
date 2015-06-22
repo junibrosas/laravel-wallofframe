@@ -9,5 +9,6 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'media', 'n
 
     Route::get('upload', ['as' => 'media.library', 'uses' => 'MediaController@upload']);
     Route::post('upload', ['as' => 'media.upload', 'uses' => 'MediaController@store']);
+    Route::post('upload-resize', ['as' => 'media.upload.resize', 'uses' => 'MediaController@storeAndResize']);
     Route::post('items', ['as' => 'media.items', 'uses' => 'MediaController@ajaxGetItems']);
 });

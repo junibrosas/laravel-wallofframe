@@ -12,6 +12,7 @@ use ProductType;
 use ProductBrand;
 use ProductStatus;
 use ProductPivotCategory;
+use Attachment;
 
 class ProductRepository {
 
@@ -101,8 +102,35 @@ class ProductRepository {
     }
 
     // create new product
-    public function create(){
+    public function create( Attachment $attachment, $input){
 
+        // store to database.
+        $product = new Product();
+        $product->status_id = $this->status('published')->id;
+        $product->brand_id = array_get($input, 'brand_id') ? $this->brand(array_get($input, 'brand_id'))->id : '';
+        $product->filename = $attachment->filename;
+        $product->attachment_id = $attachment->id;
+        $product->title = array_get($input, 'title') ? array_get($input, 'title') : $attachment->name;
+        $product->title = array_get($input, 'content');
+        $product->slug = Str::slug( $product->title );
+        $product->is_available = 1;
+        $product->save();
+
+
+        // store product category
+        $categories = $input['categories'];
+
+        // create new product categories
+        if(count($categories) > 0){
+            foreach($categories as $category){
+                $productPivotCategory = new ProductPivotCategory();
+                $productPivotCategory->product_id = $product->id;
+                $productPivotCategory->product_category_id = $category['id'];
+                $productPivotCategory->save();
+            }
+        }
+
+        return $product;
     }
 
     // updated a product

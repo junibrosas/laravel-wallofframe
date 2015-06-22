@@ -43,7 +43,8 @@ class FrameController extends \BaseController {
 
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
-            //'uploadUrl' => route('admin.frame.doUpload'), // url to upload an image
+            'uploadUrl' => route('media.upload.resize'), // url to upload a frame design
+            //'uploadUrl' => route('media.upload'),
             'onCompleteUrl' => route('admin.design.manage', ['status' => 'unpublished']), // redirect to specified url after uploading completed.
         ]);
     }
@@ -177,12 +178,21 @@ class FrameController extends \BaseController {
             $input['attachment_id'] = $attachment->id;
             $input['filename'] = $attachment->filename;
         }
-        $product = Product::find( $product_id );
 
-        $isUpdated = $this->productRepo->update( $input );
+        // update model
+        if($product_id){
+            $product = Product::find( $product_id );
+
+            $this->productRepo->update( $input );
+        }
+
+        // create new model
+        else{
+            $product = $this->productRepo->create( $attachment, $input );
+        }
 
         return array(
-            'status' => $isUpdated == true ? 'success' : 'failed',
+            'status' => 'success',
             'product' =>  $this->productFormatter->format($product)
         );
     }

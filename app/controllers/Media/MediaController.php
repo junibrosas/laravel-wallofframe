@@ -1,4 +1,6 @@
 <?php namespace Media;
+use Iboostme\Media\Media;
+use Iboostme\Media\MediaRepository;
 use Illuminate\Support\Facades\View;
 use Laracasts\Utilities\JavaScript\Facades\JavaScript;
 use Illuminate\Support\Str;
@@ -7,9 +9,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Attachment;
 class MediaController extends \BaseController {
-    public function __construct()
+    public $mediaRepo;
+
+    public function __construct( MediaRepository $mediaRepository )
     {
         parent::__construct();
+
+        $this->mediaRepo = $mediaRepository;
+
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
             'uploadUrl' => route('media.upload'), // url to upload an image
@@ -39,38 +46,63 @@ class MediaController extends \BaseController {
     }
 
     public function store(){
-        // path of original image
-        $tempDir = public_path('uploads/attachments');
 
-        $assetDir = asset('uploads/attachments');
-
-
-        // original file name
-        $imgName = Input::get('flowFilename');
-
-        // create a new randomized image filename
-        $randomFileName = Str::random(20).'.jpg';
+        $media = new Media();
 
         // create image object via intervention image.
         $img = Image::make( $_FILES['file']['tmp_name']  );
 
-
+        // new name of the uploaded image.
+        $imgName = $media->randomName();
 
         // save the image
-        $img->save( $tempDir.'/'. $randomFileName );
+        $img->save( $media->imagePath( $imgName ) );
 
-        $explosion = explode('.', $imgName);
+        // new image name
+        $input['imageName'] = $imgName;
+
+        // original file name
+        $input['filename'] =  Input::get('flowFilename');
+
+        // file mime type
+        $input['mimeType'] = $img->mime();
 
         // save to the database.
-        $attachment = new Attachment();
-        $attachment->user_id = Auth::id();
-        $attachment->url = $assetDir.'/'. $randomFileName;
-        $attachment->name = $explosion[0];
-        $attachment->filename = $randomFileName;
-        $attachment->mime_type = $img->mime();
-        $attachment->save();
+        $attachment = $this->mediaRepo->store( $input );
 
         echo json_encode($attachment);
+    }
+
+
+    // Resize and store uploadImageed media objects. This function is specifically used for frames.
+    public function storeAndResize(){
+        $media = new Media();
+
+        // create image object via intervention image.
+        $img = Image::make( $_FILES['file']['tmp_name']  );
+
+        // new name of the uploaded image.
+        $imgName = $media->randomName();
+
+        // save the image
+        $img->save( $media->imagePath( $imgName ) );
+
+        // original file name
+        $input['filename'] =  Input::get('flowFilename');
+
+        $input['imageName'] = $imgName;
+
+        // file mime type
+        $input['mimeType'] = $img->mime();
+
+        // save to the database.
+        $attachment = $this->mediaRepo->store( $input );
+
+        // resize
+        $this->mediaRepo->resizeImage( $attachment );
+
+        // return response.
+        echo json_encode( $attachment);
     }
 
     // query the items selected by the modal and return a response

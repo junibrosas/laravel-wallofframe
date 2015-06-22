@@ -83,6 +83,7 @@ class FrameUploadController extends \BaseController {
             $product->brand_id = array_get($input, 'brand') ? $repo->brand(array_get($input, 'brand'))->id : '';
             $product->type_id = $repo->type(array_get($input, 'type'))->id;
             $product->filename = $attach->filename;
+            $product->content =  array_get($input, 'content');
             $product->attachment_id = $attach->id;
             $product->title = $attach->name;
             $product->slug = Str::slug( $product->title );

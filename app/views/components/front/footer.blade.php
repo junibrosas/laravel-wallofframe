@@ -19,6 +19,11 @@
                         {{ HTML::menu_active('category', $category->name, array($category->slug), ['class'=>'page-scroll']) }}
                     @endforeach
                 </ul>
+                <br/>
+                <h2>Rosy Ajaka</h2>
+                <p>info@wallofframe.com <br/>
+                   rosy@wallofframe.com <br/>
+                   +971 56 296 8928</p>
             </div>
             <div class="col-md-5">
                 @include('components.forms.contact-form')

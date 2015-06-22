@@ -16,6 +16,7 @@ app.controller("MediaFlowController", ['$scope','$http','productService', functi
 
         $http.post(mainApp.baseUrl+'/media/items', { items: $scope.mediaIds }).
             success(function(data, status, headers, config) {
+                console.log(data);
 
                 // add media items to parent property from response.
                 $scope.$parent.mediaSelectedItems = data;
@@ -66,6 +67,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
         // Request new media items to be displayed in the modal.
         $http.get(mainApp.baseUrl+'/media/modal').
             success(function(data, status, headers, config) {
+                console.log(data);
 
                 // add media items from response.
                 $scope.mediaItems = data;
@@ -91,6 +93,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
 
         $http.post(mainApp.baseUrl+'/media/items', { items: $scope.mediaIds }).
             success(function(data, status, headers, config) {
+                console.log(data);
 
                 // add media items from response.
                 $scope.mediaSelectedItems = data;

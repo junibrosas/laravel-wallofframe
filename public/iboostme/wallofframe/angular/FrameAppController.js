@@ -221,6 +221,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         this.selectedProduct.watermark_color = $scope.currentWatermarkColor.color;
         this.selectedProduct.designImage = $('#design-image-single').data('image-id');
 
+        console.log(this.selectedProduct);
 
         // sends the form
         $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
@@ -230,6 +231,8 @@ app.controller("FrameManageController", function($http, $scope, productService) 
                 $scope.selectedProduct.imageSquare = data.product.imageSquare;
                 $('#load-mark').hide();
                 $('#save-mark').show();
+
+                location.reload();
             }
         });
     }

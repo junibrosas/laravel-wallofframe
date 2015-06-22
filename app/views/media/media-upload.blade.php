@@ -26,9 +26,6 @@
 
     <div class="row" flow-transfers>
         <div class="col-md-2 space-bottom-sm" ng-repeat="file in transfers" ng-show="$flow.files.length">
-            {{--<div class="thumbnail" ng-hide="$flow.files.length">
-                <img src="http://www.placehold.it/800x400/EFEFEF/AAAAAA&text=no+image" />
-            </div>--}}
 
             {{--Upload Preview Image--}}
             <img flow-img="$flow.files[$index]" style="width: 147px;height: 147px;"/>
