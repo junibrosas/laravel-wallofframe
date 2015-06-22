@@ -20,7 +20,7 @@
                     @endforeach
                 </ul>
                 <br/>
-                <h2>Rosy Ajaka</h2>
+                <p><b>Rosy Ajaka</b></p>
                 <p>info@wallofframe.com <br/>
                    rosy@wallofframe.com <br/>
                    +971 56 296 8928</p>
