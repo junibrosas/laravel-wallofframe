@@ -45,6 +45,8 @@ class MediaController extends \BaseController {
         return View::make('media.media-upload', $this->data);
     }
 
+
+    // store a new uploaded file from ngFlow
     public function store(){
 
         $media = new Media();

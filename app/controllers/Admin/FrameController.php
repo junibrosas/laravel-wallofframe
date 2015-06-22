@@ -188,7 +188,9 @@ class FrameController extends \BaseController {
 
         // create new model
         else{
-            $product = $this->productRepo->create( $attachment, $input );
+            $categories = ProductCategory::find(array_fetch($input['categories'], 'id'));
+
+            $product = $this->productRepo->create( $attachment, $categories, $input );
         }
 
         return array(

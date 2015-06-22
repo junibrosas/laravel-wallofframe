@@ -1,6 +1,7 @@
 <?php
 namespace Iboostme\Product;
 
+use Illuminate\Support\Collection;
 use Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -102,7 +103,7 @@ class ProductRepository {
     }
 
     // create new product
-    public function create( Attachment $attachment, $input){
+    public function create( Attachment $attachment, Collection $categories, $input){
 
         // store to database.
         $product = new Product();
@@ -111,21 +112,18 @@ class ProductRepository {
         $product->filename = $attachment->filename;
         $product->attachment_id = $attachment->id;
         $product->title = array_get($input, 'title') ? array_get($input, 'title') : $attachment->name;
-        $product->title = array_get($input, 'content');
+        $product->content = array_get($input, 'content') ? array_get($input, 'content') : '';
         $product->slug = Str::slug( $product->title );
         $product->is_available = 1;
         $product->save();
 
-
-        // store product category
-        $categories = $input['categories'];
 
         // create new product categories
         if(count($categories) > 0){
             foreach($categories as $category){
                 $productPivotCategory = new ProductPivotCategory();
                 $productPivotCategory->product_id = $product->id;
-                $productPivotCategory->product_category_id = $category['id'];
+                $productPivotCategory->product_category_id = $category->id;
                 $productPivotCategory->save();
             }
         }

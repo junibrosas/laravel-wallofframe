@@ -1,5 +1,7 @@
 <?php namespace Admin;
 
+use Iboostme\Media\MediaRepository;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
@@ -47,6 +49,8 @@ class FrameUploadController extends \BaseController {
     // POST
     // resize and store new frame designs
     public function store(){
+        $productRepo = new ProductRepository();
+        $mediaRepo = new MediaRepository();
         $input = Input::all();
 
         if(!$input['designs']){
@@ -55,7 +59,11 @@ class FrameUploadController extends \BaseController {
         $attachments = Attachment::whereIn('id', $input['designs'])->get();
 
         foreach($attachments as $attach){
-            // create image object
+
+            // resize the design
+            $mediaRepo->resizeImage( $attach );
+
+            /*// create image object
             $img = Image::make( public_path('uploads/attachments/' . $attach->filename ) );
 
             // generate thumbs
@@ -74,14 +82,23 @@ class FrameUploadController extends \BaseController {
 
                 // save image to directory
                 $img->save($image_destination.$attach->filename);
+            }*/
+
+            $input['brand_id'] =  array_get($input, 'brand');
+            $categories = new Collection( array() );
+            if(isset($input['categories'])) {
+                $categories = ProductCategory::find($input['categories']);
             }
 
+            // save the new design
+            $productRepo->create( $attach, $categories, $input);
+
+
             // store to database.
-            $product = new Product();
+            /*$product = new Product();
             $repo = new ProductRepository();
             $product->status_id = $repo->status('published')->id;
             $product->brand_id = array_get($input, 'brand') ? $repo->brand(array_get($input, 'brand'))->id : '';
-            $product->type_id = $repo->type(array_get($input, 'type'))->id;
             $product->filename = $attach->filename;
             $product->content =  array_get($input, 'content');
             $product->attachment_id = $attach->id;
@@ -101,7 +118,7 @@ class FrameUploadController extends \BaseController {
                     $productPivotCategory->product_category_id = $categoryId;
                     $productPivotCategory->save();
                 }
-            }
+            }*/
         }
 
 

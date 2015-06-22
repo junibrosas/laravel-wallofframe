@@ -215,7 +215,6 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
         this.selectedProduct.categories = $scope.selectedProduct.categories;
         this.selectedProduct.brand_id = $scope.currentBrand ? $scope.currentBrand.id : '';
-        this.selectedProduct.type_id = $scope.currentType.id;
         this.selectedProduct.status_id = $scope.currentStatus.id;
         this.selectedProduct.is_available = $scope.currentMakePublic.value;
         this.selectedProduct.watermark_color = $scope.currentWatermarkColor.color;
