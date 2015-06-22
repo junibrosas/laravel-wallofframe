@@ -1320,6 +1320,7 @@ select.form-control { border-radius: 0; }
     bottom: 79px;
     right: 21px;
     line-height: 1;
+    display: none;
 }
 .logo-watermark span{
     font-family: 'Walter Turncoat', cursive !important;
