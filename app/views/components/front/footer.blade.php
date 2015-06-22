@@ -7,7 +7,7 @@
                     Wall OF Frame is the Middle East’s Home of luxury brands for your Home Designs and Framing.
                 </p>
                 <!-- INSTANSIVE WIDGET -->
-                <div class="space-md"></div>
+                <br/>
                 <h2 class="title">Instagram Photos</h2>
                 <!-- INSTAGRAM WIDGET -->
                 <iframe src="http://widget.websta.me/in/wallofframe_dubai/?s=100&w=3&h=2&b=0&p=5" allowtransparency="true" frameborder="0" scrolling="no" style="border:none;overflow:hidden;width:315px; height: 210px" ></iframe> <!-- websta - web.stagram.com -->
