@@ -6,6 +6,7 @@
     <div ng-controller="FrameManageController">
         <div class="row">
             <div class="col-md-8">
+
                 {{--Upper navigations and upload button--}}
                 <div class="row">
                     <div class="col-md-12" >
@@ -43,7 +44,9 @@
 
                     {{--Image Browsing pagination --}}
                     <div class="col-md-12" ng-show="!noProducts">
+
                         @include('components.paginates.controls')
+
                     </div>
                 </div>
             </div>

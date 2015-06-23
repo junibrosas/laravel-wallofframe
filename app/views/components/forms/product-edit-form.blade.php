@@ -34,7 +34,9 @@
         <label>Make Public:</label>
          <select name="is_available" ng-model="currentMakePublic" ng-options="bool.name for bool in booleans" class="form-control"></select>
     </div>
+    <span class="response-message" style="display: none;">Please provide a image design.</span> <br/>
     <button type="submit" class="btn btn-default"> Save </button>
     <span id="save-mark" class="text-success saved-mark" style="display: none;"><i class="fa fa-check-circle-o"></i></span>
     <span id="load-mark" class="fa-spin load-mark" style="display: none;"><i class="fa fa-spinner"></i></span>
+
 </form>

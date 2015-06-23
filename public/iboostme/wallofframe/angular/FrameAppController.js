@@ -211,7 +211,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
     // submits the product form
     $scope.submitProduct = function(){
-        $('#load-mark').show(); $('#save-mark').hide();
+
 
         this.selectedProduct.categories = $scope.selectedProduct.categories;
         this.selectedProduct.brand_id = $scope.currentBrand ? $scope.currentBrand.id : '';
@@ -222,18 +222,27 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
         console.log(this.selectedProduct);
 
-        // sends the form
-        $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
-            console.log(data);
-            if( data.status == 'success' ){
+        if(this.selectedProduct.designImage === undefined) {
+            $('.response-message').show().delay(3000).fadeOut();
+        }
+        else{
+            $('#load-mark').show(); $('#save-mark').hide();
+
+            $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
+                console.log(data);
+                if( data.status == 'success' ){
 
                 $scope.selectedProduct.imageSquare = data.product.imageSquare;
-                $('#load-mark').hide();
-                $('#save-mark').show();
+                    $('#load-mark').hide();
+                    $('#save-mark').show();
 
-                location.reload();
-            }
-        });
+                    location.reload();
+                }
+             });
+        }
+
+        // sends the form
+
     }
 
     // get the current selected product
