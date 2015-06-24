@@ -9,7 +9,7 @@ class ProductCategoryTableSeeder extends Seeder {
 	{
 		DB::table('product_categories')->delete();
 
-		$data = ['Cosmic Quotes', 'Limited Edition', 'Fashion', 'Packages'];
+		$data = ['Cosmic Quotes', 'Limited Edition', 'Fashion', 'Home & Family'];
 		foreach($data as $d){
 			ProductCategory::create([
 				'name' => $d,

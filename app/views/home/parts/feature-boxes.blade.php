@@ -71,14 +71,14 @@
     </div>
 
     <div class="cbp-item identity">
-        <a class="cbp-caption " data-title="Volume Knob<br>by GSRthemes9" href="{{ route('category', 'packages') }}">
+        <a class="cbp-caption " data-title="Volume Knob<br>by GSRthemes9" href="{{ route('category', 'home-family') }}">
             <div class="cbp-caption-defaultWrap">
                 <img src="{{ asset('img/framebox/boxframe8.jpg') }}" alt="">
             </div>
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
                     <div class="cbp-l-caption-body">
-                        <div class="cbp-l-caption-desc">Packages</div>
+                        <div class="cbp-l-caption-desc">Home & Family </div>
                     </div>
                 </div>
             </div>
