@@ -78,7 +78,7 @@
             <div class="cbp-caption-activeWrap">
                 <div class="cbp-l-caption-alignCenter">
                     <div class="cbp-l-caption-body">
-                        <div class="cbp-l-caption-desc">Home <br/>&<br/> Family </div>
+                        <div class="cbp-l-caption-desc">Home <br/><small>&</small><br/> Family </div>
                     </div>
                 </div>
             </div>
