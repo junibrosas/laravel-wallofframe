@@ -139,6 +139,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         { name: 'False', value: 0 },
         { name: 'True', value: 1 }
     ];
+    $scope.isProductSelected = false;
 
 
 
@@ -189,6 +190,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
     // get the selected product
     $scope.selectProduct = function( index, product ){
+        $scope.isProductSelected = true;
         $('#save-mark').hide();
         $scope.selectedProduct = {
             categories: product.categories
@@ -220,28 +222,31 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         this.selectedProduct.watermark_color = $scope.currentWatermarkColor.color;
         this.selectedProduct.designImage = $('#design-image-single').data('image-id');
 
-        console.log(this.selectedProduct);
-
-        if(this.selectedProduct.designImage === undefined) {
-            $('.response-message').show().delay(3000).fadeOut();
-        }
-        else{
+        if($scope.isProductSelected){
             $('#load-mark').show(); $('#save-mark').hide();
 
+            // sends the form
             $http.post( window.updateUrl, this.selectedProduct).success(function( data ){
                 console.log(data);
                 if( data.status == 'success' ){
 
-                $scope.selectedProduct.imageSquare = data.product.imageSquare;
+                    $scope.selectedProduct.imageSquare = data.product.imageSquare;
                     $('#load-mark').hide();
                     $('#save-mark').show();
 
                     location.reload();
                 }
-             });
+            });
+        }else{
+            $('.response-message').show().delay(3000).fadeOut();
+        }
+        if(this.selectedProduct.designImage === undefined) {
+
+
         }
 
-        // sends the form
+
+
 
     }
 
