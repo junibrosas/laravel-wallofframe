@@ -44,16 +44,7 @@
     <!-- Components specific for this page -->
     @yield('header')
 
-    {{--Google Analytics--}}
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-64106384-1', 'auto');
-      ga('send', 'pageview');
-    </script>
 
 
     <!-- Facebook Conversion Code for Wall Of Frame -->
@@ -72,6 +63,17 @@
         window._fbq.push(['track', '6027672556083', {'value':'0.01','currency':'AED'}]);
     </script>
     <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6027672556083&amp;cd[value]=0.01&amp;cd[currency]=AED&amp;noscript=1" /></noscript>
+
+    {{--Google Analytics--}}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-64106384-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 </head>
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
