@@ -22,7 +22,6 @@ class FrameSizeController extends \BaseController {
     public function sizeModal(){
         $product_id = Input::get('product');
 
-
         $sizes = ProductPackage::where('product_id', $product_id)->orderBy('category_id', 'asc')->orderBy('order', 'asc')->with('category')->get();
 
         $this->data['product_id'] = $product_id;
@@ -91,6 +90,18 @@ class FrameSizeController extends \BaseController {
     }
 
     public function postAddCustomSize(){
+        $rules = [
+            'width' => 'required|numeric|min:10|max:1000',
+            'height' => 'required|numeric|min:10|max:1000',
+            'price' => 'required|numeric|min:5'
+        ];
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails())
+        {
+            return Redirect::back()->with('error', 'Please provide a valid data.');
+        }
+
         ProductPackage::create(Input::all());
 
         return Redirect::back();
