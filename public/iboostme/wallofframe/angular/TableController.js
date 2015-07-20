@@ -5,22 +5,23 @@ app.controller("TableController", ['$scope', 'NgTableParams', function($scope, N
 
     // ngTable Module Initialization
     var ngTableData = window.tableData;
-    $scope.tableParams = new NgTableParams({
-        page: 1,            // show first page
-        count: 10           // count per page
-    }, {
-        total: ngTableData.length, // length of data
-        getData: function($defer, params) {
-            var slicedData = ngTableData.slice((params.page() - 1) * params.count(), params.page() * params.count());
+    if(typeof ngTableData != 'undefined'){
+        $scope.tableParams = new NgTableParams({
+            page: 1,            // show first page
+            count: 10           // count per page
+        }, {
+            total: ngTableData.length, // length of data
+            getData: function($defer, params) {
+                var slicedData = ngTableData.slice((params.page() - 1) * params.count(), params.page() * params.count());
 
-            $defer.resolve(slicedData);
+                $defer.resolve(slicedData);
 
-            $scope.tableData = slicedData; // sliced frames on table.
+                $scope.tableData = slicedData; // sliced frames on table.
+            }
+        });
+
+        $scope.removeTableItem = function(item){
+            $scope.tableData.splice($scope.tableData.indexOf(item),1);
         }
-    });
-
-    $scope.removeTableItem = function(item){
-        $scope.tableData.splice($scope.tableData.indexOf(item),1);
     }
-
 }]);

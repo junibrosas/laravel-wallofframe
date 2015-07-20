@@ -39,7 +39,7 @@ class ProductController extends \BaseController {
 		}
 
 		JavaScript::put([
-			'frameSizes' => $this->sizeRepository->getAll( $categoryToExclude ),
+			'frameSizes' => $this->sizeRepository->getSizes($product->id, $categoryToExclude),
 			'square_image' => urlencode($product->present()->imageWithType('square')),
 			'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
 		]);
@@ -47,8 +47,6 @@ class ProductController extends \BaseController {
 		// save cookie to product that has been viewed.
 		return Response::make( View::make('posts.product', $this->data));
 	}
-
-
 
 	public function getNewArrivals()
 	{

@@ -11,12 +11,24 @@ use ProductCategory;
 class FrameSizeController extends \BaseController {
     // frame size view
     public function index(){
-        $sizes = ProductPackage::orderBy('category_id', 'asc')->orderBy('order', 'asc')->with('category')->get();
+        $sizes = ProductPackage::where('is_global' , 1)->orderBy('category_id', 'asc')->orderBy('order', 'asc')->with('category')->get();
         Javascript::put([
             'tableData' => $sizes,
             'categories' => ProductCategory::get()
         ]);
         return View::make('admin.sizes', $this->data);
+    }
+
+    public function sizeModal(){
+        $product_id = Input::get('product');
+
+
+        $sizes = ProductPackage::where('product_id', $product_id)->orderBy('category_id', 'asc')->orderBy('order', 'asc')->with('category')->get();
+
+        $this->data['product_id'] = $product_id;
+        $this->data['sizes'] = $sizes;
+        $this->data['categories'] = ProductCategory::get();
+        return View::make('admin.sizes-modal', $this->data);
     }
 
     public function store(){
@@ -76,5 +88,17 @@ class FrameSizeController extends \BaseController {
         }
 
         return Redirect::back()->with('success', DONE);
+    }
+
+    public function postAddCustomSize(){
+        ProductPackage::create(Input::all());
+
+        return Redirect::back();
+    }
+
+    public function postDeleteCustomSize(){
+        ProductPackage::find(Input::get('size_id'))->delete();
+
+        return Redirect::back();
     }
 }

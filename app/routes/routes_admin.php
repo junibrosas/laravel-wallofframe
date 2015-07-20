@@ -26,9 +26,12 @@ Route::group( [ 'before' => ['auth', 'auth.admin.only'], 'prefix' => 'admin', 'n
 
     // Frame Sizes
     Route::get('frame-sizes', ['as' => 'admin.frame.sizes', 'uses' => 'FrameSizeController@index']);
+    Route::get('size-modal', ['as' => 'admin.size.modal', 'uses' => 'FrameSizeController@sizeModal']);
     Route::post('sizes/add', ['as' => 'admin.frame.sizes.add', 'uses' => 'FrameSizeController@store']);
     Route::post('sizes/update', ['as' => 'admin.frame.sizes.update', 'uses' => 'FrameSizeController@update']);
     Route::post('sizes/actions', ['as' => 'admin.frame.sizes.actions', 'uses' => 'FrameSizeController@postActions']);
+    Route::post('sizes/add-custom', ['as' => 'admin.size.custom.add', 'uses' => 'FrameSizeController@postAddCustomSize']);
+    Route::post('sizes/delete-custom', ['as' => 'admin.size.custom.delete', 'uses' => 'FrameSizeController@postDeleteCustomSize']);
 
     Route::post('frame/update', ['as' => 'admin.frame.update', 'uses' => 'FrameController@postUpdateProduct']);
     Route::post('frame/delete', ['as' => 'admin.frame.delete', 'uses' => 'FrameController@postDeleteProduct']);

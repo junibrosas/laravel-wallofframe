@@ -8,7 +8,7 @@ app.controller("MediaFlowController", ['$scope','$http','productService', functi
     $scope.$on('flow::complete', function () {
 
         // Close the modal after all the flow instances has been completely downloaded.
-        var remodal = $('[data-remodal-id=mediaModal]').remodal();
+        var remodal = $('[data-remodal-id=media-modal]').remodal();
         remodal.close();
 
         // Remove all files from the ngFlow uploader to give no space for the uploaded files.
@@ -56,7 +56,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
     }
 
     // Event on modal opening
-    $(document).on('opened', '.remodal', function () {
+    $(document).on('opened', '#media-modal', function () {
         // removed all media item ids that are selected.
         $scope.mediaIds = [];
 
@@ -80,7 +80,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
             });
     });
 
-    $(document).on('closed', '.remodal', function (e) {
+    $(document).on('closed', '#media-modal', function (e) {
         $scope.mediaItemsLoaded = false;
 
         // Remove old media items displayed in the modal.
@@ -89,7 +89,7 @@ app.controller("MediaController", ['$scope','$http', function($scope, $http){
 
     // retrieve the media items via ajax.
     $scope.getMediaItems = function(){
-        var modal = $.remodal.lookup[$('[data-remodal-id=mediaModal]').data('remodal')];
+        var modal = $.remodal.lookup[$('[data-remodal-id=media-modal]').data('remodal')];
 
         $http.post(mainApp.baseUrl+'/media/items', { items: $scope.mediaIds }).
             success(function(data, status, headers, config) {

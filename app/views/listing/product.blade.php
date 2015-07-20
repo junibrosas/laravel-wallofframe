@@ -1,4 +1,4 @@
-<a href="{{ $product->present()->url }}" class="frame-link">
+ <a href="{{ $product->present()->url }}" class="frame-link">
     @if(isset($no_ribbon) == false)
         @if(!empty($product->present()->statusClass))
             <div class="ribbon-wrapper">

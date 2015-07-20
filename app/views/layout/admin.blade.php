@@ -5,8 +5,8 @@
 @stop
 @section('footer')
     {{ link_js('iboostme/wallofframe/profile.js') }}
-    {{ link_js('iboostme/wallofframe/angular/FrameAppController.js') }}
     {{ link_js('iboostme/wallofframe/angular/ProductBrowseController.js') }}
+    {{ link_js('iboostme/wallofframe/angular/FrameAppController.js') }}
     {{ link_js('iboostme/wallofframe/angular/TableController.js') }}
     {{ link_js('iboostme/wallofframe/angular/TransactionController.js') }}
 @stop

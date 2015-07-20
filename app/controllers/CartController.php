@@ -78,7 +78,7 @@ class CartController extends \BaseController {
 				'width' => $package->width,
 				'height' => $package->height,
 				'category' => $product->present()->category,
-				'type' => $product->present()->type,
+				//'type' => $product->present()->type,
 				'watermarkColor' =>  $product->present()->watermarkColor,
 			)
 		);

@@ -1,3 +1,21 @@
+@section('footer')
+    @parent
+    <script type="text/javascript">
+        $(function(){
+            var customSizeModal = $('#remodal-custom-size');
+            $(document).on('opened', '#remodal-custom-size', function () {
+                var productId = customSizeModal.attr('modal-product-id');
+                $.get( '{{ route('admin.size.modal') }}' ,{ product: productId }, function( response ) {
+                    $('#modal-response').html(response);
+                });
+            });
+
+            $(document).on('closed', '#remodal-custom-size', function () {
+                $('#modal-response').html(''); // clear html
+            });
+        });
+    </script>
+@stop
 <form class="mainbox product-update" ng-submit="submitProduct()">
     <div class="form-group">
         <label for="password">Title</label>
@@ -22,6 +40,10 @@
             <option value="">No Brand</option>
          </select>
     </div>
+    <div class="form-group" ng-show="selectedProduct.id > 0">
+        <label>Add Custom Sizes</label><br>
+        <a class="btn btn-danger btn-sm btn-size-modal" href="#custom-size-modal" data-product-id="@{{ selectedProduct.id }}">Add New Size</a>
+    </div>
     <div class="form-group">
         <label>Status:</label>
          <select name="status_id" ng-model="currentStatus" ng-options="status.name for status in statuses" class="form-control"></select>
@@ -38,5 +60,9 @@
     <button type="submit" class="btn btn-default"> Save </button>
     <span id="save-mark" class="text-success saved-mark" style="display: none;"><i class="fa fa-check-circle-o"></i></span>
     <span id="load-mark" class="fa-spin load-mark" style="display: none;"><i class="fa fa-spinner"></i></span>
-
 </form>
+
+{{--Custom Size Modal--}}
+<div class="remodal" data-remodal-id="custom-size-modal" id="remodal-custom-size" modal-product-id="@{{ selectedProduct.id }}">
+    <div id="modal-response"></div>
+</div>

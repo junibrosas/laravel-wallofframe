@@ -14,7 +14,8 @@
     <link href='http://fonts.googleapis.com/css?family=Walter+Turncoat' rel='stylesheet' type='text/css'>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    {{ link_css('assets/bootstrap/css/bootstrap.min.css') }}
+
     {{ link_css('assets/datatables/jquery.dataTables.css') }}
     {{ link_css('css/style.css') }}
     {{ link_css('css/utils.css') }}
@@ -29,6 +30,7 @@
     {{ link_css('assets/icheck/skins/flat/red.css') }}
     {{ link_css('js/jqNailThumb/jquery.nailthumb.1.1.min.css') }}
     {{ link_js('js/jquery.js') }} {{--jQuery--}}
+    {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
 
     <!-- Digital Countdown Timer -->
     {{ link_js('assets/countdown/countdown.js') }}
@@ -77,10 +79,10 @@
 </head>
     <body ng-controller="MainController as main" ng-cloak>
         @yield('layout')
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> {{--Bootstrap--}}
+        {{ link_js('assets/bootstrap/js/bootstrap.min.js') }}
 
         {{ link_js('js/grids.js') }}
-        {{ link_js('iboostme/js/angular/angular.js') }}{{--AngularJS--}}
+
         {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}
         {{ link_js('assets/datatables/jquery.dataTables.min.js') }} {{--DataTables--}}
         {{ link_js('assets/icheck/icheck.min.js') }} {{--iCheck--}}

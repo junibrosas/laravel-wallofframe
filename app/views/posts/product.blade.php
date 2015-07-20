@@ -7,7 +7,7 @@
     <meta property="og:description" content="{{ $product->present()->content }}" />
     {{ link_css('js/jqNailThumb/jquery.nailthumb.1.1.min.css') }}
     {{ link_css('js/jqLightbox/css/lightbox.css') }}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+    {{ link_css('css/animate.min.css') }}
     <style type="text/css">
         .zoomWindowContainer > div{
             margin-left: 20px !important;

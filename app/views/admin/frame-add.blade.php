@@ -29,10 +29,10 @@
             {{ Form::open(['route' => 'admin.design.store', 'method' => "post"]) }}
 
                 <div class="col-md-8" ng-controller="MediaController as media">
-                    <a href="#mediaModal" data-template="{{ route('media.modal')  }}" class="alert drag-drop-box media-add-btn text-center btn-block" >Add Frame Designs</a>
+                    <a href="#media-modal" data-template="{{ route('media.modal')  }}" class="alert drag-drop-box media-add-btn text-center btn-block" >Add Frame Designs</a>
 
                     {{--Media Modal--}}
-                    <div class="remodal" data-remodal-id="mediaModal" id="mediaModal" >
+                    <div class="remodal" data-remodal-id="media-modal" id="media-modal" >
                         @include('media.media-upload')
                     </div>
 

@@ -1,7 +1,7 @@
 @extends('layout.default')
 @section('header')
     @parent
-     {{ link_css('js/jqModal/jquery.remodal.css') }}
+    {{ link_css('js/remodal/remodal.css') }}
      <style type="text/css">
         .remodal { max-width: 500px !important; }
      </style>

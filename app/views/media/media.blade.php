@@ -3,13 +3,13 @@
 @include('media.components.media-assets')
 
 @section('content')
-    <a href="#mediaModal" class="alert drag-drop-box media-add-btn text-center btn-block" >Add Frame Designs</a>
+    <a href="#media-modal" class="alert drag-drop-box media-add-btn text-center btn-block" >Add Frame Designs</a>
 
     <div ng-controller="MediaController as media">
         <div class="row">
             <div class="col-md-12">
 
-                <div class="remodal" data-remodal-id="mediaModal" id="mediaModal">
+                <div class="remodal" data-remodal-id="media-modal" id="media-modal">
                     @include('media.media-upload')
                 </div>
 

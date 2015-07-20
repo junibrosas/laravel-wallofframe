@@ -2,13 +2,24 @@
 use ProductPackage;
 use ProductCategory;
 class ProductSizeRepository {
-    public function getAll( $slug = '' ){
-        if($slug){
-            $categoryId = ProductCategory::where('slug', $slug)->first()->id;
-            $sizes = ProductPackage::where('category_id', $categoryId)->get();
+
+    // get all general sizes and specify what sizes to exclude by category.
+    public function getSizes( $product_id = '', $categoryIdOrSlug = ''){
+        $category = '';
+        if(is_numeric($categoryIdOrSlug)){
+            $category = ProductCategory::find($categoryIdOrSlug);
         }else{
-            $sizes = ProductPackage::where('category_id', null)->get();
+            $category = ProductCategory::where('slug', $categoryIdOrSlug)->first();
         }
+        if($category){
+            $category = $category->id;
+        }
+
+        $sizes = ProductPackage::where('is_global', 1)->where('category_id', $category)->orWhere(function($query) use ( $product_id )
+        {
+            $query->where('product_id', $product_id);
+        })->get();
+
         return $sizes;
     }
-} 
+}

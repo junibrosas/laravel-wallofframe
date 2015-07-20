@@ -159,7 +159,7 @@ body.remodal-is-active .remodal-overlay {
 
     opacity: 0;
     color: #182a3c;
-    background: #f4f4f4;
+    background: #fff;
     background-clip: padding-box;
 }
 

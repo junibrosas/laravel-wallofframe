@@ -14,9 +14,12 @@ class CreateProductPackagesTable extends Migration {
 	{
 		Schema::create('product_packages', function ($table) {
 			$table->increments('id');
+			$table->integer('product_id');
+			$table->integer('category_id');
 			$table->integer('order');
 			$table->integer('width');
 			$table->integer('height');
+			$table->boolean('is_global');
 			$table->decimal('price', 10, 2);
 
 			$table->timestamps();

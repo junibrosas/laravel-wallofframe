@@ -64,9 +64,9 @@
                                 ng-click="removeSelectedProduct( selectedProductIndex )"> Remove Selected Item</button>
 
                             {{--Media Gallery Uploader Modal--}}
-                            <a  href="#mediaModal" class="btn btn-danger btn-sm"> <i class="fa fa-picture-o"></i> Upload Design</a>
+                            <a  href="#media-modal" class="btn btn-danger btn-sm"> <i class="fa fa-picture-o"></i> Upload Design</a>
                             <div ng-controller="MediaController as media" style="margin-top: 10px">
-                                <div class="remodal" data-remodal-id="mediaModal" id="mediaModal">
+                                <div class="remodal" data-remodal-id="media-modal" id="media-modal">
                                     @include('media.media-upload')
                                 </div>
                                 <div ng-repeat="item in mediaSelectedItems">
