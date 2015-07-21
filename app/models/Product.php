@@ -1,8 +1,6 @@
 <?php
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
-use ProductMeta;
-use ProductPackage;
 class Product extends \Eloquent {
 	use PresentableTrait;
 	use SoftDeletingTrait;
