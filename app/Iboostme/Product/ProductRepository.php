@@ -168,7 +168,7 @@ class ProductRepository {
         return $this->product()->whereId($id)->first();
     }
     private function product(){
-        return Product::with(['status', 'category', 'type','sizes'])->where('is_available', '1')->orderBy('created_at', 'DESC');
+        return Product::with(['status', 'category', 'type'])->where('is_available', '1')->orderBy('created_at', 'DESC');
     }
     public function category($slug){
         return ProductCategory::where('slug', $slug)->first();
