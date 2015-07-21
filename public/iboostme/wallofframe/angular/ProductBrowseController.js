@@ -14,10 +14,11 @@ app.controller("ProductBrowseController",function( $scope, $http, productService
 
     $scope.loadData = function(){
         var url = $scope.url + '&take='+$scope.take+'&page=' + $scope.page;
-        console.log(url);
         $scope.showLoadingText = true; // show loading text
         $http.get( url ).success(function(data){
             $scope.noProducts = data.products.length <= 0 ? true : false;
+
+            console.log(data.products);
             productService.setProducts( data.products );
 
             $scope.products = data.products;

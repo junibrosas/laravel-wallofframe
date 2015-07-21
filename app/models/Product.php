@@ -1,6 +1,8 @@
 <?php
 use Laracasts\Presenter\PresentableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use ProductMeta;
+use ProductPackage;
 class Product extends \Eloquent {
 	use PresentableTrait;
 	use SoftDeletingTrait;
@@ -34,7 +36,18 @@ class Product extends \Eloquent {
 	// return categories with pivot table
 	public function categories(){
 		return $this->belongsToMany('ProductCategory', 'product_pivot_categories');
+	}
 
+	public function sizes(){
+		$meta = ProductMeta::where('product_id', $this->id)->where('meta', 'product_packages_id')->get();
+		$metaGroup = array();
+		if($meta){
+			foreach($meta as $each){
+				$metaGroup[] = $each->value;
+			}
+		}
+
+		return ProductPackage::find($metaGroup);
 	}
 
 	public function type(){

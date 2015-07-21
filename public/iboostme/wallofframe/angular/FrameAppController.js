@@ -193,11 +193,11 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $scope.isProductSelected = true;
         $('#save-mark').hide();
         $scope.selectedProduct = {
-            categories: product.categories
+            //categories: product.categories
         };
         $scope.selectedProduct = product;
         $scope.selectedProductIndex = index;
-        $scope.currentCategory = getCurrent( product.category_id, $scope.categories );
+        //$scope.currentCategory = getCurrent( product.category_id, $scope.categories );
         $scope.currentBrand = getCurrent( product.brand_id, $scope.brands );
         $scope.currentType = getCurrent( product.type_id, $scope.types );
         $scope.currentStatus = getCurrent( product.status_id, $scope.statuses );
