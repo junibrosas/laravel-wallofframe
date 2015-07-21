@@ -26,6 +26,6 @@ class ProductSizeRepository {
     public function selectableSizes(){
         $category = null;
 
-        return ProductPackage::where('is_global', 1)->get();
+        return ProductPackage::get();
     }
 }
