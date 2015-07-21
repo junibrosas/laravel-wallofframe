@@ -41,8 +41,15 @@
          </select>
     </div>
     <div class="form-group" ng-show="selectedProduct.id > 0">
-        <label>Add Custom Sizes</label><br>
-        <a class="btn btn-danger btn-sm btn-size-modal" href="#custom-size-modal" data-product-id="@{{ selectedProduct.id }}">Add New Size</a>
+        <label for="">Select Sizes</label><br>
+        <div  class="col-md-6" ng-repeat="size in packageSizes">
+            <span style="display: block; margin-bottom: 5px;"><input type="checkbox" checklist-model="selectedProduct.sizes" checklist-value="size">
+                <b>@{{ size.width +'" x '+ size.height +'"'}}</b>
+                <small style="  color: #C7C5C5; font-size: 10px; float: right;">AED @{{ size.price }}</small>
+            </span>
+        </div>
+
+        {{--<a class="btn btn-danger btn-sm btn-size-modal" href="#custom-size-modal" data-product-id="@{{ selectedProduct.id }}">Add New Size</a>--}}
     </div>
     <div class="form-group">
         <label>Status:</label>

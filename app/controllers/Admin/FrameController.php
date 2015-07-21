@@ -3,6 +3,7 @@
 use Iboostme\Product\Border\FrameBorder;
 use Iboostme\Product\ProductFormatter;
 use Iboostme\Product\ProductSetting;
+use Iboostme\Product\Size\ProductSizeRepository;
 use User;
 use ProductPivotCategory;
 use Product;
@@ -35,11 +36,15 @@ class FrameController extends \BaseController {
     public $imageGenerateData;
     public $productRepo;
     public $productFormatter;
+    public $productSizeRepo;
     public $parts = ['design', 'frame', 'background'];
-    public function __construct(ProductRepository $productRepo, ProductFormatter $productFormatter ){
+    public function __construct(ProductRepository $productRepo,
+                                ProductFormatter $productFormatter,
+                                ProductSizeRepository $productSizeRepository ){
         parent::__construct();
         $this->productFormatter = $productFormatter;
         $this->productRepo = $productRepo;
+        $this->productSizeRepo = $productSizeRepository;
 
         JavaScript::put([
             'updateUrl' => route('admin.frame.update'), // url to update a product
@@ -63,7 +68,8 @@ class FrameController extends \BaseController {
             'statuses' => ProductStatus::get(),
             'watermarkColors' => ProductSetting::colorSelection(),
             'status' => $status,
-            'frame_part' => 'designs'
+            'frame_part' => 'designs',
+            'packageSizes' => $this->productSizeRepo->selectableSizes()
         ]);
         return View::make('admin.frame-design', $this->data);
     }

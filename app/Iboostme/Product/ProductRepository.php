@@ -12,7 +12,9 @@ use ProductCategory;
 use ProductType;
 use ProductBrand;
 use ProductStatus;
+use ProductPackage;
 use ProductPivotCategory;
+use ProductMeta;
 use Attachment;
 
 class ProductRepository {
@@ -128,6 +130,10 @@ class ProductRepository {
             }
         }
 
+
+        // create new custom sizes
+        $this->removeAndAddSizes($product->id, $input['sizes']);
+
         return $product;
     }
 
@@ -151,6 +157,9 @@ class ProductRepository {
                 $productPivotCategory->save();
             }
         }
+
+        // create new custom sizes
+        $this->removeAndAddSizes($product_id, $input['sizes']);
 
         return $isUpdated;
     }
@@ -224,5 +233,23 @@ class ProductRepository {
         else if ( $width < $height ){
             return 'vertical';
         }
+    }
+
+    public function removeAndAddSizes( $product_id, $sizes ){
+        // remove first existing rows
+        ProductMeta::where('product_id', $product_id )->where('meta', 'product_packages_id')->delete();
+
+        //save custom product sizes
+        $sizesSelected = ProductPackage::find(array_fetch($sizes, 'id'));
+        if($sizesSelected && count($sizesSelected) > 0){
+            foreach($sizesSelected as $sizes){
+                $meta = new ProductMeta();
+                $meta->product_id = $product_id;
+                $meta->meta = 'product_packages_id';
+                $meta->value = $sizes->id;
+                $meta->save();
+            }
+        }
+
     }
 } 

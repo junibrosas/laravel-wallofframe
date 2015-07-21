@@ -135,13 +135,12 @@ app.controller("FrameManageController", function($http, $scope, productService) 
     $scope.types = window.types; // list of types
     $scope.statuses = window.statuses; // list of statuses
     $scope.watermarkColors = window.watermarkColors; //list of watermark colors
+    $scope.packageSizes = window.packageSizes;
     $scope.booleans = [
         { name: 'False', value: 0 },
         { name: 'True', value: 1 }
     ];
     $scope.isProductSelected = false;
-
-
 
     var initialize = function(){
         $scope.selectedProduct = {}; //empty first
@@ -152,6 +151,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         $scope.currentMakePublic = {};
         $scope.designImage = {};
         $scope.currentWatermarkColor = {};
+        $scope.currentSizes = {};
 
         // get navigations
         $http.get( window.productNavigationUrl ).success( function( data ){
@@ -213,14 +213,13 @@ app.controller("FrameManageController", function($http, $scope, productService) 
 
     // submits the product form
     $scope.submitProduct = function(){
-
-
         this.selectedProduct.categories = $scope.selectedProduct.categories;
         this.selectedProduct.brand_id = $scope.currentBrand ? $scope.currentBrand.id : '';
         this.selectedProduct.status_id = $scope.currentStatus.id;
         this.selectedProduct.is_available = $scope.currentMakePublic.value;
         this.selectedProduct.watermark_color = $scope.currentWatermarkColor.color;
         this.selectedProduct.designImage = $('#design-image-single').data('image-id');
+        this.selectedProduct.sizes = $scope.selectedProduct.sizes;
 
         if($scope.isProductSelected){
             $('#load-mark').show(); $('#save-mark').hide();
@@ -240,14 +239,6 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         }else{
             $('.response-message').show().delay(3000).fadeOut();
         }
-        if(this.selectedProduct.designImage === undefined) {
-
-
-        }
-
-
-
-
     }
 
     // get the current selected product
