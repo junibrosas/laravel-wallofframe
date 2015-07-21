@@ -51,7 +51,7 @@ class ProductFormatter {
             'title' => $product->present()->title,
             'category_id' => $product->category_id,
             'categories' => $product->present()->categories,
-            //'sizes' => $product->sizes(),
+            'sizes' => $product->sizes(),
             'category' => $product->present()->category,
             'content' => $product->present()->content,
             'statusClass' => $product->present()->statusClass,
