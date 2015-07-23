@@ -4,11 +4,13 @@ use Product;
 use ProductFrame;
 use ProductBackground;
 use Iboostme\Product\Wishlist\WishlistRepository;
-
+use Iboostme\Product\Size\ProductSizeRepository;
 class ProductFormatter {
     public $wishListRepo;
-    public function __construct( WishlistRepository $wishlistRepository ){
+    public $productSizeRepo;
+    public function __construct( WishlistRepository $wishlistRepository, ProductSizeRepository $productSizeRepository){
         $this->wishListRepo = $wishlistRepository;
+        $this->productSizeRepo = $productSizeRepository;
     }
 
     public function bulkFormat( $products ){
@@ -51,7 +53,7 @@ class ProductFormatter {
             'title' => $product->present()->title,
             'category_id' => $product->category_id,
             'categories' => $product->present()->categories,
-            'sizes' => $product->sizes(),
+            'sizes' => $this->productSizeRepo->getSizes($product),
             'category' => $product->present()->category,
             'content' => $product->present()->content,
             'statusClass' => $product->present()->statusClass,
@@ -79,10 +81,6 @@ class ProductFormatter {
             'borderStyle' => $frame->border_style,
             'date' => $frame->created_at,
             'date_human' => $frame->created_at->diffForHumans()
-            //'imagePath' => asset('uploads/products/frames/square/'.$frame->image),
-            /*'imageSquare' => asset('uploads/products/frames/square/'.$frame->image),
-            'imageHorizontal' => asset('uploads/products/frames/horizontal/'.$frame->image),
-            'imageVertical' => asset('uploads/products/frames/vertical/'.$frame->image),*/
         ];
         return $result;
     }

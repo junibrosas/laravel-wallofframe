@@ -36,6 +36,9 @@ class Product extends \Eloquent {
 		return $this->belongsToMany('ProductCategory', 'product_pivot_categories');
 	}
 
+	/** Return the specified sizes of a product.
+	 * @return mixed
+     */
 	public function sizes(){
 		$meta = ProductMeta::where('product_id', $this->id)->where('meta', 'product_packages_id')->get();
 		$metaGroup = array();
@@ -44,7 +47,6 @@ class Product extends \Eloquent {
 				$metaGroup[] = $each->value;
 			}
 		}
-
 		return ProductPackage::find($metaGroup);
 	}
 

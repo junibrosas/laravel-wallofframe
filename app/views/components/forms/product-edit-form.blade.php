@@ -1,21 +1,3 @@
-@section('footer')
-    @parent
-    <script type="text/javascript">
-        $(function(){
-            var customSizeModal = $('#remodal-custom-size');
-            $(document).on('opened', '#remodal-custom-size', function () {
-                var productId = customSizeModal.attr('modal-product-id');
-                $.get( '{{ route('admin.size.modal') }}' ,{ product: productId }, function( response ) {
-                    $('#modal-response').html(response);
-                });
-            });
-
-            $(document).on('closed', '#remodal-custom-size', function () {
-                $('#modal-response').html(''); // clear html
-            });
-        });
-    </script>
-@stop
 <form class="mainbox product-update" ng-submit="submitProduct()">
     <div class="form-group">
         <label for="password">Title</label>
@@ -48,8 +30,7 @@
                 <small style="  color: #C7C5C5; font-size: 10px; float: right;">AED @{{ size.price }}</small>
             </span>
         </div>
-
-        {{--<a class="btn btn-danger btn-sm btn-size-modal" href="#custom-size-modal" data-product-id="@{{ selectedProduct.id }}">Add New Size</a>--}}
+        <div class="clearfix"></div>
     </div>
     <div class="form-group">
         <label>Status:</label>

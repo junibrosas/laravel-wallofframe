@@ -26,20 +26,8 @@ class ProductController extends \BaseController {
 		$this->data['pageTitle'] = $product->present()->title;
 		$this->data['product'] = $product;
 
-
-		// Get all the categories of the product. Prioritize the
-		// pricing of the product if it has a 'limited-edition' category.
-		$categoryToExclude = ''; // this is the category to exclude from the normal pricing and sizes.
-		if(count($product->categories) > 0){
-			foreach($product->categories as $category){
-				if($category->slug == 'limited-edition'){
-					$categoryToExclude = $category->slug;
-				}
-			}
-		}
-
 		JavaScript::put([
-			'frameSizes' => $this->sizeRepository->getSizes($product->id, $categoryToExclude),
+			'frameSizes' => $this->sizeRepository->getSizes($product),
 			'square_image' => urlencode($product->present()->imageWithType('square')),
 			'frameList' => $this->productFormatter->frameBulkFormat(ProductFrame::where('is_active', 1)->get()),
 		]);

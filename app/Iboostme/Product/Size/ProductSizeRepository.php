@@ -1,64 +1,32 @@
 <?php namespace Iboostme\Product\Size;
 use Product;
 use ProductPackage;
-use ProductCategory;
 class ProductSizeRepository {
 
-    // get all general sizes and specify what sizes to exclude by category.
-    /*public function getSizes( $product_id = '', $categoryIdOrSlug = ''){
-        $category = '';
-        if(is_numeric($categoryIdOrSlug)){
-            $category = ProductCategory::find($categoryIdOrSlug);
-        }else{
-            $category = ProductCategory::where('slug', $categoryIdOrSlug)->first();
-        }
-        if($category){
-            $category = $category->id;
-        }
-
-        $sizes = ProductPackage::where('is_global', 1)->where('category_id', $category)->orWhere(function($query) use ( $product_id )
-        {
-            $query->where('product_id', $product_id);
-        })->get();
-
-        return $sizes;
-    }*/
-
-    /**
-     * @param string $product_id
-     * @param string $categoryIdOrSlug
+    /** Get all general sizes and specify what sizes to exclude by category.
+     * @param Product $product
      * @return mixed
      */
-    public function getSizes($product_id = '', $categoryIdOrSlug = ''){
-        // check if there is custom sizes
-        // if there is, use it.
-
-        $product = Product::find($product_id);
+    public function getSizes( Product $product){
+        // if there are specific sizes to a product return those sizes.
         if( count($product->sizes()) > 0){
             return $product->sizes();
         }
 
 
-        // if there is no custom sizes, use the general sizes.
-        $category = '';
-        if(is_numeric($categoryIdOrSlug)){
-            $category = ProductCategory::find($categoryIdOrSlug);
-        }else{
-            $category = ProductCategory::where('slug', $categoryIdOrSlug)->first();
-        }
-        if($category){
-            $category = $category->id;
+        // if the product has the category that the product package set to be prioritized, return those prioritized sizes.
+        if(count($product->categories) > 0){
+            foreach($product->categories as $category){
+                $hasCategoryInTheSizes = ProductPackage::where('category_id', $category->id)->first();
+                if($hasCategoryInTheSizes){
+                    return ProductPackage::where('category_id', $category->id)->get();
+                }
+            }
         }
 
-        $sizes = ProductPackage::where('is_global', 1)->where('category_id', $category)->orWhere(function($query) use ( $product_id )
-        {
-            $query->where('product_id', $product_id);
-        })->get();
-
-        return $sizes;
+        // return sizes that are not prioritized.
+        return ProductPackage::where('category_id', null)->get();
     }
-
-
 
     public function selectableSizes(){
         $category = null;
