@@ -14,9 +14,8 @@
                             class="img-responsive custom-border" />
 
                             {{--Logo Watermark--}}
-                            <div class="logo-watermark" style="  bottom: 5%;
-                                                                 right: 18%;">
-                                <span style="font-size: 21px; color: {{ $product->present()->watermarkColor }}">Wall Of <br/> Frame</span>
+                            <div class="watermark" style="bottom: 5%; right: 18%;">
+                                <img src="{{ asset('img/watermark-black.png') }}" alt="Wall Of Frame Watermark" width="60">
                             </div>
                     </div>
 
@@ -28,9 +27,13 @@
                                 width="550"
                                 alt="{{ $product->present()->title }}"
                                 class="img-responsive elem-center " />
+
+                            {{--Logo Watermark--}}
+                            <div class="watermark" style="bottom: 2%; right: 14%;">
+                                <img src="{{ asset('img/watermark-black.png') }}" alt="Wall Of Frame Watermark" width="60" style="box-shadow: none;">
+                            </div>
                         </div>
                     </div>
-
 
                     {{--Art Image--}}
                     <div ng-show="currentFrameType == frameTypes[2]">

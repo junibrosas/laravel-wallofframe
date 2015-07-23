@@ -15,8 +15,10 @@
                             <a href="{{ $product->options->url }}">
                                 <div style="position: relative; width: 80px">
                                     <img src='{{ $product->options->image }}'  class="img-responsive" width="80"/>
-                                    <div class="logo-watermark" style="bottom: 3%;right: 4%;">
-                                        <span style="font-size: 4px; color: {{ $product->options->watermarkColor }}">Wall Of <br/> Frame</span>
+
+                                    {{--Logo Watermark--}}
+                                    <div class="watermark" style="bottom: 3%;right: 4%;">
+                                        <img src="{{ asset('img/watermark-black.png') }}" alt="Wall Of Frame Watermark" width="20" style="box-shadow: none;">
                                     </div>
                                 </div>
                             </a>

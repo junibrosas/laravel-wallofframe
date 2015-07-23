@@ -1315,20 +1315,14 @@ select.form-control { border-radius: 0; }
 .form-group .label-danger { }
 .alert-dismissable .close, .alert-dismissible .close { right: 0 !important; }
 
-.logo-watermark {
+.watermark{
+    z-index: 2;
+    display: block;
     position: absolute;
     bottom: 79px;
     right: 21px;
     line-height: 1;
     display: block;
-}
-.logo-watermark span{
-    font-family: 'Walter Turncoat', cursive !important;
-    font-weight: bold;
-    font-size: 10px;
-    text-align: center;
-    font-style: italic;
-    color: #A7A4A4;
 }
 .selected-design-image img, .selected-design-image img:hover{
     border: 3px solid #FF6D69;

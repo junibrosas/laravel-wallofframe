@@ -15,8 +15,10 @@
                         <div class="col-md-3">
                             <a href="@{{ product.options.url  }}">
                                 <img ng-src='@{{ product.options.image  }}' class="img-responsive" width="150"/>
-                                <div class="logo-watermark" style="bottom: 31%; right: 12%;">
-                                    <span style="font-size: 6px; color: @{{ product.options.watermarkColor }};">Wall Of <br/> Frame</span>
+
+                                {{--Logo Watermark--}}
+                                <div class="watermark" style="bottom: 31%; right: 12%;">
+                                    <img src="{{ asset('img/watermark-black.png') }}" alt="Wall Of Frame Watermark" width="20" style="box-shadow: none;">
                                 </div>
                             </a>
                             <button type="submit" class="btn btn-danger btn-xs space-xs btn-block" ng-click="remoteCartItem(product);">remove</button>

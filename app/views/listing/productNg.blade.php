@@ -8,9 +8,9 @@
 
         <img ng-src="@{{ product.imageSquare }}" class="img-responsive img-frame">
 
-        {{--Watermark Logo--}}
-        <div class="logo-watermark">
-            <span style="color: @{{ product.watermarkColor }}">Wall Of <br/> Frame</span>
+        {{--Logo Watermark--}}
+        <div class="watermark" style="bottom: 24%; right: 8%;">
+            <img src="{{ asset('img/watermark-black.png') }}" alt="Wall Of Frame Watermark" width="40" style="box-shadow: none;">
         </div>
 
         <div class="detail">
