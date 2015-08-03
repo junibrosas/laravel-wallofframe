@@ -221,7 +221,7 @@ app.controller("FrameManageController", function($http, $scope, productService) 
         this.selectedProduct.designImage = $('#design-image-single').data('image-id');
         this.selectedProduct.sizes = $scope.selectedProduct.sizes;
 
-        if($scope.isProductSelected){
+        if($scope.isProductSelected || this.selectedProduct.designImage !== undefined){
             $('#load-mark').show(); $('#save-mark').hide();
 
             // sends the form
@@ -234,6 +234,11 @@ app.controller("FrameManageController", function($http, $scope, productService) 
                     $('#save-mark').show();
 
                     location.reload();
+                }
+
+                if( data.status == 'error'){
+                    $('.response-message').html(data.message).show().delay(3000).fadeOut();
+                    $('#load-mark').hide();
                 }
             });
         }else{

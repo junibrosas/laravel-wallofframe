@@ -179,6 +179,11 @@ class FrameController extends \BaseController {
         $product_id = Input::get('id');
         $input = Input::all();
 
+        // set an empty categories as default
+        if( isset($input['categories']) == false ){
+            $input['categories'] = array();
+        }
+
         if($designImageId){
             $attachment = Attachment::find($designImageId);
             $input['attachment_id'] = $attachment->id;
@@ -195,13 +200,13 @@ class FrameController extends \BaseController {
         // create new model
         else{
             $categories = ProductCategory::find(array_fetch($input['categories'], 'id'));
-
             $product = $this->productRepo->create( $attachment, $categories, $input );
         }
 
         return array(
             'status' => 'success',
-            'product' =>  $this->productFormatter->format($product)
+            'product' =>  $this->productFormatter->format($product),
+            'message' => 'Successfully done.'
         );
     }
 

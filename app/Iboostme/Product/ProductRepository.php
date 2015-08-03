@@ -132,7 +132,11 @@ class ProductRepository {
 
 
         // create new custom sizes
-        $this->removeAndAddSizes($product->id, $input['sizes']);
+
+        if(isset($input['sizes'])){
+            $this->removeAndAddSizes($product->id, $input['sizes']);
+        }
+
 
         return $product;
     }
@@ -159,7 +163,9 @@ class ProductRepository {
         }
 
         // create new custom sizes
-        $this->removeAndAddSizes($product_id, $input['sizes']);
+        if(isset($input['sizes'])){
+            $this->removeAndAddSizes($product_id, $input['sizes']);
+        }
 
         return $isUpdated;
     }
