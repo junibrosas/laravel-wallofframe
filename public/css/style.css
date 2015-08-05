@@ -823,7 +823,7 @@ body {
     position: absolute;
     text-decoration: none;
     bottom: 7px;
-    right: 10px
+    right: 25px
 }
 .frames .item .detail .subhead { font-family: 'Myriad Pro'; font-size: 9px; font-style: italic; }
 .btn-default, .btn-default:focus {
