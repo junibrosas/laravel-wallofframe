@@ -7,7 +7,7 @@
 </div>
 <?php 
 	// Get random products and take 9 
-	$products = Product::orderBy(DB::raw("RAND()"))->take(9)->get();
+	$products = Product::orderBy(DB::raw("RAND()"))->take(12)->get();
 
 ?>
 <div class="container">

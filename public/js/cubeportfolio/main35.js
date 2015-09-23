@@ -23,7 +23,7 @@
             cols: 3
         }, {
             width: 800,
-            cols: 3
+            cols: 4
         }, {
             width: 500,
             cols: 2
