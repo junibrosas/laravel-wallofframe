@@ -1353,6 +1353,45 @@ select.form-control { border-radius: 0; }
     padding: 80px 0;
 }
 
+h1.feature-title {
+    font-family: 'MTCORSVA';
+    font-weight: normal;
+    text-transform: none;
+    font-size: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+h1.feature-title::after {
+
+    display: block;
+    background: none repeat scroll 0 0 #000;
+    bottom: 0;
+    content: " ";
+    height: 5px;
+    overflow: hidden;
+    width: 70px;
+    margin: 13px auto;
+}
+#feature-design-grid{
+    padding-top: 40px;
+    margin-bottom: 60px;
+}
+#feature-design-grid .cbp-item-wrapper{
+    padding: 0;
+}
+#feature-design-grid .cbp-button {
+    padding: 10px;
+    font-size: 15px;
+    width: inherit;
+}
+#feature-design-grid .desc {
+    color: #fff;
+    font-weight: bold;
+}
+#feature-design-grid .title {
+    font-size: 18px;
+}
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

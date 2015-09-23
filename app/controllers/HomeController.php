@@ -11,10 +11,6 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		//$this->data['mustHaves'] = $this->productRepo->getByRandom( 4 )->get();
-		//$this->data['product'] = Product::first(); // frame of the week
-
-
 		$this->data['frameBoxData'] = [
 			['image' => asset('img/framebox/boxframe1.jpg'), 'title' => '', 'tag' => '', 'url' => ''],
 			['image' => asset('img/framebox/boxframe2.jpg'), 'title' => 'Brands', 'tag' => 'features', 'url' => route('brands')],
@@ -27,6 +23,7 @@ class HomeController extends BaseController {
 			['image' => asset('img/framebox/boxframe9.jpg'), 'title' => 'Packages', 'tag' => '', 'url' => route('category', 'packages')],
 		];
 		$this->data['url_collection'] = route('browse.type', ['collections']);
+
 		return View::make('index', $this->data);
 	}
 

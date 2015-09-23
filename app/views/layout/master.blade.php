@@ -46,9 +46,6 @@
     <!-- Components specific for this page -->
     @yield('header')
 
-
-
-
     <!-- Facebook Conversion Code for Wall Of Frame -->
     <script>(function() {
         var _fbq = window._fbq || (window._fbq = []);

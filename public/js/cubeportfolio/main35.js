@@ -1,7 +1,7 @@
 (function($, window, document, undefined) {
     'use strict';
 
-    var gridContainer = $('#grid-container'),
+    var gridContainer = $('#main35-cuber'),
         filtersContainer = $('#filters-container'),
         wrap, filtersCallback;
 
@@ -23,7 +23,7 @@
             cols: 3
         }, {
             width: 800,
-            cols: 4
+            cols: 3
         }, {
             width: 500,
             cols: 2
