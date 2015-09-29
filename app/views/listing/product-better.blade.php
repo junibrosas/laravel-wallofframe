@@ -7,7 +7,7 @@
         @endif
     @endif
 
-    <img src="http://placehold.it/500x500" class="img-responsive">
+    <img src="{{ $product->present()->imageWithType('square') }}" class="img-responsive">
 
     <div class="detail">
         <div style="min-height: 45px">
