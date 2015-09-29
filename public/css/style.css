@@ -864,14 +864,14 @@ body {
 #must-have .item .title { /*font-weight: bold;*/ font-weight: bold; }
 #must-have .item .description { /*font-weight: 300;*/font-weight: 300; }
 
-.owl-carousel .item { margin: 15px; }
-.owl-carousel .item img { display: block; width: 100%; height: auto; }
+.owl-carousel1.owl-carousel .item { margin: 15px; }
+.owl-carousel1.owl-carousel .item img { display: block; width: 100%; height: auto; }
 
-.owl-theme .owl-controls .owl-buttons div { padding: 5px 9px; }
-.owl-theme .owl-buttons i{ margin-top: 2px; }
-.owl-theme .owl-controls .owl-buttons div { position: absolute; background: none !important;; color: #252525 !important;; font-size: 60px !important; }
-.owl-theme .owl-controls .owl-buttons .owl-prev{ left: -60px; top: 140px;  }
-.owl-theme .owl-controls .owl-buttons .owl-next{  right: -60px;  top: 140px;   }
+.owl-carousel1.owl-theme .owl-controls .owl-buttons div { padding: 5px 9px; }
+.owl-carousel1.owl-theme .owl-buttons i{ margin-top: 2px; }
+.owl-carousel1.owl-theme .owl-controls .owl-buttons div { position: absolute; background: none !important;; color: #252525 !important;; font-size: 60px !important; }
+.owl-carousel1.owl-theme .owl-controls .owl-buttons .owl-prev{ left: -60px; top: 140px;  }
+.owl-carousel1.owl-theme .owl-controls .owl-buttons .owl-next{  right: -60px;  top: 140px;   }
 
 .page-heading { /*font-family: 'opensans-bold';*/ font-weight: bold; font-size: 30px; margin-left: 15px; }
 
@@ -1392,6 +1392,75 @@ h1.feature-title::after {
 #feature-design-grid .title {
     font-size: 18px;
 }
+/* Center a tab or list */
+.centered-pills { text-align:center; }
+.centered-pills ul { display:inline-block; }
+.centered-pills li { display:inline; }
+.centered-pills a { float:left; }
+* html .centered-pills ul { display:inline; } /* IE6 */
+*+html .centered-pills ul { display:inline; } /* IE7 */
+
+#home-product-tabs .centered-pills { 
+    position: relative;
+    text-align: center;
+}
+#home-product-tabs .centered-pills .nav{
+    text-align: center;
+    border: 0px;
+    font-size: 0px;
+    display: inline-block;
+    margin-left: 35px;
+}
+#home-product-tabs .centered-pills ul,
+#home-product-tabs .centered-pills .active a { border:none; }
+
+#home-product-tabs .centered-pills .nav:before, .nav:after {
+    content: " ";
+    display: table;
+}
+#home-product-tabs .centered-pills a:hover { border:none; border-radius:0; background-color: transparent; }
+#home-product-tabs .nav-tabs>li>a { border: none;}
+#home-product-tabs .centered-pills .active a:after { 
+    background: none repeat scroll 0 0 #000;
+    bottom: 0;
+    content: " ";
+    display: none;
+    height: 2px;
+    overflow: hidden;
+    width: 40px;
+    display: block;
+    margin: 5px auto;
+}
+#home-product-tabs .centered-pills a { 
+    font-family: 'MTCORSVA'; 
+    padding: 5px 15px 5px 18px;
+    line-height: 30px;
+    font-size: 25px;
+    position: relative;
+     color: black;
+}
+#home-product-tabs .detail{
+    margin-bottom: 30px;
+}
+#home-product-tabs .title {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 0;
+}
+#home-product-tabs .subhead{
+    text-align: center;
+    font-size: 12px;
+}
+
+.corsva-title{
+    font-family: 'MTCORSVA'; 
+    padding: 5px 15px 5px 18px;
+    line-height: 30px;
+    font-size: 25px;
+    color: black;
+    font-weight: normal;
+}
+
 /*cloacking angular scripts*/
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;

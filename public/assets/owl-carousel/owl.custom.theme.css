@@ -1,0 +1,63 @@
+.custom-navigations {
+    margin: 10px 0 20px 0;
+    text-align: center;
+    position: relative;
+    right: 10px;
+}
+
+.custom-navigations button{
+    position: relative;
+    margin: 0;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #666;
+    color: white;
+    font-size: 12px;
+    font-family: Noticia Text;
+    font-style: italic;
+}
+.custom-navigations button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+}
+.custom-navigations button:focus{
+    color: white;
+}
+.custom-navigations button:hover {
+  background: #000;
+  color: white;
+}
+/* Arrow Buttons */
+/* ------------- */
+.custom-navigations .next::after,
+.custom-navigations .prev::after {
+    border-style: solid;
+}
+/* Next Button */
+/* ----------- */
+.custom-navigations .next::after {
+    right: -33px;
+    border-width: 16px;
+    border-color: transparent transparent transparent #666;
+}
+.custom-navigations .next:hover::after {
+    border-left-color: #000;
+}
+/* Prev Button */
+/* ----------- */
+.custom-navigations .prev::after {
+    left: -33px;
+    border-color: transparent #666 transparent transparent;
+    border-width: 16px;
+}
+.custom-navigations .prev:hover::after {
+    border-right-color: #000;
+    color: white;
+}
+.custom-navigations .next { }
+.custom-navigations .prev { }

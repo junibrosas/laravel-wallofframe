@@ -80,7 +80,7 @@
 
         {{ link_js('js/grids.js') }}
 
-        {{ link_js('assets/owl-carousel/owl.carousel.js') }} {{--OwlCarousel--}}
+        {{ link_js('assets/owl-carousel/owl.carousel.min.js') }} {{--OwlCarousel--}}
         {{ link_js('assets/datatables/jquery.dataTables.min.js') }} {{--DataTables--}}
         {{ link_js('assets/icheck/icheck.min.js') }} {{--iCheck--}}
         {{ link_js('js/jqNailThumb/jquery.nailthumb.1.1.min.js') }} {{--NailThumb--}}
