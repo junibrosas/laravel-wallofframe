@@ -75,18 +75,15 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="new-arrivals">
-						<?php $products = Product::orderBy(DB::raw("RAND()"))->take(8)->get(); ?>
-						@include('components.carousels.carousel-home', ['products' => $products])
+						@include('components.carousels.carousel-home')
 					</div>
 
 					<div role="tabpanel" class="tab-pane" id="best-seller">
-						<?php $products = Product::orderBy(DB::raw("RAND()"))->take(8)->get(); ?>
-						@include('components.carousels.carousel-home', ['products' => $products])
+						@include('components.carousels.carousel-home')
 					</div>
 
 					<div role="tabpanel" class="tab-pane" id="featured-products">
-						<?php $products = Product::orderBy(DB::raw("RAND()"))->take(8)->get(); ?>
-						@include('components.carousels.carousel-home', ['products' => $products])
+						@include('components.carousels.carousel-home')
 					</div>
 				</div>
 			</div>

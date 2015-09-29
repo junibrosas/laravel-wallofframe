@@ -6,6 +6,7 @@
 	<div class="owl-carousel product-tab-owl-carousel">
 		@for ($i=0; $i < 2; $i++)
 			<div class="item">
+				<?php $products = Product::orderBy(DB::raw("RAND()"))->take(8)->get(); ?>
 				@foreach($products as $key => $product)
 					<div class="col-md-3 ">
 						@include('listing.product-better', ['product' => $product])
